@@ -16,7 +16,7 @@ export class AppComponent {
   public IdText: any;
   public PasswordText: any;
 
-  title = 'LOSTARK_Scheduler_by.JH';
+  title = 'LOSTARK_Scheduler_by_JH';
   hide = true;
   hide2 = true;
   hide3 = true;

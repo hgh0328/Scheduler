@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/LOSTARK_Scheduler_by.JH'),
+      dir: require('path').join(__dirname, './coverage/LOSTARK_Scheduler_by_JH'),
       subdir: '.',
       reporters: [
         { type: 'html' },

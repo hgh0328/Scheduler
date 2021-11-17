@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "LOSTARK_Scheduler_by.JH": {
+    "LOSTARK_Scheduler_by_JH": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -62,14 +62,14 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "LOSTARK_Scheduler_by.JH:build",
+            "browserTarget": "LOSTARK_Scheduler_by_JH:build",
           },
           "configurations": {
             "production": {
-              "browserTarget": "LOSTARK_Scheduler_by.JH:build:production"
+              "browserTarget": "LOSTARK_Scheduler_by_JH:build:production"
             },
             "development": {
-              "browserTarget": "LOSTARK_Scheduler_by.JH:build:development"
+              "browserTarget": "LOSTARK_Scheduler_by_JH:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -77,7 +77,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "LOSTARK_Scheduler_by.JH:build"
+            "browserTarget": "LOSTARK_Scheduler_by_JH:build"
           }
         },
         "test": {
@@ -100,5 +100,5 @@
       }
     }
   },
-  "defaultProject": "LOSTARK_Scheduler_by.JH"
+  "defaultProject": "LOSTARK_Scheduler_by_JH"
 }
