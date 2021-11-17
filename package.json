@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --prod --base-href https://hgh0328.github.io/Scheduler/",
+    "upload": "ngh --dir /docs",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
