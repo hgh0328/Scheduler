@@ -4,18 +4,19 @@
 		<div class="Login_Bg"></div>
 	</div>
 	<mat-card class="Login_FormBox">
-		<img src="assets/img/logo/Logo_origin.png" alt="JSINVESTMENT" width="100%">
-
+		
+       <img src="assets/img/logo/Logo_origin.png" alt="JSINVESTMENT" width="100%">
+		        
 		<mat-form-field appearance="legacy">
-			<mat-label>입력해바아이디</mat-label>
+			<mat-label>아이디를 선택하세요.</mat-label>
 			<mat-icon matPrefix>person</mat-icon>
-			<input matInput placeholder="js1234@example.com" [(ngModel)]="IDText" required>
-			<!--    <mat-hint>아이디를 입력해주세요.</mat-hint>-->
-			<mat-error>아이디 확인해주세요.</mat-error>
+			<input matInput required [(ngModel)]="IdText">
+			<mat-error>아이디를 확인해주세요.</mat-error>
 		</mat-form-field>
 
+
 		<mat-form-field appearance="legacy">
-			<mat-label>비밀번호</mat-label>
+			<mat-label>비밀 번호를 입력하세요.</mat-label>
 			<mat-icon matPrefix>lock</mat-icon>
 			<input matInput [type]="hide ? 'password' : 'text'" required [(ngModel)]="PasswordText">
 			<button mat-icon-button matSuffix *ngIf="PasswordText != null" (click)="hide = !hide">
@@ -27,8 +28,6 @@
 
 		<div class="Login_ButtonBox">
 			<button mat-stroked-button class="NextBtn" (click)="Login()">로그인</button>
-			<button mat-stroked-button (click)="Join()">회원가입</button>
-			<span (click)="Find_Info()">아이디 / 비밀번호 찾기</span>
 		</div>
 
 	</mat-card>
@@ -40,7 +39,7 @@
 		<button mat-icon-button (click)="Menu.toggle()">
 			<mat-icon>menu</mat-icon>
 		</button>
-		<span class="Menu_Logo"><img src="assets/img/logo/Logo_white.png" alt="JSINVESTMENT" width="100%"></span>
+		<span class="Menu_Logo"><img src="assets/img/logo/Logo_white.png" alt="LOSTARK_Scheduler_by.JH" width="100%"></span>
 		<!--  <span class="mat-toolbar_spacer"></span>-->
 		<button mat-icon-button (click)="settings.toggle()">
 			<mat-icon>settings</mat-icon>

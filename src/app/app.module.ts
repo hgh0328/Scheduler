@@ -4,22 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TestpageComponent } from './testpage/testpage.component';
-import { JoinModalComponent } from './join-modal/join-modal.component';
-import { FindModalComponent } from './find-modal/find-modal.component';
-import { UserNoticeComponent } from './user_menu/user-notice/user-notice.component';
-import { UserRecommendedComponent } from './user_menu/user-recommended/user-recommended.component';
-import { UserCompletionComponent } from './user_menu/user-completion/user-completion.component';
-import { UserNoticeDetailComponent } from './user_menu/dialog/user-notice-detail/user-notice-detail.component';
-import { AdminInformationComponent } from './admin_menu/admin-information/admin-information.component';
-import { AdminNoticeEditComponent } from './admin_menu/admin-notice-edit/admin-notice-edit.component';
-import { AdminGroupNoticeComponent } from './admin_menu/admin-group-notice/admin-group-notice.component';
-import { AdminGroupEditComponent } from './admin_menu/admin-group-edit/admin-group-edit.component';
-import { AdminUserEditComponent } from './admin_menu/admin-user-edit/admin-user-edit.component';
-import { AdminUserRemoveComponent } from './admin_menu/dialog/admin-user-remove/admin-user-remove.component';
-import { AdminUserModifyComponent } from './admin_menu/dialog/admin-user-modify/admin-user-modify.component';
-import { AdminNoticeAddComponent } from './admin_menu/dialog/admin-notice-add/admin-notice-add.component';
-import { AdminNoticeDeleteComponent } from './admin_menu/dialog/admin-notice-delete/admin-notice-delete.component';
-import { AdminNoticeModifyComponent } from './admin_menu/dialog/admin-notice-modify/admin-notice-modify.component';
 
 
 // Angular Meterial
@@ -67,22 +51,7 @@ import { environment } from 'src/environments/environment';
   declarations: [
     AppComponent,
     TestpageComponent,
-    JoinModalComponent,
-    FindModalComponent,
-    UserNoticeComponent,
-    UserRecommendedComponent,
-    UserCompletionComponent,
-    UserNoticeDetailComponent,
-    AdminInformationComponent,
-    AdminNoticeEditComponent,
-    AdminGroupNoticeComponent,
-    AdminGroupEditComponent,
-    AdminUserEditComponent,
-    AdminUserRemoveComponent,
-    AdminUserModifyComponent,
-    AdminNoticeAddComponent,
-    AdminNoticeDeleteComponent,
-    AdminNoticeModifyComponent,
+
   ],
   imports: [
     BrowserModule,
