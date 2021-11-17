@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/jsinvestment",
+            "outputPath": "docs",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -34,16 +34,11 @@
           "configurations": {
             "production": {
               "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
-                }
+                	{
+        	"type": "initial",
+        	"maximumWarning": "2mb",
+        	"maximumError": "5mb"
+    	}
               ],
               "fileReplacements": [
                 {
@@ -67,9 +62,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "host": "192.168.2.3",
             "browserTarget": "jsinvestment:build",
-            "port": 4222,
             "proxyConfig": "src/proxy.conf.js"
           },
           "configurations": {
