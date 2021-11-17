@@ -1,11 +1,10 @@
 {
   "name": "jsinvestment",
-  "homepage": "https://hgh0328.github.io/Scheduler/",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod --base-href https://hgh0328.github.io/Scheduler/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -26,6 +25,7 @@
     "@ngrx/entity": "^12.5.1",
     "@ngrx/store": "^12.5.1",
     "@ngrx/store-devtools": "^12.5.1",
+    "angular-cli-ghpages": "^1.0.0-rc.2",
     "jquery": "^3.6.0",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
