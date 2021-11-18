@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet';
 import * as $ from 'jquery';
+import { CalendarAddButtonComponent } from '../calendar-add-button/calendar-add-button.component';
 
 @Component({
   selector: 'app-week-calendar',
@@ -8,26 +10,22 @@ import * as $ from 'jquery';
 })
 export class WeekCalendarComponent implements OnInit {
 
-   public Party: any;
-   public Day: any;
-   public Raid: any;
-   public Time: any;
-   public Position: any;
-   public Memo: any;
 
 
 
-  constructor() { }
+
+  constructor(private MatBottomSheet: MatBottomSheet,) { }
 
   ngOnInit(): void {
   }
-	chlickevent(){
-		if(this.Raid.length > 1){
-			
-          console.log(this.Raid[0] + " 외 " + (this.Raid.length - 1) + " 개");
-		  $(".mat-select-value-text").text(this.Raid[0] + " 외 " + (this.Raid.length - 1) + " 개");
-     
-		}
-	}
+    Calendar_AddButton(){
+        this.MatBottomSheet.open(CalendarAddButtonComponent, {
+              panelClass: 'OptionModal',
+              data: {}
+            }).afterDismissed().subscribe((result) => {
+
+    });
+        
+    }
 
 }

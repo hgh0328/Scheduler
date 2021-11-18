@@ -48,12 +48,14 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 
 /*페이지*/
 import { WeekCalendarComponent } from './week-calendar/week-calendar.component';
+import { CalendarAddButtonComponent } from './calendar-add-button/calendar-add-button.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TestpageComponent,
     WeekCalendarComponent,
+    CalendarAddButtonComponent,
 
   ],
   imports: [

@@ -1,0 +1,128 @@
+<div class="User_Option_Dialog">
+	<h3><span>[ 아이디 ]</span> <strong>주간 캘린더 추가</strong> <mat-icon (click)="close()">close</mat-icon></h3>
+    <div class="Calendar_Edit_Box">
+
+	<p><mat-icon>warning</mat-icon>각 레이드별로 횟수 추가는 불가합니다. ex) 메모에 2수인 경우 남겨주세요. </p>
+	
+	
+
+	<mat-form-field appearance="outline">
+    <mat-label>요일 선택</mat-label>
+    
+    <mat-select [(ngModel)]="Day" required>
+	  <mat-option value="수요일">수요일</mat-option>
+	  <mat-option value="목요일">목요일</mat-option>
+	  <mat-option value="금요일">금요일</mat-option>
+	  <mat-option value="토요일">토요일</mat-option>
+	  <mat-option value="일요일">일요일</mat-option>
+	  <mat-option value="월요일">월요일</mat-option>
+	  <mat-option value="화요일">화요일</mat-option>			  
+	</mat-select>
+   
+    <mat-hint>요일 선택</mat-hint>
+    <mat-error>필수 입력*</mat-error>
+  	</mat-form-field>
+  	
+  	<mat-form-field appearance="outline">
+    <mat-label>단위 선택</mat-label>
+    
+    <mat-select [(ngModel)]="Party" required>
+	  <mat-option value="길드파티">길드파티</mat-option>
+	  <mat-option value="헤딩파티">헤딩파티</mat-option>
+	  <mat-option value="트라이파티">트라이파티</mat-option>
+	  <mat-option value="반숙파티">반숙파티</mat-option>
+	  <mat-option value="출근파티">출근파티</mat-option>
+	  <mat-option value="맥모닝파티">맥모닝파티</mat-option>
+	  <mat-option value="학원파티">학원파티</mat-option>			  
+	  <mat-option value="버스파티">버스파티</mat-option>			  
+	</mat-select>
+   
+    <mat-hint>단위 선택</mat-hint>
+    <mat-error>필수 입력*</mat-error>
+  	</mat-form-field>
+  	
+  	<mat-form-field appearance="outline">
+    <mat-label>레이드 선택</mat-label>
+    
+    <mat-select [(ngModel)]="Raid" multiple  required class="Raid_Select">
+    
+    <mat-optgroup label="일반" (click)="Raid_Select()">
+	  <mat-option value="오레하2종">오레하 2종</mat-option>
+	  <mat-option value="아르고스1페">아르고스 1페</mat-option>
+	  <mat-option value="아르고스3페">아르고스 3페</mat-option>
+	  <mat-option value="도비스2종">도전 어비스 던전 2종</mat-option>
+	</mat-optgroup>
+    
+    <mat-optgroup label="노말" (click)="Raid_Select()">
+	  <mat-option value="노말발탄">발탄_노말</mat-option>
+	  <mat-option value="노말비아키스">비아키스_노말</mat-option>
+	  <mat-option value="노말쿠크세이튼">쿠크세이튼_노말</mat-option>
+	  <mat-option value="노말아브렐슈드">아브렐슈드_노말</mat-option>
+	</mat-optgroup>
+	
+	<mat-optgroup label="하드" (click)="Raid_Select()">
+	  <mat-option value="하드발탄">발탄_하드</mat-option>
+	  <mat-option value="하드비아키스">비아키스_하드</mat-option>
+	  <mat-option value="하드쿠크세이튼">쿠크세이튼_하드</mat-option>
+	  <mat-option value="하드아브렐슈드">아브렐슈드_하드</mat-option>
+	</mat-optgroup>
+	
+	<mat-optgroup label="기타" (click)="Raid_Select()">
+	  <mat-option value="쿠크리허설">쿠크세이튼 리허설</mat-option>
+	  <mat-option value="아브렐슈드데자뷰">아브렐슈드 데자뷰</mat-option>
+	</mat-optgroup>		
+	  
+	</mat-select>
+   
+    <mat-hint>레이드 선택 (중복가능)</mat-hint>
+    <mat-error>필수 입력*</mat-error>
+  	</mat-form-field>
+  	
+  	<mat-form-field appearance="outline">
+    <mat-label>출발 시간대</mat-label>
+    
+    <mat-select [(ngModel)]="Time" multiple required class="Time_Select">
+	  <mat-option (click)="Time_Select()" value="항시가능">항시가능</mat-option>
+	  <mat-option (click)="Time_Select()" value="오전">오전</mat-option>
+	  <mat-option (click)="Time_Select()" value="오후">오후</mat-option>
+	  <mat-option (click)="Time_Select()" value="아침">아침</mat-option>
+	  <mat-option (click)="Time_Select()" value="점심">점심</mat-option>
+	  <mat-option (click)="Time_Select()" value="저녁">저녁</mat-option>
+	  <mat-option (click)="Time_Select()" value="밤">밤</mat-option>			  
+	  <mat-option (click)="Time_Select()" value="새벽">새벽</mat-option>			  
+	  <mat-option (click)="Time_Select()" value="협의">협의</mat-option>			  
+	</mat-select>
+   
+    <mat-hint>시간대를 선택 (중복가능)</mat-hint>
+    <mat-error>필수 입력*</mat-error>
+  	</mat-form-field>
+  	
+  	<mat-form-field appearance="outline">
+    <mat-label>포지션 선택</mat-label>
+    
+    <mat-select [(ngModel)]="Position" required>
+	  <mat-option value="딜러">딜러</mat-option>
+	  <mat-option value="힐러">힐러</mat-option>
+	  <mat-option value="둘다가능">둘다 가능</mat-option>
+		  
+	</mat-select>
+   
+    <mat-hint>포지션 선택</mat-hint>
+    <mat-error>필수 입력*</mat-error>
+  	</mat-form-field>
+  	
+  	<mat-form-field appearance="outline">
+		<mat-label>메모</mat-label>
+
+			 <input matInput type="text" [(ngModel)]="Memo" #AllUser_message maxlength="50" matInput placeholder="ex) 초행, 학원팟 가능, 공대장 있음">
+			<mat-hint align="start"><strong>50자 내외로 메세지 작성이 가능합니다.</strong> </mat-hint>
+			<mat-hint align="end">{{AllUser_message.value.length}} / 50</mat-hint>
+		</mat-form-field>			
+</div>
+
+
+ <div class="User_Option_DialogButtonBox">
+		<button mat-stroked-button (click)="close()">취소</button>
+		<button mat-stroked-button class="NextBtn">추가</button>
+	</div>
+</div>
