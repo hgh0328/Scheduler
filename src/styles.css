@@ -71,7 +71,9 @@ mat-icon{text-align: center; display: inline-block; position: relative; font-fam
 .mat-error{font-size: 10px; font-weight: 300; letter-spacing: 0.01vw;}
 mat-bottom-sheet-container{padding: 0 !important;}
 .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar{background-color: var(--maindark-color);}
-.mat-ink-bar{height: 3px !important; top: 0 !important;}
+.mat-ink-bar{height: 3px !important;}
+.Calendar_List_Box .mat-ink-bar{top: 0 ;}
+.Calendar_CatalogList .mat-ink-bar{bottom: 0 !important; top: auto !important;}
 .mat-accent .mat-pseudo-checkbox-checked, .mat-accent .mat-pseudo-checkbox-indeterminate, .mat-pseudo-checkbox-checked, .mat-pseudo-checkbox-indeterminate{background-color: var(--maindark-color);}
 .mat-expansion-panel-header{transition: .3s !important;}
 .mat-expansion-panel:not(.mat-expanded){background-color: var(--main-whitefont-color) !important;}
@@ -226,7 +228,8 @@ button.mat-stroked-button.RedBtn:hover{background-color: var(--red-color); color
 .Main_SettingButtonBox button mat-icon{vertical-align: baseline !important;}
 
 .Content_Panel{width: 100%; height: calc(100vh - 64px); overflow: hidden;}
-.Content_Panel .mat-tab-body-wrapper{height: calc(100vh - 64px - 70px - 38px - 110px);}
+.Content_Panel .Calendar_List_Box > .mat-tab-body-wrapper{height: calc(100vh - 64px - 70px - 38px - 110px);}
+.Content_Panel .Calendar_List_Box .Calendar_CatalogList .mat-tab-body-wrapper{height: calc(100vh - 64px - 70px - 38px - 110px - 49px);}
 .Content_Panel .mat-tab-body-content::-webkit-scrollbar{display: contents !important;}
 .Content_Panel_Title{height: 70px; width: 100%;}
 .Content_Panel_Title h3{font-size: 16px; color: #888; font-weight: 500; width: 100%; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; border-bottom: 1px solid #999;  height: 70px; line-height: 70px; padding: 0 16px; color: var(--sub-font-color);}
@@ -235,7 +238,8 @@ button.mat-stroked-button.RedBtn:hover{background-color: var(--red-color); color
 .Calendar_List_Box::-webkit-scrollbar{display: contents !important;}
 .Calendar_List_Box .mat-list-base{padding: 0;}
 .Calendar_List_Box .mat-expansion-panel-header.mat-expanded{height: 48px;}
-.Calendar_List_Box .mat-expansion-panel-header-description{position: absolute; right: 36px;}
+.Calendar_List_Box .mat-expansion-panel-header-description{position: absolute; right: 36px; font-size: 12px;}
+.Calendar_List_Box .mat-expansion-panel-header-description span{font-size: 14px; color: var(--maindark-color); position: relative; top: -2px; margin-left: 5px; font-weight: bold;}
 .Calendar_List_Box mat-list{ border: 1px solid var(--sub-whitefont-color); margin-top: 10px;}
 .Calendar_List_Box mat-list-item{transition: .3s; border-bottom: 1px solid var(--sub-whitefont-color);height: 50px !important;}
 .Calendar_List_Box mat-list-item .mat-list-item-content{padding: 0 !important;}
@@ -303,7 +307,8 @@ button.mat-stroked-button.RedBtn:hover{background-color: var(--red-color); color
 	.Main_Setting{min-width: 100vw;}
 	.Main_Setting{min-width: 100vw;}
 	.Content_Panel{height: calc(100vh - 54px);}
-	.Content_Panel .mat-tab-body-wrapper{height: calc(100vh - 54px - 70px - 38px - 110px);}
+	.Content_Panel .Calendar_List_Box > .mat-tab-body-wrapper{height: calc(100vh - 54px - 70px - 38px - 110px);}
+    .Content_Panel .Calendar_List_Box .Calendar_CatalogList .mat-tab-body-wrapper{height: calc(100vh - 54px - 70px - 38px - 110px - 49px);}
 	.Calendar_List_Box{height: calc(100vh - 54px - 50px - 70px - 48px);}
 	.Calendar_Edit_Box mat-form-field{width: 50%; margin: 0 auto; padding: 0 16px;}
     .Calendar_Edit_Box mat-form-field:nth-child(4){width: 100%;}
