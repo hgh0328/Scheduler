@@ -45,12 +45,15 @@ import { StoreModule } from '@ngrx/store';
 import {reducers, metaReducers} from './store'
 import { StoreEffects } from './store/effects/effect'
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
-import { environment } from 'src/environments/environment';
+
+/*페이지*/
+import { WeekCalendarComponent } from './week-calendar/week-calendar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TestpageComponent,
+    WeekCalendarComponent,
 
   ],
   imports: [
@@ -96,7 +99,6 @@ import { environment } from 'src/environments/environment';
     //EffectsModule.forFeature([StoreEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
-      logOnly: environment.production,
     }),
 
   ],

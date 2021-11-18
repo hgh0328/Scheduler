@@ -1,5 +1,5 @@
 <!-- 로그인 -->
-<div class="Login_Box">
+<div class="Login_Box" style="display: none">
 	<div class="Login_BgBox">
 		<div class="Login_Bg">
 <!--		    <img src="assets/img/login_bg.jpg" alt="LostArk" height="100%">-->
@@ -12,7 +12,33 @@
 		<mat-form-field appearance="legacy">
 			<mat-label>아이디를 선택하세요.</mat-label>
 			<mat-icon matPrefix>person</mat-icon>
-			<input matInput required [(ngModel)]="IdText">
+			<mat-select [(ngModel)]="IdText">
+			<!--카단섭-->
+		 	  <mat-optgroup label="카단섭">
+				  <mat-option value="점화걸면정화">점화걸면정화</mat-option>
+				  <mat-option value="데둠미">데둠미</mat-option>
+				  <mat-option value="펭난나">펭난나</mat-option>
+				  <mat-option value="달빛천사썬가드">달빛천사썬가드</mat-option>
+				  <mat-option value="블군자">블군자</mat-option>
+				  <mat-option value="욕망군단장형아키스">욕망군단장형아키스</mat-option>
+				  <mat-option value="인조인간91호">인조인간91호</mat-option>
+				  <mat-option value="긴바나나">긴바나나</mat-option>
+				  <mat-option value="똘렝">똘렝</mat-option>
+				  <mat-option value="라즈베리단풍"> 라즈베리단풍</mat-option>
+				  <mat-option value="식끈박끈"> 식끈박끈</mat-option>
+				  <mat-option value="신성범위"> 신성범위</mat-option>
+				  <mat-option value="하얀활"> 하얀활</mat-option>
+				  <mat-option value="HK278"> HK278</mat-option>
+			  </mat-optgroup>
+			  
+			  <!--아만섭-->
+			  <mat-optgroup label="아만섭">
+			  	<mat-option value="나긋하">나긋하</mat-option>
+		  	  </mat-optgroup>
+			  
+			  
+			  
+			</mat-select>
 			<mat-error>아이디를 확인해주세요.</mat-error>
 		</mat-form-field>
 
@@ -53,17 +79,10 @@
 	  <mat-drawer #Menu mode="over" position="start" class="Main_Menu">
 
 		<mat-selection-list [multiple]="false">
-		  <div mat-subheader><mat-icon mat-list-icon>account_circle</mat-icon> 일반 사용자</div>
-		  <mat-list-option selected (click)="UserMenu('notice')"><mat-icon mat-list-icon>campaign</mat-icon><div mat-line>공지사항</div></mat-list-option>
-		  <mat-list-option (click)="UserMenu('recommend')"><mat-icon mat-list-icon>trending_up</mat-icon><div mat-line>추천주</div></mat-list-option>
-		  <mat-list-option (click)="UserMenu('completion')"><mat-icon mat-list-icon>format_list_numbered</mat-icon><div mat-line>완료 수익률</div></mat-list-option>
+		  <div mat-subheader><mat-icon mat-list-icon>account_circle</mat-icon> 길드원 메뉴</div>
+		  <mat-list-option selected (click)="UserMenu('WeekCalendar')"><mat-icon mat-list-icon>campaign</mat-icon><div mat-line>주간 캘린더</div></mat-list-option>
 
-		  <div mat-subheader><mat-icon mat-list-icon>admin_panel_settings</mat-icon> 관리자</div>
-  <mat-list-option (click)="AdminMenu('info')"><mat-icon mat-list-icon>query_stats</mat-icon><div mat-line>종목정보</div></mat-list-option>
-  <mat-list-option (click)="AdminMenu('notice')"><mat-icon mat-list-icon>edit_notifications</mat-icon><div mat-line>공지사항 관리</div></mat-list-option>
-  <mat-list-option (click)="AdminMenu('groupnotice')"><mat-icon mat-list-icon>notification_add</mat-icon><div mat-line>그룹별 알림</div></mat-list-option>
-  <mat-list-option (click)="AdminMenu('groupedit')"><mat-icon mat-list-icon>group</mat-icon><div mat-line>그룹 관리</div></mat-list-option>
-  <mat-list-option (click)="AdminMenu('useredit')"><mat-icon mat-list-icon>manage_accounts</mat-icon><div mat-line>유저 관리</div></mat-list-option>
+
 		</mat-selection-list>
 	  </mat-drawer>
 
@@ -71,64 +90,15 @@
 		<mat-accordion [multi]="true">
 		  <mat-expansion-panel hideToggle expanded disabled>
 			<h3 class="Main_Setting_User"><span>js1234@example.com</span>님 환영합니다.</h3>
-			<p class="Notification_Setting">
-				<mat-icon>notifications</mat-icon><mat-slide-toggle>알림설정</mat-slide-toggle>
-			</p>
-		  </mat-expansion-panel>
-		  <mat-expansion-panel>
-			<mat-expansion-panel-header>
-			  <mat-panel-title>
-				<mat-icon>person</mat-icon>회원정보
-			  </mat-panel-title>
-			</mat-expansion-panel-header>
-
-			<mat-form-field appearance="legacy">
-			<mat-label>이름</mat-label>
-			<mat-icon matPrefix>person</mat-icon>
-			<input matInput #input1 maxlength="10" placeholder="홍길동">
-			<mat-hint align="end">{{input1.value?.length || 0}}/4</mat-hint>
-			<button mat-icon-button matSuffix >
-			  <mat-icon>edit</mat-icon>
-			</button>
-			</mat-form-field>
-
-			<mat-form-field appearance="legacy" hintLabel="- 을 제외하고 입력해주세요.">
-			<mat-label>전화번호</mat-label>
-			<mat-icon matPrefix>call</mat-icon>
-			<input matInput #input2 placeholder="01012345678" maxlength="11" type="tel"  pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}">
-			<mat-hint align="end">{{input2.value?.length || 0}}/11</mat-hint>
-			<button mat-icon-button matSuffix >
-			  <mat-icon>edit</mat-icon>
-			</button>
-			</mat-form-field>
-
-			<p class="Sub_Title"><mat-icon>password</mat-icon>비밀번호 변경</p>
-
-			<mat-form-field appearance="legacy">
-			<mat-label>기존 비밀번호</mat-label>
-			<mat-icon matPrefix>lock</mat-icon>
-			<input matInput [type]="hide2 ? 'password' : 'text'" required>
-			<button mat-icon-button matSuffix (click)="hide2 = !hide2">
-				<mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
-			</button>
-		   </mat-form-field>
-
-		   <mat-form-field appearance="legacy">
-			<mat-label>새로운 비밀번호</mat-label>
-			<mat-icon matPrefix>lock</mat-icon>
-			<input matInput [type]="hide3 ? 'password' : 'text'" required>
-			<button mat-icon-button matSuffix (click)="hide3 = !hide3">
-				<mat-icon>{{hide3 ? 'visibility_off' : 'visibility'}}</mat-icon>
-			</button>
-		   </mat-form-field>
+			<p class="Notification_Setting ThemeBtn ThemeBtn_light" (click)="darkTheme()">
+				<mat-icon>dark_mode</mat-icon><mat-slide-toggle>다크모드</mat-slide-toggle>
+			</p>			
 
 		   <div class="Main_SettingButtonBox">
-			<button mat-stroked-button>회원 탈퇴</button>
-			<button mat-stroked-button class="AddBtn">비밀번호 재설정</button>
-			<button mat-stroked-button class="NextBtn">저장</button>
+			<button mat-stroked-button>주간 초기화</button>
 		   </div>
 		   <p class="Main_Setting_Logout">
-				<button mat-stroked-button class="RedBtn">로그아웃</button>
+				<button mat-stroked-button class="RedBtn" (click)="Logout()">로그아웃</button>
 			</p>
 
 
