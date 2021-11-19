@@ -1,13 +1,13 @@
 <!-- 로그인 -->
-<div class="Login_Box">
+<div class="Login_Box" *ngIf="login==false">
 	<div class="Login_BgBox">
 		<div class="Login_Bg">
 		</div>
 	</div>
 	<mat-card class="Login_FormBox">
-		
+
        <img src="assets/img/logo/Logo_origin.png" alt="LostArk" width="100%">
-		        
+
 		<mat-form-field appearance="legacy">
 			<mat-label>아이디를 선택하세요.</mat-label>
 			<mat-icon matPrefix>person</mat-icon>
@@ -29,14 +29,14 @@
 				  <mat-option value="하얀활"> 하얀활</mat-option>
 				  <mat-option value="HK278"> HK278</mat-option>
 			  </mat-optgroup>
-			  
+
 			  <!--아만섭-->
 			  <mat-optgroup label="아만섭">
 			  	<mat-option value="나긋하">나긋하</mat-option>
 		  	  </mat-optgroup>
-			  
-			  
-			  
+
+
+
 			</mat-select>
 			<mat-error>아이디를 확인해주세요.</mat-error>
 		</mat-form-field>
@@ -91,7 +91,7 @@
 			<h3 class="Main_Setting_User"><span>js1234@example.com</span>님 환영합니다.</h3>
 			<p class="Notification_Setting ThemeBtn ThemeBtn_light" (click)="darkTheme()">
 				<mat-icon>dark_mode</mat-icon><mat-slide-toggle>다크모드</mat-slide-toggle>
-			</p>			
+			</p>
 
 		   <div class="Main_SettingButtonBox">
 			<button mat-stroked-button>주간 초기화</button>

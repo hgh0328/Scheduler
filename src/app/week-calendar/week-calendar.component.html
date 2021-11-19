@@ -11,7 +11,7 @@
          <mat-tab-group mat-align-tabs="end" headerPosition="below">
           <mat-tab label="일반">
         <mat-accordion>
-        <mat-expansion-panel *ngFor="let item of nomalList">
+        <mat-expansion-panel *ngFor="let item of nomalList,let raidIndex = index;">
           <mat-expansion-panel-header>
             <mat-panel-title>
               {{item["레이드이름"]}}
@@ -22,10 +22,10 @@
           </mat-expansion-panel-header>
           <p><mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span></p>
           <mat-list>
-            <mat-list-item *ngFor="let userList of item['참가자리스트']">
+            <mat-list-item *ngFor="let userList of item['참가자리스트'], let i=index;">
               <div mat-line class="Calendar_List_Box_ID">[  {{userList["파티단위"]}} ] {{userList["아이디"]}}</div>
               <div mat-line class="Calendar_List_Box_Name"> {{userList["포지션"]}} / {{userList["출발시간대"]}} /  {{userList["메모"]}}</div>
-                  <button mat-icon-button [matMenuTriggerFor]="OptionMenu"><mat-icon mat-list-icon>more_vert</mat-icon></button>
+                  <button mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,userList['아이디'],'수요일','일반',raidIndex)"><mat-icon mat-list-icon>more_vert</mat-icon></button>
             </mat-list-item>
           </mat-list>
           </mat-expansion-panel>
@@ -146,12 +146,12 @@
 </div>
 
 
-<mat-menu #OptionMenu="matMenu">
-  <button mat-menu-item class="RedBtn">
+<mat-menu #OptionMenu="matMenu" >
+  <button mat-menu-item (click)="export()" *ngIf="userid =='점화걸면정화'" class="RedBtn">
     <mat-icon>logout</mat-icon>
     <span>내보내기</span>
   </button>
-  <button mat-menu-item disabled class="RedBtn">
+  <button mat-menu-item (click)="out()" class="RedBtn">
     <mat-icon>delete_outline</mat-icon>
     <span>나가기</span>
   </button>

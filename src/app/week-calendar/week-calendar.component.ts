@@ -1,17 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
 import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet';
-import { collection, doc, getDocs, onSnapshot } from 'firebase/firestore';
+import { ActivatedRoute } from '@angular/router';
+import { collection, doc, getDoc, getDocs, onSnapshot, setDoc } from 'firebase/firestore';
 import * as $ from 'jquery';
 import { CalendarAddButtonComponent } from '../calendar-add-button/calendar-add-button.component';
-
-interface nomalRaid {
-  notification?: any
-  data?: any
-  token?: string
-  topic?: string
-  condition?: string
-}
 
 @Component({
   selector: 'app-week-calendar',
@@ -20,10 +13,16 @@ interface nomalRaid {
 })
 export class WeekCalendarComponent implements OnInit {
 
-
+  userid;
+  menuIndex;
+  menuId;
+  menuDate;
+  menuDifficulty;
+  menuRaidIndex;
 
   constructor(private MatBottomSheet: MatBottomSheet,
-    private firestore: Firestore
+    private firestore: Firestore,
+    private route: ActivatedRoute
   ) { }
 
   // <mat-option value="오레하2종">[일반] 오레하 2종</mat-option>
@@ -54,6 +53,7 @@ export class WeekCalendarComponent implements OnInit {
 
   ngOnInit() {
 
+
     onSnapshot(
       doc(this.firestore, "수요일", "레이드"),
       { includeMetadataChanges: true },
@@ -61,7 +61,6 @@ export class WeekCalendarComponent implements OnInit {
         var choiceRaid: any = [];
         var docdata: any;
         docdata = doc.data();
-        console.log(docdata["일반"]);
         this.nomalList = docdata["일반"];
 
       });
@@ -83,13 +82,48 @@ export class WeekCalendarComponent implements OnInit {
 
   }
     Calendar_AddButton(){
+      this.userid = this.route.snapshot.queryParamMap.get("id")
         this.MatBottomSheet.open(CalendarAddButtonComponent, {
               panelClass: 'OptionModal',
-              data: {}
+              data: {userid:this.userid}
             }).afterDismissed().subscribe((result) => {
 
     });
 
+    }
+
+    menuClcik(index,id,date,difficulty,raidIndex){
+      console.log("메뉴클릭");
+
+      this.userid = this.route.snapshot.queryParamMap.get("id")
+      this.menuIndex = index;
+      this.menuId = id;
+      this.menuDate = date;
+      this.menuDifficulty = difficulty;
+      this.menuRaidIndex =  raidIndex ;
+    }
+    out(){
+      if(this.menuId === this.userid){
+        this.outUser()
+      }else{
+        window.alert("본인만 나갈 수 있습니다.")
+      }
+    }
+    export(){
+      this.outUser()
+    }
+    async outUser(){
+      const docRef = doc(this.firestore, this.menuDate, "레이드");
+      const docSnap = await getDoc(docRef);
+
+      var raidData: any = docSnap.data();
+      setTimeout(async () => {
+        var resultArray:any = raidData[this.menuDifficulty];
+        resultArray[this.menuRaidIndex]["참가자리스트"].splice(this.menuId,1);
+        await setDoc(doc(this.firestore, this.menuDate, "레이드"), {
+          "일반" : resultArray
+        });
+      },1000);
     }
 
 }

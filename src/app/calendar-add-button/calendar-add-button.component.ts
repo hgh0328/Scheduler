@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
-import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet';
-import { addDoc, collection, doc, getDoc, updateDoc } from 'firebase/firestore';
+import {MatBottomSheet, MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA} from '@angular/material/bottom-sheet';
+import { addDoc, collection, doc, getDoc, updateDoc,setDoc  } from 'firebase/firestore';
 import * as $ from 'jquery';
 
 @Component({
@@ -20,10 +20,13 @@ export class CalendarAddButtonComponent implements OnInit {
 
   constructor(
     private bottomSheetRef: MatBottomSheetRef<CalendarAddButtonComponent>,
-    private firestore: Firestore
+    private firestore: Firestore,
+    @Inject(MAT_BOTTOM_SHEET_DATA) public data: any
   ) { }
 
   ngOnInit(): void {
+    console.log(this.data);
+
 
   }
     Raid_Select(){
@@ -53,24 +56,30 @@ export class CalendarAddButtonComponent implements OnInit {
       var raidData: any = docSnap.data();
       setTimeout(() => {
 
-      console.log(raidData);
-
       var resultArray:any = raidData["일반"];
 
+      var memo
+      if(this.Memo ==undefined){
+        memo = "";
+      }else{
+        memo = this.Memo;
+      }
+
       var scheduleData = {
-        아이디: "대둠바",
+        아이디: this.data.userid,
         파티단위: this.Party,
         출발시간대: this.Time.toString(),
         포지션: this.Position,
-        메모: this.Memo
+        메모: memo
       }
 
       this.Raid.forEach(async selectRaidData => {
+        var index;
         console.log(selectRaidData);
         var nomalUserList: any = [];
         if (selectRaidData.indexOf("[일반]") != -1) {
 
-          var index;
+
           if (raidData["일반"].length == 0) {
             console.log("새로생성");
             nomalUserList.push(scheduleData);
@@ -80,18 +89,16 @@ export class CalendarAddButtonComponent implements OnInit {
             }
             resultArray.push(resultData);
           } else {
-            console.log(raidData["일반"]);
             var sameTest = false;
-            raidData["일반"].forEach(element => {
-
+            raidData["일반"].forEach((element,i) => {
               if(element["레이드이름"].indexOf(selectRaidData) != -1) {
+                console.log(element["레이드이름"]);
+
                 sameTest = true;
-                index = element["레이드이름"].indexOf(selectRaidData);
-                nomalUserList.push(element["참가자리스트"]);
+                index=i ;
+                nomalUserList = element["참가자리스트"];
               }
             });
-
-
             if (sameTest == false) {
               //새로생성
               console.log("새로생성");
@@ -101,11 +108,12 @@ export class CalendarAddButtonComponent implements OnInit {
                 참가자리스트: nomalUserList
               }
               resultArray.push(resultData);
-
             } else {
               //추가
               console.log("추가");
-              resultArray.splice(index, 1);
+              console.log(index);
+
+              resultArray.splice(index,1);
               nomalUserList.push(scheduleData);
               var resultData = {
                 레이드이름: selectRaidData,
@@ -114,6 +122,10 @@ export class CalendarAddButtonComponent implements OnInit {
               resultArray.push(resultData);
             }
           }
+          console.log(resultArray);
+          await setDoc(doc(this.firestore, this.Day, "레이드"), {
+            "일반" : resultArray
+          });
         } else if (selectRaidData.indexOf("[노말]") != -1) {
 
         } else if (selectRaidData.indexOf("[하드]") != -1) {
@@ -121,10 +133,6 @@ export class CalendarAddButtonComponent implements OnInit {
         } else if (selectRaidData.indexOf("[기타]") != -1) {
 
         }
-        const washingtonRef = doc(this.firestore, this.Day, "레이드");
-        await updateDoc(washingtonRef, {
-          일반 : resultArray
-        });
 
       });
       this.bottomSheetRef.dismiss()
