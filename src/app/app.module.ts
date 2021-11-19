@@ -50,6 +50,14 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import { WeekCalendarComponent } from './week-calendar/week-calendar.component';
 import { CalendarAddButtonComponent } from './calendar-add-button/calendar-add-button.component';
 
+// firebase 관련
+import { environment } from 'src/environments/environment';
+import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { getStorage, provideStorage } from '@angular/fire/storage';
+import { getAnalytics, provideAnalytics } from '@angular/fire/analytics';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,6 +67,11 @@ import { CalendarAddButtonComponent } from './calendar-add-button/calendar-add-b
 
   ],
   imports: [
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideFirestore(() => getFirestore()),
+    provideAuth(() => getAuth()),
+    provideStorage(() => getStorage()),
+    provideAnalytics(() => getAnalytics()),
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

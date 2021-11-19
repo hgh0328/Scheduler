@@ -3,7 +3,7 @@
 	<div class="Content_Panel_Title">
 		<h3><mat-icon>date_range</mat-icon> 주간 캘린더</h3>
 	</div>
- 
+
 <div class="Calendar_List_Box">
  <mat-tab-group mat-align-tabs="start">
   <mat-tab label="수요일">
@@ -11,35 +11,25 @@
          <mat-tab-group mat-align-tabs="end" headerPosition="below">
           <mat-tab label="일반">
         <mat-accordion>
-			  <mat-expansion-panel>
-				<mat-expansion-panel-header>
-				  <mat-panel-title>
-				    [일반] 오레하 2종
-				  </mat-panel-title>
-				  <mat-panel-description>
-					딜러 1 / 힐러 1 / 둘다가능 1 <span>[3명]</span>
-				  </mat-panel-description>
-				</mat-expansion-panel-header>
-				<p><mat-icon>list</mat-icon>신청자 리스트 <span><em>3</em>명</span></p>
-				<mat-list>
-				  <mat-list-item>
-						<div mat-line class="Calendar_List_Box_ID">[ 헤딩파티 ] 점화걸면정화</div>
-						<div mat-line class="Calendar_List_Box_Name">딜러 / 아무때나 / 발탄 2수</div>	
-				        <button mat-icon-button [matMenuTriggerFor]="OptionMenu"><mat-icon mat-list-icon>more_vert</mat-icon></button>
-				  </mat-list-item>
-				  <mat-list-item>
-						<div mat-line class="Calendar_List_Box_ID">똘렝</div>
-						<div mat-line class="Calendar_List_Box_Name">힐러 / 오전</div>	
-				        <button mat-icon-button [matMenuTriggerFor]="OptionMenu"><mat-icon mat-list-icon>more_vert</mat-icon></button>
-				  </mat-list-item>
-				  <mat-list-item>
-						<div mat-line class="Calendar_List_Box_ID">데둠미</div>
-						<div mat-line class="Calendar_List_Box_Name">둘다 가능 / 오후</div>	
-				        <button mat-icon-button [matMenuTriggerFor]="OptionMenu"><mat-icon mat-list-icon>more_vert</mat-icon></button>
-				  </mat-list-item>
-				</mat-list>
-			  </mat-expansion-panel>
-			</mat-accordion>			
+        <mat-expansion-panel *ngFor="let item of nomalList">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{item["레이드이름"]}}
+            </mat-panel-title>
+            <mat-panel-description>
+             <span>[{{item['참가자리스트']['length']}}명]</span>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p><mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span></p>
+          <mat-list>
+            <mat-list-item *ngFor="let userList of item['참가자리스트']">
+              <div mat-line class="Calendar_List_Box_ID">[  {{userList["파티단위"]}} ] {{userList["아이디"]}}</div>
+              <div mat-line class="Calendar_List_Box_Name"> {{userList["포지션"]}} / {{userList["출발시간대"]}} /  {{userList["메모"]}}</div>
+                  <button mat-icon-button [matMenuTriggerFor]="OptionMenu"><mat-icon mat-list-icon>more_vert</mat-icon></button>
+            </mat-list-item>
+          </mat-list>
+          </mat-expansion-panel>
+			</mat-accordion>
           </mat-tab>
           <mat-tab label="노말">
         <mat-accordion>
@@ -56,22 +46,22 @@
 				<mat-list>
 				  <mat-list-item>
 						<div mat-line class="Calendar_List_Box_ID">[ 헤딩파티 ] 점화걸면정화</div>
-						<div mat-line class="Calendar_List_Box_Name">딜러 / 아무때나 / 발탄 2수</div>	
+						<div mat-line class="Calendar_List_Box_Name">딜러 / 아무때나 / 발탄 2수</div>
 				        <button mat-icon-button [matMenuTriggerFor]="OptionMenu"><mat-icon mat-list-icon>more_vert</mat-icon></button>
 				  </mat-list-item>
 				  <mat-list-item>
 						<div mat-line class="Calendar_List_Box_ID">똘렝</div>
-						<div mat-line class="Calendar_List_Box_Name">힐러 / 오전</div>	
+						<div mat-line class="Calendar_List_Box_Name">힐러 / 오전</div>
 				        <button mat-icon-button [matMenuTriggerFor]="OptionMenu"><mat-icon mat-list-icon>more_vert</mat-icon></button>
 				  </mat-list-item>
 				  <mat-list-item>
 						<div mat-line class="Calendar_List_Box_ID">데둠미</div>
-						<div mat-line class="Calendar_List_Box_Name">둘다 가능 / 오후</div>	
+						<div mat-line class="Calendar_List_Box_Name">둘다 가능 / 오후</div>
 				        <button mat-icon-button [matMenuTriggerFor]="OptionMenu"><mat-icon mat-list-icon>more_vert</mat-icon></button>
 				  </mat-list-item>
 				</mat-list>
 			  </mat-expansion-panel>
-			</mat-accordion>			
+			</mat-accordion>
           </mat-tab>
           <mat-tab label="하드">
         <mat-accordion>
@@ -88,22 +78,22 @@
 				<mat-list>
 				  <mat-list-item>
 						<div mat-line class="Calendar_List_Box_ID">[ 헤딩파티 ] 점화걸면정화</div>
-						<div mat-line class="Calendar_List_Box_Name">딜러 / 아무때나 / 발탄 2수</div>	
+						<div mat-line class="Calendar_List_Box_Name">딜러 / 아무때나 / 발탄 2수</div>
 				        <button mat-icon-button [matMenuTriggerFor]="OptionMenu"><mat-icon mat-list-icon>more_vert</mat-icon></button>
 				  </mat-list-item>
 				  <mat-list-item>
 						<div mat-line class="Calendar_List_Box_ID">똘렝</div>
-						<div mat-line class="Calendar_List_Box_Name">힐러 / 오전</div>	
+						<div mat-line class="Calendar_List_Box_Name">힐러 / 오전</div>
 				        <button mat-icon-button [matMenuTriggerFor]="OptionMenu"><mat-icon mat-list-icon>more_vert</mat-icon></button>
 				  </mat-list-item>
 				  <mat-list-item>
 						<div mat-line class="Calendar_List_Box_ID">데둠미</div>
-						<div mat-line class="Calendar_List_Box_Name">둘다 가능 / 오후</div>	
+						<div mat-line class="Calendar_List_Box_Name">둘다 가능 / 오후</div>
 				        <button mat-icon-button [matMenuTriggerFor]="OptionMenu"><mat-icon mat-list-icon>more_vert</mat-icon></button>
 				  </mat-list-item>
 				</mat-list>
 			  </mat-expansion-panel>
-			</mat-accordion>			
+			</mat-accordion>
           </mat-tab>
           <mat-tab label="기타">
         <mat-accordion>
@@ -120,22 +110,22 @@
 				<mat-list>
 				  <mat-list-item>
 						<div mat-line class="Calendar_List_Box_ID">[ 헤딩파티 ] 점화걸면정화</div>
-						<div mat-line class="Calendar_List_Box_Name">딜러 / 아무때나 / 발탄 2수</div>	
+						<div mat-line class="Calendar_List_Box_Name">딜러 / 아무때나 / 발탄 2수</div>
 				        <button mat-icon-button [matMenuTriggerFor]="OptionMenu"><mat-icon mat-list-icon>more_vert</mat-icon></button>
 				  </mat-list-item>
 				  <mat-list-item>
 						<div mat-line class="Calendar_List_Box_ID">똘렝</div>
-						<div mat-line class="Calendar_List_Box_Name">힐러 / 오전</div>	
+						<div mat-line class="Calendar_List_Box_Name">힐러 / 오전</div>
 				        <button mat-icon-button [matMenuTriggerFor]="OptionMenu"><mat-icon mat-list-icon>more_vert</mat-icon></button>
 				  </mat-list-item>
 				  <mat-list-item>
 						<div mat-line class="Calendar_List_Box_ID">데둠미</div>
-						<div mat-line class="Calendar_List_Box_Name">둘다 가능 / 오후</div>	
+						<div mat-line class="Calendar_List_Box_Name">둘다 가능 / 오후</div>
 				        <button mat-icon-button [matMenuTriggerFor]="OptionMenu"><mat-icon mat-list-icon>more_vert</mat-icon></button>
 				  </mat-list-item>
 				</mat-list>
 			  </mat-expansion-panel>
-			</mat-accordion>			
+			</mat-accordion>
           </mat-tab>
      </mat-tab-group>
          </div>
