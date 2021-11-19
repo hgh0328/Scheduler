@@ -118,12 +118,21 @@ export class WeekCalendarComponent implements OnInit {
 
       var raidData: any = docSnap.data();
       setTimeout(async () => {
+        var nomalArray:any = raidData["노말"];
+        var hardArray:any = raidData["하드"];
+        var etcArray:any = raidData["기타"];
         var resultArray:any = raidData[this.menuDifficulty];
         resultArray[this.menuRaidIndex]["참가자리스트"].splice(this.menuId,1);
+        if(resultArray[this.menuRaidIndex]["참가자리스트"].length == 0){
+          resultArray.splice(this.menuRaidIndex,1);
+        }
         await setDoc(doc(this.firestore, this.menuDate, "레이드"), {
-          "일반" : resultArray
+          "일반" : resultArray,
+          "노말" : nomalArray,
+          "하드" : hardArray,
+          "기타" : etcArray
         });
-      },1000);
+      },100);
     }
 
 }

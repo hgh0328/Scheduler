@@ -57,6 +57,9 @@ export class CalendarAddButtonComponent implements OnInit {
       setTimeout(() => {
 
       var resultArray:any = raidData["일반"];
+      var nomalArray:any = raidData["노말"];
+      var hardArray:any = raidData["하드"];
+      var etcArray:any = raidData["기타"];
 
       var memo
       if(this.Memo ==undefined){
@@ -124,7 +127,10 @@ export class CalendarAddButtonComponent implements OnInit {
           }
           console.log(resultArray);
           await setDoc(doc(this.firestore, this.Day, "레이드"), {
-            "일반" : resultArray
+            "일반" : resultArray,
+            "노말" : nomalArray,
+            "하드" : hardArray,
+            "기타" : etcArray
           });
         } else if (selectRaidData.indexOf("[노말]") != -1) {
 

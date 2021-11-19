@@ -223,7 +223,7 @@ button.mat-stroked-button.RedBtn:hover{background-color: var(--red-color); color
 .Main_Setting .Sub_Title{color: var(--main-font-color); font-weight: 300; font-size: 14px; margin-top: 4vh; margin-bottom: 2vh;}
 .Main_Setting .Sub_Title mat-icon{margin-right: 10px; font-size: 20px; position: relative; top: 4px; color: var(--sub-font-color);}
 
-.Main_SettingButtonBox{text-align: right; margin-top: 2vh; display: none;}
+.Main_SettingButtonBox{text-align: right; margin-top: 2vh;}
 .Main_SettingButtonBox button {line-height: 36px ; height: 40px; width: calc(100% - 10px); margin-right: 5px; margin-left: 5px; font-size: 12px;}
 .Main_SettingButtonBox button mat-icon{vertical-align: baseline !important;}
 

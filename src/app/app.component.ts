@@ -1,8 +1,11 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, Output, ViewChild,EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import {FormControl, Validators} from '@angular/forms';
 import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet';
 import * as $ from 'jquery';
+import { MatSidenav } from '@angular/material/sidenav';
+import { doc } from '@firebase/firestore';
+import { Firestore, getDoc, setDoc } from '@angular/fire/firestore';
 
 
 
@@ -16,17 +19,22 @@ export class AppComponent {
   public IdText: any;
   public PasswordText: any;
 
+  @ViewChild('settings') public settings: MatSidenav;
+
   title = 'LOSTARK_Scheduler_by_JH';
   hide = true;
   hide2 = true;
   hide3 = true;
   showFiller = false;
   login = false;
+  userid;
 
 
   constructor(
 	private MatBottomSheet: MatBottomSheet,
     private router: Router,
+    private route: ActivatedRoute,
+    private firestore: Firestore,
   ){}
 	ngOnInit(): void {
       if(window.location.href.indexOf("id") != -1){
@@ -159,7 +167,13 @@ export class AppComponent {
 	}
 
 	Logout(){
-		location.reload();
+    this.settings.toggle();
+    this.login =false;
+    this.router.navigate(['/']);
+    setTimeout(()=>{
+      location.reload();
+    },100)
+
 	}
 	darkTheme(){
 
@@ -185,6 +199,28 @@ export class AppComponent {
 			}
 
 	}
+
+  setting(){
+    console.log("세팅클릭");
+
+    this.userid = this.route.snapshot.queryParamMap.get("id")
+    this.settings.toggle();
+
+  }
+  reset(){
+    var dateArray = ['월요일','화요일','수요일','목요일','금요일','토요일','일요일'];
+    dateArray.forEach(async date =>{
+      var resultArray=[];
+      await setDoc(doc(this.firestore, date, "레이드"), {
+        "일반" : resultArray,
+        "노말" : resultArray,
+        "하드" : resultArray,
+        "기타" : resultArray
+      });
+      this.settings.toggle();
+    })
+
+  }
 
 }
 

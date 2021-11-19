@@ -68,7 +68,7 @@
 		</button>
 		<span class="Menu_Logo"><img src="assets/img/logo/Logo_white.png" alt="LOSTARK_Scheduler_by_JH" width="100%"></span>
 		<!--  <span class="mat-toolbar_spacer"></span>-->
-		<button mat-icon-button (click)="settings.toggle()">
+		<button mat-icon-button (click)="setting()">
 			<mat-icon>settings</mat-icon>
 		</button>
 	</mat-toolbar>
@@ -88,13 +88,13 @@
 	  <mat-drawer #settings mode="over" position="end" class="Main_Setting">
 		<mat-accordion [multi]="true">
 		  <mat-expansion-panel hideToggle expanded disabled>
-			<h3 class="Main_Setting_User"><span>js1234@example.com</span>님 환영합니다.</h3>
+			<h3 class="Main_Setting_User"><span>{{userid}}</span>님 환영합니다.</h3>
 			<p class="Notification_Setting ThemeBtn ThemeBtn_light" (click)="darkTheme()">
 				<mat-icon>dark_mode</mat-icon><mat-slide-toggle>다크모드</mat-slide-toggle>
 			</p>
 
 		   <div class="Main_SettingButtonBox">
-			<button mat-stroked-button>주간 초기화</button>
+			  <button mat-stroked-button (click)="reset()" *ngIf="userid =='점화걸면정화' || userid =='데둠미'">주간 초기화</button>
 		   </div>
 		   <p class="Main_Setting_Logout">
 				<button mat-stroked-button class="RedBtn" (click)="Logout()">로그아웃</button>
