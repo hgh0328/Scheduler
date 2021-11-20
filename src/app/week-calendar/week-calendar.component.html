@@ -11,7 +11,7 @@
          <mat-tab-group mat-align-tabs="end" headerPosition="below">
           <mat-tab label="일반">
         <mat-accordion>
-        <mat-expansion-panel *ngFor="let item of nomalList,let raidIndex = index;">
+        <mat-expansion-panel *ngFor="let item of GeneralList,let raidIndex = index;">
           <mat-expansion-panel-header>
             <mat-panel-title>
               {{item["레이드이름"]}}
@@ -147,7 +147,7 @@
 
 
 <mat-menu #OptionMenu="matMenu" >
-  <button mat-menu-item (click)="export()" *ngIf="userid =='점화걸면정화'" class="RedBtn">
+  <button mat-menu-item (click)="export()" *ngIf="userid =='점화걸면정화' || userid =='데둠미'" class="RedBtn">
     <mat-icon>logout</mat-icon>
     <span>내보내기</span>
   </button>

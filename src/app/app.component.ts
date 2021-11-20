@@ -45,8 +45,6 @@ export class AppComponent {
     }
 
 	Login(){
-		var t = this.IdText;
-		$(".Main_Setting_User span").text(t);
 
 		if(this.IdText == "점화걸면정화" && this.PasswordText == "1234"){
 			$(".Login_Box").fadeOut(500);
@@ -203,19 +201,19 @@ export class AppComponent {
   setting(){
     console.log("세팅클릭");
 
-    this.userid = this.route.snapshot.queryParamMap.get("id")
+    this.userid = this.route.snapshot.queryParamMap.get("id");
     this.settings.toggle();
 
   }
   reset(){
     var dateArray = ['월요일','화요일','수요일','목요일','금요일','토요일','일요일'];
     dateArray.forEach(async date =>{
-      var resultArray=[];
+      var GeneralArray=[];
       await setDoc(doc(this.firestore, date, "레이드"), {
-        "일반" : resultArray,
-        "노말" : resultArray,
-        "하드" : resultArray,
-        "기타" : resultArray
+        "일반" : GeneralArray,
+        "노말" : GeneralArray,
+        "하드" : GeneralArray,
+        "기타" : GeneralArray
       });
       this.settings.toggle();
     })

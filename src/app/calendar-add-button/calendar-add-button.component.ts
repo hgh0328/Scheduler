@@ -1,8 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
 import {MatBottomSheet, MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA} from '@angular/material/bottom-sheet';
-import { addDoc, collection, doc, getDoc, updateDoc,setDoc  } from 'firebase/firestore';
-import * as $ from 'jquery';
+import { addDoc, collection, doc, getDoc, updateDoc,setDoc  } from 'firebase/firestore';import * as $ from 'jquery';
+
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-calendar-add-button',
@@ -11,14 +12,16 @@ import * as $ from 'jquery';
 })
 export class CalendarAddButtonComponent implements OnInit {
 
-    public Party: any;
+   public Party: any;
    public Day: any;
    public Raid: any;
    public Time: any;
    public Position: any;
    public Memo: any;
+   userid;
 
   constructor(
+    private route: ActivatedRoute,
     private bottomSheetRef: MatBottomSheetRef<CalendarAddButtonComponent>,
     private firestore: Firestore,
     @Inject(MAT_BOTTOM_SHEET_DATA) public data: any
@@ -26,6 +29,7 @@ export class CalendarAddButtonComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.data);
+      this.userid = this.route.snapshot.queryParamMap.get("id");
 
 
   }
@@ -38,7 +42,7 @@ export class CalendarAddButtonComponent implements OnInit {
     Time_Select(){
 
 		if(this.Time.length > 1){
-		  $(".Time_Select .mat-select-value-text").text("다양한 시간대");
+		  $(".Time_Select .mat-select-value-text").text(this.Time[0] + " 외 " + (this.Time.length - 1) + " 개");
 		}
 	}
     close() {
@@ -47,8 +51,9 @@ export class CalendarAddButtonComponent implements OnInit {
 
   async save() {
     if (this.Day == undefined || this.Party == undefined || this.Raid == undefined || this.Time == undefined || this.Position == undefined) {
-      window.alert('값을 모두 입력해주세요.');
-    } else {
+      window.alert('캘린더 일정 추가에 빈값이 존재합니다. 메모를 제외한 모든 필드를 입력해주세요.');
+    } 
+      else {
       const docRef = doc(this.firestore, this.Day, "레이드");
       const docSnap = await getDoc(docRef);
       console.log(docSnap.data());
@@ -56,7 +61,7 @@ export class CalendarAddButtonComponent implements OnInit {
       var raidData: any = docSnap.data();
       setTimeout(() => {
 
-      var resultArray:any = raidData["일반"];
+      var GeneralArray:any = raidData["일반"];
       var nomalArray:any = raidData["노말"];
       var hardArray:any = raidData["하드"];
       var etcArray:any = raidData["기타"];
@@ -90,7 +95,7 @@ export class CalendarAddButtonComponent implements OnInit {
               레이드이름: selectRaidData,
               참가자리스트: nomalUserList
             }
-            resultArray.push(resultData);
+            GeneralArray.push(resultData);
           } else {
             var sameTest = false;
             raidData["일반"].forEach((element,i) => {
@@ -110,24 +115,24 @@ export class CalendarAddButtonComponent implements OnInit {
                 레이드이름: selectRaidData,
                 참가자리스트: nomalUserList
               }
-              resultArray.push(resultData);
+              GeneralArray.push(resultData);
             } else {
               //추가
               console.log("추가");
               console.log(index);
 
-              resultArray.splice(index,1);
+              GeneralArray.splice(index,1);
               nomalUserList.push(scheduleData);
               var resultData = {
                 레이드이름: selectRaidData,
                 참가자리스트: nomalUserList
               }
-              resultArray.push(resultData);
+              GeneralArray.push(resultData);
             }
           }
-          console.log(resultArray);
+          console.log(GeneralArray);
           await setDoc(doc(this.firestore, this.Day, "레이드"), {
-            "일반" : resultArray,
+            "일반" : GeneralArray,
             "노말" : nomalArray,
             "하드" : hardArray,
             "기타" : etcArray

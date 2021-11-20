@@ -1,8 +1,8 @@
 <div class="User_Option_Dialog">
-	<h3><span>[ 아이디 ]</span> <strong>주간 캘린더 추가</strong> <mat-icon (click)="close()">close</mat-icon></h3>
+	<h3><span>[ {{userid}} ]</span> <strong>주간 캘린더 추가</strong> <mat-icon (click)="close()">close</mat-icon></h3>
     <div class="Calendar_Edit_Box">
 
-	<p><mat-icon>warning</mat-icon>각 레이드별로 횟수 추가는 불가합니다. ex) 메모에 2수인 경우 남겨주세요. </p>
+	<p><mat-icon>warning</mat-icon>각 레이드별로 횟수 입력은 불가합니다. Tip. 2수이상인 경우 캘린더를 두번 추가하거나 메모에 남겨주세요. </p>
 
 
 
@@ -47,29 +47,35 @@
     <mat-select [(ngModel)]="Raid" multiple  required class="Raid_Select">
 
     <mat-optgroup label="일반" (click)="Raid_Select()">
-	  <mat-option value="[일반] 오레하 2종">[일반] 오레하 2종</mat-option>
+	  <mat-option value="[일반] 오레하 2종 (노말,하드)">[일반] 오레하 2종 (노말,하드)</mat-option>
 	  <mat-option value="[일반] 아르고스 1페">[일반] 아르고스 1페</mat-option>
 	  <mat-option value="[일반] 아르고스 3페">[일반] 아르고스 3페</mat-option>
-	  <mat-option value="[일반] 도비스">[일반] 도전 어비스 던전</mat-option>
+	  <mat-option value="[일반] 도전 어비스 던전">[일반] 도전 어비스 던전</mat-option>
+	  <mat-option value="[일반] 도전 가디언 토벌">[일반] 도전 가디언 토벌</mat-option>
 	</mat-optgroup>
 
     <mat-optgroup label="노말" (click)="Raid_Select()">
-	  <mat-option value="노말발탄">[노말] 발탄</mat-option>
-	  <mat-option value="노말비아키스">[노말] 비아키스</mat-option>
-	  <mat-option value="노말쿠크세이튼">[노말] 쿠크세이튼</mat-option>
-	  <mat-option value="노말아브렐슈드">[노말] 아브렐슈드</mat-option>
+	  <mat-option value="[노말] 발탄">[노말] 발탄</mat-option>
+	  <mat-option value="[노말] 비아키스">[노말] 비아키스</mat-option>
+	  <mat-option value="[노말] 쿠크세이튼">[노말] 쿠크세이튼</mat-option>
+	  <mat-option value="[노말] 아브렐슈드 1~2 관문">[노말] 아브렐슈드 1~2 관문</mat-option>
+	  <mat-option value="[노말] 아브렐슈드 3~4 관문">[노말] 아브렐슈드 3~4 관문</mat-option>
+	  <mat-option value="[노말] 아브렐슈드 5~6 관문">[노말] 아브렐슈드 5~6 관문</mat-option>
 	</mat-optgroup>
 
 	<mat-optgroup label="하드" (click)="Raid_Select()">
-	  <mat-option value="하드발탄">[하드] 발탄</mat-option>
-	  <mat-option value="하드비아키스">[하드] 비아키스</mat-option>
-	  <mat-option value="하드쿠크세이튼">[하드] 쿠크세이튼</mat-option>
-	  <mat-option value="하드아브렐슈드">[하드] 아브렐슈드</mat-option>
+	  <mat-option value="[하드] 발탄">[하드] 발탄</mat-option>
+	  <mat-option value="[하드] 비아키스">[하드] 비아키스</mat-option>
+	  <mat-option value="[하드] 쿠크세이튼 (예정)" disabled>[하드] 쿠크세이튼 (예정)</mat-option>
+	  <mat-option value="[하드] 아브렐슈드 1~2 관문">[하드] 아브렐슈드 1~2 관문</mat-option>
+	  <mat-option value="[하드] 아브렐슈드 3~4 관문">[하드] 아브렐슈드 3~4 관문</mat-option>
+	  <mat-option value="[하드] 아브렐슈드 5~6 관문">[하드] 아브렐슈드 5~6 관문</mat-option>
 	</mat-optgroup>
 
 	<mat-optgroup label="기타" (click)="Raid_Select()">
 	  <mat-option value="쿠크리허설">[기타] 쿠크세이튼 리허설</mat-option>
 	  <mat-option value="아브렐슈드데자뷰">[기타] 아브렐슈드 데자뷰</mat-option>
+
 	</mat-optgroup>
 
 	</mat-select>
@@ -82,7 +88,7 @@
     <mat-label>출발 시간대</mat-label>
 
     <mat-select [(ngModel)]="Time" multiple required class="Time_Select">
-	  <mat-option (click)="Time_Select()" value="항시가능">항시가능</mat-option>
+	  <mat-option (click)="Time_Select()" value="상관없음">상관없음</mat-option>
 	  <mat-option (click)="Time_Select()" value="오전">오전</mat-option>
 	  <mat-option (click)="Time_Select()" value="오후">오후</mat-option>
 	  <mat-option (click)="Time_Select()" value="아침">아침</mat-option>
