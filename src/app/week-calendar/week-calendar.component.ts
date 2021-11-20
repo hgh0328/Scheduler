@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { collection, doc, getDoc, getDocs, onSnapshot, setDoc } from 'firebase/firestore';
 import * as $ from 'jquery';
 import { CalendarAddButtonComponent } from '../calendar-add-button/calendar-add-button.component';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-week-calendar',
@@ -19,33 +20,104 @@ export class WeekCalendarComponent implements OnInit {
   menuDate;
   menuDifficulty;
   menuRaidIndex;
+  menuRaidList;
+  
+    
+  Day_Tab_selected;
+  Level_Tab_Selected;    
+    Day_Label;
+    Level_Menu;
+    
+      RaidList;
+    
+    RaidIndex;
+    
+    RaidArray_Once;
+  
 
   constructor(private MatBottomSheet: MatBottomSheet,
     private firestore: Firestore,
     private route: ActivatedRoute
   ) { }
-    
-//  raidList = ["오레하 2종","아르고스 1페","아르고스 3페","도전 어비스 던전"]
-  GeneralList ;
-  NomarlList ;
+
+
+
 
   ngOnInit() {
 
+      
+      /*임시 초기값*/
+      this.Level_Menu = "일반";
+      this.Day_Label = "수요일";
+      
 
-    onSnapshot(
-      doc(this.firestore, "수요일", "레이드"),
+      
+      onSnapshot(
+      doc(this.firestore, this.Day_Label , "레이드"),
       { includeMetadataChanges: true },
       (doc) => {
         var choiceRaid: any = [];
         var docdata: any;
         docdata = doc.data();
-        this.GeneralList = docdata["일반"];
-        this.NomarlList = docdata["노말"];
+        this.RaidList = docdata[this.Level_Menu];
+        });
+          
+        
+      
+      
+      
+      
 
-      });
 
+      
+
+        
+      
+      
 
   }
+    Day_TabClick(Day_event) {
+        
+        this.Day_Label = Day_event.tab.textLabel;
+       onSnapshot(
+      doc(this.firestore, Day_event.tab.textLabel, "레이드"),
+      { includeMetadataChanges: true },
+      (doc) => {
+        var choiceRaid: any = [];
+        var docdata: any;
+        docdata = doc.data();
+        this.RaidList = docdata["일반"];
+          console.log(this.RaidList)
+      });   
+        this.Level_Tab_Selected = 0;      
+        
+    }
+    
+    Level_TabClick(Level_event) { 
+        
+        this.RaidArray_Once = false;         
+        this.Level_Menu = Level_event.tab.textLabel;
+        this.Level_Tab_Selected = Level_event.index; 
+        
+            this.RaidList = new Array();
+        setTimeout(()=>{
+            if(!this.RaidArray_Once){
+                 onSnapshot(
+                  doc(this.firestore, this.Day_Label , "레이드"),
+                  { includeMetadataChanges: true },
+                  (doc) => {
+                    var choiceRaid: any = [];
+                    var docdata: any;
+                    docdata = doc.data();
+                    this.RaidList = docdata[this.Level_Menu];
+                    console.log(this.RaidList)
+                }); 
+                    this.RaidArray_Once = true;
+                }
+        }, 100)
+    }
+    
+    
     Calendar_AddButton(){
       this.userid = this.route.snapshot.queryParamMap.get("id");
         this.MatBottomSheet.open(CalendarAddButtonComponent, {
@@ -56,7 +128,7 @@ export class WeekCalendarComponent implements OnInit {
 
     }
 
-    menuClcik(index,id,date,difficulty,raidIndex){
+    menuClcik(index,id,date,difficulty,RaidIndex,RaidList){
       console.log("메뉴클릭");
 
       this.userid = this.route.snapshot.queryParamMap.get("id")
@@ -64,12 +136,15 @@ export class WeekCalendarComponent implements OnInit {
       this.menuId = id;
       this.menuDate = date;
       this.menuDifficulty = difficulty;
-      this.menuRaidIndex =  raidIndex ;
+      this.menuRaidIndex =  RaidIndex;
+      this.menuRaidList =  RaidList[RaidIndex];
+
+        console.log(this.menuRaidList);
      
     }
     out(){
       if(this.menuId === this.userid){
-        window.alert(this.menuId + "님을 내보냈습니다.");
+        window.alert(this.menuId + "님이 나갔습니다.");
         this.outUser()
       }else{
         window.alert("본인이 아닌 경우 나갈수 없습니다.");
@@ -85,19 +160,24 @@ export class WeekCalendarComponent implements OnInit {
 
       var raidData: any = docSnap.data();
       setTimeout(async () => {
-        var nomalArray:any = raidData["노말"];
-        var hardArray:any = raidData["하드"];
-        var etcArray:any = raidData["기타"];
+          
         var GeneralArray:any = raidData[this.menuDifficulty];
+        var NomalArray:any = raidData["노말"];
+        var HardArray:any = raidData["하드"];
+        var EtcArray:any = raidData["기타"];
+          
         GeneralArray[this.menuRaidIndex]["참가자리스트"].splice(this.menuId,1);
+
         if(GeneralArray[this.menuRaidIndex]["참가자리스트"].length == 0){
           GeneralArray.splice(this.menuRaidIndex,1);
-        }
+        };
+
+          
         await setDoc(doc(this.firestore, this.menuDate, "레이드"), {
           "일반" : GeneralArray,
-          "노말" : nomalArray,
-          "하드" : hardArray,
-          "기타" : etcArray
+          "노말" : NomalArray,
+          "하드" : HardArray,
+          "기타" : EtcArray
         });
       },100);
     }

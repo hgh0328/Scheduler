@@ -28,7 +28,9 @@ export class CalendarAddButtonComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+/*
     console.log(this.data);
+*/
       this.userid = this.route.snapshot.queryParamMap.get("id");
 
 
@@ -56,15 +58,17 @@ export class CalendarAddButtonComponent implements OnInit {
       else {
       const docRef = doc(this.firestore, this.Day, "레이드");
       const docSnap = await getDoc(docRef);
+/*
       console.log(docSnap.data());
+*/
 
       var raidData: any = docSnap.data();
       setTimeout(() => {
 
       var GeneralArray:any = raidData["일반"];
-      var nomalArray:any = raidData["노말"];
-      var hardArray:any = raidData["하드"];
-      var etcArray:any = raidData["기타"];
+      var NomalArray:any = raidData["노말"];
+      var HardArray:any = raidData["하드"];
+      var EtcArray:any = raidData["기타"];
 
       var memo
       if(this.Memo ==undefined){
@@ -83,71 +87,156 @@ export class CalendarAddButtonComponent implements OnInit {
 
       this.Raid.forEach(async selectRaidData => {
         var index;
+/*
         console.log(selectRaidData);
-        var nomalUserList: any = [];
+*/
+        var GeneralUserList: any = [];
+        var NomalUserList: any = [];
+          
         if (selectRaidData.indexOf("[일반]") != -1) {
 
-
           if (raidData["일반"].length == 0) {
+/*
             console.log("새로생성");
-            nomalUserList.push(scheduleData);
+*/
+            GeneralUserList.push(scheduleData);
             var resultData = {
               레이드이름: selectRaidData,
-              참가자리스트: nomalUserList
+              참가자리스트: GeneralUserList
             }
             GeneralArray.push(resultData);
-          } else {
-            var sameTest = false;
+          } 
+            else {
+            var sameRiad = false;
             raidData["일반"].forEach((element,i) => {
+                
               if(element["레이드이름"].indexOf(selectRaidData) != -1) {
+/*
                 console.log(element["레이드이름"]);
+*/
 
-                sameTest = true;
+                sameRiad = true;
                 index=i ;
-                nomalUserList = element["참가자리스트"];
+                GeneralUserList = element["참가자리스트"];
               }
             });
-            if (sameTest == false) {
+            if (sameRiad == false) {
+                
               //새로생성
+/*
               console.log("새로생성");
-              nomalUserList.push(scheduleData);
+*/
+              GeneralUserList.push(scheduleData);
               var resultData = {
                 레이드이름: selectRaidData,
-                참가자리스트: nomalUserList
+                참가자리스트: GeneralUserList
               }
               GeneralArray.push(resultData);
             } else {
+                
               //추가
+/*
               console.log("추가");
               console.log(index);
+*/
 
               GeneralArray.splice(index,1);
-              nomalUserList.push(scheduleData);
+              GeneralUserList.push(scheduleData);
               var resultData = {
                 레이드이름: selectRaidData,
-                참가자리스트: nomalUserList
+                참가자리스트: GeneralUserList
               }
               GeneralArray.push(resultData);
             }
           }
+/*
           console.log(GeneralArray);
+*/
           await setDoc(doc(this.firestore, this.Day, "레이드"), {
             "일반" : GeneralArray,
-            "노말" : nomalArray,
-            "하드" : hardArray,
-            "기타" : etcArray
+            "노말" : NomalArray,
+            "하드" : HardArray,
+            "기타" : EtcArray
           });
-        } else if (selectRaidData.indexOf("[노말]") != -1) {
+        }
+          
+          else if (selectRaidData.indexOf("[노말]") != -1) {
+          if (raidData["노말"].length == 0) {
+/*
+            console.log("새로생성");
+*/
+            NomalUserList.push(scheduleData);
+            var resultData = {
+              레이드이름: selectRaidData,
+              참가자리스트: NomalUserList
+            }
+            NomalArray.push(resultData);
+          } 
+            else {
+            var sameRiad = false;
+            raidData["노말"].forEach((element,i) => {
+                
+              if(element["레이드이름"].indexOf(selectRaidData) != -1) {
+/*
+                console.log(element["레이드이름"]);
+*/
 
-        } else if (selectRaidData.indexOf("[하드]") != -1) {
+                sameRiad = true;
+                index=i ;
+                NomalUserList = element["참가자리스트"];
+              }
+            });
+            if (sameRiad == false) {
+                
+              //새로생성
+/*
+              console.log("새로생성");
+*/
+              NomalUserList.push(scheduleData);
+              var resultData = {
+                레이드이름: selectRaidData,
+                참가자리스트: NomalUserList
+              }
+              NomalArray.push(resultData);
+            } else {
+                
+              //추가
+/*
+              console.log("추가");
+              console.log(index);
+*/
 
-        } else if (selectRaidData.indexOf("[기타]") != -1) {
+              NomalArray.splice(index,1);
+              NomalUserList.push(scheduleData);
+              var resultData = {
+                레이드이름: selectRaidData,
+                참가자리스트: NomalUserList
+              }
+              NomalArray.push(resultData);
+            }
+          }
+/*
+          console.log(NomalArray);
+*/
+          await setDoc(doc(this.firestore, this.Day, "레이드"), {
+            "일반" : GeneralArray,
+            "노말" : NomalArray,
+            "하드" : HardArray,
+            "기타" : EtcArray
+          });
+        }
+          else if (selectRaidData.indexOf("[하드]") != -1) {
+
+        } 
+          else if (selectRaidData.indexOf("[기타]") != -1) {
 
         }
 
       });
       this.bottomSheetRef.dismiss()
     }, 1000);
+          
+          window.alert("캘린더에 일정이 추가되었습니다.");
     }
 
 
