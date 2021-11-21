@@ -202,7 +202,7 @@ button.mat-stroked-button.RedBtn:hover{background-color: var(--red-color); color
 
 .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb{background-color: var(--maindark-color);}
 .mat-slide-toggle.mat-checked .mat-slide-toggle-bar{background-color: var(--mainwhite-color);}
-.Main_Setting{min-width: 300px; height: fit-content !important; background: none !important; box-shadow: none !important;}
+.Main_Setting{min-width: 300px; max-height: 244px !important; background: none !important; box-shadow: none !important;}
 .Main_Setting .Notification_Setting{height: 60px; line-height: 60px; text-align: center; border: 1px solid  var(--mainwhite-color);margin: 0 auto; margin-top: 2vh; width: calc(100% - 10px); border-radius: 5px;}
 .Main_Setting .Notification_Setting::after{content: ''; display: block; clear: both;}
 .Main_Setting .Notification_Setting .mat-icon{height: 60px; line-height: 60px; width: 60px; text-align: center; float: left; color: var(--main-color);}

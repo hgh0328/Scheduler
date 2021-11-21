@@ -107,7 +107,7 @@ export class AppComponent {
 		}
 
 		/*긴바나나 소서리스*/
-		else if(this.IdText == "긴바나나" && this.PasswordText == "90909"){
+		else if(this.IdText == "긴바나나" && this.PasswordText == "111banana111"){
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
