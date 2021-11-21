@@ -37,11 +37,15 @@ export class AppComponent {
     private firestore: Firestore,
   ){}
 	ngOnInit(): void {
+        
+        
       if(window.location.href.indexOf("id") != -1){
         this.login =true
+        $(".Main_PanelBox").fadeIn(300);
       }else{
         this.login = false
       }
+    console.log(this.login)
     }
 
 	Login(){
@@ -208,14 +212,17 @@ export class AppComponent {
 
   }
   reset(){
-    var dateArray = ['월요일','화요일','수요일','목요일','금요일','토요일','일요일'];
+    var dateArray = ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'];
     dateArray.forEach(async date =>{
       var GeneralArray=[];
+      var NormalArray=[];
+      var HardalArray=[];
+      var EtcArray=[];
       await setDoc(doc(this.firestore, date, "레이드"), {
         "일반" : GeneralArray,
-        "노말" : GeneralArray,
-        "하드" : GeneralArray,
-        "기타" : GeneralArray
+        "노말" : NormalArray,
+        "하드" : HardalArray,
+        "기타" : EtcArray
       });
       this.settings.toggle();
     })

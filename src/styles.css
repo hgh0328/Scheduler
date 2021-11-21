@@ -169,7 +169,7 @@ button.mat-stroked-button.RedBtn:hover{background-color: var(--red-color); color
 .Login_OptionPanel mat-form-field .mat-form-field-suffix .mat-icon{position: relative; top: 0px; color: var(--main-font-color); opacity: 0.8}
 
 /*메인 패널 설정*/
-.Main_PanelBox{position: relative; width: 100%; height: 100vh;  _display: none;}
+.Main_PanelBox{position: relative; width: 100%; height: 100vh; display: none;}
 .Main_Panel{position: relative; width: 100%;  height: calc(100vh - 64px); background: var(--main-background-color);}
 
 /*메뉴*/

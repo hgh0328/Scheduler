@@ -118,27 +118,27 @@ PostionNum;
               
         
               
-        this.RaidList.forEach(item => {
-        this.PostionList = [item['참가자리스트']]; 
-        this.PostionLength = [item['참가자리스트'].length]; 
-         this.UserList = this.PostionList[0][0]['포지션']
-            
-            console.log(this.UserList)
-            
-//        this.PostionList.forEach(list => {
+//        this.RaidList.forEach(item => {
+//        this.PostionList = [item['참가자리스트']]; 
+//        this.PostionLength = [item['참가자리스트'].length]; 
+//         this.UserList = this.PostionList[0][0]['포지션']
 //            
-//             this.UserList =[list[this.PostionNum]]
-//            console.log(this.PostionList)
-//                this.UserList.forEach(user => { 
-//                    
-//                   console.log(this.PostionList)
-//                });
+//            console.log(this.UserList)
 //            
-//
-//        })
-          
-          
-        });
+////        this.PostionList.forEach(list => {
+////            
+////             this.UserList =[list[this.PostionNum]]
+////            console.log(this.PostionList)
+////                this.UserList.forEach(user => { 
+////                    
+////                   console.log(this.PostionList)
+////                });
+////            
+////
+////        })
+//          
+//          
+//        });
 
     });
   }
@@ -148,19 +148,7 @@ PostionNum;
     Day_TabClick(Day_event) {
         this.Level_Tab_Selected = 1;
 
-        this.Day_Label = Day_event.tab.textLabel;
-//        
-//       onSnapshot(
-//      doc(this.firestore, Day_event.tab.textLabel, "레이드"),
-//      { includeMetadataChanges: true },
-//      (doc) => {
-//        var choiceRaid: any = [];
-//        var docdata: any;
-//        docdata = doc.data();
-//        this.RaidList = docdata["일반"];
-//          console.log(this.RaidList)              
-//      });
-        
+        this.Day_Label = Day_event.tab.textLabel;        
         setTimeout(()=>{
             this.Level_Tab_Selected = 0;
         },10)
