@@ -43,9 +43,9 @@ export class AppComponent {
         this.login =true
         $(".Main_PanelBox").fadeIn(300);
       }else{
-        this.login = false
+        this.login = false;
+        
       }
-    console.log(this.login)
     }
 
 	Login(){
@@ -158,6 +158,11 @@ export class AppComponent {
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
 		}
+        
+        else{
+            window.alert(this.IdText + "님 로그인 정보를 확인해주세요.");
+        }
+        window.alert(this.IdText + "님 환영합니다.");
 
 	}
 
@@ -169,6 +174,9 @@ export class AppComponent {
 	}
 
 	Logout(){
+        
+    window.alert(this.route.snapshot.queryParamMap.get("id") + "님 로그아웃");
+        
     this.settings.toggle();
     this.login =false;
     this.router.navigate(['/']);
@@ -188,7 +196,6 @@ export class AppComponent {
 			document.body.style.setProperty('--subwhite-color',"#a031bc");
 			$(".ThemeBtn").removeClass("ThemeBtn_light");
 			$(".ThemeBtn").addClass("ThemeBtn_dark");
-			console.log("어두운테마");
 			}
 			else if($('.ThemeBtn').hasClass("ThemeBtn_dark")) {
 
@@ -199,14 +206,12 @@ export class AppComponent {
                 document.body.style.setProperty('--subwhite-color',"#d7d0e3");
 			$(".ThemeBtn").removeClass("ThemeBtn_dark");
 			$(".ThemeBtn").addClass("ThemeBtn_light");
-			console.log("밝은테마");
+
 			}
 
 	}
 
   setting(){
-    console.log("세팅클릭");
-
     this.userid = this.route.snapshot.queryParamMap.get("id");
     this.settings.toggle();
 
@@ -226,6 +231,7 @@ export class AppComponent {
       });
       this.settings.toggle();
     })
+      window.alert(this.IdText + "님 주긴 초기화 완료되었습니다.");
 
   }
 

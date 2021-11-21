@@ -17,7 +17,7 @@
               {{item["레이드이름"]}}
             </mat-panel-title>
             <mat-panel-description>
-             <!--딜러 <em>1</em> / 힐러 <em>2</em> / 둘다 가능 <em>3</em>-->
+            <em>{{positionUserList[RaidIndex]}}</em>            
              <span>[{{item['참가자리스트']['length']}}명]</span>
             </mat-panel-description>
           </mat-expansion-panel-header>
@@ -29,6 +29,7 @@
             <button mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList)"><mat-icon mat-list-icon>more_vert</mat-icon></button>
             </mat-list-item>
           </mat-list>
+
           </mat-expansion-panel>
 			</mat-accordion>
           </mat-tab>
@@ -40,7 +41,7 @@
               {{item["레이드이름"]}}
             </mat-panel-title>
             <mat-panel-description>
-             <!--딜러 <em>1</em> / 힐러 <em>2</em> / 둘다 가능 <em>3</em>-->
+             <em>{{positionUserList[RaidIndex]}}</em>
              <span>[{{item['참가자리스트']['length']}}명]</span>
             </mat-panel-description>
           </mat-expansion-panel-header>
@@ -65,7 +66,7 @@
               {{item["레이드이름"]}}
             </mat-panel-title>
             <mat-panel-description>
-             <!--딜러 <em>1</em> / 힐러 <em>2</em> / 둘다 가능 <em>3</em>-->
+             <em>{{positionUserList[RaidIndex]}}</em>
              <span>[{{item['참가자리스트']['length']}}명]</span>
             </mat-panel-description>
           </mat-expansion-panel-header>
@@ -90,7 +91,7 @@
               {{item["레이드이름"]}}
             </mat-panel-title>
             <mat-panel-description>
-             <!--딜러 <em>1</em> / 힐러 <em>2</em> / 둘다 가능 <em>3</em>-->
+             <em>{{positionUserList[RaidIndex]}}</em>
              <span>[{{item['참가자리스트']['length']}}명]</span>
             </mat-panel-description>
           </mat-expansion-panel-header>
@@ -121,7 +122,7 @@
               {{item["레이드이름"]}}
             </mat-panel-title>
             <mat-panel-description>
-             <!--딜러 <em>1</em> / 힐러 <em>2</em> / 둘다 가능 <em>3</em>-->
+             <em>{{positionUserList[RaidIndex]}}</em>
              <span>[{{item['참가자리스트']['length']}}명]</span>
             </mat-panel-description>
           </mat-expansion-panel-header>
@@ -144,7 +145,7 @@
               {{item["레이드이름"]}}
             </mat-panel-title>
             <mat-panel-description>
-             <!--딜러 <em>1</em> / 힐러 <em>2</em> / 둘다 가능 <em>3</em>-->
+             <em>{{positionUserList[RaidIndex]}}</em>
              <span>[{{item['참가자리스트']['length']}}명]</span>
             </mat-panel-description>
           </mat-expansion-panel-header>
@@ -169,7 +170,7 @@
               {{item["레이드이름"]}}
             </mat-panel-title>
             <mat-panel-description>
-             <!--딜러 <em>1</em> / 힐러 <em>2</em> / 둘다 가능 <em>3</em>-->
+             <em>{{positionUserList[RaidIndex]}}</em>
              <span>[{{item['참가자리스트']['length']}}명]</span>
             </mat-panel-description>
           </mat-expansion-panel-header>
@@ -194,7 +195,7 @@
               {{item["레이드이름"]}}
             </mat-panel-title>
             <mat-panel-description>
-             <!--딜러 <em>1</em> / 힐러 <em>2</em> / 둘다 가능 <em>3</em>-->
+             <em>{{positionUserList[RaidIndex]}}</em>
              <span>[{{item['참가자리스트']['length']}}명]</span>
             </mat-panel-description>
           </mat-expansion-panel-header>
@@ -225,7 +226,7 @@
               {{item["레이드이름"]}}
             </mat-panel-title>
             <mat-panel-description>
-             <!--딜러 <em>1</em> / 힐러 <em>2</em> / 둘다 가능 <em>3</em>-->
+             <em>{{positionUserList[RaidIndex]}}</em>
              <span>[{{item['참가자리스트']['length']}}명]</span>
             </mat-panel-description>
           </mat-expansion-panel-header>
@@ -248,7 +249,7 @@
               {{item["레이드이름"]}}
             </mat-panel-title>
             <mat-panel-description>
-             <!--딜러 <em>1</em> / 힐러 <em>2</em> / 둘다 가능 <em>3</em>-->
+             <em>{{positionUserList[RaidIndex]}}</em>
              <span>[{{item['참가자리스트']['length']}}명]</span>
             </mat-panel-description>
           </mat-expansion-panel-header>
@@ -273,7 +274,7 @@
               {{item["레이드이름"]}}
             </mat-panel-title>
             <mat-panel-description>
-             <!--딜러 <em>1</em> / 힐러 <em>2</em> / 둘다 가능 <em>3</em>-->
+             <em>{{positionUserList[RaidIndex]}}</em>
              <span>[{{item['참가자리스트']['length']}}명]</span>
             </mat-panel-description>
           </mat-expansion-panel-header>
@@ -298,7 +299,7 @@
               {{item["레이드이름"]}}
             </mat-panel-title>
             <mat-panel-description>
-             <!--딜러 <em>1</em> / 힐러 <em>2</em> / 둘다 가능 <em>3</em>-->
+             <em>{{positionUserList[RaidIndex]}}</em>
              <span>[{{item['참가자리스트']['length']}}명]</span>
             </mat-panel-description>
           </mat-expansion-panel-header>
@@ -329,7 +330,7 @@
               {{item["레이드이름"]}}
             </mat-panel-title>
             <mat-panel-description>
-             <!--딜러 <em>1</em> / 힐러 <em>2</em> / 둘다 가능 <em>3</em>-->
+             <em>{{positionUserList[RaidIndex]}}</em>
              <span>[{{item['참가자리스트']['length']}}명]</span>
             </mat-panel-description>
           </mat-expansion-panel-header>
@@ -352,7 +353,7 @@
               {{item["레이드이름"]}}
             </mat-panel-title>
             <mat-panel-description>
-             <!--딜러 <em>1</em> / 힐러 <em>2</em> / 둘다 가능 <em>3</em>-->
+             <em>{{positionUserList[RaidIndex]}}</em>
              <span>[{{item['참가자리스트']['length']}}명]</span>
             </mat-panel-description>
           </mat-expansion-panel-header>
@@ -377,7 +378,7 @@
               {{item["레이드이름"]}}
             </mat-panel-title>
             <mat-panel-description>
-             <!--딜러 <em>1</em> / 힐러 <em>2</em> / 둘다 가능 <em>3</em>-->
+             <em>{{positionUserList[RaidIndex]}}</em>
              <span>[{{item['참가자리스트']['length']}}명]</span>
             </mat-panel-description>
           </mat-expansion-panel-header>
@@ -402,7 +403,7 @@
               {{item["레이드이름"]}}
             </mat-panel-title>
             <mat-panel-description>
-             <!--딜러 <em>1</em> / 힐러 <em>2</em> / 둘다 가능 <em>3</em>-->
+             <em>{{positionUserList[RaidIndex]}}</em>
              <span>[{{item['참가자리스트']['length']}}명]</span>
             </mat-panel-description>
           </mat-expansion-panel-header>
@@ -433,7 +434,7 @@
               {{item["레이드이름"]}}
             </mat-panel-title>
             <mat-panel-description>
-             <!--딜러 <em>1</em> / 힐러 <em>2</em> / 둘다 가능 <em>3</em>-->
+             <em>{{positionUserList[RaidIndex]}}</em>
              <span>[{{item['참가자리스트']['length']}}명]</span>
             </mat-panel-description>
           </mat-expansion-panel-header>
@@ -456,7 +457,7 @@
               {{item["레이드이름"]}}
             </mat-panel-title>
             <mat-panel-description>
-             <!--딜러 <em>1</em> / 힐러 <em>2</em> / 둘다 가능 <em>3</em>-->
+             <em>{{positionUserList[RaidIndex]}}</em>
              <span>[{{item['참가자리스트']['length']}}명]</span>
             </mat-panel-description>
           </mat-expansion-panel-header>
@@ -481,7 +482,7 @@
               {{item["레이드이름"]}}
             </mat-panel-title>
             <mat-panel-description>
-             <!--딜러 <em>1</em> / 힐러 <em>2</em> / 둘다 가능 <em>3</em>-->
+             <em>{{positionUserList[RaidIndex]}}</em>
              <span>[{{item['참가자리스트']['length']}}명]</span>
             </mat-panel-description>
           </mat-expansion-panel-header>
@@ -506,7 +507,7 @@
               {{item["레이드이름"]}}
             </mat-panel-title>
             <mat-panel-description>
-              <!--딜러 <em>1</em> / 힐러 <em>2</em> / 둘다 가능 <em>3</em>-->
+              <em>{{positionUserList[RaidIndex]}}</em>
               <span>[{{item['참가자리스트']['length']}}명]</span>
             </mat-panel-description>
           </mat-expansion-panel-header>
@@ -537,7 +538,7 @@
               {{item["레이드이름"]}}
             </mat-panel-title>
             <mat-panel-description>
-             <!--딜러 <em>1</em> / 힐러 <em>2</em> / 둘다 가능 <em>3</em>-->
+             <em>{{positionUserList[RaidIndex]}}</em>
              <span>[{{item['참가자리스트']['length']}}명]</span>
             </mat-panel-description>
           </mat-expansion-panel-header>
@@ -560,7 +561,7 @@
               {{item["레이드이름"]}}
             </mat-panel-title>
             <mat-panel-description>
-             <!--딜러 <em>1</em> / 힐러 <em>2</em> / 둘다 가능 <em>3</em>-->
+             <em>{{positionUserList[RaidIndex]}}</em>
              <span>[{{item['참가자리스트']['length']}}명]</span>
             </mat-panel-description>
           </mat-expansion-panel-header>
@@ -585,7 +586,7 @@
               {{item["레이드이름"]}}
             </mat-panel-title>
             <mat-panel-description>
-             <!--딜러 <em>1</em> / 힐러 <em>2</em> / 둘다 가능 <em>3</em>-->
+             <em>{{positionUserList[RaidIndex]}}</em>
              <span>[{{item['참가자리스트']['length']}}명]</span>
             </mat-panel-description>
           </mat-expansion-panel-header>
@@ -610,7 +611,7 @@
               {{item["레이드이름"]}}
             </mat-panel-title>
             <mat-panel-description>
-             <!--딜러 <em>1</em> / 힐러 <em>2</em> / 둘다 가능 <em>3</em>-->
+             <em>{{positionUserList[RaidIndex]}}</em>
              <span>[{{item['참가자리스트']['length']}}명]</span>
             </mat-panel-description>
           </mat-expansion-panel-header>
@@ -641,7 +642,7 @@
               {{item["레이드이름"]}}
             </mat-panel-title>
             <mat-panel-description>
-             <!--딜러 <em>1</em> / 힐러 <em>2</em> / 둘다 가능 <em>3</em>-->
+             <em>{{positionUserList[RaidIndex]}}</em>
              <span>[{{item['참가자리스트']['length']}}명]</span>
             </mat-panel-description>
           </mat-expansion-panel-header>
@@ -664,7 +665,7 @@
               {{item["레이드이름"]}}
             </mat-panel-title>
             <mat-panel-description>
-             <!--딜러 <em>1</em> / 힐러 <em>2</em> / 둘다 가능 <em>3</em>-->
+             <em>{{positionUserList[RaidIndex]}}</em>
              <span>[{{item['참가자리스트']['length']}}명]</span>
             </mat-panel-description>
           </mat-expansion-panel-header>
@@ -689,7 +690,7 @@
               {{item["레이드이름"]}}
             </mat-panel-title>
             <mat-panel-description>
-             <!--딜러 <em>1</em> / 힐러 <em>2</em> / 둘다 가능 <em>3</em>-->
+             <em>{{positionUserList[RaidIndex]}}</em>
              <span>[{{item['참가자리스트']['length']}}명]</span>
             </mat-panel-description>
           </mat-expansion-panel-header>
@@ -714,7 +715,7 @@
               {{item["레이드이름"]}}
             </mat-panel-title>
             <mat-panel-description>
-             <!--딜러 <em>1</em> / 힐러 <em>2</em> / 둘다 가능 <em>3</em>-->
+             <em>{{positionUserList[RaidIndex]}}</em>
              <span>[{{item['참가자리스트']['length']}}명]</span>
             </mat-panel-description>
           </mat-expansion-panel-header>

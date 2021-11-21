@@ -21,35 +21,25 @@ export class WeekCalendarComponent implements OnInit {
   menuDifficulty;
   menuRaidIndex;
   menuRaidList;
-    
-  PostionList;
-  PostionLength;
-  UserList;
-
-  dealerNum;
-    
+   
   Day_Tab_selected;
+  Day_Label;
   Level_Tab_Selected;    
-    Day_Label;
-    Level_Menu;
+  Level_Menu;
     
-      RaidList;
-    
-    RaidIndex;
-    
-    RaidArray_Once;
-  
-PostionNum;
+  RaidList;
+  RaidIndex;
+  RaidArray_Once;
+
   constructor(private MatBottomSheet: MatBottomSheet,
     private firestore: Firestore,
     private route: ActivatedRoute
   ) { }
 
-
+  positionUserList:any = [];
 
 
   ngOnInit() {
-      
       
       function TodayLabel(){
           var week = new Array('일요일','월요일','화요일','수요일','목요일','금요일','토요일');
@@ -84,26 +74,7 @@ PostionNum;
       else if(this.Day_Label == '화요일'){
           this.Day_Tab_selected = 6;
       }
-      
-//      this.dealerNum = 0;
-//     this.RaidList.forEach(item => {
-//           console.log(item);
-//         if (item['힐러']) {
-//             this.dealerNum = this.dealerNum + 1;
-//          }
-//     });
-          
-//          this.dealerNum = 1;
-//          
-//          if(this.dealerNum > 0){
-//          this.dealerNum = 10;
-//          }
-//          else{
-//              this.dealerNum = 0;
-//          };
-     
-//     this.dealerNum = 0;
-     this.PostionNum = 0;
+
       
       onSnapshot(
           doc(this.firestore, this.Day_Label , "레이드"),
@@ -112,35 +83,40 @@ PostionNum;
 
         var choiceRaid: any = [];
         var docdata: any;
-        docdata = doc.data();
-              
+        docdata = doc.data();              
         this.RaidList = docdata[this.Level_Menu];
-              
-        
-              
-//        this.RaidList.forEach(item => {
-//        this.PostionList = [item['참가자리스트']]; 
-//        this.PostionLength = [item['참가자리스트'].length]; 
-//         this.UserList = this.PostionList[0][0]['포지션']
-//            
-//            console.log(this.UserList)
-//            
-////        this.PostionList.forEach(list => {
-////            
-////             this.UserList =[list[this.PostionNum]]
-////            console.log(this.PostionList)
-////                this.UserList.forEach(user => { 
-////                    
-////                   console.log(this.PostionList)
-////                });
-////            
-////
-////        })
-//          
-//          
-//        });
+         
+        this.RaidList.forEach(item => {
+          var arrayList:any = item['참가자리스트']
+          var positionString:any = "";
+          var array:any = []
+          var deal = 0;
+          var heal = 0;
+          var double = 0;
+          var test ;
+          arrayList.forEach((array,i) => {
+            if(array['포지션'] == '딜러'){
+              deal++;
+            }else if(array['포지션'] == '힐러'){
+              heal++;
+            }else if(array['포지션'] == '둘다가능'){
+              double++;
+            }
+            
+          });
+
+          positionString = "딜러 : " + deal +" / 힐러 : " + heal +" / 둘다가능 : " + double
+          this.positionUserList.push(positionString);
+         
+          
+        });
 
     });
+
+    
+    
+
+
   }
           
                            
@@ -161,7 +137,7 @@ PostionNum;
         this.Level_Menu = Level_event.tab.textLabel;
         this.Level_Tab_Selected = Level_event.index; 
         
-            this.RaidList = new Array();
+        this.RaidList = [];
         setTimeout(()=>{
             if(!this.RaidArray_Once){
                  onSnapshot(
@@ -172,7 +148,30 @@ PostionNum;
                     var docdata: any;
                     docdata = doc.data();
                     this.RaidList = docdata[this.Level_Menu];
-                    console.log(this.RaidList)
+                    this.RaidList.forEach(item => {
+                  var arrayList:any = item['참가자리스트']
+                  var positionString:any = "";
+                  var array:any = []
+                  var deal = 0;
+                  var heal = 0;
+                  var double = 0;
+                  var test ;
+                  arrayList.forEach((array,i) => {
+                    if(array['포지션'] == '딜러'){
+                      deal++;
+                    }else if(array['포지션'] == '힐러'){
+                      heal++;
+                    }else if(array['포지션'] == '둘다가능'){
+                      double++;
+                    }
+
+                  });
+
+          positionString = "딜러 : " + deal +" / 힐러 : " + heal +" / 둘다가능 : " + double
+          this.positionUserList.push(positionString);
+         
+          
+        });
                 }); 
                     this.RaidArray_Once = true;
                 }
