@@ -46,13 +46,13 @@ export class AppComponent {
 
 	Login(){
 
-		if(this.IdText == "점화걸면정화" && this.PasswordText == "1234"){
+		if(this.IdText == "점화걸면정화" && this.PasswordText == "3280"){
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			$(".Main_SettingButtonBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
 		}
-		else if(this.IdText == "데둠미" && this.PasswordText == "84183280"){
+		else if(this.IdText == "데둠미" && this.PasswordText == "8418"){
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			$(".Main_SettingButtonBox").fadeIn(300);
@@ -63,7 +63,7 @@ export class AppComponent {
 		/*아만섭*/
 
 		/*나긋하 바드*/
-		else if(this.IdText == "나긋하" && this.PasswordText == "90909"){
+		else if(this.IdText == "나긋하" && this.PasswordText == "3161017"){
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
@@ -121,7 +121,7 @@ export class AppComponent {
 		}
 
 		/*라즈베리단풍 디붕이*/
-		else if(this.IdText == "라즈베리단풍" && this.PasswordText == "90909"){
+		else if(this.IdText == "라즈베리단풍" && this.PasswordText == "abc1234"){
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
@@ -179,8 +179,9 @@ export class AppComponent {
 
 			document.body.style.setProperty('--main-background-color',"#555555");
 			document.body.style.setProperty('--sub-font-color',"#f5f5f5");
-			document.body.style.setProperty('--main-whitefont-color',"#999999");
+			document.body.style.setProperty('--main-whitefont-color',"#666666");
 			document.body.style.setProperty('--maindark-color',"#d290e2");
+			document.body.style.setProperty('--subwhite-color',"#a031bc");
 			$(".ThemeBtn").removeClass("ThemeBtn_light");
 			$(".ThemeBtn").addClass("ThemeBtn_dark");
 			console.log("어두운테마");
@@ -191,6 +192,7 @@ export class AppComponent {
 				document.body.style.setProperty('--sub-font-color',"#666666");
 				document.body.style.setProperty('--main-whitefont-color',"#eeeeee");
 				document.body.style.setProperty('--maindark-color',"#a031bc");
+                document.body.style.setProperty('--subwhite-color',"#d7d0e3");
 			$(".ThemeBtn").removeClass("ThemeBtn_dark");
 			$(".ThemeBtn").addClass("ThemeBtn_light");
 			console.log("밝은테마");

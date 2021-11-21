@@ -19,6 +19,7 @@ export class CalendarAddButtonComponent implements OnInit {
    public Position: any;
    public Memo: any;
    userid;
+   Raid_Build;
 
   constructor(
     private route: ActivatedRoute,
@@ -28,6 +29,7 @@ export class CalendarAddButtonComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
 /*
     console.log(this.data);
 */
@@ -51,11 +53,17 @@ export class CalendarAddButtonComponent implements OnInit {
     this.bottomSheetRef.dismiss()
   }
 
-  async save() {
+  async save() {  
+      
+    this.Raid_Build = false;
+
     if (this.Day == undefined || this.Party == undefined || this.Raid == undefined || this.Time == undefined || this.Position == undefined) {
       window.alert('캘린더 일정 추가에 빈값이 존재합니다. 메모를 제외한 모든 필드를 입력해주세요.');
     } 
       else {
+    
+       
+          
       const docRef = doc(this.firestore, this.Day, "레이드");
       const docSnap = await getDoc(docRef);
 /*
@@ -63,10 +71,10 @@ export class CalendarAddButtonComponent implements OnInit {
 */
 
       var raidData: any = docSnap.data();
-      setTimeout(() => {
+      setTimeout(async () => {
 
       var GeneralArray:any = raidData["일반"];
-      var NomalArray:any = raidData["노말"];
+      var NormalArray:any = raidData["노말"];
       var HardArray:any = raidData["하드"];
       var EtcArray:any = raidData["기타"];
 
@@ -84,21 +92,23 @@ export class CalendarAddButtonComponent implements OnInit {
         포지션: this.Position,
         메모: memo
       }
-
+      
       this.Raid.forEach(async selectRaidData => {
         var index;
-/*
-        console.log(selectRaidData);
-*/
+
+//       console.log(selectRaidData);
+
         var GeneralUserList: any = [];
-        var NomalUserList: any = [];
+        var NormalUserList: any = [];
+        var HardUserList: any = [];
+        var EtcUserList: any = [];
           
         if (selectRaidData.indexOf("[일반]") != -1) {
 
           if (raidData["일반"].length == 0) {
-/*
-            console.log("새로생성");
-*/
+
+//            console.log("새로생성");
+
             GeneralUserList.push(scheduleData);
             var resultData = {
               레이드이름: selectRaidData,
@@ -111,9 +121,9 @@ export class CalendarAddButtonComponent implements OnInit {
             raidData["일반"].forEach((element,i) => {
                 
               if(element["레이드이름"].indexOf(selectRaidData) != -1) {
-/*
-                console.log(element["레이드이름"]);
-*/
+
+//                console.log(element["레이드이름"]);
+
 
                 sameRiad = true;
                 index=i ;
@@ -123,9 +133,9 @@ export class CalendarAddButtonComponent implements OnInit {
             if (sameRiad == false) {
                 
               //새로생성
-/*
-              console.log("새로생성");
-*/
+
+//              console.log("새로생성");
+
               GeneralUserList.push(scheduleData);
               var resultData = {
                 레이드이름: selectRaidData,
@@ -135,10 +145,9 @@ export class CalendarAddButtonComponent implements OnInit {
             } else {
                 
               //추가
-/*
-              console.log("추가");
-              console.log(index);
-*/
+//              console.log("추가");
+//              console.log(index);
+
 
               GeneralArray.splice(index,1);
               GeneralUserList.push(scheduleData);
@@ -149,94 +158,219 @@ export class CalendarAddButtonComponent implements OnInit {
               GeneralArray.push(resultData);
             }
           }
-/*
-          console.log(GeneralArray);
-*/
-          await setDoc(doc(this.firestore, this.Day, "레이드"), {
-            "일반" : GeneralArray,
-            "노말" : NomalArray,
-            "하드" : HardArray,
-            "기타" : EtcArray
-          });
+
+//            console.log(GeneralArray);
+
+
+
         }
           
           else if (selectRaidData.indexOf("[노말]") != -1) {
-          if (raidData["노말"].length == 0) {
-/*
-            console.log("새로생성");
-*/
-            NomalUserList.push(scheduleData);
+              if (raidData["노말"].length == 0) {
+
+//            console.log("새로생성");
+
+            NormalUserList.push(scheduleData);
             var resultData = {
               레이드이름: selectRaidData,
-              참가자리스트: NomalUserList
+              참가자리스트: NormalUserList
             }
-            NomalArray.push(resultData);
+            NormalArray.push(resultData);
           } 
             else {
             var sameRiad = false;
             raidData["노말"].forEach((element,i) => {
                 
               if(element["레이드이름"].indexOf(selectRaidData) != -1) {
-/*
-                console.log(element["레이드이름"]);
-*/
+
+//                console.log(element["레이드이름"]);
+
 
                 sameRiad = true;
                 index=i ;
-                NomalUserList = element["참가자리스트"];
+                NormalUserList = element["참가자리스트"];
               }
             });
             if (sameRiad == false) {
                 
               //새로생성
-/*
-              console.log("새로생성");
-*/
-              NomalUserList.push(scheduleData);
+
+//              console.log("새로생성");
+
+              NormalUserList.push(scheduleData);
               var resultData = {
                 레이드이름: selectRaidData,
-                참가자리스트: NomalUserList
+                참가자리스트: NormalUserList
               }
-              NomalArray.push(resultData);
+              NormalArray.push(resultData);
             } else {
                 
               //추가
-/*
-              console.log("추가");
-              console.log(index);
-*/
+//              console.log("추가");
+//              console.log(index);
 
-              NomalArray.splice(index,1);
-              NomalUserList.push(scheduleData);
+
+              NormalArray.splice(index,1);
+              NormalUserList.push(scheduleData);
               var resultData = {
                 레이드이름: selectRaidData,
-                참가자리스트: NomalUserList
+                참가자리스트: NormalUserList
               }
-              NomalArray.push(resultData);
+              NormalArray.push(resultData);
             }
           }
-/*
-          console.log(NomalArray);
-*/
-          await setDoc(doc(this.firestore, this.Day, "레이드"), {
-            "일반" : GeneralArray,
-            "노말" : NomalArray,
-            "하드" : HardArray,
-            "기타" : EtcArray
-          });
+
+//            console.log(NormalArray);
+
+
         }
           else if (selectRaidData.indexOf("[하드]") != -1) {
+              if (raidData["하드"].length == 0) {
+
+//            console.log("새로생성");
+
+            HardUserList.push(scheduleData);
+            var resultData = {
+              레이드이름: selectRaidData,
+              참가자리스트: HardUserList
+            }
+            HardArray.push(resultData);
+          } 
+            else {
+            var sameRiad = false;
+            raidData["하드"].forEach((element,i) => {
+                
+              if(element["레이드이름"].indexOf(selectRaidData) != -1) {
+
+//                console.log(element["레이드이름"]);
+
+
+                sameRiad = true;
+                index=i ;
+                HardUserList = element["참가자리스트"];
+              }
+            });
+            if (sameRiad == false) {
+                
+              //새로생성
+
+//              console.log("새로생성");
+
+              HardUserList.push(scheduleData);
+              var resultData = {
+                레이드이름: selectRaidData,
+                참가자리스트: HardUserList
+              }
+              HardArray.push(resultData);
+            } else {
+                
+              //추가
+//              console.log("추가");
+//              console.log(index);
+
+
+              HardArray.splice(index,1);
+              HardUserList.push(scheduleData);
+              var resultData = {
+                레이드이름: selectRaidData,
+                참가자리스트: HardUserList
+              }
+              HardArray.push(resultData);
+            }
+          }
+
+//            console.log(HardArray);
+      
 
         } 
           else if (selectRaidData.indexOf("[기타]") != -1) {
+             if (raidData["기타"].length == 0) {
+
+//            console.log("새로생성");
+
+            EtcUserList.push(scheduleData);
+            var resultData = {
+              레이드이름: selectRaidData,
+              참가자리스트: EtcUserList
+            }
+            EtcArray.push(resultData);
+          } 
+            else {
+            var sameRiad = false;
+            raidData["기타"].forEach((element,i) => {
+                
+              if(element["레이드이름"].indexOf(selectRaidData) != -1) {
+
+//                console.log(element["레이드이름"]);
+
+
+                sameRiad = true;
+                index=i ;
+                EtcUserList = element["참가자리스트"];
+              }
+            });
+            if (sameRiad == false) {
+                
+              //새로생성
+
+//              console.log("새로생성");
+
+              EtcUserList.push(scheduleData);
+              var resultData = {
+                레이드이름: selectRaidData,
+                참가자리스트: EtcUserList
+              }
+              EtcArray.push(resultData);
+            } else {
+                
+              //추가
+//              console.log("추가");
+//              console.log(index);
+
+
+              EtcArray.splice(index,1);
+              EtcUserList.push(scheduleData);
+              var resultData = {
+                레이드이름: selectRaidData,
+                참가자리스트: EtcUserList
+              }
+              EtcArray.push(resultData);
+            }
+          }
+
+//            console.log(EtcArray);
+      
 
         }
+          
+        
 
       });
+          if(!this.Raid_Build){
+         await setDoc(doc(this.firestore, this.Day, "레이드"), {
+
+           "일반" : GeneralArray,
+           "노말" : NormalArray,
+           "하드" : HardArray,
+           "기타" : EtcArray
+             
+          });
+            this.Raid_Build = true;
+            console.log("빌드 완료");
+            console.log(GeneralArray);
+          }
+          
       this.bottomSheetRef.dismiss()
     }, 1000);
           
-          window.alert("캘린더에 일정이 추가되었습니다.");
+          if(this.Raid.length > 1){
+		  window.alert(this.userid + "님 " + "[" + this.Day + "] 스케쥴\n" + this.Raid[0] + " 외 " + (this.Raid.length - 1) + "개의" + " 일정이 추가되었습니다.");
+		 }
+          else{
+             window.alert(this.userid + "님 " + "[" + this.Day + "] 스케쥴\n" + this.Raid[0] + " 일정이 추가되었습니다.");  
+          };      
+          
+         
     }
 
 
