@@ -1,5 +1,7 @@
 # LOSTARK_Scheduler_by_JH
 
+# 불법 복제 및 무단 배포를 금지합니다.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.2.
 
 ## Development server
