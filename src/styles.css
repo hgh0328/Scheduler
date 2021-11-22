@@ -241,7 +241,7 @@ button.mat-stroked-button.RedBtn:hover{background-color: var(--red-color); color
 .Calendar_List_Box .mat-expansion-panel-header.mat-expanded{height: 48px;}
 .Calendar_List_Box mat-accordion mat-expansion-panel:nth-child(odd) .mat-expanded:focus{background: var(--main-background-color);}
 .Calendar_List_Box mat-accordion mat-expansion-panel:nth-child(even) .mat-expanded:focus{background: var(--main-whitefont-color);}
-.Calendar_List_Box .mat-expansion-panel-header-description{position: absolute; right: 36px; font-size: 12px; color: var(--sub-font-color)}
+.Calendar_List_Box .mat-expansion-panel-header-description{position: absolute; right: 36px; font-size: 10px; color: var(--sub-font-color); }
 .Calendar_List_Box .mat-expansion-panel-header-description span{font-size: 14px; color: var(--maindark-color); position: relative; top: -2px; margin-left: 5px; font-weight: bold;}
 .Calendar_List_Box mat-list{ border: 1px solid var(--sub-whitefont-color); margin-top: 10px;}
 .Calendar_List_Box mat-list-item{transition: .3s; border-bottom: 1px solid var(--sub-whitefont-color);height: 50px !important;}
@@ -262,7 +262,7 @@ button.mat-stroked-button.RedBtn:hover{background-color: var(--red-color); color
 .Calendar_List_Box .mat-expansion-panel{border-bottom: 1px solid var(--mainwhite-font-color); box-shadow: none;}
 .Calendar_List_Box .mat-expansion-panel-spacing{margin: 0; border-radius: 0;}
 .Calendar_List_Box .mat-expansion-panel-header{border-bottom: 1px solid var(--main-whitefont-color);}
-.Calendar_List_Box .mat-expansion-panel-header mat-panel-title{font-size: 14px; color: var(--sub-font-color); font-weight: 300;}
+.Calendar_List_Box .mat-expansion-panel-header mat-panel-title{font-size: 12px; color: var(--sub-font-color); font-weight: 300;}
 .Calendar_List_Box p{position: relative; height: 45px; line-height: 45px; font-size: 12px; width: 100%; color: var(--sub-font-color); border-bottom: 1px dashed var(--sub-whitefont-color);}
 .Calendar_List_Box p span{position: absolute; right: 4px; top: 0; height: 45px; line-height: 45px; font-size: 14px; color: var(--maindark-color);}
 .Calendar_List_Box p mat-icon{color: var(--sub-font-color); position: relative; top: 7px; margin-right: 5px;}
