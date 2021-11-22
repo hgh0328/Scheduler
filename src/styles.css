@@ -41,7 +41,7 @@ box-sizing:border-box; cursor: default;-ms-user-select: none;
 -khtml-user-select: none;
 user-select: none; ; font-size: 12px; font-family:'NotoSansKR' !important;}
 input[type = "text"]{cursor: text; user-select: text;}
-input.mat-input-element{cursor: text; user-select: text; transform: scale(0.75); transform-origin: left top; font-size: 16px;}
+input.mat-input-element{cursor: text; user-select: text; transform: scale(0.75); transform-origin: left center; font-size: 16px;}
 button{cursor: pointer; }
 a { color:inherit; text-decoration: none ; }
 img { border:none; max-width:100% }
