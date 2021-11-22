@@ -231,7 +231,7 @@ export class AppComponent {
       });
       this.settings.toggle();
     })
-      window.alert(this.IdText + "님 주긴 초기화 완료되었습니다.");
+      window.alert(this.route.snapshot.queryParamMap.get("id") + "님 주긴 초기화 완료되었습니다.");
 
   }
 

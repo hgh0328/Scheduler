@@ -332,7 +332,7 @@ button.mat-stroked-button.RedBtn:hover{background-color: var(--red-color); color
 
 }
 
-@media screen and (max-width: 410px) {
+@media screen and (max-width: 415px) {
 	.Calendar_Edit_Box p{padding: 4px;}
 	.Calendar_List_Box .mat-expansion-panel-header{padding: 0 10px;}
 	.Calendar_List_Box .mat-expansion-panel-header-description{top: 17px; right: 10px; font-size: 10px;}

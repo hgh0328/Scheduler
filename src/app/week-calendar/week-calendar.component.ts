@@ -40,7 +40,7 @@ export class WeekCalendarComponent implements OnInit {
 
 
   ngOnInit() {
-      
+	        
       function TodayLabel(){
           var week = new Array('일요일','월요일','화요일','수요일','목요일','금요일','토요일');
           
@@ -77,6 +77,7 @@ export class WeekCalendarComponent implements OnInit {
 
       
       onSnapshot(
+		  
           doc(this.firestore, this.Day_Label , "레이드"),
           { includeMetadataChanges: true },
           (doc) => {         
@@ -85,7 +86,7 @@ export class WeekCalendarComponent implements OnInit {
         var docdata: any;
         docdata = doc.data();              
         this.RaidList = docdata[this.Level_Menu];
-         
+        this.positionUserList = [];
         this.RaidList.forEach(item => {
           var arrayList:any = item['참가자리스트']
           var positionString:any = "";
@@ -148,28 +149,28 @@ export class WeekCalendarComponent implements OnInit {
                     var docdata: any;
                     docdata = doc.data();
                     this.RaidList = docdata[this.Level_Menu];
+					this.positionUserList = [];
                     this.RaidList.forEach(item => {
-                  var arrayList:any = item['참가자리스트']
-                  var positionString:any = "";
-                  var array:any = []
-                  var deal = 0;
-                  var heal = 0;
-                  var double = 0;
-                  var test ;
-                  arrayList.forEach((array,i) => {
-                    if(array['포지션'] == '딜러'){
-                      deal++;
-                    }else if(array['포지션'] == '힐러'){
-                      heal++;
-                    }else if(array['포지션'] == '둘다가능'){
-                      double++;
-                    }
+					  var arrayList:any = item['참가자리스트']
+					  var positionString:any = "";
+					  var array:any = []
+					  var deal = 0;
+					  var heal = 0;
+					  var double = 0;
+					  var test ;
+					  arrayList.forEach((array,i) => {
+						if(array['포지션'] == '딜러'){
+						  deal++;
+						}else if(array['포지션'] == '힐러'){
+						  heal++;
+						}else if(array['포지션'] == '둘다가능'){
+						  double++;
+						}
 
-                  });
+					  });
 
           positionString = "딜러 : " + deal +" / 힐러 : " + heal +" / 둘다가능 : " + double
-          this.positionUserList.push(positionString);
-         
+          this.positionUserList.push(positionString);        
           
         });
                 }); 
@@ -265,8 +266,35 @@ export class WeekCalendarComponent implements OnInit {
           "노말" : NormalArray,
           "하드" : HardArray,
           "기타" : EtcArray
+        });        
+          
         });
+		
+		this.positionUserList = [];
+		  this.RaidList.forEach(item => {
+					  var arrayList:any = item['참가자리스트']
+					  var positionString:any = "";
+					  var array:any = []
+					  var deal = 0;
+					  var heal = 0;
+					  var double = 0;
+					  var test ;
+					  arrayList.forEach((array,i) => {
+						if(array['포지션'] == '딜러'){
+						  deal++;
+						}else if(array['포지션'] == '힐러'){
+						  heal++;
+						}else if(array['포지션'] == '둘다가능'){
+						  double++;
+						}
+
+					  });
+
+          positionString = "딜러 : " + deal +" / 힐러 : " + heal +" / 둘다가능 : " + double
+          this.positionUserList.push(positionString);
       },100);
+
+
     }
 
 }

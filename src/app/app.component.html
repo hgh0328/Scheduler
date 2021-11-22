@@ -45,7 +45,7 @@
 		<mat-form-field appearance="legacy">
 			<mat-label>비밀번호를 입력하세요.</mat-label>
 			<mat-icon matPrefix>lock</mat-icon>
-			<input matInput [type]="hide ? 'password' : 'text'" required [(ngModel)]="PasswordText">
+			<input matInput inputmode="numeric" [type]="hide ? 'password' : 'text'" required [(ngModel)]="PasswordText">
 			<button mat-icon-button matSuffix *ngIf="PasswordText != null" (click)="hide = !hide">
 				<mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
 			</button>
