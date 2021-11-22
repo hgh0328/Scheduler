@@ -11,7 +11,7 @@
 		<mat-form-field appearance="legacy">
 			<mat-label>아이디를 선택하세요.</mat-label>
 			<mat-icon matPrefix>person</mat-icon>
-			<mat-select [(ngModel)]="IdText">
+			<mat-select [(ngModel)]="IdText" (keydown.enter)="Login()">
 			<!--카단섭-->
 		 	  <mat-optgroup label="카단섭">
 				  <mat-option value="점화걸면정화">점화걸면정화</mat-option>
@@ -45,7 +45,7 @@
 		<mat-form-field appearance="legacy">
 			<mat-label>비밀번호를 입력하세요.</mat-label>
 			<mat-icon matPrefix>lock</mat-icon>
-			<input matInput inputmode="numeric" [type]="hide ? 'password' : 'text'" required [(ngModel)]="PasswordText">
+			<input matInput inputmode="numeric" [type]="hide ? 'password' : 'text'" required [(ngModel)]="PasswordText" (keydown.enter)="Login()">
 			<button mat-icon-button matSuffix *ngIf="PasswordText != null" (click)="hide = !hide">
 				<mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
 			</button>

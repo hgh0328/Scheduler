@@ -37,14 +37,24 @@ export class AppComponent {
     private firestore: Firestore,
   ){}
 	ngOnInit(): void {
-        
-        
+
+		console.log(this.IdText)
+		console.log(this.PasswordText)
+
+		$("#PasswordInput").bind('keydown', function(e){
+		if(e.keyCode === 13){
+			console.log("a")
+
+		}
+		})
+
+
       if(window.location.href.indexOf("id") != -1){
         this.login =true
         $(".Main_PanelBox").fadeIn(300);
       }else{
         this.login = false;
-        
+
       }
     }
 
@@ -55,12 +65,14 @@ export class AppComponent {
 			$(".Main_PanelBox").fadeIn(300);
 			$(".Main_SettingButtonBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+			window.alert(this.IdText + "님 환영합니다.");
 		}
 		else if(this.IdText == "데둠미" && this.PasswordText == "8418"){
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			$(".Main_SettingButtonBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+			window.alert(this.IdText + "님 환영합니다.");
 		}
 		/*유저 목록 현재 1 ~ 13명 카톡 프로필 순 아만 ~ 카단 순*/
 
@@ -71,6 +83,7 @@ export class AppComponent {
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+			window.alert(this.IdText + "님 환영합니다.");
 		}
 
 		/*카단섭*/
@@ -80,6 +93,7 @@ export class AppComponent {
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+			window.alert(this.IdText + "님 환영합니다.");
 		}
 
 		/*달빛천사썬가드 소서리스*/
@@ -87,6 +101,7 @@ export class AppComponent {
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+			window.alert(this.IdText + "님 환영합니다.");
 		}
 
 		/*블군자 블래스터*/
@@ -94,6 +109,7 @@ export class AppComponent {
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+			window.alert(this.IdText + "님 환영합니다.");
 		}
 
 		/*욕망군단장형아키스 소서리스*/
@@ -101,6 +117,7 @@ export class AppComponent {
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+			window.alert(this.IdText + "님 환영합니다.");
 		}
 
 		/*인조인간91호*/
@@ -108,13 +125,15 @@ export class AppComponent {
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+			window.alert(this.IdText + "님 환영합니다.");
 		}
 
 		/*긴바나나 소서리스*/
-		else if(this.IdText == "긴바나나" && this.PasswordText == "111banana111"){
+		else if(this.IdText == "긴바나나" && this.PasswordText == "1231"){
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+			window.alert(this.IdText + "님 환영합니다.");
 		}
 
 		/*똘렝 바드*/
@@ -122,13 +141,15 @@ export class AppComponent {
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+			window.alert(this.IdText + "님 환영합니다.");
 		}
 
 		/*라즈베리단풍 디붕이*/
-		else if(this.IdText == "라즈베리단풍" && this.PasswordText == "abc1234"){
+		else if(this.IdText == "라즈베리단풍" && this.PasswordText == "830125"){
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+			window.alert(this.IdText + "님 환영합니다.");
 		}
 
 		/*식끈박끈 홀나*/
@@ -136,6 +157,7 @@ export class AppComponent {
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+			window.alert(this.IdText + "님 환영합니다.");
 		}
 
 		/*신성범위 스카우터*/
@@ -143,6 +165,7 @@ export class AppComponent {
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+			window.alert(this.IdText + "님 환영합니다.");
 		}
 
 		/*하얀활 호크아이*/
@@ -150,6 +173,7 @@ export class AppComponent {
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+			window.alert(this.IdText + "님 환영합니다.");
 		}
 
 		/*HK278 디붕이*/
@@ -157,12 +181,28 @@ export class AppComponent {
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+			window.alert(this.IdText + "님 환영합니다.");
+
 		}
-        
+//		else{
+//			window.alert("로그인 정보가 존재하지 않습니다.");
+//		};
+
+		if(this.IdText == undefined && this.PasswordText == undefined){
+			window.alert("로그인 정보를 입력해주세요.");
+		}
+
+		else if(this.IdText == undefined && this.PasswordText != undefined){
+			window.alert("아이디를 선택해주세요.");
+		}
+		else if(this.IdText != undefined && this.PasswordText == undefined){
+			window.alert(this.IdText + "님 비밀번호를 입력해주세요.");
+		}
+
         else{
-            window.alert(this.IdText + "님 로그인 정보를 확인해주세요.");
+
         }
-        window.alert(this.IdText + "님 환영합니다.");
+
 
 	}
 
@@ -174,9 +214,9 @@ export class AppComponent {
 	}
 
 	Logout(){
-        
+
     window.alert(this.route.snapshot.queryParamMap.get("id") + "님 로그아웃");
-        
+
     this.settings.toggle();
     this.login =false;
     this.router.navigate(['/']);

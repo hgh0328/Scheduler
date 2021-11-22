@@ -120,7 +120,7 @@
   	<mat-form-field appearance="outline">
 		<mat-label>메모</mat-label>
 
-			 <input matInput type="text" [(ngModel)]="Memo" #AllUser_message maxlength="50" matInput placeholder="ex) 초행, 학원팟 가능, 공대장 있음">
+			 <input matInput type="text" [(ngModel)]="Memo" #AllUser_message maxlength="50" matInput placeholder="ex) 초행, 학원팟 가능, 공대장 있음" (keydown.enter)="save()">
 			<mat-hint align="start"><strong>50자 내외로 메세지 작성이 가능합니다.</strong> </mat-hint>
 			<mat-hint align="end">{{AllUser_message.value.length}} / 50</mat-hint>
 		</mat-form-field>

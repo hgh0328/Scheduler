@@ -7,7 +7,7 @@
 <div class="Calendar_List_Box">
  <mat-tab-group mat-align-tabs="start" (selectedTabChange)="Day_TabClick($event)" [selectedIndex]="Day_Tab_selected">
   <mat-tab label="수요일">
-          <div class="Calendar_CatalogList">
+          <div class="Calendar_CatalogList" >
          <mat-tab-group mat-align-tabs="end" headerPosition="below" (selectedTabChange)="Level_TabClick($event)" [selectedIndex]="Level_Tab_Selected">
           <mat-tab label="일반">
         <mat-accordion>
@@ -17,7 +17,7 @@
               {{item["레이드이름"]}}
             </mat-panel-title>
             <mat-panel-description>
-            <em>{{positionUserList[RaidIndex]}}</em>            
+            <em>{{positionUserList[RaidIndex]}}</em>
              <span>[{{item['참가자리스트']['length']}}명]</span>
             </mat-panel-description>
           </mat-expansion-panel-header>
@@ -59,7 +59,7 @@
           </mat-tab>
           <mat-tab label="하드">
         <mat-accordion>
-        
+
         <mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
           <mat-expansion-panel-header>
             <mat-panel-title>
@@ -84,7 +84,7 @@
           </mat-tab>
           <mat-tab label="기타">
         <mat-accordion>
-        
+
         <mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
           <mat-expansion-panel-header>
             <mat-panel-title>
@@ -104,15 +104,15 @@
             </mat-list-item>
           </mat-list>
           </mat-expansion-panel>
-			
+
 			</mat-accordion>
           </mat-tab>
      </mat-tab-group>
          </div>
      </mat-tab>
-     
+
       <mat-tab label="목요일">
-          <div class="Calendar_CatalogList">
+          <div class="Calendar_CatalogList" >
          <mat-tab-group mat-align-tabs="end" headerPosition="below" (selectedTabChange)="Level_TabClick($event)" [selectedIndex]="Level_Tab_Selected">
           <mat-tab label="일반">
         <mat-accordion>
@@ -163,7 +163,7 @@
           </mat-tab>
           <mat-tab label="하드">
         <mat-accordion>
-        
+
         <mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
           <mat-expansion-panel-header>
             <mat-panel-title>
@@ -188,7 +188,7 @@
           </mat-tab>
           <mat-tab label="기타">
         <mat-accordion>
-        
+
         <mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
           <mat-expansion-panel-header>
             <mat-panel-title>
@@ -208,15 +208,15 @@
             </mat-list-item>
           </mat-list>
           </mat-expansion-panel>
-			
+
 			</mat-accordion>
           </mat-tab>
      </mat-tab-group>
          </div>
      </mat-tab>
-     
+
       <mat-tab label="금요일">
-          <div class="Calendar_CatalogList">
+          <div class="Calendar_CatalogList" >
          <mat-tab-group mat-align-tabs="end" headerPosition="below" (selectedTabChange)="Level_TabClick($event)" [selectedIndex]="Level_Tab_Selected">
           <mat-tab label="일반">
         <mat-accordion>
@@ -267,7 +267,7 @@
           </mat-tab>
           <mat-tab label="하드">
         <mat-accordion>
-        
+
         <mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
           <mat-expansion-panel-header>
             <mat-panel-title>
@@ -292,7 +292,7 @@
           </mat-tab>
           <mat-tab label="기타">
         <mat-accordion>
-        
+
         <mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
           <mat-expansion-panel-header>
             <mat-panel-title>
@@ -312,15 +312,15 @@
             </mat-list-item>
           </mat-list>
           </mat-expansion-panel>
-			
+
 			</mat-accordion>
           </mat-tab>
      </mat-tab-group>
          </div>
      </mat-tab>
-     
+
       <mat-tab label="토요일">
-          <div class="Calendar_CatalogList">
+          <div class="Calendar_CatalogList" >
          <mat-tab-group mat-align-tabs="end" headerPosition="below" (selectedTabChange)="Level_TabClick($event)" [selectedIndex]="Level_Tab_Selected">
           <mat-tab label="일반">
         <mat-accordion>
@@ -371,7 +371,7 @@
           </mat-tab>
           <mat-tab label="하드">
         <mat-accordion>
-        
+
         <mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
           <mat-expansion-panel-header>
             <mat-panel-title>
@@ -396,7 +396,7 @@
           </mat-tab>
           <mat-tab label="기타">
         <mat-accordion>
-        
+
         <mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
           <mat-expansion-panel-header>
             <mat-panel-title>
@@ -416,15 +416,15 @@
             </mat-list-item>
           </mat-list>
           </mat-expansion-panel>
-			
+
 			</mat-accordion>
           </mat-tab>
      </mat-tab-group>
          </div>
      </mat-tab>
-     
+
       <mat-tab label="일요일">
-          <div class="Calendar_CatalogList">
+          <div class="Calendar_CatalogList" >
          <mat-tab-group mat-align-tabs="end" headerPosition="below" (selectedTabChange)="Level_TabClick($event)" [selectedIndex]="Level_Tab_Selected">
           <mat-tab label="일반">
         <mat-accordion>
@@ -475,7 +475,7 @@
           </mat-tab>
           <mat-tab label="하드">
         <mat-accordion>
-        
+
         <mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
           <mat-expansion-panel-header>
             <mat-panel-title>
@@ -500,7 +500,7 @@
           </mat-tab>
           <mat-tab label="기타">
         <mat-accordion>
-        
+
         <mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
           <mat-expansion-panel-header>
             <mat-panel-title>
@@ -520,15 +520,15 @@
             </mat-list-item>
           </mat-list>
           </mat-expansion-panel>
-			
+
 			</mat-accordion>
           </mat-tab>
      </mat-tab-group>
          </div>
      </mat-tab>
-     
+
       <mat-tab label="월요일">
-          <div class="Calendar_CatalogList">
+          <div class="Calendar_CatalogList" >
          <mat-tab-group mat-align-tabs="end" headerPosition="below" (selectedTabChange)="Level_TabClick($event)" [selectedIndex]="Level_Tab_Selected">
           <mat-tab label="일반">
         <mat-accordion>
@@ -579,7 +579,7 @@
           </mat-tab>
           <mat-tab label="하드">
         <mat-accordion>
-        
+
         <mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
           <mat-expansion-panel-header>
             <mat-panel-title>
@@ -604,7 +604,7 @@
           </mat-tab>
           <mat-tab label="기타">
         <mat-accordion>
-        
+
         <mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
           <mat-expansion-panel-header>
             <mat-panel-title>
@@ -624,15 +624,15 @@
             </mat-list-item>
           </mat-list>
           </mat-expansion-panel>
-			
+
 			</mat-accordion>
           </mat-tab>
      </mat-tab-group>
          </div>
      </mat-tab>
-     
+
       <mat-tab label="화요일">
-          <div class="Calendar_CatalogList">
+          <div class="Calendar_CatalogList" >
          <mat-tab-group mat-align-tabs="end" headerPosition="below" (selectedTabChange)="Level_TabClick($event)" [selectedIndex]="Level_Tab_Selected">
           <mat-tab label="일반">
         <mat-accordion>
@@ -683,7 +683,7 @@
           </mat-tab>
           <mat-tab label="하드">
         <mat-accordion>
-        
+
         <mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
           <mat-expansion-panel-header>
             <mat-panel-title>
@@ -708,7 +708,7 @@
           </mat-tab>
           <mat-tab label="기타">
         <mat-accordion>
-        
+
         <mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
           <mat-expansion-panel-header>
             <mat-panel-title>
@@ -728,16 +728,16 @@
             </mat-list-item>
           </mat-list>
           </mat-expansion-panel>
-			
+
 			</mat-accordion>
           </mat-tab>
      </mat-tab-group>
          </div>
      </mat-tab>
-     
-   
-     
-     
+
+
+
+
 </mat-tab-group>
 	</div>
 

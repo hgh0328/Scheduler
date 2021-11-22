@@ -13,7 +13,7 @@ import {FormControl} from '@angular/forms';
   styleUrls: ['./week-calendar.component.css']
 })
 export class WeekCalendarComponent implements OnInit {
-
+	
   userid;
   menuIndex;
   menuId;
@@ -21,35 +21,41 @@ export class WeekCalendarComponent implements OnInit {
   menuDifficulty;
   menuRaidIndex;
   menuRaidList;
-   
+
   Day_Tab_selected;
   Day_Label;
-  Level_Tab_Selected;    
+  Level_Tab_Selected;
   Level_Menu;
-    
+
   RaidList;
   RaidIndex;
   RaidArray_Once;
+  start;
+  end;
 
   constructor(private MatBottomSheet: MatBottomSheet,
     private firestore: Firestore,
     private route: ActivatedRoute
   ) { }
 
-  positionUserList:any = [];
+  positionUserList: any = [];
+
+
 
 
   ngOnInit() {
-	        
+
+
+
       function TodayLabel(){
           var week = new Array('일요일','월요일','화요일','수요일','목요일','금요일','토요일');
-          
+
           var today = new Date().getDay();
           var TodayLabel = week[today];
 
           return TodayLabel;
       }
-      
+
       /*임시 초기값*/
       this.Level_Menu = "일반";
       this.Day_Label = TodayLabel();
@@ -75,16 +81,16 @@ export class WeekCalendarComponent implements OnInit {
           this.Day_Tab_selected = 6;
       }
 
-      
+
       onSnapshot(
-		  
+
           doc(this.firestore, this.Day_Label , "레이드"),
           { includeMetadataChanges: true },
-          (doc) => {         
+          (doc) => {
 
         var choiceRaid: any = [];
         var docdata: any;
-        docdata = doc.data();              
+        docdata = doc.data();
         this.RaidList = docdata[this.Level_Menu];
         this.positionUserList = [];
         this.RaidList.forEach(item => {
@@ -103,41 +109,41 @@ export class WeekCalendarComponent implements OnInit {
             }else if(array['포지션'] == '둘다가능'){
               double++;
             }
-            
+
           });
 
           positionString = "딜러 : " + deal +" / 힐러 : " + heal +" / 둘다가능 : " + double
           this.positionUserList.push(positionString);
-         
-          
+
+
         });
 
     });
 
-    
-    
+
+
 
 
   }
-          
-                           
-                           
+
+
+
     Day_TabClick(Day_event) {
         this.Level_Tab_Selected = 1;
 
-        this.Day_Label = Day_event.tab.textLabel;        
+        this.Day_Label = Day_event.tab.textLabel;
         setTimeout(()=>{
             this.Level_Tab_Selected = 0;
         },10)
-        
+
     }
-    
-    Level_TabClick(Level_event) { 
-        
-        this.RaidArray_Once = false;         
+
+    Level_TabClick(Level_event) {
+
+        this.RaidArray_Once = false;
         this.Level_Menu = Level_event.tab.textLabel;
-        this.Level_Tab_Selected = Level_event.index; 
-        
+        this.Level_Tab_Selected = Level_event.index;
+
         this.RaidList = [];
         setTimeout(()=>{
             if(!this.RaidArray_Once){
@@ -170,16 +176,16 @@ export class WeekCalendarComponent implements OnInit {
 					  });
 
           positionString = "딜러 : " + deal +" / 힐러 : " + heal +" / 둘다가능 : " + double
-          this.positionUserList.push(positionString);        
-          
+          this.positionUserList.push(positionString);
+
         });
-                }); 
+                });
                     this.RaidArray_Once = true;
                 }
         }, 100)
     }
-    
-    
+
+
     Calendar_AddButton(){
       this.userid = this.route.snapshot.queryParamMap.get("id");
         this.MatBottomSheet.open(CalendarAddButtonComponent, {
@@ -200,7 +206,7 @@ export class WeekCalendarComponent implements OnInit {
       this.menuRaidIndex =  RaidIndex;
       this.menuRaidList =  RaidList[RaidIndex];
 
-     
+
     }
     out(){
       if(this.menuId === this.userid){
@@ -219,57 +225,57 @@ export class WeekCalendarComponent implements OnInit {
       const docSnap = await getDoc(docRef);
 
       var raidData: any = docSnap.data();
-        
+
       setTimeout(async () => {
-          
-            var GeneralArray:any = raidData["일반"];        
+
+            var GeneralArray:any = raidData["일반"];
             var NormalArray:any = raidData["노말"];
             var HardArray:any = raidData["하드"];
             var EtcArray:any = raidData["기타"];
-          
-          if(this.menuDifficulty == "일반"){             
-              GeneralArray[this.menuRaidIndex]["참가자리스트"].splice(this.menuId,1);              
+
+          if(this.menuDifficulty == "일반"){
+              GeneralArray[this.menuRaidIndex]["참가자리스트"].splice(this.menuId,1);
               if(GeneralArray[this.menuRaidIndex]["참가자리스트"].length == 0){
                   GeneralArray.splice(this.menuRaidIndex,1);
-                } 
+                }
           }
-          
+
           else if(this.menuDifficulty == "노말"){
-             
+
               NormalArray[this.menuRaidIndex]["참가자리스트"].splice(this.menuId,1);
-              
+
               if(NormalArray[this.menuRaidIndex]["참가자리스트"].length == 0){
                   NormalArray.splice(this.menuRaidIndex,1);
-                } 
+                }
           }
-          
+
           else if(this.menuDifficulty == "하드"){
-             
+
               HardArray[this.menuRaidIndex]["참가자리스트"].splice(this.menuId,1);
-              
+
               if(HardArray[this.menuRaidIndex]["참가자리스트"].length == 0){
                   HardArray.splice(this.menuRaidIndex,1);
-                } 
+                }
           }
-          
+
           else if(this.menuDifficulty == "기타"){
-             
+
               EtcArray[this.menuRaidIndex]["참가자리스트"].splice(this.menuId,1);
-              
+
               if(EtcArray[this.menuRaidIndex]["참가자리스트"].length == 0){
                   EtcArray.splice(this.menuRaidIndex,1);
-                } 
+                }
           };
-          
+
         await setDoc(doc(this.firestore, this.menuDate, "레이드"), {
           "일반" : GeneralArray,
           "노말" : NormalArray,
           "하드" : HardArray,
           "기타" : EtcArray
-        });        
-          
         });
-		
+
+        });
+
 		this.positionUserList = [];
 		  this.RaidList.forEach(item => {
 					  var arrayList:any = item['참가자리스트']
