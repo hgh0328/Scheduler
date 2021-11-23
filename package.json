@@ -11,6 +11,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-material-gesture/mat-tab-group-gesture": "^1.0.4",
     "@angular/animations": "^13.0.1",
     "@angular/cdk": "^13.0.1",
     "@angular/common": "~13.0.0",

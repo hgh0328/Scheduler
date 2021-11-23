@@ -18,7 +18,14 @@ export class CalendarAddButtonComponent implements OnInit {
    public Time: any;
    public Position: any;
    public Memo: any;
-   userid;
+	
+    userid;
+    Together_Ok = true;
+    Together_user;
+	Together_userDate;
+	Together_UserList;
+	Together_UserList_Raid;
+	Together_UserList_Time;
    Raid_Build;
 
   constructor(
@@ -29,11 +36,32 @@ export class CalendarAddButtonComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+	  
+	  
 
-/*
-    console.log(this.data);
-*/
-      this.userid = this.route.snapshot.queryParamMap.get("id");
+	  
+	  if(this.data.Together_user != undefined){
+		  $(".Together_Ok").addClass("false")
+		  this.Together_Ok = false;
+		  this.Together_user = this.data.Together_user
+		  this.Together_userDate = this.data.Together_userDate
+		  this.Together_UserList = this.data.Together_UserList
+		  this.Together_UserList_Raid = this.data.Together_UserList_Raid
+		  this.Together_UserList_Time = this.data.Together_UserList['출발시간대']
+		  
+		  this.Day = this.Together_userDate
+//		  this.Raid = this.Together_UserList_Raid
+		  this.Time = this.Together_UserList_Time
+		  
+		  console.log(this.Raid);
+	  }
+
+
+
+    
+
+
+     this.userid = this.route.snapshot.queryParamMap.get("id");
 
 
   }
@@ -61,8 +89,6 @@ export class CalendarAddButtonComponent implements OnInit {
       window.alert('선택하지 않은 필드가 존재합니다.\n메모를 제외한 모든 필드를 입력해주세요.');
     }
       else {
-
-
 
       const docRef = doc(this.firestore, this.Day, "레이드");
       const docSnap = await getDoc(docRef);
@@ -93,6 +119,7 @@ export class CalendarAddButtonComponent implements OnInit {
         메모: memo
       }
 
+	  console.log(this.Raid)
       this.Raid.forEach(async selectRaidData => {
         var index;
 
@@ -356,8 +383,8 @@ export class CalendarAddButtonComponent implements OnInit {
 
           });
             this.Raid_Build = true;
-            console.log("빌드 완료");
-            console.log(GeneralArray);
+//            console.log("빌드 완료");
+
           }
 
       this.bottomSheetRef.dismiss()
@@ -369,6 +396,7 @@ export class CalendarAddButtonComponent implements OnInit {
           else{
              window.alert(this.userid + "님 " + "[" + this.Day + "] 스케쥴\n" + this.Raid[0] + " 일정이 추가되었습니다.");
           };
+		  $(".jhlostark").addClass("Opened");
 
 
     }

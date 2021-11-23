@@ -28,15 +28,15 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatSelectModule} from '@angular/material/select';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatBadgeModule} from '@angular/material/badge';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatTabGroupGestureModule } from '@angular-material-gesture/mat-tab-group-gesture';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 /*CDK Module*/
 import {TextFieldModule} from '@angular/cdk/text-field';
 
-/*Angular Editor*/
-import { HttpClientModule,HttpClient} from '@angular/common/http';
-import { AngularEditorModule } from '@kolkov/angular-editor';
+
 
 
 // ngrx 관련
@@ -67,6 +67,7 @@ import { getAnalytics, provideAnalytics } from '@angular/fire/analytics';
 
   ],
   imports: [
+    MatTabGroupGestureModule,
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideFirestore(() => getFirestore()),
     provideAuth(() => getAuth()),
@@ -98,8 +99,7 @@ import { getAnalytics, provideAnalytics } from '@angular/fire/analytics';
     MatNativeDateModule,
     MatDatepickerModule,
     MatBadgeModule,
-    HttpClientModule,
-    AngularEditorModule,
+	MatProgressBarModule,
     StoreModule.forRoot(reducers, {
       metaReducers,
       runtimeChecks: {
@@ -118,8 +118,8 @@ import { getAnalytics, provideAnalytics } from '@angular/fire/analytics';
 
   ],
   providers: [
-    HttpClient,
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

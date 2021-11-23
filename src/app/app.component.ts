@@ -38,12 +38,9 @@ export class AppComponent {
   ){}
 	ngOnInit(): void {
 
-		console.log(this.IdText)
-		console.log(this.PasswordText)
-
 		$("#PasswordInput").bind('keydown', function(e){
 		if(e.keyCode === 13){
-			console.log("a")
+
 
 		}
 		})
@@ -72,7 +69,7 @@ export class AppComponent {
 			$(".Main_PanelBox").fadeIn(300);
 			$(".Main_SettingButtonBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 환영합니다.");
+			window.alert(this.IdText + " 데둠배 빵빵이 부헤헤 안뇽");
 		}
 		/*유저 목록 현재 1 ~ 13명 카톡 프로필 순 아만 ~ 카단 순*/
 
@@ -80,6 +77,22 @@ export class AppComponent {
 
 		/*나긋하 바드*/
 		else if(this.IdText == "나긋하" && this.PasswordText == "3161017"){
+			$(".Login_Box").fadeOut(500);
+			$(".Main_PanelBox").fadeIn(300);
+			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+			window.alert(this.IdText + "님 환영합니다.");
+		}
+		
+		/*야이빙충아 아르카나*/
+		else if(this.IdText == "야이빙충아" && this.PasswordText == "5749"){
+			$(".Login_Box").fadeOut(500);
+			$(".Main_PanelBox").fadeIn(300);
+			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+			window.alert(this.IdText + "님 환영합니다.");
+		}
+		
+		/*이밴절리스타 블래스터(아브렐슈드)*/
+		else if(this.IdText == "이밴절리스타" && this.PasswordText == "0704"){
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
@@ -141,11 +154,11 @@ export class AppComponent {
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 환영합니다.");
+			window.alert(this.IdText + "님 [신방현]개인정보는 제가 다 가져가겠습니다. 감사합니다.");
 		}
 
 		/*라즈베리단풍 디붕이*/
-		else if(this.IdText == "라즈베리단풍" && this.PasswordText == "830125"){
+		else if(this.IdText == "라즈베리단풍" && this.PasswordText == "821212"){
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
@@ -161,7 +174,7 @@ export class AppComponent {
 		}
 
 		/*신성범위 스카우터*/
-		else if(this.IdText == "신성범위" && this.PasswordText == "90909"){
+		else if(this.IdText == "신성범위" && this.PasswordText == "1013"){
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
@@ -256,6 +269,9 @@ export class AppComponent {
     this.settings.toggle();
 
   }
+	EventOpen(){
+		this.router.navigate(['/testpage']);
+	}
   reset(){
     var dateArray = ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'];
     dateArray.forEach(async date =>{

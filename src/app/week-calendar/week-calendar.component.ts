@@ -13,7 +13,7 @@ import {FormControl} from '@angular/forms';
   styleUrls: ['./week-calendar.component.css']
 })
 export class WeekCalendarComponent implements OnInit {
-	
+
   userid;
   menuIndex;
   menuId;
@@ -21,17 +21,25 @@ export class WeekCalendarComponent implements OnInit {
   menuDifficulty;
   menuRaidIndex;
   menuRaidList;
+  AllMenu_UserDelete;
+  MenuName;
 
   Day_Tab_selected;
   Day_Label;
   Level_Tab_Selected;
   Level_Menu;
 
+  AllRaidList:any =[];
   RaidList;
+
+  AllRaidIndex;
   RaidIndex;
+
   RaidArray_Once;
-  start;
-  end;
+  Together_userID;
+  Together_UserList;
+  Together_Member;
+  Raid_Fullname;
 
   constructor(private MatBottomSheet: MatBottomSheet,
     private firestore: Firestore,
@@ -46,7 +54,7 @@ export class WeekCalendarComponent implements OnInit {
   ngOnInit() {
 
 
-
+	  let All_level = ['일반','노말','하드','기타'];
       function TodayLabel(){
           var week = new Array('일요일','월요일','화요일','수요일','목요일','금요일','토요일');
 
@@ -57,7 +65,7 @@ export class WeekCalendarComponent implements OnInit {
       }
 
       /*임시 초기값*/
-      this.Level_Menu = "일반";
+      this.Level_Menu = "전체";
       this.Day_Label = TodayLabel();
       if(this.Day_Label == '수요일'){
           this.Day_Tab_selected = 0
@@ -83,42 +91,19 @@ export class WeekCalendarComponent implements OnInit {
 
 
       onSnapshot(
-
           doc(this.firestore, this.Day_Label , "레이드"),
           { includeMetadataChanges: true },
           (doc) => {
+			var choiceRaid: any = [];
+			var docdata: any;
+			docdata = doc.data();
+			this.AllRaidList = [];
+			this.positionUserList = [];
+			All_level.forEach((level)=>{
+				this.AllRaidList.push(docdata[level]);
+			});
 
-        var choiceRaid: any = [];
-        var docdata: any;
-        docdata = doc.data();
-        this.RaidList = docdata[this.Level_Menu];
-        this.positionUserList = [];
-        this.RaidList.forEach(item => {
-          var arrayList:any = item['참가자리스트']
-          var positionString:any = "";
-          var array:any = []
-          var deal = 0;
-          var heal = 0;
-          var double = 0;
-          var test ;
-          arrayList.forEach((array,i) => {
-            if(array['포지션'] == '딜러'){
-              deal++;
-            }else if(array['포지션'] == '힐러'){
-              heal++;
-            }else if(array['포지션'] == '둘다가능'){
-              double++;
-            }
-
-          });
-
-          positionString = "딜러 : " + deal +" / 힐러 : " + heal +" / 둘다가능 : " + double
-          this.positionUserList.push(positionString);
-
-
-        });
-
-    });
+    	});
 
 
 
@@ -140,12 +125,34 @@ export class WeekCalendarComponent implements OnInit {
 
     Level_TabClick(Level_event) {
 
+		let All_level = ['일반','노말','하드','기타'];
+
         this.RaidArray_Once = false;
         this.Level_Menu = Level_event.tab.textLabel;
         this.Level_Tab_Selected = Level_event.index;
-
+		this.AllRaidList = [];
         this.RaidList = [];
         setTimeout(()=>{
+			if(this.Level_Menu == '전체'){
+				if(!this.RaidArray_Once){
+				onSnapshot(
+          doc(this.firestore, this.Day_Label , "레이드"),
+          { includeMetadataChanges: true },
+          (doc) => {
+			var choiceRaid: any = [];
+			var docdata: any;
+			docdata = doc.data();
+			this.AllRaidList = [];
+			this.positionUserList = [];
+			All_level.forEach((level)=>{
+			this.AllRaidList.push(docdata[level]);
+			})
+			  });
+
+				}
+				this.RaidArray_Once = true;
+			}
+			else{
             if(!this.RaidArray_Once){
                  onSnapshot(
                   doc(this.firestore, this.Day_Label , "레이드"),
@@ -175,13 +182,15 @@ export class WeekCalendarComponent implements OnInit {
 
 					  });
 
-          positionString = "딜러 : " + deal +" / 힐러 : " + heal +" / 둘다가능 : " + double
-          this.positionUserList.push(positionString);
+				  positionString = "딜러 : " + deal +" / 힐러 : " + heal +" / 둘다가능 : " + double
+				  this.positionUserList.push(positionString);
 
-        });
-                });
-                    this.RaidArray_Once = true;
+				});
+						});
+							this.RaidArray_Once = true;
                 }
+
+				}
         }, 100)
     }
 
@@ -190,43 +199,95 @@ export class WeekCalendarComponent implements OnInit {
       this.userid = this.route.snapshot.queryParamMap.get("id");
         this.MatBottomSheet.open(CalendarAddButtonComponent, {
               panelClass: 'OptionModal',
-              data: {userid:this.userid}
+          data: {
+            userid: this.userid
+          }
             }).afterDismissed().subscribe((result) => {
     });
 
     }
 
-    menuClcik(index,id,date,difficulty,RaidIndex,RaidList){
-      console.log("메뉴클릭");
+	Calendar_AddTogether(){
+      this.userid = this.route.snapshot.queryParamMap.get("id");
+        this.MatBottomSheet.open(CalendarAddButtonComponent, {
+              panelClass: 'OptionModal',
+          data: {
+
+            Together_user: this.Together_userID,
+            Together_userDate: this.menuDate,
+            Together_UserList: this.Together_UserList,
+            Together_UserList_Raid: this.Raid_Fullname,
+          }
+            }).afterDismissed().subscribe((result) => {
+    });
+
+    }
+
+  menuClcik(index, id, date, difficulty, RaidIndex, RaidList, AllRaidIndex, AllRaidList,UserList) {
+	  
+	  this.Together_UserList = UserList;
       this.userid = this.route.snapshot.queryParamMap.get("id")
       this.menuIndex = index;
       this.menuId = id;
       this.menuDate = date;
       this.menuDifficulty = difficulty;
-      this.menuRaidIndex =  RaidIndex;
-      this.menuRaidList =  RaidList[RaidIndex];
+	  this.menuRaidIndex = RaidIndex;
+
+      if (this.menuDifficulty == "전체") {
+		var AllRaid = AllRaidList[AllRaidIndex]
+	    var Raid_List = AllRaid[RaidIndex];
+        this.menuRaidList = AllRaid[RaidIndex];
+		this.MenuName = "전체"
+		this.menuDifficulty = AllRaid[RaidIndex]['레이드이름']
+		this.Raid_Fullname = AllRaid[RaidIndex]['레이드이름']
+		if(this.menuDifficulty.includes("[일반]")){
+			 this.menuDifficulty = "일반"
+		 }
+		 else if(this.menuDifficulty.includes("[노말]")){
+			 this.menuDifficulty = "노말"
+		 }
+		  else if(this.menuDifficulty.includes("[하드]")){
+			 this.menuDifficulty = "하드"
+		 }
+		  else if(this.menuDifficulty.includes("[기타]")){
+			 this.menuDifficulty = "기타"
+		 }
+      }
+      else{
+        this.menuRaidList = RaidList[RaidIndex];
+		this.Raid_Fullname = RaidList[RaidIndex]['레이드이름']
+		this.MenuName = this.menuDifficulty
+      }
+
+	  
+
+    this.Together_userID = this.menuId;
 
 
     }
     out(){
-      if(this.menuId === this.userid){
-        window.alert(this.menuId + "님이 " + this.menuRaidList["레이드이름"] + "에서 나갔습니다.");
-        this.outUser()
-      }else{
-        window.alert("본인이 아닌 경우 나갈수 없습니다.");
+        if(this.menuId === this.userid){
+          window.alert(this.menuId + "님이 " + this.menuRaidList["레이드이름"] + "에서 나갔습니다.");
+          this.outUser()
+        }else{
+          window.alert("본인이 아닌 경우 나갈수 없습니다.");
+        }
       }
-    }
     export(){
       window.alert(this.menuId + "를 " + this.menuRaidList["레이드이름"] + " 에서 내보냈습니다.");
       this.outUser()
-    }
-    async outUser(){
+  }
+
+  async outUser() {
+
+
       const docRef = doc(this.firestore, this.menuDate, "레이드");
       const docSnap = await getDoc(docRef);
-
       var raidData: any = docSnap.data();
+	  let All_level = ['일반','노말','하드','기타'];
 
       setTimeout(async () => {
+
 
             var GeneralArray:any = raidData["일반"];
             var NormalArray:any = raidData["노말"];
@@ -265,7 +326,7 @@ export class WeekCalendarComponent implements OnInit {
               if(EtcArray[this.menuRaidIndex]["참가자리스트"].length == 0){
                   EtcArray.splice(this.menuRaidIndex,1);
                 }
-          };
+          }
 
         await setDoc(doc(this.firestore, this.menuDate, "레이드"), {
           "일반" : GeneralArray,
@@ -275,9 +336,34 @@ export class WeekCalendarComponent implements OnInit {
         });
 
         });
+		if(this.MenuName == "전체"){
+                 onSnapshot(
+          doc(this.firestore, this.Day_Label , "레이드"),
+          { includeMetadataChanges: true },
+          (doc) => {
+			var choiceRaid: any = [];
+			var docdata: any;
+			docdata = doc.data();
+			this.AllRaidList = [];
+			this.positionUserList = [];
+			All_level.forEach((level)=>{
+				this.AllRaidList.push(docdata[level]);
+			});
 
-		this.positionUserList = [];
-		  this.RaidList.forEach(item => {
+    	});
+
+		}
+	  else{
+		  onSnapshot(
+                  doc(this.firestore, this.Day_Label , "레이드"),
+                  { includeMetadataChanges: true },
+                  (doc) => {
+                    var choiceRaid: any = [];
+                    var docdata: any;
+                    docdata = doc.data();
+                    this.RaidList = docdata[this.Level_Menu];
+					this.positionUserList = [];
+                    this.RaidList.forEach(item => {
 					  var arrayList:any = item['참가자리스트']
 					  var positionString:any = "";
 					  var array:any = []
@@ -296,11 +382,13 @@ export class WeekCalendarComponent implements OnInit {
 
 					  });
 
-          positionString = "딜러 : " + deal +" / 힐러 : " + heal +" / 둘다가능 : " + double
-          this.positionUserList.push(positionString);
-      },100);
+				  positionString = "딜러 : " + deal +" / 힐러 : " + heal +" / 둘다가능 : " + double
+				  this.positionUserList.push(positionString);
 
+				});
+						});
+		  
+	  }
 
     }
-
 }
