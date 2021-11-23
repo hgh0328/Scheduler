@@ -321,11 +321,15 @@ button.mat-stroked-button.RedBtn:hover{background-color: var(--red-color); color
 .Event_Progress .deco_2{position: absolute; top: 40%; right: 0; height: 10px; width: 9px; background: #6c6359; z-index: 2; border-radius: 3px;}
 .Event_Result{width: 100%; text-align: center; display: none;}
 .Event_Result h2{color: #eee; -webkit-text-stroke: 1px #736f6e; font-size: 5vw; margin-top: 5vh;}
-
+.Event_Notcie{position: relative; width: 100%;  height: calc(100vh - 64px); overflow: auto; background: var(--main-font-color);}
+.Event_Notcie::-webkit-scrollbar{display: contents !important;}
+.Event_Notcie img{position: relative; height: calc(100vh - 64px); margin: 0 auto; display: block;}
 
 @media screen and (max-width: 1024px) {
     .jhlostark{top: 93px;}
 	.EventPage{width: 100%; height: calc(100vh - 54px);}
+	.Event_Notcie{width: 100%; height: calc(100vh - 54px);}
+	.Event_Notcie img{height: calc(100vh - 54px);}
 	.Event_Progress{ width: 80vw; left: 10vw;}
 	.Login_FormBox{width: 95vw; height: 96vh; left: 50%;}
 	.Login_Bg{opacity: 0.8;}

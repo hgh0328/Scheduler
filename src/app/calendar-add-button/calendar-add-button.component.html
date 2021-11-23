@@ -1,8 +1,12 @@
 <div class="User_Option_Dialog">
-	<h3><span>[ {{userid}} ]</span> <strong *ngIf="Together_Ok==true">주간 캘린더 추가 </strong> <strong *ngIf="Together_Ok==false"> {{Together_user}} 님과 {{Together_UserList_Raid}} 일정 추가</strong> <mat-icon (click)="close()">close</mat-icon></h3>
+	<h3><span *ngIf="Together_Ok==true">[ {{userid}} ]</span> <strong *ngIf="Together_Ok==true">주간 캘린더 추가 </strong>  
+   <span *ngIf="Together_Ok==false">[ {{Together_user}}  ]님과</span>   
+   <strong *ngIf="Together_Ok==false"> {{Together_UserList_Raid}} 캘린더 일정 추가</strong> <mat-icon (click)="close()">close</mat-icon></h3>
     <div class="Calendar_Edit_Box">
 
-	<p><mat-icon>warning</mat-icon><em>각 레이드별로 횟수 입력은 불가합니다.</em> 2수 이상인 경우 캘린더에 두번 추가하거나 메모에 남겨주세요. </p>
+	<p *ngIf="Together_Ok==true"><mat-icon>warning</mat-icon><em>각 레이드별로 횟수 입력은 불가합니다.</em> 2수 이상인 경우 캘린더에 두번 추가하거나 메모에 남겨주세요. </p>
+	<p *ngIf="Together_Ok==false"><mat-icon>warning</mat-icon><em>요일과 레이드, 시간 선택이 불가합니다.</em> 
+	[ {{userid}} ]님 {{Together_user}} 님과 함께 참여하는 모드입니다.</p>
 
 
 

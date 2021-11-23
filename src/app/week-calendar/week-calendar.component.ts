@@ -35,6 +35,7 @@ export class WeekCalendarComponent implements OnInit {
   AllRaidIndex;
   RaidIndex;
 
+  Raid_Reset;
   RaidArray_Once;
   Together_userID;
   Together_UserList;
@@ -52,22 +53,30 @@ export class WeekCalendarComponent implements OnInit {
 
 
   ngOnInit() {
+      
+      /*레이드 리셋*/
+      this.Raid_Reset = true;
 
-
+      /*레이드 기본설정*/
 	  let All_level = ['일반','노말','하드','기타'];
       function TodayLabel(){
           var week = new Array('일요일','월요일','화요일','수요일','목요일','금요일','토요일');
 
           var today = new Date().getDay();
           var TodayLabel = week[today];
-
           return TodayLabel;
       }
+      
 
-      /*임시 초기값*/
+      /*초기값*/
       this.Level_Menu = "전체";
       this.Day_Label = TodayLabel();
       if(this.Day_Label == '수요일'){
+          
+          if(!this.Raid_Reset){
+              console.log("a");
+
+          }
           this.Day_Tab_selected = 0
       }
       else if(this.Day_Label == '목요일'){
@@ -219,6 +228,8 @@ export class WeekCalendarComponent implements OnInit {
             Together_UserList_Raid: this.Raid_Fullname,
           }
             }).afterDismissed().subscribe((result) => {
+
+            
     });
 
     }

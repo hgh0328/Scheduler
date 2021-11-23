@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TestpageComponent } from './testpage/testpage.component';
-
+import { UserGuideComponent } from './user-guide/user-guide.component';
 
 // Angular Meterial
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -31,7 +31,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatTabGroupGestureModule } from '@angular-material-gesture/mat-tab-group-gesture';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
-
+import { EventNoticeComponent } from './event-notice/event-notice.component';
 
 /*CDK Module*/
 import {TextFieldModule} from '@angular/cdk/text-field';
@@ -58,12 +58,16 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { getAnalytics, provideAnalytics } from '@angular/fire/analytics';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
     TestpageComponent,
     WeekCalendarComponent,
     CalendarAddButtonComponent,
+    UserGuideComponent,
+    EventNoticeComponent,
 
   ],
   imports: [

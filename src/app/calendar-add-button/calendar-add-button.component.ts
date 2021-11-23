@@ -14,7 +14,7 @@ export class CalendarAddButtonComponent implements OnInit {
 
    public Party: any;
    public Day: any;
-   public Raid: any;
+   public Raid:any =[];
    public Time: any;
    public Position: any;
    public Memo: any;
@@ -28,6 +28,7 @@ export class CalendarAddButtonComponent implements OnInit {
 	Together_UserList_Time;
    Raid_Build;
 
+
   constructor(
     private route: ActivatedRoute,
     private bottomSheetRef: MatBottomSheetRef<CalendarAddButtonComponent>,
@@ -36,7 +37,7 @@ export class CalendarAddButtonComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-	  
+
 	  
 
 	  
@@ -48,11 +49,7 @@ export class CalendarAddButtonComponent implements OnInit {
 		  this.Together_UserList = this.data.Together_UserList
 		  this.Together_UserList_Raid = this.data.Together_UserList_Raid
 		  this.Together_UserList_Time = this.data.Together_UserList['출발시간대']
-		  
-		  this.Day = this.Together_userDate
-//		  this.Raid = this.Together_UserList_Raid
-		  this.Time = this.Together_UserList_Time
-		  
+          		  
 		  console.log(this.Raid);
 	  }
 
@@ -66,6 +63,7 @@ export class CalendarAddButtonComponent implements OnInit {
 
   }
     Raid_Select(){
+        console.log(this.Raid);
 		if(this.Raid.length > 1){
 		  $(".Raid_Select .mat-select-value-text").text(this.Raid[0] + " 외 " + (this.Raid.length - 1) + " 개");
 		}
@@ -84,11 +82,28 @@ export class CalendarAddButtonComponent implements OnInit {
   async save() {
 
     this.Raid_Build = false;
+    
+      if(this.data.Together_user != undefined){
+ 
+            if(this.Party == undefined || this.Position == undefined){
+                console.log("b")
+                window.alert('선택하지 않은 필드가 존재합니다.\n메모를 제외한 모든 필드를 입력해주세요.');
+            }
+            else{
+                this.Day = this.Together_userDate;
+                this.Raid[0] = this.Together_UserList_Raid;
+                this.Time = this.Together_UserList_Time;
+                this.bottomSheetRef.dismiss();
+                }
+          
+      }
+      else{
+      if (this.Day == undefined || this.Party == undefined || this.Raid == undefined || this.Time == undefined || this.Position == undefined) {
+            window.alert('선택하지 않은 필드가 존재합니다.\n메모를 제외한 모든 필드를 입력해주세요.');      
+      
+        }
 
-    if (this.Day == undefined || this.Party == undefined || this.Raid == undefined || this.Time == undefined || this.Position == undefined) {
-      window.alert('선택하지 않은 필드가 존재합니다.\n메모를 제외한 모든 필드를 입력해주세요.');
-    }
-      else {
+        else {
 
       const docRef = doc(this.firestore, this.Day, "레이드");
       const docSnap = await getDoc(docRef);
@@ -119,7 +134,6 @@ export class CalendarAddButtonComponent implements OnInit {
         메모: memo
       }
 
-	  console.log(this.Raid)
       this.Raid.forEach(async selectRaidData => {
         var index;
 
@@ -406,7 +420,7 @@ export class CalendarAddButtonComponent implements OnInit {
 
 
 
-
+      }   
 
 
 

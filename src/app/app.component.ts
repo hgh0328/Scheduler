@@ -38,18 +38,12 @@ export class AppComponent {
   ){}
 	ngOnInit(): void {
 
-		$("#PasswordInput").bind('keydown', function(e){
-		if(e.keyCode === 13){
-
-
-		}
-		})
-
 
       if(window.location.href.indexOf("id") != -1){
         this.login =true
         $(".Main_PanelBox").fadeIn(300);
-      }else{
+      }
+        else{
         this.login = false;
 
       }
@@ -69,18 +63,121 @@ export class AppComponent {
 			$(".Main_PanelBox").fadeIn(300);
 			$(".Main_SettingButtonBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + " 데둠배 빵빵이 부헤헤 안뇽");
+			window.alert(this.IdText + " 데둠배 빵빵이 부헤헤 안뇽 방가워");
 		}
-		/*유저 목록 현재 1 ~ 13명 카톡 프로필 순 아만 ~ 카단 순*/
+		/*유저 목록 현재 1 ~ 13명 카톡 프로필 순 카단 ~ 아만 순*/
 
-		/*아만섭*/
+		/*카단섭*/
+		/*펭난나 서머너*/
+		else if(this.IdText == "펭난나" && this.PasswordText == "951215"){
+			$(".Login_Box").fadeOut(500);
+			$(".Main_PanelBox").fadeIn(300);
+			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+			window.alert(this.IdText + "님 환영합니다.\n환상의 나라 에~버~랜드");
+		}		
 
+		/*블군자 블래스터*/
+		else if(this.IdText == "블군자" && this.PasswordText == "363652"){
+			$(".Login_Box").fadeOut(500);
+			$(".Main_PanelBox").fadeIn(300);
+			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+			window.alert(this.IdText + "님 환영합니다.\n휠체어 어르신");
+		}
+
+		/*욕망군단장형아키스 소서리스*/
+		else if(this.IdText == "욕망군단장형아키스" && this.PasswordText == "1234"){
+			$(".Login_Box").fadeOut(500);
+			$(".Main_PanelBox").fadeIn(300);
+			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+			window.alert(this.IdText + "님 환영합니다.\n언니 나 죽어");
+		}
+
+		/*인조인간91호*/
+		else if(this.IdText == "인조인간91호" && this.PasswordText == "28452600"){
+			$(".Login_Box").fadeOut(500);
+			$(".Main_PanelBox").fadeIn(300);
+			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+			window.alert(this.IdText + "님 환영합니다.\n인조인간~로보트~");
+		}
+
+		/*긴바나나 소서리스*/
+		else if(this.IdText == "긴바나나" && this.PasswordText == "1231"){
+			$(".Login_Box").fadeOut(500);
+			$(".Main_PanelBox").fadeIn(300);
+			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+			window.alert(this.IdText + "님 환영합니다.\n이태원바나나는 제겁니다.");
+		}
+
+		/*똘렝 바드*/
+		else if(this.IdText == "똘렝" && this.PasswordText == "90909"){
+			$(".Login_Box").fadeOut(500);
+			$(".Main_PanelBox").fadeIn(300);
+			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+			window.alert(this.IdText + "님 [신방현]개인정보는\n제가 다 가져가겠습니다.");
+		}
+
+		/*라즈베리단풍 디붕이*/
+		else if(this.IdText == "라즈베리단풍" && this.PasswordText == "821212"){
+			$(".Login_Box").fadeOut(500);
+			$(".Main_PanelBox").fadeIn(300);
+			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+			window.alert(this.IdText + "님 환영합니다.\n라즈베리초크베리구스베리베리베리 단풍");
+		}
+
+		/*식끈박끈 홀나*/
+		else if(this.IdText == "식끈박끈" && this.PasswordText == "123456"){
+			$(".Login_Box").fadeOut(500);
+			$(".Main_PanelBox").fadeIn(300);
+			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+			window.alert(this.IdText + "님 환영합니다.\n같이 레이드 돌고 놀아요~");
+		}
+
+		/*신성범위 스카우터*/
+		else if(this.IdText == "신성범위" && this.PasswordText == "1013"){
+			$(".Login_Box").fadeOut(500);
+			$(".Main_PanelBox").fadeIn(300);
+			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+			window.alert(this.IdText + " 선생님 환영합니다.\n아브렐 버스 부탁드려요.");
+		}
+
+		/*하얀활 호크아이*/
+		else if(this.IdText == "하얀활" && this.PasswordText == "9559"){
+			$(".Login_Box").fadeOut(500);
+			$(".Main_PanelBox").fadeIn(300);
+			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+			window.alert(this.IdText + "님 환영합니다.\n건슬은 너프 안될겁니다.");
+		}
+
+		/*HK278 디붕이*/
+		else if(this.IdText == "HK278" && this.PasswordText == "0000"){
+			$(".Login_Box").fadeOut(500);
+			$(".Main_PanelBox").fadeIn(300);
+			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+			window.alert(this.IdText + "님 환영합니다.\n디붕이는 사랑입니다.");
+
+		}
+        /*뽀야마요 기공사*/
+		else if(this.IdText == "뽀야마요" && this.PasswordText == "3920"){
+			$(".Login_Box").fadeOut(500);
+			$(".Main_PanelBox").fadeIn(300);
+			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+			window.alert(this.IdText + "님 환영합니다.\n원기옥 원툴 ^^");
+		}
+        /*K여포 창술사*/
+		else if(this.IdText == "K여포" && this.PasswordText == "99000"){
+			$(".Login_Box").fadeOut(500);
+			$(".Main_PanelBox").fadeIn(300);
+			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+			window.alert(this.IdText + "님 환영합니다.\n코리안 여포 반가워요.");
+		} 
+        
+        /*아만섭*/
 		/*나긋하 바드*/
 		else if(this.IdText == "나긋하" && this.PasswordText == "3161017"){
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 환영합니다.");
+			window.alert(this.IdText + "님 환영합니다.\n군장 검사 행정 보급관");
 		}
 		
 		/*야이빙충아 아르카나*/
@@ -98,18 +195,9 @@ export class AppComponent {
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
 			window.alert(this.IdText + "님 환영합니다.");
 		}
-
-		/*카단섭*/
-
-		/*펭난나 서머너*/
-		else if(this.IdText == "펭난나" && this.PasswordText == "90909"){
-			$(".Login_Box").fadeOut(500);
-			$(".Main_PanelBox").fadeIn(300);
-			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 환영합니다.");
-		}
-
-		/*달빛천사썬가드 소서리스*/
+        
+        /*휴면계정*/        
+        /*달빛천사썬가드 소서리스*/
 		else if(this.IdText == "달빛천사썬가드" && this.PasswordText == "90909"){
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
@@ -117,89 +205,6 @@ export class AppComponent {
 			window.alert(this.IdText + "님 환영합니다.");
 		}
 
-		/*블군자 블래스터*/
-		else if(this.IdText == "블군자" && this.PasswordText == "90909"){
-			$(".Login_Box").fadeOut(500);
-			$(".Main_PanelBox").fadeIn(300);
-			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 환영합니다.");
-		}
-
-		/*욕망군단장형아키스 소서리스*/
-		else if(this.IdText == "욕망군단장형아키스" && this.PasswordText == "90909"){
-			$(".Login_Box").fadeOut(500);
-			$(".Main_PanelBox").fadeIn(300);
-			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 환영합니다.");
-		}
-
-		/*인조인간91호*/
-		else if(this.IdText == "인조인간91호" && this.PasswordText == "90909"){
-			$(".Login_Box").fadeOut(500);
-			$(".Main_PanelBox").fadeIn(300);
-			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 환영합니다.");
-		}
-
-		/*긴바나나 소서리스*/
-		else if(this.IdText == "긴바나나" && this.PasswordText == "1231"){
-			$(".Login_Box").fadeOut(500);
-			$(".Main_PanelBox").fadeIn(300);
-			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 환영합니다.");
-		}
-
-		/*똘렝 바드*/
-		else if(this.IdText == "똘렝" && this.PasswordText == "90909"){
-			$(".Login_Box").fadeOut(500);
-			$(".Main_PanelBox").fadeIn(300);
-			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 [신방현]개인정보는 제가 다 가져가겠습니다. 감사합니다.");
-		}
-
-		/*라즈베리단풍 디붕이*/
-		else if(this.IdText == "라즈베리단풍" && this.PasswordText == "821212"){
-			$(".Login_Box").fadeOut(500);
-			$(".Main_PanelBox").fadeIn(300);
-			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 환영합니다.");
-		}
-
-		/*식끈박끈 홀나*/
-		else if(this.IdText == "식끈박끈" && this.PasswordText == "90909"){
-			$(".Login_Box").fadeOut(500);
-			$(".Main_PanelBox").fadeIn(300);
-			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 환영합니다.");
-		}
-
-		/*신성범위 스카우터*/
-		else if(this.IdText == "신성범위" && this.PasswordText == "1013"){
-			$(".Login_Box").fadeOut(500);
-			$(".Main_PanelBox").fadeIn(300);
-			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 환영합니다.");
-		}
-
-		/*하얀활 호크아이*/
-		else if(this.IdText == "하얀활" && this.PasswordText == "90909"){
-			$(".Login_Box").fadeOut(500);
-			$(".Main_PanelBox").fadeIn(300);
-			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 환영합니다.");
-		}
-
-		/*HK278 디붕이*/
-		else if(this.IdText == "HK278" && this.PasswordText == "90909"){
-			$(".Login_Box").fadeOut(500);
-			$(".Main_PanelBox").fadeIn(300);
-			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 환영합니다.");
-
-		}
-//		else{
-//			window.alert("로그인 정보가 존재하지 않습니다.");
-//		};
 
 		if(this.IdText == undefined && this.PasswordText == undefined){
 			window.alert("로그인 정보를 입력해주세요.");
@@ -221,9 +226,18 @@ export class AppComponent {
 
 	UserMenu(MenuName: string){
 		if(MenuName == "WeekCalendar"){
-		this.router.navigate(['/WeekCalendar']);
+        this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+
 		$(".mat-drawer-backdrop").click();
 		}
+        else if(MenuName == 'UserGuide'){
+            this.router.navigate(['/UserGuide'],{queryParams:{id:this.IdText}});
+            $(".mat-drawer-backdrop").click();
+        }
+         else if(MenuName == 'EventNotice'){
+            this.router.navigate(['/EventNotice'],{queryParams:{id:this.IdText}});
+            $(".mat-drawer-backdrop").click();
+        }
 	}
 
 	Logout(){
@@ -286,7 +300,7 @@ export class AppComponent {
         "기타" : EtcArray
       });
       this.settings.toggle();
-    })
+    });
       window.alert(this.route.snapshot.queryParamMap.get("id") + "님 주긴 초기화 완료되었습니다.");
 
   }

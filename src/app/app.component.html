@@ -14,21 +14,23 @@
 			<mat-select [(ngModel)]="IdText" (keydown.enter)="Login()">
 			<!--카단섭-->
 		 	  <mat-optgroup label="카단섭">
-		 	      <span matBadge="14명" class="Sever_MemberCount"></span>
+		 	      <span matBadge="15명" class="Sever_MemberCount"></span>
 				  <mat-option value="점화걸면정화">점화걸면정화</mat-option>
 				  <mat-option value="데둠미">데둠미</mat-option>
 				  <mat-option value="펭난나">펭난나</mat-option>
-				  <mat-option value="달빛천사썬가드">달빛천사썬가드</mat-option>
 				  <mat-option value="블군자">블군자</mat-option>
 				  <mat-option value="욕망군단장형아키스">욕망군단장형아키스</mat-option>
 				  <mat-option value="인조인간91호">인조인간91호</mat-option>
 				  <mat-option value="긴바나나">긴바나나</mat-option>
 				  <mat-option value="똘렝">똘렝</mat-option>
-				  <mat-option value="라즈베리단풍"> 라즈베리단풍</mat-option>
-				  <mat-option value="식끈박끈"> 식끈박끈</mat-option>
-				  <mat-option value="신성범위"> 신성범위</mat-option>
-				  <mat-option value="하얀활"> 하얀활</mat-option>
-				  <mat-option value="HK278"> HK278</mat-option>
+				  <mat-option value="라즈베리단풍">라즈베리단풍</mat-option>
+				  <mat-option value="식끈박끈">식끈박끈</mat-option>
+				  <mat-option value="신성범위">신성범위</mat-option>
+				  <mat-option value="하얀활">하얀활</mat-option>
+				  <mat-option value="HK278">HK278</mat-option>
+				  <mat-option value="뽀야마요">뽀야마요</mat-option>
+				  <mat-option value="K여포">K여포</mat-option>
+				  <mat-option value="달빛천사썬가드" disabled>달빛천사썬가드</mat-option>
 			  </mat-optgroup>
 
 			  <!--아만섭-->
@@ -37,6 +39,12 @@
 			  	<mat-option value="나긋하">나긋하</mat-option>
 			  	<mat-option value="야이빙충아">야이빙충아</mat-option>
 			  	<mat-option value="이밴절리스타">이밴절리스타</mat-option>
+		  	  </mat-optgroup>
+		  	  
+		  	  <!--휴면 계정-->
+		  	  <mat-optgroup label="휴면계정">
+			    <span matBadge="1명" class="Sever_MemberCount"></span>
+			  	<mat-option value="달빛천사썬가드" disabled>달빛천사썬가드</mat-option>
 		  	  </mat-optgroup>
 
 
@@ -83,7 +91,9 @@
 
 		<mat-selection-list [multiple]="false">
 		  <div mat-subheader><mat-icon mat-list-icon>account_circle</mat-icon> 길드원 메뉴</div>
+		  <mat-list-option (click)="UserMenu('EventNotice')"><mat-icon mat-list-icon>celebration</mat-icon><div mat-line>이벤트</div></mat-list-option>
 		  <mat-list-option selected (click)="UserMenu('WeekCalendar')"><mat-icon mat-list-icon>campaign</mat-icon><div mat-line>주간 캘린더</div></mat-list-option>
+		  <mat-list-option (click)="UserMenu('UserGuide')"><mat-icon mat-list-icon>help_outline</mat-icon><div mat-line>유저가이드</div></mat-list-option>
 
 
 		</mat-selection-list>
