@@ -18,7 +18,7 @@ export class CalendarAddButtonComponent implements OnInit {
    public Time: any;
    public Position: any;
    public Memo: any;
-	
+
     userid;
     Together_Ok = true;
     Together_user;
@@ -38,9 +38,9 @@ export class CalendarAddButtonComponent implements OnInit {
 
   ngOnInit(): void {
 
-	  
 
-	  
+
+
 	  if(this.data.Together_user != undefined){
 		  $(".Together_Ok").addClass("false")
 		  this.Together_Ok = false;
@@ -49,13 +49,11 @@ export class CalendarAddButtonComponent implements OnInit {
 		  this.Together_UserList = this.data.Together_UserList
 		  this.Together_UserList_Raid = this.data.Together_UserList_Raid
 		  this.Together_UserList_Time = this.data.Together_UserList['출발시간대']
-          		  
-		  console.log(this.Raid);
 	  }
 
 
 
-    
+
 
 
      this.userid = this.route.snapshot.queryParamMap.get("id");
@@ -63,7 +61,7 @@ export class CalendarAddButtonComponent implements OnInit {
 
   }
     Raid_Select(){
-        console.log(this.Raid);
+        // console.log(this.Raid);
 		if(this.Raid.length > 1){
 		  $(".Raid_Select .mat-select-value-text").text(this.Raid[0] + " 외 " + (this.Raid.length - 1) + " 개");
 		}
@@ -82,11 +80,11 @@ export class CalendarAddButtonComponent implements OnInit {
   async save() {
 
     this.Raid_Build = false;
-    
+
       if(this.data.Together_user != undefined){
- 
+
             if(this.Party == undefined || this.Position == undefined){
-                console.log("b")
+                // console.log("b")
                 window.alert('선택하지 않은 필드가 존재합니다.\n메모를 제외한 모든 필드를 입력해주세요.');
             }
             else{
@@ -95,12 +93,12 @@ export class CalendarAddButtonComponent implements OnInit {
                 this.Time = this.Together_UserList_Time;
                 this.bottomSheetRef.dismiss();
                 }
-          
+
       }
       else{
       if (this.Day == undefined || this.Party == undefined || this.Raid == undefined || this.Time == undefined || this.Position == undefined) {
-            window.alert('선택하지 않은 필드가 존재합니다.\n메모를 제외한 모든 필드를 입력해주세요.');      
-      
+            window.alert('선택하지 않은 필드가 존재합니다.\n메모를 제외한 모든 필드를 입력해주세요.');
+
         }
 
         else {
@@ -108,7 +106,7 @@ export class CalendarAddButtonComponent implements OnInit {
       const docRef = doc(this.firestore, this.Day, "레이드");
       const docSnap = await getDoc(docRef);
 /*
-      console.log(docSnap.data());
+      // console.log(docSnap.data());
 */
 
       var raidData: any = docSnap.data();
@@ -137,7 +135,7 @@ export class CalendarAddButtonComponent implements OnInit {
       this.Raid.forEach(async selectRaidData => {
         var index;
 
-//       console.log(selectRaidData);
+//       // console.log(selectRaidData);
 
         var GeneralUserList: any = [];
         var NormalUserList: any = [];
@@ -148,7 +146,7 @@ export class CalendarAddButtonComponent implements OnInit {
 
           if (raidData["일반"].length == 0) {
 
-//            console.log("새로생성");
+//            // console.log("새로생성");
 
             GeneralUserList.push(scheduleData);
             var resultData = {
@@ -163,7 +161,7 @@ export class CalendarAddButtonComponent implements OnInit {
 
               if(element["레이드이름"].indexOf(selectRaidData) != -1) {
 
-//                console.log(element["레이드이름"]);
+//                // console.log(element["레이드이름"]);
 
 
                 sameRiad = true;
@@ -175,7 +173,7 @@ export class CalendarAddButtonComponent implements OnInit {
 
               //새로생성
 
-//              console.log("새로생성");
+//              // console.log("새로생성");
 
               GeneralUserList.push(scheduleData);
               var resultData = {
@@ -186,8 +184,8 @@ export class CalendarAddButtonComponent implements OnInit {
             } else {
 
               //추가
-//              console.log("추가");
-//              console.log(index);
+//              // console.log("추가");
+//              // console.log(index);
 
 
               GeneralArray.splice(index,1);
@@ -200,7 +198,7 @@ export class CalendarAddButtonComponent implements OnInit {
             }
           }
 
-//            console.log(GeneralArray);
+//            // console.log(GeneralArray);
 
 
 
@@ -209,7 +207,7 @@ export class CalendarAddButtonComponent implements OnInit {
           else if (selectRaidData.indexOf("[노말]") != -1) {
               if (raidData["노말"].length == 0) {
 
-//            console.log("새로생성");
+//            // console.log("새로생성");
 
             NormalUserList.push(scheduleData);
             var resultData = {
@@ -224,7 +222,7 @@ export class CalendarAddButtonComponent implements OnInit {
 
               if(element["레이드이름"].indexOf(selectRaidData) != -1) {
 
-//                console.log(element["레이드이름"]);
+//                // console.log(element["레이드이름"]);
 
 
                 sameRiad = true;
@@ -236,7 +234,7 @@ export class CalendarAddButtonComponent implements OnInit {
 
               //새로생성
 
-//              console.log("새로생성");
+//              // console.log("새로생성");
 
               NormalUserList.push(scheduleData);
               var resultData = {
@@ -247,8 +245,8 @@ export class CalendarAddButtonComponent implements OnInit {
             } else {
 
               //추가
-//              console.log("추가");
-//              console.log(index);
+//              // console.log("추가");
+//              // console.log(index);
 
 
               NormalArray.splice(index,1);
@@ -261,14 +259,14 @@ export class CalendarAddButtonComponent implements OnInit {
             }
           }
 
-//            console.log(NormalArray);
+//            // console.log(NormalArray);
 
 
         }
           else if (selectRaidData.indexOf("[하드]") != -1) {
               if (raidData["하드"].length == 0) {
 
-//            console.log("새로생성");
+//            // console.log("새로생성");
 
             HardUserList.push(scheduleData);
             var resultData = {
@@ -283,7 +281,7 @@ export class CalendarAddButtonComponent implements OnInit {
 
               if(element["레이드이름"].indexOf(selectRaidData) != -1) {
 
-//                console.log(element["레이드이름"]);
+//                // console.log(element["레이드이름"]);
 
 
                 sameRiad = true;
@@ -295,7 +293,7 @@ export class CalendarAddButtonComponent implements OnInit {
 
               //새로생성
 
-//              console.log("새로생성");
+//              // console.log("새로생성");
 
               HardUserList.push(scheduleData);
               var resultData = {
@@ -306,8 +304,8 @@ export class CalendarAddButtonComponent implements OnInit {
             } else {
 
               //추가
-//              console.log("추가");
-//              console.log(index);
+//              // console.log("추가");
+//              // console.log(index);
 
 
               HardArray.splice(index,1);
@@ -320,14 +318,14 @@ export class CalendarAddButtonComponent implements OnInit {
             }
           }
 
-//            console.log(HardArray);
+//            // console.log(HardArray);
 
 
         }
           else if (selectRaidData.indexOf("[기타]") != -1) {
              if (raidData["기타"].length == 0) {
 
-//            console.log("새로생성");
+//            // console.log("새로생성");
 
             EtcUserList.push(scheduleData);
             var resultData = {
@@ -342,7 +340,7 @@ export class CalendarAddButtonComponent implements OnInit {
 
               if(element["레이드이름"].indexOf(selectRaidData) != -1) {
 
-//                console.log(element["레이드이름"]);
+//                // console.log(element["레이드이름"]);
 
 
                 sameRiad = true;
@@ -354,7 +352,7 @@ export class CalendarAddButtonComponent implements OnInit {
 
               //새로생성
 
-//              console.log("새로생성");
+//              // console.log("새로생성");
 
               EtcUserList.push(scheduleData);
               var resultData = {
@@ -365,8 +363,8 @@ export class CalendarAddButtonComponent implements OnInit {
             } else {
 
               //추가
-//              console.log("추가");
-//              console.log(index);
+//              // console.log("추가");
+//              // console.log(index);
 
 
               EtcArray.splice(index,1);
@@ -379,7 +377,7 @@ export class CalendarAddButtonComponent implements OnInit {
             }
           }
 
-//            console.log(EtcArray);
+//            // console.log(EtcArray);
 
 
         }
@@ -397,7 +395,7 @@ export class CalendarAddButtonComponent implements OnInit {
 
           });
             this.Raid_Build = true;
-//            console.log("빌드 완료");
+//            // console.log("빌드 완료");
 
           }
 
@@ -420,7 +418,7 @@ export class CalendarAddButtonComponent implements OnInit {
 
 
 
-      }   
+      }
 
 
 

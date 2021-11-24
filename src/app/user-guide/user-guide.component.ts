@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-user-guide',
@@ -9,11 +12,15 @@ import { ActivatedRoute } from '@angular/router';
 export class UserGuideComponent implements OnInit {
 
   userid;
+
   constructor(
-	private route: ActivatedRoute,
-	) { }
+
+    private route: ActivatedRoute,
+
+  ) { }
 
   ngOnInit(): void {
+
 	  this.userid = this.route.snapshot.queryParamMap.get("id");
   }
 

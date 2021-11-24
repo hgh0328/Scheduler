@@ -3,8 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TestpageComponent } from './testpage/testpage.component';
-import { UserGuideComponent } from './user-guide/user-guide.component';
+
 
 // Angular Meterial
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -31,8 +30,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatTabGroupGestureModule } from '@angular-material-gesture/mat-tab-group-gesture';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
-import { EventNoticeComponent } from './event-notice/event-notice.component';
-import { UserQnAComponent } from './user-qn-a/user-qn-a.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 /*CDK Module*/
 import {TextFieldModule} from '@angular/cdk/text-field';
@@ -48,8 +46,13 @@ import { StoreEffects } from './store/effects/effect'
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 
 /*페이지*/
+import { TestpageComponent } from './testpage/testpage.component';
 import { WeekCalendarComponent } from './week-calendar/week-calendar.component';
 import { CalendarAddButtonComponent } from './calendar-add-button/calendar-add-button.component';
+import { EventNoticeComponent } from './event-notice/event-notice.component';
+import { UserQnAComponent } from './user-qn-a/user-qn-a.component';
+import { UserGuideComponent } from './user-guide/user-guide.component';
+import { UserGuideModalComponent } from './user-guide-modal/user-guide-modal.component';
 
 // firebase 관련
 import { environment } from 'src/environments/environment';
@@ -58,6 +61,7 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { getAnalytics, provideAnalytics } from '@angular/fire/analytics';
+
 
 
 
@@ -71,6 +75,7 @@ import { getAnalytics, provideAnalytics } from '@angular/fire/analytics';
     UserGuideComponent,
     EventNoticeComponent,
     UserQnAComponent,
+    UserGuideModalComponent,
 
   ],
   imports: [
@@ -106,6 +111,7 @@ import { getAnalytics, provideAnalytics } from '@angular/fire/analytics';
     MatNativeDateModule,
     MatDatepickerModule,
     MatBadgeModule,
+    MatDialogModule,
 	MatProgressBarModule,
     StoreModule.forRoot(reducers, {
       metaReducers,

@@ -75,7 +75,7 @@ export class WeekCalendarComponent implements OnInit {
       if(this.Day_Label == '수요일'){
 
           if(!this.Raid_Reset){
-              console.log("a");
+              // console.log("a");
 
           }
           this.Day_Tab_selected = 0

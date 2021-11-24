@@ -332,6 +332,17 @@ button.mat-stroked-button.RedBtn:hover{background-color: var(--red-color); color
 .GuideBox {position: relative; width: 100%;  height: calc(100vh - 64px - 70px - 48px); overflow: auto; background: var(--main-font-color);}
 .GuideBox img{position: relative; width: 600px; margin: 0 auto; display: block;  margin-top: 8vh;}
 .User_Qna .mat-expansion-panel-body{border-bottom: 1px solid var(--sub-font-color)}
+.User_Qna p{white-space: pre-wrap; }
+
+.UserGuide_Dialog .mat-dialog-container{padding: 0;}
+.UserGuide_Dialog h3{width: 100%; padding: 0 10px; height: 50px; line-height: 50px; font-size: 14px; background: var(--main-color); color: #fff; font-weight: 500; position: relative;}
+.UserGuide_Dialog h3 mat-icon{position: absolute; right: 0; top: 0; height: 50px !important; line-height: 50px !important; font-size: 20px; margin-right: 10px;}
+.UserGuide_Dialog p{width: 100%; padding: 0 15px; height: 50px; line-height: 50px; font-size: 14px; color: #666;}
+.UserGuide_Modal_Box{height: auto; width: 100%; background: var(--main-font-color);}
+.UserGuide_Modal_Box .GuideModalBox {position: relative; width: 100%;  height:auto; overflow: auto; background: var(--main-font-color);}
+.UserGuide_Modal_Box .mat-tab-body-wrapper{height: auto; width: 100%; background: var(--main-font-color);}
+.UserGuide_Modal_Box .GuideModalBox img{position: relative; width: 600px; padding: 16px; margin: 0 auto; display: block;  margin-top: 2vh; margin-bottom: 2vh;}
+
 
 @media screen and (max-width: 1024px) {
     .jhlostark{top: 93px;}
