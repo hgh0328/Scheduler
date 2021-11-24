@@ -128,42 +128,42 @@ export class WeekCalendarComponent implements OnInit {
 				
 				this.AllRaidList.push(docdata[level]);
 				
-				   this.RaidList = docdata[level];					
-                    this.RaidList.forEach(item => {
-					  var TogeterarrayList:any = item['참가자리스트']
-					  var TogerUser_to_String:any = "";
-					  var MeberList:any = [];
-                      var Check_By_Togeter = false
-                      var To_Id = '';
-                      var From_Id = '';
-                        TogeterarrayList.forEach((MeberList,i) => {						  
-						  if(MeberList['아이디'].indexOf(",") > -1){
-							  this.TogeterUserList = MeberList['아이디'].split(','); 
-                              this.Together_Member = this.TogeterUserList[0]
-                        this.Together_From_Member = this.TogeterUserList[1]
-                               console.log("주인" + this.Together_Member)
-                              console.log("참여자" + this.Together_From_Member)
-                               console.log(Check_By_Togeter)
+// 				   this.RaidList = docdata[level];					
+//                     this.RaidList.forEach(item => {
+// 					  var TogeterarrayList:any = item['참가자리스트']
+// 					  var TogerUser_to_String:any = "";
+// 					  var MeberList:any = [];
+//                       var Check_By_Togeter = false
+//                       var To_Id = '';
+//                       var From_Id = '';
+//                         TogeterarrayList.forEach((MeberList,i) => {						  
+// 						  if(MeberList['아이디'].indexOf(",") > -1){
+// 							  this.TogeterUserList = MeberList['아이디'].split(','); 
+//                               this.Together_Member = this.TogeterUserList[0]
+//                         this.Together_From_Member = this.TogeterUserList[1]
+//                                console.log("주인" + this.Together_Member)
+//                               console.log("참여자" + this.Together_From_Member)
+//                                console.log(Check_By_Togeter)
                               
                               
 
-                          }
-                        });                        
+//                           }
+//                         });                        
                         
-                        if(this.Together_Member != undefined && this.Together_From_Member != undefined){
-                              console.log("주인" + this.Together_Member)
-                              console.log("참여자" + this.Together_From_Member)
-                              console.log(Check_By_Togeter)
-                              Check_By_Togeter = true;
-//                              this.Together_Check = Check_By_Togeter;//                            
+//                         if(this.Together_Member != undefined && this.Together_From_Member != undefined){
+//                               console.log("주인" + this.Together_Member)
+//                               console.log("참여자" + this.Together_From_Member)
+//                               console.log(Check_By_Togeter)
+//                               Check_By_Togeter = true;
+// //                              this.Together_Check = Check_By_Togeter;//                            
                             
-                        }
+//                         }
                         
 
 				
 				  
 
-				});
+// 				});
 
 
 				});
@@ -213,30 +213,30 @@ export class WeekCalendarComponent implements OnInit {
 			All_level.forEach((level)=>{
 			this.AllRaidList.push(docdata[level]);
                 this.RaidList = docdata[level];					
-                    this.RaidList.forEach(item => {
-					  var TogeterarrayList:any = item['참가자리스트']
-					  var TogerUser_to_String:any = "";
-					  var MeberList:any = [];
-                        TogeterarrayList.forEach((MeberList,i) => {						  
-						  if(MeberList['아이디'].indexOf(",") > -1){
-							  this.TogeterUserList = MeberList['아이디'].split(',');	
-                              this.Together_Member = this.TogeterUserList[0]
-                              this.Together_From_Member = this.TogeterUserList[1]
-//                              console.log(this.TogeterUserList)
+//                     this.RaidList.forEach(item => {
+// 					  var TogeterarrayList:any = item['참가자리스트']
+// 					  var TogerUser_to_String:any = "";
+// 					  var MeberList:any = [];
+//                         TogeterarrayList.forEach((MeberList,i) => {						  
+// 						  if(MeberList['아이디'].indexOf(",") > -1){
+// 							  this.TogeterUserList = MeberList['아이디'].split(',');	
+//                               this.Together_Member = this.TogeterUserList[0]
+//                               this.Together_From_Member = this.TogeterUserList[1]
+// //                              console.log(this.TogeterUserList)
                               							  
-						  }                
+// 						  }                
 
 
-					  });
-                        this.Together_Member = this.TogeterUserList[0]
-                              this.Together_From_Member = this.TogeterUserList[1]
-                              console.log("주인" + this.Together_Member)
-                              console.log("참여자" + this.Together_From_Member)
+// 					  });
+//                         this.Together_Member = this.TogeterUserList[0]
+//                               this.Together_From_Member = this.TogeterUserList[1]
+//                               console.log("주인" + this.Together_Member)
+//                               console.log("참여자" + this.Together_From_Member)
 
 				
 				  
 
-				});
+// 				});
 			})
 			  });
 
