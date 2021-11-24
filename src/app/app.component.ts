@@ -39,13 +39,17 @@ export class AppComponent {
 	ngOnInit(): void {
 
 
-      if(window.location.href.indexOf("id") != -1){
+
+    if (window.location.href.indexOf("id") != -1) {
+      this.IdText = this.route.snapshot.queryParamMap.get("id");
         this.login =true
         $(".Main_PanelBox").fadeIn(300);
       }
-        else{
+          else{
         this.login = false;
-
+        $(".Main_PanelBox").fadeOut(300);
+      this.router.navigate(['/']);
+      window.alert("로그인을 다시 시도해 주세요.");
       }
     }
 
@@ -74,7 +78,7 @@ export class AppComponent {
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
 			window.alert(this.IdText + "님 환영합니다.\n환상의 나라 에~버~랜드");
-		}		
+		}
 
 		/*블군자 블래스터*/
 		else if(this.IdText == "블군자" && this.PasswordText == "363652"){
@@ -169,8 +173,8 @@ export class AppComponent {
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
 			window.alert(this.IdText + "님 환영합니다.\n코리안 여포 반가워요.");
-		} 
-        
+		}
+
         /*아만섭*/
 		/*나긋하 바드*/
 		else if(this.IdText == "나긋하" && this.PasswordText == "3161017"){
@@ -179,7 +183,7 @@ export class AppComponent {
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
 			window.alert(this.IdText + "님 환영합니다.\n군장 검사 행정 보급관");
 		}
-		
+
 		/*야이빙충아 아르카나*/
 		else if(this.IdText == "야이빙충아" && this.PasswordText == "5749"){
 			$(".Login_Box").fadeOut(500);
@@ -187,7 +191,7 @@ export class AppComponent {
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
 			window.alert(this.IdText + "님 환영합니다.");
 		}
-		
+
 		/*이밴절리스타 블래스터(아브렐슈드)*/
 		else if(this.IdText == "이밴절리스타" && this.PasswordText == "0704"){
 			$(".Login_Box").fadeOut(500);
@@ -195,8 +199,8 @@ export class AppComponent {
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
 			window.alert(this.IdText + "님 환영합니다.");
 		}
-        
-        /*휴면계정*/        
+
+        /*휴면계정*/
         /*달빛천사썬가드 소서리스*/
 		else if(this.IdText == "달빛천사썬가드" && this.PasswordText == "90909"){
 			$(".Login_Box").fadeOut(500);
@@ -225,17 +229,24 @@ export class AppComponent {
 	}
 
 	UserMenu(MenuName: string){
-		if(MenuName == "WeekCalendar"){
+    if (MenuName == "WeekCalendar") {
+      this.IdText = this.route.snapshot.queryParamMap.get("id");
         this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-
 		$(".mat-drawer-backdrop").click();
 		}
-        else if(MenuName == 'UserGuide'){
+    else if (MenuName == 'UserGuide') {
+      this.IdText = this.route.snapshot.queryParamMap.get("id");
             this.router.navigate(['/UserGuide'],{queryParams:{id:this.IdText}});
             $(".mat-drawer-backdrop").click();
         }
-         else if(MenuName == 'EventNotice'){
+    else if (MenuName == 'EventNotice') {
+      this.IdText = this.route.snapshot.queryParamMap.get("id");
             this.router.navigate(['/EventNotice'],{queryParams:{id:this.IdText}});
+            $(".mat-drawer-backdrop").click();
+        }
+    else if (MenuName == 'UserQnA') {
+      this.IdText = this.route.snapshot.queryParamMap.get("id");
+            this.router.navigate(['/UserQnA'],{queryParams:{id:this.IdText}});
             $(".mat-drawer-backdrop").click();
         }
 	}

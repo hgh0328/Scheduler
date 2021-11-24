@@ -32,6 +32,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatTabGroupGestureModule } from '@angular-material-gesture/mat-tab-group-gesture';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { EventNoticeComponent } from './event-notice/event-notice.component';
+import { UserQnAComponent } from './user-qn-a/user-qn-a.component';
 
 /*CDK Module*/
 import {TextFieldModule} from '@angular/cdk/text-field';
@@ -60,6 +61,7 @@ import { getAnalytics, provideAnalytics } from '@angular/fire/analytics';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,6 +70,7 @@ import { getAnalytics, provideAnalytics } from '@angular/fire/analytics';
     CalendarAddButtonComponent,
     UserGuideComponent,
     EventNoticeComponent,
+    UserQnAComponent,
 
   ],
   imports: [

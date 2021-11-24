@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import * as $ from 'jquery';
 
 @Component({
@@ -10,14 +11,18 @@ import * as $ from 'jquery';
 
 export class TestpageComponent implements OnInit {
   mococo = 0;
+  userid;
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+  ) { }
 
   ngOnInit(): void {
+    this.userid = this.route.snapshot.queryParamMap.get("id");
 
 
-	setInterval(() => {    
-	  
+	setInterval(() => {
+
     if (this.mococo == 100) {
 	  $(".Event_Progress .mat-progress-bar-fill").addClass("done")
 	  $(".Event_Result").fadeIn()

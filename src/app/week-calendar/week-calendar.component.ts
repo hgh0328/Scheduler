@@ -53,7 +53,8 @@ export class WeekCalendarComponent implements OnInit {
 
 
   ngOnInit() {
-      
+    this.userid = this.route.snapshot.queryParamMap.get("id");
+
       /*레이드 리셋*/
       this.Raid_Reset = true;
 
@@ -66,13 +67,13 @@ export class WeekCalendarComponent implements OnInit {
           var TodayLabel = week[today];
           return TodayLabel;
       }
-      
+
 
       /*초기값*/
       this.Level_Menu = "전체";
       this.Day_Label = TodayLabel();
       if(this.Day_Label == '수요일'){
-          
+
           if(!this.Raid_Reset){
               console.log("a");
 
@@ -229,13 +230,13 @@ export class WeekCalendarComponent implements OnInit {
           }
             }).afterDismissed().subscribe((result) => {
 
-            
+
     });
 
     }
 
   menuClcik(index, id, date, difficulty, RaidIndex, RaidList, AllRaidIndex, AllRaidList,UserList) {
-	  
+
 	  this.Together_UserList = UserList;
       this.userid = this.route.snapshot.queryParamMap.get("id")
       this.menuIndex = index;
@@ -270,7 +271,7 @@ export class WeekCalendarComponent implements OnInit {
 		this.MenuName = this.menuDifficulty
       }
 
-	  
+
 
     this.Together_userID = this.menuId;
 
@@ -398,7 +399,7 @@ export class WeekCalendarComponent implements OnInit {
 
 				});
 						});
-		  
+
 	  }
 
     }
