@@ -225,6 +225,18 @@ export class AppComponent {
 		else if(this.IdText == "K여포" && this.PasswordText != "99000"){
 			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
 		}
+        
+        /*노마블러드워 홀리나이트*/
+		else if(this.IdText == "노마블러드워" && this.PasswordText == "0225"){
+			$(".Login_Box").fadeOut(500);
+			$(".Main_PanelBox").fadeIn(300);
+			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+			window.alert(this.IdText + "님 환영합니다.\n서폿은 귀족입니다.");
+		}
+		else if(this.IdText == "노마블러드워" && this.PasswordText != "0225"){
+			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
+		}
+        
 
         /*아만섭*/
 		/*나긋하 바드*/
