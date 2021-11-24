@@ -41,7 +41,7 @@ box-sizing:border-box; cursor: default;-ms-user-select: none;
 -khtml-user-select: none;
 user-select: none; ; font-size: 12px; font-family:'NotoSansKR' !important;}
 input[type = "text"]{cursor: text; user-select: text;}
-input.mat-input-element{cursor: text; user-select: text; transform: scale(0.75); transform-origin: left center; font-size: 16px;}
+input.mat-input-element{cursor: text; user-select: text; transform: scale(0.75); transform-origin: left center; font-size: 16px; color: var(--sub-font-color)}
 button{cursor: pointer; }
 a { color:inherit; text-decoration: none ; }
 img { border:none; max-width:100% }
@@ -194,7 +194,7 @@ button.mat-stroked-button.RedBtn:hover{background-color: var(--red-color); color
 
 .Main_Menu .mat-list-option{border-bottom: 1px solid var(--sub-whitefont-color);}
 .Main_Menu .mat-list-option mat-icon{color: var(--sub-font-color); transition: .3s; font-size: 21px !important;}
-.Main_Menu mat-list-option .mat-list-text{color: var(--main-font-color); transition: .3s; font-size: 14px; font-weight: 500;}
+.Main_Menu mat-list-option .mat-list-text{color: var(--sub-font-color); transition: .3s; font-size: 14px; font-weight: 500;}
 .Main_Menu .mat-list-option:hover mat-icon{color: var(--mainwhite-color);}
 .Main_Menu .mat-list-option:hover .mat-list-text{color: var(--mainwhite-color);}
 .Main_Menu .mat-list-single-selected-option mat-icon{color: var(--maindark-color);}
@@ -261,14 +261,18 @@ button.mat-stroked-button.RedBtn:hover{background-color: var(--red-color); color
 .Content_Panel mat-list-item:last-child{border-bottom: 0px solid var(--sub-whitefont-color);}
 .Content_Panel mat-accordion mat-expansion-panel mat-expansion-panel-header{transition: .3s;}
 .Content_Panel mat-accordion mat-expansion-panel mat-expansion-panel-header:hover{background: var(--subwhite-color) !important;}
-.Content_Panel mat-accordion mat-expansion-panel:nth-child(odd) mat-expansion-panel-header{background: var(--main-background-color);}
-.Content_Panel mat-accordion mat-expansion-panel:nth-child(even) mat-expansion-panel-header{background: var(--main-whitefont-color);}
+.Content_Panel mat-accordion.DefultRaid_List mat-expansion-panel:nth-child(odd) mat-expansion-panel-header{background: var(--main-background-color);}
+.Content_Panel mat-accordion.DefultRaid_List mat-expansion-panel:nth-child(even) mat-expansion-panel-header{background: var(--main-whitefont-color);}
 .Content_Panel mat-list-item:nth-child(odd){background: var(--main-background-color); }
 .Content_Panel mat-list-item:nth-child(even){background: var(--main-whitefont-color);}
+mat-accordion .All_RaidList:nth-child(odd) mat-expansion-panel:nth-child(odd) mat-expansion-panel-header{background: var(--main-background-color);}
+mat-accordion .All_RaidList:nth-child(odd) mat-expansion-panel:nth-child(even) mat-expansion-panel-header{background: var(--main-whitefont-color);}
+mat-accordion .All_RaidList:nth-child(even) mat-expansion-panel:nth-child(odd) mat-expansion-panel-header{background: var(--main-whitefont-color);}
+mat-accordion .All_RaidList:nth-child(even) mat-expansion-panel:nth-child(even) mat-expansion-panel-header{background: var(--main-background-color);}
 
 .Content_Panel .mat-expansion-panel{border-bottom: 1px solid var(--mainwhite-font-color); box-shadow: none;}
 .Content_Panel .mat-expansion-panel-spacing{margin: 0; border-radius: 0;}
-.Content_Panel .mat-expansion-panel-header{border-bottom: 1px solid var(--main-whitefont-color);}
+.Content_Panel .mat-expansion-panel-header{border-bottom: 1px solid var(--sub-whitefont-color);}
 .Content_Panel .mat-expansion-panel-header mat-panel-title{font-size: 14px; color: var(--sub-font-color); font-weight: 500;}
 .Content_Panel p{position: relative; height: 45px; line-height: 45px; font-size: 12px; width: 100%; color: var(--sub-font-color); border-bottom: 1px dashed var(--sub-whitefont-color);}
 .Calendar_List_Box p span{position: absolute; right: 4px; top: 0; height: 45px; line-height: 45px; font-size: 14px; color: var(--maindark-color);}
@@ -308,7 +312,7 @@ button.mat-stroked-button.RedBtn:hover{background-color: var(--red-color); color
 .Calendar_Edit_Box .Together_Ok.false{width: 50%;}
 .Calendar_Edit_Box .Together_Ok.false:nth-child(4){width: 100%;}
 
-.jhlostark{position: fixed; top: 101px; left: 27px; display: inline; width: 2px; height: 2px; background-color: transparent; z-index: 2; display: none;}
+.jhlostark{position: fixed; top: 98px; left: 24px; display: inline; width: 8px; height: 8px; background-color: transparent; z-index: 99; display: none;}
 .jhlostark.Opened{display: block;}
 .EventPage{width: 100%; height: calc(100vh - 64px); overflow: hidden; background: var(--main-font-color);}
 
@@ -345,7 +349,7 @@ button.mat-stroked-button.RedBtn:hover{background-color: var(--red-color); color
 
 
 @media screen and (max-width: 1024px) {
-    .jhlostark{top: 93px;}
+    .jhlostark{top: 90px;}
 	.EventPage{width: 100%; height: calc(100vh - 54px);}
 	.Event_Notcie{width: 100%; height: calc(100vh - 54px);}
 	.Event_Notcie img{height: calc(100vh - 54px);}

@@ -243,7 +243,7 @@ export class AppComponent {
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 환영합니다.\n로아 사랑꾼 ♥️❤");
+			window.alert(this.IdText + "님 환영합니다.\n로아 사랑꾼 ♥️ ❤");
 		}
 		else if(this.IdText == "야이빙충아" && this.PasswordText != "5749"){
 			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");

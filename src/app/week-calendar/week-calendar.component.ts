@@ -41,6 +41,7 @@ export class WeekCalendarComponent implements OnInit {
   Together_UserList;
   Together_Member;
   Raid_Fullname;
+  TogeterUserList;
 
   constructor(private MatBottomSheet: MatBottomSheet,
     private firestore: Firestore,
@@ -53,7 +54,20 @@ export class WeekCalendarComponent implements OnInit {
 
 
   ngOnInit() {
+
     this.userid = this.route.snapshot.queryParamMap.get("id");
+
+//    if (this.userid.indexOf(",") > -1) {
+//      console.log("aaaaaaaaa")
+//
+//    }
+//    else {
+//
+//
+//
+//    }
+
+
 
       /*레이드 리셋*/
       this.Raid_Reset = true;
@@ -108,12 +122,45 @@ export class WeekCalendarComponent implements OnInit {
 			var docdata: any;
 			docdata = doc.data();
 			this.AllRaidList = [];
-			this.positionUserList = [];
+			this.TogeterUserList = [];
+			  
 			All_level.forEach((level)=>{
+				
 				this.AllRaidList.push(docdata[level]);
+				
+				    this.RaidList = docdata[level];
+					
+                    this.RaidList.forEach(item => {
+					  var TogeterarrayList:any = item['참가자리스트']
+					  var TogerUser_to_String:any = "";
+					  var MeberList:any = []
+//					  var deal = 0;
+//					  var heal = 0;
+//					  var double = 0;
+//					  var test ;
+					  TogeterarrayList.forEach((MeberList,i) => {						  
+						  if(MeberList['아이디'].indexOf(",") > -1){
+							  this.TogeterUserList = MeberList['아이디'].split(',');							  
+							  console.log(this.TogeterUserList[0])
+							  this.menuId = this.TogeterUserList[0]
+							  console.log(this.menuId)
+
+							  
+						  }
+
+
+					  });
+
+				
+				  
+
+				});
+
+
+				});
+			
 			});
 
-    	});
 
 
 
@@ -236,11 +283,19 @@ export class WeekCalendarComponent implements OnInit {
     }
 
   menuClcik(index, id, date, difficulty, RaidIndex, RaidList, AllRaidIndex, AllRaidList,UserList) {
+	  
+	  if(this.menuId != ''){
+		  this.menuId = this.menuId
+	  }
+		 
+	  else{
+			this.menuId = id;
+	  }
 
 	  this.Together_UserList = UserList;
       this.userid = this.route.snapshot.queryParamMap.get("id")
       this.menuIndex = index;
-      this.menuId = id;
+
       this.menuDate = date;
       this.menuDifficulty = difficulty;
 	  this.menuRaidIndex = RaidIndex;
@@ -273,7 +328,7 @@ export class WeekCalendarComponent implements OnInit {
 
 
 
-    this.Together_userID = this.menuId;
+       this.Together_userID = this.menuId;
 
 
     }
