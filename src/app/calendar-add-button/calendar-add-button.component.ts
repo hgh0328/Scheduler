@@ -52,8 +52,8 @@ export class CalendarAddButtonComponent implements OnInit {
 		  this.Together_UserList = this.data.Together_UserList
 		  this.Together_UserList_Raid = this.data.Together_UserList_Raid
 		  this.Together_UserList_Time = this.data.Together_UserList['출발시간대']
-	      Together_MemberList.push(this.userid)
 	      Together_MemberList.push(this.Together_user)
+	      Together_MemberList.push(this.userid)
 	  	  this.Together_Member = Together_MemberList.toString()
 
 

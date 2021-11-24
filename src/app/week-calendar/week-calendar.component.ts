@@ -39,9 +39,12 @@ export class WeekCalendarComponent implements OnInit {
   RaidArray_Once;
   Together_userID;
   Together_UserList;
-  Together_Member;
   Raid_Fullname;
+    
   TogeterUserList;
+  Together_Member;
+  Together_From_Member
+  Together_Check;
 
   constructor(private MatBottomSheet: MatBottomSheet,
     private firestore: Firestore,
@@ -54,7 +57,8 @@ export class WeekCalendarComponent implements OnInit {
 
 
   ngOnInit() {
-
+    this.Together_Check = false;
+      
     this.userid = this.route.snapshot.queryParamMap.get("id");
 
 //    if (this.userid.indexOf(",") > -1) {
@@ -86,12 +90,8 @@ export class WeekCalendarComponent implements OnInit {
       /*초기값*/
       this.Level_Menu = "전체";
       this.Day_Label = TodayLabel();
+      
       if(this.Day_Label == '수요일'){
-
-          if(!this.Raid_Reset){
-              // console.log("a");
-
-          }
           this.Day_Tab_selected = 0
       }
       else if(this.Day_Label == '목요일'){
@@ -128,28 +128,37 @@ export class WeekCalendarComponent implements OnInit {
 				
 				this.AllRaidList.push(docdata[level]);
 				
-				    this.RaidList = docdata[level];
-					
+				   this.RaidList = docdata[level];					
                     this.RaidList.forEach(item => {
 					  var TogeterarrayList:any = item['참가자리스트']
 					  var TogerUser_to_String:any = "";
-					  var MeberList:any = []
-//					  var deal = 0;
-//					  var heal = 0;
-//					  var double = 0;
-//					  var test ;
-					  TogeterarrayList.forEach((MeberList,i) => {						  
+					  var MeberList:any = [];
+                      var Check_By_Togeter = false
+                      var To_Id = '';
+                      var From_Id = '';
+                        TogeterarrayList.forEach((MeberList,i) => {						  
 						  if(MeberList['아이디'].indexOf(",") > -1){
-							  this.TogeterUserList = MeberList['아이디'].split(',');							  
-							  console.log(this.TogeterUserList[0])
-							  this.menuId = this.TogeterUserList[0]
-							  console.log(this.menuId)
+							  this.TogeterUserList = MeberList['아이디'].split(','); 
+                              this.Together_Member = this.TogeterUserList[0]
+                        this.Together_From_Member = this.TogeterUserList[1]
+                               console.log("주인" + this.Together_Member)
+                              console.log("참여자" + this.Together_From_Member)
+                               console.log(Check_By_Togeter)
+                              
+                              
 
-							  
-						  }
-
-
-					  });
+                          }
+                        });                        
+                        
+                        if(this.Together_Member != undefined && this.Together_From_Member != undefined){
+                              console.log("주인" + this.Together_Member)
+                              console.log("참여자" + this.Together_From_Member)
+                              console.log(Check_By_Togeter)
+                              Check_By_Togeter = true;
+//                              this.Together_Check = Check_By_Togeter;//                            
+                            
+                        }
+                        
 
 				
 				  
@@ -203,6 +212,31 @@ export class WeekCalendarComponent implements OnInit {
 			this.positionUserList = [];
 			All_level.forEach((level)=>{
 			this.AllRaidList.push(docdata[level]);
+                this.RaidList = docdata[level];					
+                    this.RaidList.forEach(item => {
+					  var TogeterarrayList:any = item['참가자리스트']
+					  var TogerUser_to_String:any = "";
+					  var MeberList:any = [];
+                        TogeterarrayList.forEach((MeberList,i) => {						  
+						  if(MeberList['아이디'].indexOf(",") > -1){
+							  this.TogeterUserList = MeberList['아이디'].split(',');	
+                              this.Together_Member = this.TogeterUserList[0]
+                              this.Together_From_Member = this.TogeterUserList[1]
+//                              console.log(this.TogeterUserList)
+                              							  
+						  }                
+
+
+					  });
+                        this.Together_Member = this.TogeterUserList[0]
+                              this.Together_From_Member = this.TogeterUserList[1]
+                              console.log("주인" + this.Together_Member)
+                              console.log("참여자" + this.Together_From_Member)
+
+				
+				  
+
+				});
 			})
 			  });
 
@@ -283,15 +317,11 @@ export class WeekCalendarComponent implements OnInit {
     }
 
   menuClcik(index, id, date, difficulty, RaidIndex, RaidList, AllRaidIndex, AllRaidList,UserList) {
-	  
-	  if(this.menuId != ''){
-		  this.menuId = this.menuId
-	  }
-		 
-	  else{
-			this.menuId = id;
-	  }
-
+      
+      console.log(this.Together_Member)
+    console.log(this.Together_From_Member)
+      
+      this.menuId = id;
 	  this.Together_UserList = UserList;
       this.userid = this.route.snapshot.queryParamMap.get("id")
       this.menuIndex = index;
