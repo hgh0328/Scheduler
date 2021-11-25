@@ -295,7 +295,15 @@ export class WeekCalendarComponent implements OnInit {
 
   menuClcik(index, id, date, difficulty, RaidIndex, RaidList, AllRaidIndex, AllRaidList,UserList) {
       
-      
+      console.log(index)
+      console.log(id)
+      console.log(date)
+      console.log(difficulty)
+      console.log(RaidIndex)
+      console.log(RaidList)
+      console.log(AllRaidIndex)
+      console.log(AllRaidList)
+      console.log(UserList)
 
       
       this.menuId = id;
