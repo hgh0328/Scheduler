@@ -47,6 +47,8 @@ export class WeekCalendarComponent implements OnInit {
   Together_Member;
   Together_From_Member
   Together_Check;
+	
+  panelOpenState;
 
   constructor(private MatBottomSheet: MatBottomSheet,
     private firestore: Firestore,
@@ -60,6 +62,7 @@ export class WeekCalendarComponent implements OnInit {
 
   ngOnInit() {
 	  
+	this.panelOpenState = true;	  
     this.userid = this.route.snapshot.queryParamMap.get("id");
 
 //    if (this.userid.indexOf(",") > -1) {
@@ -460,7 +463,7 @@ export class WeekCalendarComponent implements OnInit {
     }
 
   menuClcik(index, id, date, difficulty, RaidIndex, RaidList, AllRaidIndex, AllRaidList,UserList) {
-	  console.log(id)
+
 
             
       this.menuId = id;
@@ -504,8 +507,7 @@ export class WeekCalendarComponent implements OnInit {
     }
     out(){
         if(this.menuId === this.userid){
-			console.log(this.menuId);
-			console.log(this.userid);
+
           window.alert(this.menuId + "님이 " + this.menuRaidList["레이드이름"] + "에서 나갔습니다.");
           this.outUser()
         }else{
@@ -537,7 +539,7 @@ export class WeekCalendarComponent implements OnInit {
               GeneralArray[this.menuRaidIndex]["참가자리스트"].splice(this.menuIndex,1);
               if(GeneralArray[this.menuRaidIndex]["참가자리스트"].length == 0){
                   GeneralArray.splice(this.menuRaidIndex,1);
-				  console.log(this.menuRaidIndex)
+
                 }
           }
 
@@ -766,5 +768,6 @@ export class WeekCalendarComponent implements OnInit {
 
 				}
 
+	  this.panelOpenState = false;
     }
 }

@@ -14,7 +14,7 @@
 						<mat-tab label="전체">
 							<mat-accordion>
 								<div *ngFor="let allitem of AllRaidList, let AllRaidIndex = index;" class="All_RaidList">
-									<mat-expansion-panel *ngFor="let item of allitem, let RaidIndex = index;">
+									<mat-expansion-panel *ngFor="let item of allitem, let RaidIndex = index;" (closed)="panelOpenState = false">
 										<mat-expansion-panel-header>
 											<mat-panel-title>
 												{{item["레이드이름"]}}
@@ -50,7 +50,7 @@
 
 						<mat-tab label="일반">
 							<mat-accordion class="DefultRaid_List">
-								<mat-expansion-panel *ngFor="let item of RaidList, let RaidIndex = index;">
+								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;" (closed)="panelOpenState = false">
 									<mat-expansion-panel-header>
 											<mat-panel-title>
 												{{item["레이드이름"]}}
@@ -84,7 +84,7 @@
 						</mat-tab>
 						<mat-tab label="노말">
 							<mat-accordion class="DefultRaid_List">
-								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
+								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;" (closed)="panelOpenState = false">
 									<mat-expansion-panel-header>
 											<mat-panel-title>
 												{{item["레이드이름"]}}
@@ -119,7 +119,7 @@
 						<mat-tab label="하드">
 							<mat-accordion class="DefultRaid_List">
 
-								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
+								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;" (closed)="panelOpenState = false">
 									<mat-expansion-panel-header>
 											<mat-panel-title>
 												{{item["레이드이름"]}}
@@ -154,7 +154,7 @@
 						<mat-tab label="기타">
 							<mat-accordion class="DefultRaid_List">
 
-								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
+								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;" (closed)="panelOpenState = false">
 									<mat-expansion-panel-header>
 											<mat-panel-title>
 												{{item["레이드이름"]}}
@@ -198,7 +198,7 @@
 						<mat-tab label="전체">
 							<mat-accordion>
 								<div *ngFor="let allitem of AllRaidList, let AllRaidIndex = index;" class="All_RaidList">
-									<mat-expansion-panel *ngFor="let item of allitem, let RaidIndex = index;">
+									<mat-expansion-panel *ngFor="let item of allitem, let RaidIndex = index;" (closed)="panelOpenState = false">
 										<mat-expansion-panel-header>
 											<mat-panel-title>
 												{{item["레이드이름"]}}
@@ -234,7 +234,7 @@
 
 						<mat-tab label="일반">
 							<mat-accordion class="DefultRaid_List">
-								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
+								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;" (closed)="panelOpenState = false">
 									<mat-expansion-panel-header>
 											<mat-panel-title>
 												{{item["레이드이름"]}}
@@ -267,7 +267,7 @@
 						</mat-tab>
 						<mat-tab label="노말">
 							<mat-accordion class="DefultRaid_List">
-								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
+								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;" (closed)="panelOpenState = false">
 									<mat-expansion-panel-header>
 											<mat-panel-title>
 												{{item["레이드이름"]}}
@@ -302,7 +302,7 @@
 						<mat-tab label="하드">
 							<mat-accordion class="DefultRaid_List">
 
-								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
+								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;" (closed)="panelOpenState = false">
 									<mat-expansion-panel-header>
 											<mat-panel-title>
 												{{item["레이드이름"]}}
@@ -337,7 +337,7 @@
 						<mat-tab label="기타">
 							<mat-accordion class="DefultRaid_List">
 
-								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
+								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;" (closed)="panelOpenState = false">
 									<mat-expansion-panel-header>
 											<mat-panel-title>
 												{{item["레이드이름"]}}
@@ -380,7 +380,7 @@
 						<mat-tab label="전체">
 							<mat-accordion>
 								<div *ngFor="let allitem of AllRaidList, let AllRaidIndex = index;" class="All_RaidList">
-									<mat-expansion-panel *ngFor="let item of allitem, let RaidIndex = index;">
+									<mat-expansion-panel *ngFor="let item of allitem, let RaidIndex = index;" (closed)="panelOpenState = false">
 										<mat-expansion-panel-header>
 											<mat-panel-title>
 												{{item["레이드이름"]}}
@@ -416,7 +416,7 @@
 
 						<mat-tab label="일반">
 							<mat-accordion class="DefultRaid_List">
-								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
+								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;" (closed)="panelOpenState = false">
 									<mat-expansion-panel-header>
 											<mat-panel-title>
 												{{item["레이드이름"]}}
@@ -449,7 +449,7 @@
 						</mat-tab>
 						<mat-tab label="노말">
 							<mat-accordion class="DefultRaid_List">
-								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
+								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;" (closed)="panelOpenState = false">
 									<mat-expansion-panel-header>
 											<mat-panel-title>
 												{{item["레이드이름"]}}
@@ -484,7 +484,7 @@
 						<mat-tab label="하드">
 							<mat-accordion class="DefultRaid_List">
 
-								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
+								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;" (closed)="panelOpenState = false">
 									<mat-expansion-panel-header>
 											<mat-panel-title>
 												{{item["레이드이름"]}}
@@ -519,7 +519,7 @@
 						<mat-tab label="기타">
 							<mat-accordion class="DefultRaid_List">
 
-								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
+								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;" (closed)="panelOpenState = false">
 									<mat-expansion-panel-header>
 											<mat-panel-title>
 												{{item["레이드이름"]}}
@@ -562,7 +562,7 @@
 						<mat-tab label="전체">
 							<mat-accordion>
 								<div *ngFor="let allitem of AllRaidList, let AllRaidIndex = index;" class="All_RaidList">
-									<mat-expansion-panel *ngFor="let item of allitem, let RaidIndex = index;">
+									<mat-expansion-panel *ngFor="let item of allitem, let RaidIndex = index;" (closed)="panelOpenState = false">
 										<mat-expansion-panel-header>
 											<mat-panel-title>
 												{{item["레이드이름"]}}
@@ -598,7 +598,7 @@
 
 						<mat-tab label="일반">
 							<mat-accordion class="DefultRaid_List">
-								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
+								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;" (closed)="panelOpenState = false">
 									<mat-expansion-panel-header>
 											<mat-panel-title>
 												{{item["레이드이름"]}}
@@ -631,7 +631,7 @@
 						</mat-tab>
 						<mat-tab label="노말">
 							<mat-accordion class="DefultRaid_List">
-								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
+								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;" (closed)="panelOpenState = false">
 									<mat-expansion-panel-header>
 											<mat-panel-title>
 												{{item["레이드이름"]}}
@@ -666,7 +666,7 @@
 						<mat-tab label="하드">
 							<mat-accordion class="DefultRaid_List">
 
-								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
+								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;" (closed)="panelOpenState = false">
 									<mat-expansion-panel-header>
 											<mat-panel-title>
 												{{item["레이드이름"]}}
@@ -701,7 +701,7 @@
 						<mat-tab label="기타">
 							<mat-accordion class="DefultRaid_List">
 
-								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
+								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;" (closed)="panelOpenState = false">
 									<mat-expansion-panel-header>
 											<mat-panel-title>
 												{{item["레이드이름"]}}
@@ -744,7 +744,7 @@
 						<mat-tab label="전체">
 							<mat-accordion>
 								<div *ngFor="let allitem of AllRaidList, let AllRaidIndex = index;" class="All_RaidList">
-									<mat-expansion-panel *ngFor="let item of allitem, let RaidIndex = index;">
+									<mat-expansion-panel *ngFor="let item of allitem, let RaidIndex = index;" (closed)="panelOpenState = false">
 										<mat-expansion-panel-header>
 											<mat-panel-title>
 												{{item["레이드이름"]}}
@@ -780,7 +780,7 @@
 
 						<mat-tab label="일반">
 							<mat-accordion class="DefultRaid_List">
-								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
+								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;" (closed)="panelOpenState = false">
 									<mat-expansion-panel-header>
 										<mat-panel-title>
 												{{item["레이드이름"]}}
@@ -813,7 +813,7 @@
 						</mat-tab>
 						<mat-tab label="노말">
 							<mat-accordion class="DefultRaid_List">
-								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
+								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;" (closed)="panelOpenState = false">
 									<mat-expansion-panel-header>
 										<mat-panel-title>
 												{{item["레이드이름"]}}
@@ -848,7 +848,7 @@
 						<mat-tab label="하드">
 							<mat-accordion class="DefultRaid_List">
 
-								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
+								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;" (closed)="panelOpenState = false">
 									<mat-expansion-panel-header>
 										<mat-panel-title>
 												{{item["레이드이름"]}}
@@ -883,7 +883,7 @@
 						<mat-tab label="기타">
 							<mat-accordion class="DefultRaid_List">
 
-								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
+								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;" (closed)="panelOpenState = false">
 									<mat-expansion-panel-header>
 										<mat-panel-title>
 												{{item["레이드이름"]}}
@@ -926,7 +926,7 @@
 						<mat-tab label="전체">
 							<mat-accordion>
 								<div *ngFor="let allitem of AllRaidList, let AllRaidIndex = index;" class="All_RaidList">
-									<mat-expansion-panel *ngFor="let item of allitem, let RaidIndex = index;">
+									<mat-expansion-panel *ngFor="let item of allitem, let RaidIndex = index;" (closed)="panelOpenState = false">
 										<mat-expansion-panel-header>
 											<mat-panel-title>
 												{{item["레이드이름"]}}
@@ -962,7 +962,7 @@
 
 						<mat-tab label="일반">
 							<mat-accordion class="DefultRaid_List">
-								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
+								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;" (closed)="panelOpenState = false">
 									<mat-expansion-panel-header>
 											<mat-panel-title>
 												{{item["레이드이름"]}}
@@ -995,7 +995,7 @@
 						</mat-tab>
 						<mat-tab label="노말">
 							<mat-accordion class="DefultRaid_List">
-								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
+								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;" (closed)="panelOpenState = false">
 									<mat-expansion-panel-header>
 											<mat-panel-title>
 												{{item["레이드이름"]}}
@@ -1030,7 +1030,7 @@
 						<mat-tab label="하드">
 							<mat-accordion class="DefultRaid_List">
 
-								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
+								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;" (closed)="panelOpenState = false">
 									<mat-expansion-panel-header>
 											<mat-panel-title>
 												{{item["레이드이름"]}}
@@ -1065,7 +1065,7 @@
 						<mat-tab label="기타">
 							<mat-accordion class="DefultRaid_List">
 
-								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
+								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;" (closed)="panelOpenState = false">
 									<mat-expansion-panel-header>
 											<mat-panel-title>
 												{{item["레이드이름"]}}
@@ -1108,7 +1108,7 @@
 						<mat-tab label="전체">
 							<mat-accordion>
 								<div *ngFor="let allitem of AllRaidList, let AllRaidIndex = index;" class="All_RaidList">
-									<mat-expansion-panel *ngFor="let item of allitem, let RaidIndex = index;">
+									<mat-expansion-panel *ngFor="let item of allitem, let RaidIndex = index;" (closed)="panelOpenState = false">
 										<mat-expansion-panel-header>
 											<mat-panel-title>
 												{{item["레이드이름"]}}
@@ -1144,7 +1144,7 @@
 
 						<mat-tab label="일반">
 							<mat-accordion class="DefultRaid_List">
-								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
+								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;" (closed)="panelOpenState = false">
 									<mat-expansion-panel-header>
 											<mat-panel-title>
 												{{item["레이드이름"]}}
@@ -1177,7 +1177,7 @@
 						</mat-tab>
 						<mat-tab label="노말">
 							<mat-accordion class="DefultRaid_List">
-								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
+								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;" (closed)="panelOpenState = false">
 									<mat-expansion-panel-header>
 											<mat-panel-title>
 												{{item["레이드이름"]}}
@@ -1212,7 +1212,7 @@
 						<mat-tab label="하드">
 							<mat-accordion class="DefultRaid_List">
 
-								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
+								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;" (closed)="panelOpenState = false">
 									<mat-expansion-panel-header>
 											<mat-panel-title>
 												{{item["레이드이름"]}}
@@ -1247,7 +1247,7 @@
 						<mat-tab label="기타">
 							<mat-accordion class="DefultRaid_List">
 
-								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
+								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;" (closed)="panelOpenState = false">
 									<mat-expansion-panel-header>
 											<mat-panel-title>
 												{{item["레이드이름"]}}
