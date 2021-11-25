@@ -213,30 +213,7 @@ export class WeekCalendarComponent implements OnInit {
 			All_level.forEach((level)=>{
 			this.AllRaidList.push(docdata[level]);
                 this.RaidList = docdata[level];					
-//                     this.RaidList.forEach(item => {
-// 					  var TogeterarrayList:any = item['참가자리스트']
-// 					  var TogerUser_to_String:any = "";
-// 					  var MeberList:any = [];
-//                         TogeterarrayList.forEach((MeberList,i) => {						  
-// 						  if(MeberList['아이디'].indexOf(",") > -1){
-// 							  this.TogeterUserList = MeberList['아이디'].split(',');	
-//                               this.Together_Member = this.TogeterUserList[0]
-//                               this.Together_From_Member = this.TogeterUserList[1]
-// //                              console.log(this.TogeterUserList)
-                              							  
-// 						  }                
 
-
-// 					  });
-//                         this.Together_Member = this.TogeterUserList[0]
-//                               this.Together_From_Member = this.TogeterUserList[1]
-//                               console.log("주인" + this.Together_Member)
-//                               console.log("참여자" + this.Together_From_Member)
-
-				
-				  
-
-// 				});
 			})
 			  });
 
@@ -322,9 +299,9 @@ export class WeekCalendarComponent implements OnInit {
 
       
       this.menuId = id;
+      this.menuIndex = index;
 	  this.Together_UserList = UserList;
       this.userid = this.route.snapshot.queryParamMap.get("id")
-      this.menuIndex = index;
 
       this.menuDate = date;
       this.menuDifficulty = difficulty;
@@ -357,7 +334,7 @@ export class WeekCalendarComponent implements OnInit {
       }
 
 
-console.log(this.menuId)
+	  console.log(this.menuId)
 	  console.log(this.menuIndex)
 //       this.Together_userID = this.menuId;
 
@@ -394,8 +371,7 @@ console.log(this.menuId)
             var EtcArray:any = raidData["기타"];
 
           if(this.menuDifficulty == "일반"){
-			  console.log(this.menuIndex)
-			  console.log(GeneralArray[this.menuRaidIndex]["참가자리스트"])
+
               GeneralArray[this.menuRaidIndex]["참가자리스트"].splice(this.menuIndex,1);
               if(GeneralArray[this.menuRaidIndex]["참가자리스트"].length == 0){
                   GeneralArray.splice(this.menuRaidIndex,1);
