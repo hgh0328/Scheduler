@@ -57,7 +57,6 @@ export class CalendarAddButtonComponent implements OnInit {
 	  	  this.Together_Member = Together_MemberList.toString()
 
 		  this.userid = this.Together_Member
-		  console.log(this.userid)
 
 	  }
 
@@ -103,9 +102,6 @@ export class CalendarAddButtonComponent implements OnInit {
 				this.Raid[0] = this.Together_UserList_Raid;
         this.Time = this.Together_UserList_Time.toString();
 
-        console.log(this.Day)
-        console.log(this.Raid[0])
-        console.log(this.Time)
 
         this.Raid_Build = false;
         const docRef = doc(this.firestore, this.Day, "레이드");
@@ -370,7 +366,7 @@ export class CalendarAddButtonComponent implements OnInit {
 
       });
 
-          console.log("빌드 완료");
+
 
           if(!this.Raid_Build){
            await setDoc(doc(this.firestore, this.Day, "레이드"), {
@@ -382,7 +378,7 @@ export class CalendarAddButtonComponent implements OnInit {
 
           });
             this.Raid_Build = true;
-            console.log("빌드 완료");
+
 
           }
 
@@ -391,10 +387,10 @@ export class CalendarAddButtonComponent implements OnInit {
     }, 1000);
 
           if(this.Raid.length > 1){
-		  window.alert(this.userid + "님 " + "[" + this.Day + "] 스케쥴\n" + this.Raid[0] + " 외 " + (this.Raid.length - 1) + "개의" + " 일정이 추가되었습니다.");
+  window.alert("[" + this.Day + "] 스케쥴\n" + this.Raid[0] + " 외 " + (this.Raid.length - 1) + "개의"  + "\n" +  this.data.Together_user + " 님과 일정이 추가되었습니다.");
 		 }
           else{
-			  window.alert(this.userid + "님 " + "[" + this.Day + "] 스케쥴\n" + this.Raid[0] + " 일정이 추가되었습니다.");
+			  window.alert("[" + this.Day + "] 스케쥴\n" + this.Raid[0] + "\n" +  this.data.Together_user + " 님과  일정이 추가되었습니다.");
           };
 		  $(".jhlostark").addClass("Opened");
       }

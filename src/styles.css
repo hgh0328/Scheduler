@@ -314,7 +314,7 @@ mat-accordion .All_RaidList:nth-child(even) mat-expansion-panel:nth-child(even) 
 .Calendar_Edit_Box .Together_Ok.false{width: 50%;}
 .Calendar_Edit_Box .Together_Ok.false:nth-child(4){width: 100%;}
 
-.jhlostark{position: fixed; top: 98px; left: 24px; display: inline; width: 8px; height: 8px; background-color: transparent; z-index: 99; _display: none;}
+.jhlostark{position: fixed; top: 98px; left: 24px; display: inline; width: 8px; height: 8px; background-color: transparent; z-index: 99;}
 .jhlostark.Opened{display: block;}
 .EventPage{width: 100%; height: calc(100vh - 64px); overflow: hidden; background: var(--main-font-color);}
 
