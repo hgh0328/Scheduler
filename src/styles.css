@@ -120,7 +120,7 @@ mat-bottom-sheet-container{background: var(--main-background-color) !important;}
 .mat-menu-panel{min-height: auto !important;}
 .mat-badge-content{background: var(--main-color);}
 .mat-tab-label.mat-tab-disabled .mat-tab-label-content{opacity: 0.5}
-
+.mat-menu-item[disabled]{opacity: 0.5}
 /*크롬 테두리 삭제*/
  *:focus {outline:none;}
 body,html{position: relative; width: 100%; height: auto; overflow: hidden;}
@@ -248,6 +248,10 @@ button.mat-stroked-button.RedBtn:hover{background-color: var(--red-color); color
 .Calendar_List_Box button:hover .mat-list-icon{color: var(--main-color);}
 .Calendar_List_Box_ID{font-size: 12px !important; color: var(--sub-font-color); font-weight: bold;}
 .Calendar_List_Box_Name{font-size: 10px !important; color: var(--sub-font-color);}
+
+.Calendar_List_Box .mat-list-base .mat-list-item .Calendar_List_Box_Together.mat-list-icon{flex-shrink: 0; min-width: 75px; width: 120px; padding: 0px; text-align: left; font-size: 10px; max-width: 120px; height: 49px; line-height: 50px; background: var(--main-color); border-radius: 0; border-bottom: 1px solid var(--sub-whitefont-color); color: var(--main-whitefont-color); font-weight: 500;}
+.Calendar_List_Box .mat-list-base .mat-list-item .Calendar_List_Box_Together.mat-list-icon .mat-icon{position: relative; top: 5px; margin-left: 5px; margin-right: 5px; font-size: 20px;}
+
 .Calendar_List_Box::-webkit-scrollbar{display: contents !important;}
 .Calendar_List_Box .mat-list-base{padding: 0;}
 .Content_Panel .mat-expansion-panel-header.mat-expanded{height: 48px;}
@@ -277,8 +281,6 @@ mat-accordion .All_RaidList:nth-child(even) mat-expansion-panel:nth-child(even) 
 .Content_Panel p{position: relative; height: 45px; line-height: 45px; font-size: 12px; width: 100%; color: var(--sub-font-color); border-bottom: 1px dashed var(--sub-whitefont-color);}
 .Calendar_List_Box p span{position: absolute; right: 4px; top: 0; height: 45px; line-height: 45px; font-size: 14px; color: var(--maindark-color);}
 .Calendar_List_Box p mat-icon{color: var(--sub-font-color); position: relative; top: 7px; margin-right: 5px;}
-
-
 
 .Calendar_AddButtonBox{width: calc(100% - 32px); margin: 0 auto; display: block; height: 50px; line-height: 50px; margin-bottom: 30px; margin-top: 30px;}
 .Calendar_AddButtonBox button{width: 100%;}
@@ -312,7 +314,7 @@ mat-accordion .All_RaidList:nth-child(even) mat-expansion-panel:nth-child(even) 
 .Calendar_Edit_Box .Together_Ok.false{width: 50%;}
 .Calendar_Edit_Box .Together_Ok.false:nth-child(4){width: 100%;}
 
-.jhlostark{position: fixed; top: 98px; left: 24px; display: inline; width: 8px; height: 8px; background-color: transparent; z-index: 99; display: none;}
+.jhlostark{position: fixed; top: 98px; left: 24px; display: inline; width: 8px; height: 8px; background-color: transparent; z-index: 99; _display: none;}
 .jhlostark.Opened{display: block;}
 .EventPage{width: 100%; height: calc(100vh - 64px); overflow: hidden; background: var(--main-font-color);}
 
@@ -346,7 +348,6 @@ mat-accordion .All_RaidList:nth-child(even) mat-expansion-panel:nth-child(even) 
 .UserGuide_Modal_Box .GuideModalBox {position: relative; width: 100%;  height:auto; overflow: auto; background: var(--main-font-color);}
 .UserGuide_Modal_Box .mat-tab-body-wrapper{height: auto; width: 100%; background: var(--main-font-color);}
 .UserGuide_Modal_Box .GuideModalBox img{position: relative; width: 600px; padding: 16px; margin: 0 auto; display: block;  margin-top: 2vh; margin-bottom: 2vh;}
-
 
 @media screen and (max-width: 1024px) {
     .jhlostark{top: 90px;}
@@ -384,6 +385,8 @@ mat-accordion .All_RaidList:nth-child(even) mat-expansion-panel:nth-child(even) 
 	.GuideBox img{width: 400px; margin-top: 18vh;}
 	.User_Qna .mat-expansion-panel-header mat-panel-title{font-size: 10px;}
 	.User_Qna .mat-expansion-panel-header-description{display: none}
+	.Calendar_List_Box .mat-list-base .mat-list-item .Calendar_List_Box_Together.mat-list-icon{width: 110px; font-size: 10px; text-align: center;}
+	.Calendar_List_Box .mat-list-base .mat-list-item .Calendar_List_Box_Together.mat-list-icon .mat-icon{font-size: 16px; width: 16px; height: 16px; top: 3px; margin-right: 2px; margin-left: 2px;}
 	
 
 
@@ -399,6 +402,8 @@ mat-accordion .All_RaidList:nth-child(even) mat-expansion-panel:nth-child(even) 
 	.User_Qna .mat-expansion-panel-header mat-panel-title{font-size: 10px;}
 	.User_Qna .mat-expansion-panel-header-description{display: none}
 	.User_Qna p{font-size: 11px;}
+	.Calendar_List_Box .mat-list-base .mat-list-item .Calendar_List_Box_Together.mat-list-icon{text-align: center}
+	.Calendar_List_Box .mat-list-base .mat-list-item .Calendar_List_Box_Together.mat-list-icon .mat-icon{display: none;}
 
 }
 
@@ -411,6 +416,31 @@ mat-accordion .All_RaidList:nth-child(even) mat-expansion-panel:nth-child(even) 
 
 	
 }
+
+/*아이디별 색상*/
+.Group_점화걸면정화{background: #6937a1 !important;}
+.Group_데둠미{background: #20569a !important;}
+.Group_펭난나{background: #008c4f !important;}
+.Group_블군자{background: #54a4e7 !important;}
+.Group_욕망군단장형아키스{background: #54e7d7 !important;}
+
+.Group_인조인간91호{background: #48af4f !important;}
+.Group_긴바나나{background: #a38817 !important;}
+.Group_똘렝{background: #d94f70 !important;}
+.Group_라즈베리단풍{background: #ed437f !important;}
+.Group_식끈박끈{background: #d17a33 !important;}
+
+.Group_신성범위{background: #dc4123 !important;}
+.Group_하얀활{background: #965251 !important;}
+.Group_HK278{background: #009472 !important;}
+.Group_뽀야마요{background: #b263a4 !important;}
+.Group_K여포{background: #f0c05a !important;}
+
+.Group_노마블러드워{background: #32a98e !important;}
+.Group_메르헨테루{background: #9b1b30 !important;}
+.Group_나긋하{background: #0f4c82 !important;}
+.Group_야이빙충아{background: #3232a9 !important;}
+.Group_이밴절리스타{background: #a9324c !important;}
 
 
 

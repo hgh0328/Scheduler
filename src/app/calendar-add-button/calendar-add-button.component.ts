@@ -56,10 +56,8 @@ export class CalendarAddButtonComponent implements OnInit {
 	      Together_MemberList.push(this.userid)
 	  	  this.Together_Member = Together_MemberList.toString()
 
-
-      // this.form_Together_Member = this.Together_Member.split(',');
-      this.userid = this.Together_Member
-      console.log(this.userid)
+		  this.userid = this.Together_Member
+		  console.log(this.userid)
 
 	  }
 

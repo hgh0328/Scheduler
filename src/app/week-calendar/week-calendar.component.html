@@ -18,10 +18,9 @@
 										<mat-expansion-panel-header>
 											<mat-panel-title>
 												{{item["레이드이름"]}}
-												
 											</mat-panel-title>
 											<mat-panel-description>
-												<em>{{positionUserList[RaidIndex]}}</em>
+												<em *ngIf="item['신청현황'] != undefined">{{item["신청현황"]}}</em>
 												<span>[{{item['참가자리스트']['length']}}명]</span>
 											</mat-panel-description>
 										</mat-expansion-panel-header>
@@ -29,12 +28,18 @@
 											<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
 										</p>
 										<mat-list>
-											<mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
+											    <mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
+				<div mat-list-icon class="Calendar_List_Box_Together Group_{{UserList['친구']}}" *ngIf="UserList['친구'] != undefined"><mat-icon>groups</mat-icon>{{UserList["친구"]}}</div>
 												<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
 												<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
-												<button mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+												<button *ngIf="UserList['친구'] != undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu_Together" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
 													<mat-icon mat-list-icon>more_vert</mat-icon>
 												</button>
+												
+												<button *ngIf="UserList['친구'] == undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
 											</mat-list-item>
 										</mat-list>
 
@@ -47,26 +52,32 @@
 							<mat-accordion class="DefultRaid_List">
 								<mat-expansion-panel *ngFor="let item of RaidList, let RaidIndex = index;">
 									<mat-expansion-panel-header>
-										<mat-panel-title>
-											{{item["레이드이름"]}}
-										</mat-panel-title>
-										<mat-panel-description>
-											<em>{{positionUserList[RaidIndex]}}</em>
-											<span>[{{item['참가자리스트']['length']}}명]</span>
-										</mat-panel-description>
-									</mat-expansion-panel-header>
-									<p>
-										<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
-									</p>
-									<mat-list>
-										<mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
-											<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
-											<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
-											<button mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
-												<mat-icon mat-list-icon>more_vert</mat-icon>
-											</button>
-										</mat-list-item>
-									</mat-list>
+											<mat-panel-title>
+												{{item["레이드이름"]}}
+											</mat-panel-title>
+											<mat-panel-description>
+												<em *ngIf="item['신청현황'] != undefined">{{item["신청현황"]}}</em>
+												<span>[{{item['참가자리스트']['length']}}명]</span>
+											</mat-panel-description>
+										</mat-expansion-panel-header>
+										<p>
+											<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
+										</p>
+										<mat-list>
+											    <mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
+				<div mat-list-icon class="Calendar_List_Box_Together Group_{{UserList['친구']}}" *ngIf="UserList['친구'] != undefined"><mat-icon>groups</mat-icon>{{UserList["친구"]}}</div>
+												<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
+												<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
+												<button *ngIf="UserList['친구'] != undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu_Together" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+												<button *ngIf="UserList['친구'] == undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+											</mat-list-item>
+										</mat-list>
 
 								</mat-expansion-panel>
 							</mat-accordion>
@@ -75,26 +86,32 @@
 							<mat-accordion class="DefultRaid_List">
 								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
 									<mat-expansion-panel-header>
-										<mat-panel-title>
-											{{item["레이드이름"]}}
-										</mat-panel-title>
-										<mat-panel-description>
-											<em>{{positionUserList[RaidIndex]}}</em>
-											<span>[{{item['참가자리스트']['length']}}명]</span>
-										</mat-panel-description>
-									</mat-expansion-panel-header>
-									<p>
-										<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
-									</p>
-									<mat-list>
-										<mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
-											<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
-											<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
-											<button mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
-												<mat-icon mat-list-icon>more_vert</mat-icon>
-											</button>
-										</mat-list-item>
-									</mat-list>
+											<mat-panel-title>
+												{{item["레이드이름"]}}
+											</mat-panel-title>
+											<mat-panel-description>
+												<em *ngIf="item['신청현황'] != undefined">{{item["신청현황"]}}</em>
+												<span>[{{item['참가자리스트']['length']}}명]</span>
+											</mat-panel-description>
+										</mat-expansion-panel-header>
+										<p>
+											<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
+										</p>
+										<mat-list>
+											    <mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
+				<div mat-list-icon class="Calendar_List_Box_Together Group_{{UserList['친구']}}" *ngIf="UserList['친구'] != undefined"><mat-icon>groups</mat-icon>{{UserList["친구"]}}</div>
+												<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
+												<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
+												<button *ngIf="UserList['친구'] != undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu_Together" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+												<button *ngIf="UserList['친구'] == undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+											</mat-list-item>
+										</mat-list>
 								</mat-expansion-panel>
 
 							</mat-accordion>
@@ -104,26 +121,32 @@
 
 								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
 									<mat-expansion-panel-header>
-										<mat-panel-title>
-											{{item["레이드이름"]}}
-										</mat-panel-title>
-										<mat-panel-description>
-											<em>{{positionUserList[RaidIndex]}}</em>
-											<span>[{{item['참가자리스트']['length']}}명]</span>
-										</mat-panel-description>
-									</mat-expansion-panel-header>
-									<p>
-										<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
-									</p>
-									<mat-list>
-										<mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
-											<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
-											<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
-											<button mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
-												<mat-icon mat-list-icon>more_vert</mat-icon>
-											</button>
-										</mat-list-item>
-									</mat-list>
+											<mat-panel-title>
+												{{item["레이드이름"]}}
+											</mat-panel-title>
+											<mat-panel-description>
+												<em *ngIf="item['신청현황'] != undefined">{{item["신청현황"]}}</em>
+												<span>[{{item['참가자리스트']['length']}}명]</span>
+											</mat-panel-description>
+										</mat-expansion-panel-header>
+										<p>
+											<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
+										</p>
+										<mat-list>
+											    <mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
+				<div mat-list-icon class="Calendar_List_Box_Together Group_{{UserList['친구']}}" *ngIf="UserList['친구'] != undefined"><mat-icon>groups</mat-icon>{{UserList["친구"]}}</div>
+												<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
+												<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
+												<button *ngIf="UserList['친구'] != undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu_Together" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+												<button *ngIf="UserList['친구'] == undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+											</mat-list-item>
+										</mat-list>
 								</mat-expansion-panel>
 
 							</mat-accordion>
@@ -133,26 +156,32 @@
 
 								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
 									<mat-expansion-panel-header>
-										<mat-panel-title>
-											{{item["레이드이름"]}}
-										</mat-panel-title>
-										<mat-panel-description>
-											<em>{{positionUserList[RaidIndex]}}</em>
-											<span>[{{item['참가자리스트']['length']}}명]</span>
-										</mat-panel-description>
-									</mat-expansion-panel-header>
-									<p>
-										<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
-									</p>
-									<mat-list>
-										<mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
-											<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
-											<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
-											<button mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
-												<mat-icon mat-list-icon>more_vert</mat-icon>
-											</button>
-										</mat-list-item>
-									</mat-list>
+											<mat-panel-title>
+												{{item["레이드이름"]}}
+											</mat-panel-title>
+											<mat-panel-description>
+												<em *ngIf="item['신청현황'] != undefined">{{item["신청현황"]}}</em>
+												<span>[{{item['참가자리스트']['length']}}명]</span>
+											</mat-panel-description>
+										</mat-expansion-panel-header>
+										<p>
+											<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
+										</p>
+										<mat-list>
+											    <mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
+				<div mat-list-icon class="Calendar_List_Box_Together Group_{{UserList['친구']}}" *ngIf="UserList['친구'] != undefined"><mat-icon>groups</mat-icon>{{UserList["친구"]}}</div>
+												<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
+												<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
+												<button *ngIf="UserList['친구'] != undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu_Together" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+												<button *ngIf="UserList['친구'] == undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+											</mat-list-item>
+										</mat-list>
 								</mat-expansion-panel>
 
 							</mat-accordion>
@@ -175,7 +204,7 @@
 												{{item["레이드이름"]}}
 											</mat-panel-title>
 											<mat-panel-description>
-												<em>{{positionUserList[RaidIndex]}}</em>
+												<em *ngIf="item['신청현황'] != undefined">{{item["신청현황"]}}</em>
 												<span>[{{item['참가자리스트']['length']}}명]</span>
 											</mat-panel-description>
 										</mat-expansion-panel-header>
@@ -183,12 +212,18 @@
 											<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
 										</p>
 										<mat-list>
-											<mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
+											    <mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
+				<div mat-list-icon class="Calendar_List_Box_Together Group_{{UserList['친구']}}" *ngIf="UserList['친구'] != undefined"><mat-icon>groups</mat-icon>{{UserList["친구"]}}</div>
 												<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
 												<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
-												<button mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+												<button *ngIf="UserList['친구'] != undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu_Together" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
 													<mat-icon mat-list-icon>more_vert</mat-icon>
 												</button>
+												
+												<button *ngIf="UserList['친구'] == undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
 											</mat-list-item>
 										</mat-list>
 
@@ -201,26 +236,32 @@
 							<mat-accordion class="DefultRaid_List">
 								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
 									<mat-expansion-panel-header>
-										<mat-panel-title>
-											{{item["레이드이름"]}}
-										</mat-panel-title>
-										<mat-panel-description>
-											<em>{{positionUserList[RaidIndex]}}</em>
-											<span>[{{item['참가자리스트']['length']}}명]</span>
-										</mat-panel-description>
-									</mat-expansion-panel-header>
-									<p>
-										<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
-									</p>
-									<mat-list>
-										<mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
-											<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
-											<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
-											<button mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
-												<mat-icon mat-list-icon>more_vert</mat-icon>
-											</button>
-										</mat-list-item>
-									</mat-list>
+											<mat-panel-title>
+												{{item["레이드이름"]}}
+											</mat-panel-title>
+											<mat-panel-description>
+												<em *ngIf="item['신청현황'] != undefined">{{item["신청현황"]}}</em>
+												<span>[{{item['참가자리스트']['length']}}명]</span>
+											</mat-panel-description>
+										</mat-expansion-panel-header>
+										<p>
+											<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
+										</p>
+										<mat-list>
+											    <mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
+				<div mat-list-icon class="Calendar_List_Box_Together Group_{{UserList['친구']}}" *ngIf="UserList['친구'] != undefined"><mat-icon>groups</mat-icon>{{UserList["친구"]}}</div>
+												<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
+												<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
+												<button *ngIf="UserList['친구'] != undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu_Together" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+												<button *ngIf="UserList['친구'] == undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+											</mat-list-item>
+										</mat-list>
 								</mat-expansion-panel>
 							</mat-accordion>
 						</mat-tab>
@@ -228,26 +269,32 @@
 							<mat-accordion class="DefultRaid_List">
 								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
 									<mat-expansion-panel-header>
-										<mat-panel-title>
-											{{item["레이드이름"]}}
-										</mat-panel-title>
-										<mat-panel-description>
-											<em>{{positionUserList[RaidIndex]}}</em>
-											<span>[{{item['참가자리스트']['length']}}명]</span>
-										</mat-panel-description>
-									</mat-expansion-panel-header>
-									<p>
-										<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
-									</p>
-									<mat-list>
-										<mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
-											<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
-											<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
-											<button mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
-												<mat-icon mat-list-icon>more_vert</mat-icon>
-											</button>
-										</mat-list-item>
-									</mat-list>
+											<mat-panel-title>
+												{{item["레이드이름"]}}
+											</mat-panel-title>
+											<mat-panel-description>
+												<em *ngIf="item['신청현황'] != undefined">{{item["신청현황"]}}</em>
+												<span>[{{item['참가자리스트']['length']}}명]</span>
+											</mat-panel-description>
+										</mat-expansion-panel-header>
+										<p>
+											<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
+										</p>
+										<mat-list>
+											    <mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
+				<div mat-list-icon class="Calendar_List_Box_Together Group_{{UserList['친구']}}" *ngIf="UserList['친구'] != undefined"><mat-icon>groups</mat-icon>{{UserList["친구"]}}</div>
+												<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
+												<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
+												<button *ngIf="UserList['친구'] != undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu_Together" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+												<button *ngIf="UserList['친구'] == undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+											</mat-list-item>
+										</mat-list>
 								</mat-expansion-panel>
 
 							</mat-accordion>
@@ -257,26 +304,32 @@
 
 								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
 									<mat-expansion-panel-header>
-										<mat-panel-title>
-											{{item["레이드이름"]}}
-										</mat-panel-title>
-										<mat-panel-description>
-											<em>{{positionUserList[RaidIndex]}}</em>
-											<span>[{{item['참가자리스트']['length']}}명]</span>
-										</mat-panel-description>
-									</mat-expansion-panel-header>
-									<p>
-										<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
-									</p>
-									<mat-list>
-										<mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
-											<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
-											<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
-											<button mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
-												<mat-icon mat-list-icon>more_vert</mat-icon>
-											</button>
-										</mat-list-item>
-									</mat-list>
+											<mat-panel-title>
+												{{item["레이드이름"]}}
+											</mat-panel-title>
+											<mat-panel-description>
+												<em *ngIf="item['신청현황'] != undefined">{{item["신청현황"]}}</em>
+												<span>[{{item['참가자리스트']['length']}}명]</span>
+											</mat-panel-description>
+										</mat-expansion-panel-header>
+										<p>
+											<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
+										</p>
+										<mat-list>
+											    <mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
+				<div mat-list-icon class="Calendar_List_Box_Together Group_{{UserList['친구']}}" *ngIf="UserList['친구'] != undefined"><mat-icon>groups</mat-icon>{{UserList["친구"]}}</div>
+												<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
+												<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
+												<button *ngIf="UserList['친구'] != undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu_Together" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+												<button *ngIf="UserList['친구'] == undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+											</mat-list-item>
+										</mat-list>
 								</mat-expansion-panel>
 
 							</mat-accordion>
@@ -286,26 +339,32 @@
 
 								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
 									<mat-expansion-panel-header>
-										<mat-panel-title>
-											{{item["레이드이름"]}}
-										</mat-panel-title>
-										<mat-panel-description>
-											<em>{{positionUserList[RaidIndex]}}</em>
-											<span>[{{item['참가자리스트']['length']}}명]</span>
-										</mat-panel-description>
-									</mat-expansion-panel-header>
-									<p>
-										<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
-									</p>
-									<mat-list>
-										<mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
-											<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
-											<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
-											<button mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
-												<mat-icon mat-list-icon>more_vert</mat-icon>
-											</button>
-										</mat-list-item>
-									</mat-list>
+											<mat-panel-title>
+												{{item["레이드이름"]}}
+											</mat-panel-title>
+											<mat-panel-description>
+												<em *ngIf="item['신청현황'] != undefined">{{item["신청현황"]}}</em>
+												<span>[{{item['참가자리스트']['length']}}명]</span>
+											</mat-panel-description>
+										</mat-expansion-panel-header>
+										<p>
+											<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
+										</p>
+										<mat-list>
+											    <mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
+				<div mat-list-icon class="Calendar_List_Box_Together Group_{{UserList['친구']}}" *ngIf="UserList['친구'] != undefined"><mat-icon>groups</mat-icon>{{UserList["친구"]}}</div>
+												<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
+												<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
+												<button *ngIf="UserList['친구'] != undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu_Together" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+												<button *ngIf="UserList['친구'] == undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+											</mat-list-item>
+										</mat-list>
 								</mat-expansion-panel>
 
 							</mat-accordion>
@@ -327,7 +386,7 @@
 												{{item["레이드이름"]}}
 											</mat-panel-title>
 											<mat-panel-description>
-												<em>{{positionUserList[RaidIndex]}}</em>
+												<em *ngIf="item['신청현황'] != undefined">{{item["신청현황"]}}</em>
 												<span>[{{item['참가자리스트']['length']}}명]</span>
 											</mat-panel-description>
 										</mat-expansion-panel-header>
@@ -335,12 +394,18 @@
 											<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
 										</p>
 										<mat-list>
-											<mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
+											    <mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
+				<div mat-list-icon class="Calendar_List_Box_Together Group_{{UserList['친구']}}" *ngIf="UserList['친구'] != undefined"><mat-icon>groups</mat-icon>{{UserList["친구"]}}</div>
 												<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
 												<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
-												<button mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+												<button *ngIf="UserList['친구'] != undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu_Together" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
 													<mat-icon mat-list-icon>more_vert</mat-icon>
 												</button>
+												
+												<button *ngIf="UserList['친구'] == undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
 											</mat-list-item>
 										</mat-list>
 
@@ -353,26 +418,32 @@
 							<mat-accordion class="DefultRaid_List">
 								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
 									<mat-expansion-panel-header>
-										<mat-panel-title>
-											{{item["레이드이름"]}}
-										</mat-panel-title>
-										<mat-panel-description>
-											<em>{{positionUserList[RaidIndex]}}</em>
-											<span>[{{item['참가자리스트']['length']}}명]</span>
-										</mat-panel-description>
-									</mat-expansion-panel-header>
-									<p>
-										<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
-									</p>
-									<mat-list>
-										<mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
-											<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
-											<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
-											<button mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
-												<mat-icon mat-list-icon>more_vert</mat-icon>
-											</button>
-										</mat-list-item>
-									</mat-list>
+											<mat-panel-title>
+												{{item["레이드이름"]}}
+											</mat-panel-title>
+											<mat-panel-description>
+												<em *ngIf="item['신청현황'] != undefined">{{item["신청현황"]}}</em>
+												<span>[{{item['참가자리스트']['length']}}명]</span>
+											</mat-panel-description>
+										</mat-expansion-panel-header>
+										<p>
+											<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
+										</p>
+										<mat-list>
+											    <mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
+				<div mat-list-icon class="Calendar_List_Box_Together Group_{{UserList['친구']}}" *ngIf="UserList['친구'] != undefined"><mat-icon>groups</mat-icon>{{UserList["친구"]}}</div>
+												<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
+												<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
+												<button *ngIf="UserList['친구'] != undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu_Together" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+												<button *ngIf="UserList['친구'] == undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+											</mat-list-item>
+										</mat-list>
 								</mat-expansion-panel>
 							</mat-accordion>
 						</mat-tab>
@@ -380,26 +451,32 @@
 							<mat-accordion class="DefultRaid_List">
 								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
 									<mat-expansion-panel-header>
-										<mat-panel-title>
-											{{item["레이드이름"]}}
-										</mat-panel-title>
-										<mat-panel-description>
-											<em>{{positionUserList[RaidIndex]}}</em>
-											<span>[{{item['참가자리스트']['length']}}명]</span>
-										</mat-panel-description>
-									</mat-expansion-panel-header>
-									<p>
-										<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
-									</p>
-									<mat-list>
-										<mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
-											<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
-											<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
-											<button mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
-												<mat-icon mat-list-icon>more_vert</mat-icon>
-											</button>
-										</mat-list-item>
-									</mat-list>
+											<mat-panel-title>
+												{{item["레이드이름"]}}
+											</mat-panel-title>
+											<mat-panel-description>
+												<em *ngIf="item['신청현황'] != undefined">{{item["신청현황"]}}</em>
+												<span>[{{item['참가자리스트']['length']}}명]</span>
+											</mat-panel-description>
+										</mat-expansion-panel-header>
+										<p>
+											<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
+										</p>
+										<mat-list>
+											    <mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
+				<div mat-list-icon class="Calendar_List_Box_Together Group_{{UserList['친구']}}" *ngIf="UserList['친구'] != undefined"><mat-icon>groups</mat-icon>{{UserList["친구"]}}</div>
+												<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
+												<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
+												<button *ngIf="UserList['친구'] != undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu_Together" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+												<button *ngIf="UserList['친구'] == undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+											</mat-list-item>
+										</mat-list>
 								</mat-expansion-panel>
 
 							</mat-accordion>
@@ -409,26 +486,32 @@
 
 								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
 									<mat-expansion-panel-header>
-										<mat-panel-title>
-											{{item["레이드이름"]}}
-										</mat-panel-title>
-										<mat-panel-description>
-											<em>{{positionUserList[RaidIndex]}}</em>
-											<span>[{{item['참가자리스트']['length']}}명]</span>
-										</mat-panel-description>
-									</mat-expansion-panel-header>
-									<p>
-										<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
-									</p>
-									<mat-list>
-										<mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
-											<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
-											<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
-											<button mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
-												<mat-icon mat-list-icon>more_vert</mat-icon>
-											</button>
-										</mat-list-item>
-									</mat-list>
+											<mat-panel-title>
+												{{item["레이드이름"]}}
+											</mat-panel-title>
+											<mat-panel-description>
+												<em *ngIf="item['신청현황'] != undefined">{{item["신청현황"]}}</em>
+												<span>[{{item['참가자리스트']['length']}}명]</span>
+											</mat-panel-description>
+										</mat-expansion-panel-header>
+										<p>
+											<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
+										</p>
+										<mat-list>
+											    <mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
+				<div mat-list-icon class="Calendar_List_Box_Together Group_{{UserList['친구']}}" *ngIf="UserList['친구'] != undefined"><mat-icon>groups</mat-icon>{{UserList["친구"]}}</div>
+												<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
+												<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
+												<button *ngIf="UserList['친구'] != undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu_Together" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+												<button *ngIf="UserList['친구'] == undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+											</mat-list-item>
+										</mat-list>
 								</mat-expansion-panel>
 
 							</mat-accordion>
@@ -438,26 +521,32 @@
 
 								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
 									<mat-expansion-panel-header>
-										<mat-panel-title>
-											{{item["레이드이름"]}}
-										</mat-panel-title>
-										<mat-panel-description>
-											<em>{{positionUserList[RaidIndex]}}</em>
-											<span>[{{item['참가자리스트']['length']}}명]</span>
-										</mat-panel-description>
-									</mat-expansion-panel-header>
-									<p>
-										<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
-									</p>
-									<mat-list>
-										<mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
-											<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
-											<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
-											<button mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
-												<mat-icon mat-list-icon>more_vert</mat-icon>
-											</button>
-										</mat-list-item>
-									</mat-list>
+											<mat-panel-title>
+												{{item["레이드이름"]}}
+											</mat-panel-title>
+											<mat-panel-description>
+												<em *ngIf="item['신청현황'] != undefined">{{item["신청현황"]}}</em>
+												<span>[{{item['참가자리스트']['length']}}명]</span>
+											</mat-panel-description>
+										</mat-expansion-panel-header>
+										<p>
+											<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
+										</p>
+										<mat-list>
+											    <mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
+				<div mat-list-icon class="Calendar_List_Box_Together Group_{{UserList['친구']}}" *ngIf="UserList['친구'] != undefined"><mat-icon>groups</mat-icon>{{UserList["친구"]}}</div>
+												<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
+												<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
+												<button *ngIf="UserList['친구'] != undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu_Together" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+												<button *ngIf="UserList['친구'] == undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+											</mat-list-item>
+										</mat-list>
 								</mat-expansion-panel>
 
 							</mat-accordion>
@@ -479,7 +568,7 @@
 												{{item["레이드이름"]}}
 											</mat-panel-title>
 											<mat-panel-description>
-												<em>{{positionUserList[RaidIndex]}}</em>
+												<em *ngIf="item['신청현황'] != undefined">{{item["신청현황"]}}</em>
 												<span>[{{item['참가자리스트']['length']}}명]</span>
 											</mat-panel-description>
 										</mat-expansion-panel-header>
@@ -487,12 +576,18 @@
 											<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
 										</p>
 										<mat-list>
-											<mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
+											    <mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
+				<div mat-list-icon class="Calendar_List_Box_Together Group_{{UserList['친구']}}" *ngIf="UserList['친구'] != undefined"><mat-icon>groups</mat-icon>{{UserList["친구"]}}</div>
 												<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
 												<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
-												<button mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+												<button *ngIf="UserList['친구'] != undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu_Together" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
 													<mat-icon mat-list-icon>more_vert</mat-icon>
 												</button>
+												
+												<button *ngIf="UserList['친구'] == undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
 											</mat-list-item>
 										</mat-list>
 
@@ -505,26 +600,32 @@
 							<mat-accordion class="DefultRaid_List">
 								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
 									<mat-expansion-panel-header>
-										<mat-panel-title>
-											{{item["레이드이름"]}}
-										</mat-panel-title>
-										<mat-panel-description>
-											<em>{{positionUserList[RaidIndex]}}</em>
-											<span>[{{item['참가자리스트']['length']}}명]</span>
-										</mat-panel-description>
-									</mat-expansion-panel-header>
-									<p>
-										<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
-									</p>
-									<mat-list>
-										<mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
-											<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
-											<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
-											<button mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
-												<mat-icon mat-list-icon>more_vert</mat-icon>
-											</button>
-										</mat-list-item>
-									</mat-list>
+											<mat-panel-title>
+												{{item["레이드이름"]}}
+											</mat-panel-title>
+											<mat-panel-description>
+												<em *ngIf="item['신청현황'] != undefined">{{item["신청현황"]}}</em>
+												<span>[{{item['참가자리스트']['length']}}명]</span>
+											</mat-panel-description>
+										</mat-expansion-panel-header>
+										<p>
+											<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
+										</p>
+										<mat-list>
+											    <mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
+				<div mat-list-icon class="Calendar_List_Box_Together Group_{{UserList['친구']}}" *ngIf="UserList['친구'] != undefined"><mat-icon>groups</mat-icon>{{UserList["친구"]}}</div>
+												<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
+												<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
+												<button *ngIf="UserList['친구'] != undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu_Together" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+												<button *ngIf="UserList['친구'] == undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+											</mat-list-item>
+										</mat-list>
 								</mat-expansion-panel>
 							</mat-accordion>
 						</mat-tab>
@@ -532,26 +633,32 @@
 							<mat-accordion class="DefultRaid_List">
 								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
 									<mat-expansion-panel-header>
-										<mat-panel-title>
-											{{item["레이드이름"]}}
-										</mat-panel-title>
-										<mat-panel-description>
-											<em>{{positionUserList[RaidIndex]}}</em>
-											<span>[{{item['참가자리스트']['length']}}명]</span>
-										</mat-panel-description>
-									</mat-expansion-panel-header>
-									<p>
-										<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
-									</p>
-									<mat-list>
-										<mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
-											<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
-											<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
-											<button mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
-												<mat-icon mat-list-icon>more_vert</mat-icon>
-											</button>
-										</mat-list-item>
-									</mat-list>
+											<mat-panel-title>
+												{{item["레이드이름"]}}
+											</mat-panel-title>
+											<mat-panel-description>
+												<em *ngIf="item['신청현황'] != undefined">{{item["신청현황"]}}</em>
+												<span>[{{item['참가자리스트']['length']}}명]</span>
+											</mat-panel-description>
+										</mat-expansion-panel-header>
+										<p>
+											<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
+										</p>
+										<mat-list>
+											    <mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
+				<div mat-list-icon class="Calendar_List_Box_Together Group_{{UserList['친구']}}" *ngIf="UserList['친구'] != undefined"><mat-icon>groups</mat-icon>{{UserList["친구"]}}</div>
+												<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
+												<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
+												<button *ngIf="UserList['친구'] != undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu_Together" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+												<button *ngIf="UserList['친구'] == undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+											</mat-list-item>
+										</mat-list>
 								</mat-expansion-panel>
 
 							</mat-accordion>
@@ -561,26 +668,32 @@
 
 								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
 									<mat-expansion-panel-header>
-										<mat-panel-title>
-											{{item["레이드이름"]}}
-										</mat-panel-title>
-										<mat-panel-description>
-											<em>{{positionUserList[RaidIndex]}}</em>
-											<span>[{{item['참가자리스트']['length']}}명]</span>
-										</mat-panel-description>
-									</mat-expansion-panel-header>
-									<p>
-										<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
-									</p>
-									<mat-list>
-										<mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
-											<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
-											<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
-											<button mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
-												<mat-icon mat-list-icon>more_vert</mat-icon>
-											</button>
-										</mat-list-item>
-									</mat-list>
+											<mat-panel-title>
+												{{item["레이드이름"]}}
+											</mat-panel-title>
+											<mat-panel-description>
+												<em *ngIf="item['신청현황'] != undefined">{{item["신청현황"]}}</em>
+												<span>[{{item['참가자리스트']['length']}}명]</span>
+											</mat-panel-description>
+										</mat-expansion-panel-header>
+										<p>
+											<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
+										</p>
+										<mat-list>
+											    <mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
+				<div mat-list-icon class="Calendar_List_Box_Together Group_{{UserList['친구']}}" *ngIf="UserList['친구'] != undefined"><mat-icon>groups</mat-icon>{{UserList["친구"]}}</div>
+												<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
+												<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
+												<button *ngIf="UserList['친구'] != undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu_Together" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+												<button *ngIf="UserList['친구'] == undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+											</mat-list-item>
+										</mat-list>
 								</mat-expansion-panel>
 
 							</mat-accordion>
@@ -590,26 +703,32 @@
 
 								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
 									<mat-expansion-panel-header>
-										<mat-panel-title>
-											{{item["레이드이름"]}}
-										</mat-panel-title>
-										<mat-panel-description>
-											<em>{{positionUserList[RaidIndex]}}</em>
-											<span>[{{item['참가자리스트']['length']}}명]</span>
-										</mat-panel-description>
-									</mat-expansion-panel-header>
-									<p>
-										<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
-									</p>
-									<mat-list>
-										<mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
-											<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
-											<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
-											<button mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
-												<mat-icon mat-list-icon>more_vert</mat-icon>
-											</button>
-										</mat-list-item>
-									</mat-list>
+											<mat-panel-title>
+												{{item["레이드이름"]}}
+											</mat-panel-title>
+											<mat-panel-description>
+												<em *ngIf="item['신청현황'] != undefined">{{item["신청현황"]}}</em>
+												<span>[{{item['참가자리스트']['length']}}명]</span>
+											</mat-panel-description>
+										</mat-expansion-panel-header>
+										<p>
+											<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
+										</p>
+										<mat-list>
+											    <mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
+				<div mat-list-icon class="Calendar_List_Box_Together Group_{{UserList['친구']}}" *ngIf="UserList['친구'] != undefined"><mat-icon>groups</mat-icon>{{UserList["친구"]}}</div>
+												<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
+												<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
+												<button *ngIf="UserList['친구'] != undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu_Together" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+												<button *ngIf="UserList['친구'] == undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+											</mat-list-item>
+										</mat-list>
 								</mat-expansion-panel>
 
 							</mat-accordion>
@@ -631,7 +750,7 @@
 												{{item["레이드이름"]}}
 											</mat-panel-title>
 											<mat-panel-description>
-												<em>{{positionUserList[RaidIndex]}}</em>
+												<em *ngIf="item['신청현황'] != undefined">{{item["신청현황"]}}</em>
 												<span>[{{item['참가자리스트']['length']}}명]</span>
 											</mat-panel-description>
 										</mat-expansion-panel-header>
@@ -639,13 +758,18 @@
 											<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
 										</p>
 										<mat-list>
-											<mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
-											    <!--<div mat-line *ngIf="Together_Check != false">{{Together_Member[i]}}</div>-->
+											    <mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
+				<div mat-list-icon class="Calendar_List_Box_Together Group_{{UserList['친구']}}" *ngIf="UserList['친구'] != undefined"><mat-icon>groups</mat-icon>{{UserList["친구"]}}</div>
 												<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
 												<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
-												<button mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+												<button *ngIf="UserList['친구'] != undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu_Together" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
 													<mat-icon mat-list-icon>more_vert</mat-icon>
 												</button>
+												
+												<button *ngIf="UserList['친구'] == undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
 											</mat-list-item>
 										</mat-list>
 
@@ -659,26 +783,31 @@
 								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
 									<mat-expansion-panel-header>
 										<mat-panel-title>
-											{{item["레이드이름"]}}
-										</mat-panel-title>
-										<mat-panel-description>
-											<em>{{positionUserList[RaidIndex]}}</em>
-											<span>[{{item['참가자리스트']['length']}}명]</span>
-										</mat-panel-description>
-									</mat-expansion-panel-header>
-									<p>
-										<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
-									</p>
-									<mat-list>
-										<mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
-										<!--<div mat-line *ngIf="Together_Check != false">{{Together_Member[i]}}</div>-->
-											<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
-											<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
-											<button mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
-												<mat-icon mat-list-icon>more_vert</mat-icon>
-											</button>
-										</mat-list-item>
-									</mat-list>
+												{{item["레이드이름"]}}
+											</mat-panel-title>
+											<mat-panel-description>
+												<em *ngIf="item['신청현황'] != undefined">{{item["신청현황"]}}</em>
+												<span>[{{item['참가자리스트']['length']}}명]</span>
+											</mat-panel-description>
+										</mat-expansion-panel-header>
+										<p>
+											<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
+										</p>
+										<mat-list>
+											    <mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
+				<div mat-list-icon class="Calendar_List_Box_Together Group_{{UserList['친구']}}" *ngIf="UserList['친구'] != undefined"><mat-icon>groups</mat-icon>{{UserList["친구"]}}</div>
+												<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
+												<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
+												<button *ngIf="UserList['친구'] != undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu_Together" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+												<button *ngIf="UserList['친구'] == undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+											</mat-list-item>
+										</mat-list>
 								</mat-expansion-panel>
 							</mat-accordion>
 						</mat-tab>
@@ -687,26 +816,31 @@
 								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
 									<mat-expansion-panel-header>
 										<mat-panel-title>
-											{{item["레이드이름"]}}
-										</mat-panel-title>
-										<mat-panel-description>
-											<em>{{positionUserList[RaidIndex]}}</em>
-											<span>[{{item['참가자리스트']['length']}}명]</span>
-										</mat-panel-description>
-									</mat-expansion-panel-header>
-									<p>
-										<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
-									</p>
-									<mat-list>
-										<mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
-										<!--<div mat-line *ngIf="Together_Check != false">{{Together_Member[i]}}</div>-->
-											<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
-											<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
-											<button mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
-												<mat-icon mat-list-icon>more_vert</mat-icon>
-											</button>
-										</mat-list-item>
-									</mat-list>
+												{{item["레이드이름"]}}
+											</mat-panel-title>
+											<mat-panel-description>
+												<em *ngIf="item['신청현황'] != undefined">{{item["신청현황"]}}</em>
+												<span>[{{item['참가자리스트']['length']}}명]</span>
+											</mat-panel-description>
+										</mat-expansion-panel-header>
+										<p>
+											<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
+										</p>
+										<mat-list>
+											    <mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
+				<div mat-list-icon class="Calendar_List_Box_Together Group_{{UserList['친구']}}" *ngIf="UserList['친구'] != undefined"><mat-icon>groups</mat-icon>{{UserList["친구"]}}</div>
+												<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
+												<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
+												<button *ngIf="UserList['친구'] != undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu_Together" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+												<button *ngIf="UserList['친구'] == undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+											</mat-list-item>
+										</mat-list>
 								</mat-expansion-panel>
 
 							</mat-accordion>
@@ -717,26 +851,31 @@
 								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
 									<mat-expansion-panel-header>
 										<mat-panel-title>
-											{{item["레이드이름"]}}
-										</mat-panel-title>
-										<mat-panel-description>
-											<em>{{positionUserList[RaidIndex]}}</em>
-											<span>[{{item['참가자리스트']['length']}}명]</span>
-										</mat-panel-description>
-									</mat-expansion-panel-header>
-									<p>
-										<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
-									</p>
-									<mat-list>
-										<mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
-										<!--<div mat-line *ngIf="Together_Check != false">{{Together_Member[i]}}</div>-->
-											<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
-											<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
-											<button mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
-												<mat-icon mat-list-icon>more_vert</mat-icon>
-											</button>
-										</mat-list-item>
-									</mat-list>
+												{{item["레이드이름"]}}
+											</mat-panel-title>
+											<mat-panel-description>
+												<em *ngIf="item['신청현황'] != undefined">{{item["신청현황"]}}</em>
+												<span>[{{item['참가자리스트']['length']}}명]</span>
+											</mat-panel-description>
+										</mat-expansion-panel-header>
+										<p>
+											<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
+										</p>
+										<mat-list>
+											    <mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
+				<div mat-list-icon class="Calendar_List_Box_Together Group_{{UserList['친구']}}" *ngIf="UserList['친구'] != undefined"><mat-icon>groups</mat-icon>{{UserList["친구"]}}</div>
+												<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
+												<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
+												<button *ngIf="UserList['친구'] != undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu_Together" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+												<button *ngIf="UserList['친구'] == undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+											</mat-list-item>
+										</mat-list>
 								</mat-expansion-panel>
 
 							</mat-accordion>
@@ -747,26 +886,31 @@
 								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
 									<mat-expansion-panel-header>
 										<mat-panel-title>
-											{{item["레이드이름"]}}
-										</mat-panel-title>
-										<mat-panel-description>
-											<em>{{positionUserList[RaidIndex]}}</em>
-											<span>[{{item['참가자리스트']['length']}}명]</span>
-										</mat-panel-description>
-									</mat-expansion-panel-header>
-									<p>
-										<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
-									</p>
-									<mat-list>
-										<mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
-										<!--<div mat-line *ngIf="Together_Check != false">{{Together_Member[i]}}</div>-->
-											<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
-											<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
-											<button mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
-												<mat-icon mat-list-icon>more_vert</mat-icon>
-											</button>
-										</mat-list-item>
-									</mat-list>
+												{{item["레이드이름"]}}
+											</mat-panel-title>
+											<mat-panel-description>
+												<em *ngIf="item['신청현황'] != undefined">{{item["신청현황"]}}</em>
+												<span>[{{item['참가자리스트']['length']}}명]</span>
+											</mat-panel-description>
+										</mat-expansion-panel-header>
+										<p>
+											<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
+										</p>
+										<mat-list>
+											    <mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
+				<div mat-list-icon class="Calendar_List_Box_Together Group_{{UserList['친구']}}" *ngIf="UserList['친구'] != undefined"><mat-icon>groups</mat-icon>{{UserList["친구"]}}</div>
+												<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
+												<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
+												<button *ngIf="UserList['친구'] != undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu_Together" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+												<button *ngIf="UserList['친구'] == undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+											</mat-list-item>
+										</mat-list>
 								</mat-expansion-panel>
 
 							</mat-accordion>
@@ -788,7 +932,7 @@
 												{{item["레이드이름"]}}
 											</mat-panel-title>
 											<mat-panel-description>
-												<em>{{positionUserList[RaidIndex]}}</em>
+												<em *ngIf="item['신청현황'] != undefined">{{item["신청현황"]}}</em>
 												<span>[{{item['참가자리스트']['length']}}명]</span>
 											</mat-panel-description>
 										</mat-expansion-panel-header>
@@ -796,12 +940,18 @@
 											<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
 										</p>
 										<mat-list>
-											<mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
+											    <mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
+				<div mat-list-icon class="Calendar_List_Box_Together Group_{{UserList['친구']}}" *ngIf="UserList['친구'] != undefined"><mat-icon>groups</mat-icon>{{UserList["친구"]}}</div>
 												<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
 												<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
-												<button mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+												<button *ngIf="UserList['친구'] != undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu_Together" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
 													<mat-icon mat-list-icon>more_vert</mat-icon>
 												</button>
+												
+												<button *ngIf="UserList['친구'] == undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
 											</mat-list-item>
 										</mat-list>
 
@@ -814,26 +964,32 @@
 							<mat-accordion class="DefultRaid_List">
 								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
 									<mat-expansion-panel-header>
-										<mat-panel-title>
-											{{item["레이드이름"]}}
-										</mat-panel-title>
-										<mat-panel-description>
-											<em>{{positionUserList[RaidIndex]}}</em>
-											<span>[{{item['참가자리스트']['length']}}명]</span>
-										</mat-panel-description>
-									</mat-expansion-panel-header>
-									<p>
-										<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
-									</p>
-									<mat-list>
-										<mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
-											<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
-											<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
-											<button mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
-												<mat-icon mat-list-icon>more_vert</mat-icon>
-											</button>
-										</mat-list-item>
-									</mat-list>
+											<mat-panel-title>
+												{{item["레이드이름"]}}
+											</mat-panel-title>
+											<mat-panel-description>
+												<em *ngIf="item['신청현황'] != undefined">{{item["신청현황"]}}</em>
+												<span>[{{item['참가자리스트']['length']}}명]</span>
+											</mat-panel-description>
+										</mat-expansion-panel-header>
+										<p>
+											<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
+										</p>
+										<mat-list>
+											    <mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
+				<div mat-list-icon class="Calendar_List_Box_Together Group_{{UserList['친구']}}" *ngIf="UserList['친구'] != undefined"><mat-icon>groups</mat-icon>{{UserList["친구"]}}</div>
+												<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
+												<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
+												<button *ngIf="UserList['친구'] != undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu_Together" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+												<button *ngIf="UserList['친구'] == undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+											</mat-list-item>
+										</mat-list>
 								</mat-expansion-panel>
 							</mat-accordion>
 						</mat-tab>
@@ -841,26 +997,32 @@
 							<mat-accordion class="DefultRaid_List">
 								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
 									<mat-expansion-panel-header>
-										<mat-panel-title>
-											{{item["레이드이름"]}}
-										</mat-panel-title>
-										<mat-panel-description>
-											<em>{{positionUserList[RaidIndex]}}</em>
-											<span>[{{item['참가자리스트']['length']}}명]</span>
-										</mat-panel-description>
-									</mat-expansion-panel-header>
-									<p>
-										<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
-									</p>
-									<mat-list>
-										<mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
-											<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
-											<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
-											<button mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
-												<mat-icon mat-list-icon>more_vert</mat-icon>
-											</button>
-										</mat-list-item>
-									</mat-list>
+											<mat-panel-title>
+												{{item["레이드이름"]}}
+											</mat-panel-title>
+											<mat-panel-description>
+												<em *ngIf="item['신청현황'] != undefined">{{item["신청현황"]}}</em>
+												<span>[{{item['참가자리스트']['length']}}명]</span>
+											</mat-panel-description>
+										</mat-expansion-panel-header>
+										<p>
+											<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
+										</p>
+										<mat-list>
+											    <mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
+				<div mat-list-icon class="Calendar_List_Box_Together Group_{{UserList['친구']}}" *ngIf="UserList['친구'] != undefined"><mat-icon>groups</mat-icon>{{UserList["친구"]}}</div>
+												<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
+												<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
+												<button *ngIf="UserList['친구'] != undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu_Together" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+												<button *ngIf="UserList['친구'] == undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+											</mat-list-item>
+										</mat-list>
 								</mat-expansion-panel>
 
 							</mat-accordion>
@@ -870,26 +1032,32 @@
 
 								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
 									<mat-expansion-panel-header>
-										<mat-panel-title>
-											{{item["레이드이름"]}}
-										</mat-panel-title>
-										<mat-panel-description>
-											<em>{{positionUserList[RaidIndex]}}</em>
-											<span>[{{item['참가자리스트']['length']}}명]</span>
-										</mat-panel-description>
-									</mat-expansion-panel-header>
-									<p>
-										<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
-									</p>
-									<mat-list>
-										<mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
-											<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
-											<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
-											<button mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
-												<mat-icon mat-list-icon>more_vert</mat-icon>
-											</button>
-										</mat-list-item>
-									</mat-list>
+											<mat-panel-title>
+												{{item["레이드이름"]}}
+											</mat-panel-title>
+											<mat-panel-description>
+												<em *ngIf="item['신청현황'] != undefined">{{item["신청현황"]}}</em>
+												<span>[{{item['참가자리스트']['length']}}명]</span>
+											</mat-panel-description>
+										</mat-expansion-panel-header>
+										<p>
+											<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
+										</p>
+										<mat-list>
+											    <mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
+				<div mat-list-icon class="Calendar_List_Box_Together Group_{{UserList['친구']}}" *ngIf="UserList['친구'] != undefined"><mat-icon>groups</mat-icon>{{UserList["친구"]}}</div>
+												<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
+												<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
+												<button *ngIf="UserList['친구'] != undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu_Together" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+												<button *ngIf="UserList['친구'] == undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+											</mat-list-item>
+										</mat-list>
 								</mat-expansion-panel>
 
 							</mat-accordion>
@@ -899,26 +1067,32 @@
 
 								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
 									<mat-expansion-panel-header>
-										<mat-panel-title>
-											{{item["레이드이름"]}}
-										</mat-panel-title>
-										<mat-panel-description>
-											<em>{{positionUserList[RaidIndex]}}</em>
-											<span>[{{item['참가자리스트']['length']}}명]</span>
-										</mat-panel-description>
-									</mat-expansion-panel-header>
-									<p>
-										<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
-									</p>
-									<mat-list>
-										<mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
-											<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
-											<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
-											<button mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
-												<mat-icon mat-list-icon>more_vert</mat-icon>
-											</button>
-										</mat-list-item>
-									</mat-list>
+											<mat-panel-title>
+												{{item["레이드이름"]}}
+											</mat-panel-title>
+											<mat-panel-description>
+												<em *ngIf="item['신청현황'] != undefined">{{item["신청현황"]}}</em>
+												<span>[{{item['참가자리스트']['length']}}명]</span>
+											</mat-panel-description>
+										</mat-expansion-panel-header>
+										<p>
+											<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
+										</p>
+										<mat-list>
+											    <mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
+				<div mat-list-icon class="Calendar_List_Box_Together Group_{{UserList['친구']}}" *ngIf="UserList['친구'] != undefined"><mat-icon>groups</mat-icon>{{UserList["친구"]}}</div>
+												<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
+												<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
+												<button *ngIf="UserList['친구'] != undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu_Together" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+												<button *ngIf="UserList['친구'] == undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+											</mat-list-item>
+										</mat-list>
 								</mat-expansion-panel>
 
 							</mat-accordion>
@@ -940,7 +1114,7 @@
 												{{item["레이드이름"]}}
 											</mat-panel-title>
 											<mat-panel-description>
-												<em>{{positionUserList[RaidIndex]}}</em>
+												<em *ngIf="item['신청현황'] != undefined">{{item["신청현황"]}}</em>
 												<span>[{{item['참가자리스트']['length']}}명]</span>
 											</mat-panel-description>
 										</mat-expansion-panel-header>
@@ -948,12 +1122,18 @@
 											<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
 										</p>
 										<mat-list>
-											<mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
+											    <mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
+				<div mat-list-icon class="Calendar_List_Box_Together Group_{{UserList['친구']}}" *ngIf="UserList['친구'] != undefined"><mat-icon>groups</mat-icon>{{UserList["친구"]}}</div>
 												<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
 												<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
-												<button mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+												<button *ngIf="UserList['친구'] != undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu_Together" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
 													<mat-icon mat-list-icon>more_vert</mat-icon>
 												</button>
+												
+												<button *ngIf="UserList['친구'] == undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
 											</mat-list-item>
 										</mat-list>
 
@@ -966,26 +1146,32 @@
 							<mat-accordion class="DefultRaid_List">
 								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
 									<mat-expansion-panel-header>
-										<mat-panel-title>
-											{{item["레이드이름"]}}
-										</mat-panel-title>
-										<mat-panel-description>
-											<em>{{positionUserList[RaidIndex]}}</em>
-											<span>[{{item['참가자리스트']['length']}}명]</span>
-										</mat-panel-description>
-									</mat-expansion-panel-header>
-									<p>
-										<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
-									</p>
-									<mat-list>
-										<mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
-											<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
-											<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
-											<button mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
-												<mat-icon mat-list-icon>more_vert</mat-icon>
-											</button>
-										</mat-list-item>
-									</mat-list>
+											<mat-panel-title>
+												{{item["레이드이름"]}}
+											</mat-panel-title>
+											<mat-panel-description>
+												<em *ngIf="item['신청현황'] != undefined">{{item["신청현황"]}}</em>
+												<span>[{{item['참가자리스트']['length']}}명]</span>
+											</mat-panel-description>
+										</mat-expansion-panel-header>
+										<p>
+											<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
+										</p>
+										<mat-list>
+											    <mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
+				<div mat-list-icon class="Calendar_List_Box_Together Group_{{UserList['친구']}}" *ngIf="UserList['친구'] != undefined"><mat-icon>groups</mat-icon>{{UserList["친구"]}}</div>
+												<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
+												<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
+												<button *ngIf="UserList['친구'] != undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu_Together" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+												<button *ngIf="UserList['친구'] == undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+											</mat-list-item>
+										</mat-list>
 								</mat-expansion-panel>
 							</mat-accordion>
 						</mat-tab>
@@ -993,26 +1179,32 @@
 							<mat-accordion class="DefultRaid_List">
 								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
 									<mat-expansion-panel-header>
-										<mat-panel-title>
-											{{item["레이드이름"]}}
-										</mat-panel-title>
-										<mat-panel-description>
-											<em>{{positionUserList[RaidIndex]}}</em>
-											<span>[{{item['참가자리스트']['length']}}명]</span>
-										</mat-panel-description>
-									</mat-expansion-panel-header>
-									<p>
-										<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
-									</p>
-									<mat-list>
-										<mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
-											<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
-											<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
-											<button mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
-												<mat-icon mat-list-icon>more_vert</mat-icon>
-											</button>
-										</mat-list-item>
-									</mat-list>
+											<mat-panel-title>
+												{{item["레이드이름"]}}
+											</mat-panel-title>
+											<mat-panel-description>
+												<em *ngIf="item['신청현황'] != undefined">{{item["신청현황"]}}</em>
+												<span>[{{item['참가자리스트']['length']}}명]</span>
+											</mat-panel-description>
+										</mat-expansion-panel-header>
+										<p>
+											<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
+										</p>
+										<mat-list>
+											    <mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
+				<div mat-list-icon class="Calendar_List_Box_Together Group_{{UserList['친구']}}" *ngIf="UserList['친구'] != undefined"><mat-icon>groups</mat-icon>{{UserList["친구"]}}</div>
+												<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
+												<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
+												<button *ngIf="UserList['친구'] != undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu_Together" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+												<button *ngIf="UserList['친구'] == undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+											</mat-list-item>
+										</mat-list>
 								</mat-expansion-panel>
 
 							</mat-accordion>
@@ -1022,26 +1214,32 @@
 
 								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
 									<mat-expansion-panel-header>
-										<mat-panel-title>
-											{{item["레이드이름"]}}
-										</mat-panel-title>
-										<mat-panel-description>
-											<em>{{positionUserList[RaidIndex]}}</em>
-											<span>[{{item['참가자리스트']['length']}}명]</span>
-										</mat-panel-description>
-									</mat-expansion-panel-header>
-									<p>
-										<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
-									</p>
-									<mat-list>
-										<mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
-											<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
-											<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
-											<button mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
-												<mat-icon mat-list-icon>more_vert</mat-icon>
-											</button>
-										</mat-list-item>
-									</mat-list>
+											<mat-panel-title>
+												{{item["레이드이름"]}}
+											</mat-panel-title>
+											<mat-panel-description>
+												<em *ngIf="item['신청현황'] != undefined">{{item["신청현황"]}}</em>
+												<span>[{{item['참가자리스트']['length']}}명]</span>
+											</mat-panel-description>
+										</mat-expansion-panel-header>
+										<p>
+											<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
+										</p>
+										<mat-list>
+											    <mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
+				<div mat-list-icon class="Calendar_List_Box_Together Group_{{UserList['친구']}}" *ngIf="UserList['친구'] != undefined"><mat-icon>groups</mat-icon>{{UserList["친구"]}}</div>
+												<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
+												<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
+												<button *ngIf="UserList['친구'] != undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu_Together" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+												<button *ngIf="UserList['친구'] == undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+											</mat-list-item>
+										</mat-list>
 								</mat-expansion-panel>
 
 							</mat-accordion>
@@ -1051,26 +1249,32 @@
 
 								<mat-expansion-panel *ngFor="let item of RaidList,let RaidIndex = index;">
 									<mat-expansion-panel-header>
-										<mat-panel-title>
-											{{item["레이드이름"]}}
-										</mat-panel-title>
-										<mat-panel-description>
-											<em>{{positionUserList[RaidIndex]}}</em>
-											<span>[{{item['참가자리스트']['length']}}명]</span>
-										</mat-panel-description>
-									</mat-expansion-panel-header>
-									<p>
-										<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
-									</p>
-									<mat-list>
-										<mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
-											<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
-											<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
-											<button mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
-												<mat-icon mat-list-icon>more_vert</mat-icon>
-											</button>
-										</mat-list-item>
-									</mat-list>
+											<mat-panel-title>
+												{{item["레이드이름"]}}
+											</mat-panel-title>
+											<mat-panel-description>
+												<em *ngIf="item['신청현황'] != undefined">{{item["신청현황"]}}</em>
+												<span>[{{item['참가자리스트']['length']}}명]</span>
+											</mat-panel-description>
+										</mat-expansion-panel-header>
+										<p>
+											<mat-icon>list</mat-icon>신청자 리스트 <span><em>{{item['참가자리스트']['length']}}</em>명</span>
+										</p>
+										<mat-list>
+											    <mat-list-item *ngFor="let UserList of item['참가자리스트'], let i=index;">
+				<div mat-list-icon class="Calendar_List_Box_Together Group_{{UserList['친구']}}" *ngIf="UserList['친구'] != undefined"><mat-icon>groups</mat-icon>{{UserList["친구"]}}</div>
+												<div mat-line class="Calendar_List_Box_ID">[ {{UserList["파티단위"]}} ] {{UserList["아이디"]}}</div>
+												<div mat-line class="Calendar_List_Box_Name"> {{UserList["포지션"]}} / {{UserList["출발시간대"]}} / {{UserList["메모"]}}</div>
+												<button *ngIf="UserList['친구'] != undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu_Together" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+												<button *ngIf="UserList['친구'] == undefined" mat-icon-button [matMenuTriggerFor]="OptionMenu" (click)="menuClcik(i,UserList['아이디'],Day_Label,Level_Menu,RaidIndex,RaidList,AllRaidIndex,AllRaidList,UserList)">
+													<mat-icon mat-list-icon>more_vert</mat-icon>
+												</button>
+												
+											</mat-list-item>
+										</mat-list>
 								</mat-expansion-panel>
 
 							</mat-accordion>
@@ -1092,13 +1296,29 @@
 
 
 <mat-menu #OptionMenu="matMenu">
+	<button mat-menu-item (click)="Calendar_AddTogether()" class="AddBtn">
+		<mat-icon>group_work</mat-icon>
+		<span>함께하기</span>
+	</button>
 	<button mat-menu-item (click)="export()" *ngIf="userid =='점화걸면정화' || userid =='데둠미'" class="RedBtn">
 		<mat-icon>logout</mat-icon>
 		<span>내보내기</span>
 	</button>
-	<button mat-menu-item (click)="Calendar_AddTogether()" class="AddBtn" disabled>
-		<mat-icon>group_work</mat-icon>
-		<span>함께하기 [추후 오픈]</span>
+	<button mat-menu-item (click)="out()" class="RedBtn">
+		<mat-icon>delete_outline</mat-icon>
+		<span>나가기</span>
+	</button>
+</mat-menu>
+
+
+<mat-menu #OptionMenu_Together="matMenu">
+	<button mat-menu-item disabled>
+		<mat-icon>group_add</mat-icon>
+		<span>이미 속해있음</span>
+	</button>
+	<button mat-menu-item (click)="export()" *ngIf="userid =='점화걸면정화' || userid =='데둠미'" class="RedBtn">
+		<mat-icon>logout</mat-icon>
+		<span>내보내기</span>
 	</button>
 	<button mat-menu-item (click)="out()" class="RedBtn">
 		<mat-icon>delete_outline</mat-icon>

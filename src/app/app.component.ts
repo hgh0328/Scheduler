@@ -73,7 +73,7 @@ export class AppComponent {
 			$(".Main_PanelBox").fadeIn(300);
 			$(".Main_SettingButtonBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + " 데둠배 빵빵이 부헤헤 안뇽 방가워");
+			window.alert(this.IdText + " 데둠배빵빵데둠배빵빵데둠배빵빵데둠배빵빵데둠배빵빵데둠배빵빵데둠배빵빵데둠배빵빵데둠배빵빵데둠배빵빵데둠배빵빵데둠배빵빵이 부헤헤 안뇽 방가워");
 		}
 		else if(this.IdText == "데둠미" && this.PasswordText != "8418"){
 			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
@@ -120,7 +120,7 @@ export class AppComponent {
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 환영합니다.\n인조인간~로보트~");
+			window.alert(this.IdText + "님 환영합니다.\n인조인간 ~ 로보트 ~ ");
 		}
 		else if(this.IdText == "인조인간91호" && this.PasswordText != "28452600"){
 			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
@@ -236,6 +236,17 @@ export class AppComponent {
 		else if(this.IdText == "노마블러드워" && this.PasswordText != "0225"){
 			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
 		}
+		
+		/*메르헨테루 아르카나*/
+		else if(this.IdText == "메르헨테루" && this.PasswordText == "2862"){
+			$(".Login_Box").fadeOut(500);
+			$(".Main_PanelBox").fadeIn(300);
+			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+			window.alert(this.IdText + "님 환영합니다.\n딜 빡세게 갑니다.\n템포 따라 오세요");
+		}
+		else if(this.IdText == "메르헨테루" && this.PasswordText != "2862"){
+			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
+		}
         
 
         /*아만섭*/
@@ -255,7 +266,7 @@ export class AppComponent {
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 환영합니다.\n로아 사랑꾼 ♥️ ❤");
+			window.alert(this.IdText + "님 환영합니다.\n템포 따라 오세요.");
 		}
 		else if(this.IdText == "야이빙충아" && this.PasswordText != "5749"){
 			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
