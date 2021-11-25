@@ -318,8 +318,8 @@ export class WeekCalendarComponent implements OnInit {
 
   menuClcik(index, id, date, difficulty, RaidIndex, RaidList, AllRaidIndex, AllRaidList,UserList) {
       
-      console.log(this.Together_Member)
-    console.log(this.Together_From_Member)
+      
+
       
       this.menuId = id;
 	  this.Together_UserList = UserList;
@@ -357,13 +357,16 @@ export class WeekCalendarComponent implements OnInit {
       }
 
 
-
-       this.Together_userID = this.menuId;
+console.log(this.menuId)
+	  console.log(this.menuIndex)
+//       this.Together_userID = this.menuId;
 
 
     }
     out(){
         if(this.menuId === this.userid){
+			console.log(this.menuId);
+			console.log(this.userid);
           window.alert(this.menuId + "님이 " + this.menuRaidList["레이드이름"] + "에서 나갔습니다.");
           this.outUser()
         }else{
@@ -385,22 +388,24 @@ export class WeekCalendarComponent implements OnInit {
 
       setTimeout(async () => {
 
-
             var GeneralArray:any = raidData["일반"];
             var NormalArray:any = raidData["노말"];
             var HardArray:any = raidData["하드"];
             var EtcArray:any = raidData["기타"];
 
           if(this.menuDifficulty == "일반"){
-              GeneralArray[this.menuRaidIndex]["참가자리스트"].splice(this.menuId,1);
+			  console.log(this.menuIndex)
+			  console.log(GeneralArray[this.menuRaidIndex]["참가자리스트"])
+              GeneralArray[this.menuRaidIndex]["참가자리스트"].splice(this.menuIndex,1);
               if(GeneralArray[this.menuRaidIndex]["참가자리스트"].length == 0){
                   GeneralArray.splice(this.menuRaidIndex,1);
+				  console.log(this.menuRaidIndex)
                 }
           }
 
           else if(this.menuDifficulty == "노말"){
 
-              NormalArray[this.menuRaidIndex]["참가자리스트"].splice(this.menuId,1);
+              NormalArray[this.menuRaidIndex]["참가자리스트"].splice(this.menuIndex,1);
 
               if(NormalArray[this.menuRaidIndex]["참가자리스트"].length == 0){
                   NormalArray.splice(this.menuRaidIndex,1);
@@ -409,7 +414,7 @@ export class WeekCalendarComponent implements OnInit {
 
           else if(this.menuDifficulty == "하드"){
 
-              HardArray[this.menuRaidIndex]["참가자리스트"].splice(this.menuId,1);
+              HardArray[this.menuRaidIndex]["참가자리스트"].splice(this.menuIndex,1);
 
               if(HardArray[this.menuRaidIndex]["참가자리스트"].length == 0){
                   HardArray.splice(this.menuRaidIndex,1);
@@ -418,7 +423,7 @@ export class WeekCalendarComponent implements OnInit {
 
           else if(this.menuDifficulty == "기타"){
 
-              EtcArray[this.menuRaidIndex]["참가자리스트"].splice(this.menuId,1);
+              EtcArray[this.menuRaidIndex]["참가자리스트"].splice(this.menuIndex,1);
 
               if(EtcArray[this.menuRaidIndex]["참가자리스트"].length == 0){
                   EtcArray.splice(this.menuRaidIndex,1);
@@ -433,8 +438,9 @@ export class WeekCalendarComponent implements OnInit {
         });
 
         });
+	  
 		if(this.MenuName == "전체"){
-                 onSnapshot(
+          onSnapshot(
           doc(this.firestore, this.Day_Label , "레이드"),
           { includeMetadataChanges: true },
           (doc) => {
