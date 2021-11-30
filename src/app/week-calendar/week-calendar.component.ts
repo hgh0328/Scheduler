@@ -6,6 +6,7 @@ import { collection, doc, getDoc, getDocs, onSnapshot, setDoc } from 'firebase/f
 import * as $ from 'jquery';
 import { CalendarAddButtonComponent } from '../calendar-add-button/calendar-add-button.component';
 import {FormControl} from '@angular/forms';
+import { MyHorkWrokCheckListComponent } from '../my-hork-wrok-check-list/my-hork-wrok-check-list.component';
 
 @Component({
   selector: 'app-week-calendar',
@@ -42,12 +43,12 @@ export class WeekCalendarComponent implements OnInit {
 
   positionArray_List;
   Raid_Fullname;
-    
+
   TogetherUserList;
   Together_Member;
   Together_From_Member
   Together_Check;
-	
+
   panelOpenState;
 
   constructor(private MatBottomSheet: MatBottomSheet,
@@ -61,8 +62,8 @@ export class WeekCalendarComponent implements OnInit {
 
 
   ngOnInit() {
-	  
-	this.panelOpenState = true;	  
+
+	this.panelOpenState = true;
     this.userid = this.route.snapshot.queryParamMap.get("id");
 
 //    if (this.userid.indexOf(",") > -1) {
@@ -94,7 +95,7 @@ export class WeekCalendarComponent implements OnInit {
       /*초기값*/
       this.Level_Menu = "전체";
       this.Day_Label = TodayLabel();
-      
+
       if(this.Day_Label == '수요일'){
           this.Day_Tab_selected = 0
       }
@@ -126,10 +127,10 @@ export class WeekCalendarComponent implements OnInit {
 			var docdata: any;
 			docdata = doc.data();
 			this.AllRaidList = [];
-			this.TogetherUserList = [];			  
-			All_level.forEach((level)=>{				
-				this.AllRaidList.push(docdata[level]);				
- 				     this.RaidList = docdata[level];					
+			this.TogetherUserList = [];
+			All_level.forEach((level)=>{
+				this.AllRaidList.push(docdata[level]);
+ 				     this.RaidList = docdata[level];
                      this.RaidList.forEach((item, index) => {
  					  var TogetherarrayList:any = item['참가자리스트']
 					  var positionString:any = "";
@@ -150,55 +151,55 @@ export class WeekCalendarComponent implements OnInit {
 								}else if(MeberList['포지션'] == '둘다가능'){
 								  double++;
 								}
- 						  if(MeberList['아이디'].indexOf(",") > -1){					  
- 							    this.TogetherUserList = MeberList['아이디'].split(','); 
+ 						  if(MeberList['아이디'].indexOf(",") > -1){
+ 							    this.TogetherUserList = MeberList['아이디'].split(',');
                                 this.Together_Member = this.TogetherUserList[0]
                          		this.Together_From_Member = this.TogetherUserList[1]
-								if(this.Together_Member != undefined && this.Together_From_Member != undefined){									
+								if(this.Together_Member != undefined && this.Together_From_Member != undefined){
 									   TogetherarrayList[i]['아이디'] = this.Together_From_Member
 									   TogetherarrayList[i]['친구'] = this.Together_Member
-								} 
+								}
                            	};
 							 if(deal == 0){
 								 dealString = ""
 								 if(heal == 0){
-									healString = ""; 
+									healString = "";
 								 }
 								 else{
 									 healString = " 힐러 [" + heal + "] ";
 								 };
 								 if(double == 0){
-									doubleString = ""; 
+									doubleString = "";
 								 }
 								 else{
 									 doubleString = " 둘다가능 [" + double + "] ";
-								 };								 
+								 };
 							 }
 							 else if(heal == 0){
 								 healString = ""
 								 if(deal == 0){
-									dealString = ""; 
+									dealString = "";
 								 }
 								 else{
 									 dealString = " 딜러 [" + deal + "] ";
 								 };
 								 if(double == 0){
-									doubleString = ""; 
+									doubleString = "";
 								 }
 								 else{
 									 doubleString = " 둘다가능 [" + double + "] ";
-								 }								 
+								 }
 							 }
 							 else if(double == 0){
 								 doubleString = ""
 								 if(deal == 0){
-									dealString = ""; 
+									dealString = "";
 								 }
 								 else{
 									 dealString = " 딜러 [" + deal + "] ";
 								 };
 								 if(heal == 0){
-									healString = ""; 
+									healString = "";
 								 }
 								 else{
 									 healString = " 힐러 [" + heal + "] ";
@@ -208,10 +209,22 @@ export class WeekCalendarComponent implements OnInit {
 							 this.positionArray_List = dealString + healString + doubleString
 							 this.RaidList[index]['신청현황'] = this.positionArray_List
  					});
-				});			
+				});
 			});
    		}
 
+	HomeWork_Check(){
+
+		this.userid = this.route.snapshot.queryParamMap.get("id");
+        this.MatBottomSheet.open(MyHorkWrokCheckListComponent, {
+              panelClass: 'OptionModal',
+          data: {
+            userid: this.userid
+          }
+            }).afterDismissed().subscribe((result) => {
+    	});
+
+	}
 
 
     Day_TabClick(Day_event) {
@@ -244,10 +257,10 @@ export class WeekCalendarComponent implements OnInit {
 			var docdata: any;
 			docdata = doc.data();
 			this.AllRaidList = [];
-			this.TogetherUserList = [];			  
-			All_level.forEach((level)=>{				
-				this.AllRaidList.push(docdata[level]);				
- 				     this.RaidList = docdata[level];					
+			this.TogetherUserList = [];
+			All_level.forEach((level)=>{
+				this.AllRaidList.push(docdata[level]);
+ 				     this.RaidList = docdata[level];
                      this.RaidList.forEach((item, index) => {
  					  var TogetherarrayList:any = item['참가자리스트']
 					  var positionString:any = "";
@@ -268,55 +281,55 @@ export class WeekCalendarComponent implements OnInit {
 								}else if(MeberList['포지션'] == '둘다가능'){
 								  double++;
 								}
- 						  if(MeberList['아이디'].indexOf(",") > -1){					  
- 							    this.TogetherUserList = MeberList['아이디'].split(','); 
+ 						  if(MeberList['아이디'].indexOf(",") > -1){
+ 							    this.TogetherUserList = MeberList['아이디'].split(',');
                                 this.Together_Member = this.TogetherUserList[0]
                          		this.Together_From_Member = this.TogetherUserList[1]
-								if(this.Together_Member != undefined && this.Together_From_Member != undefined){									
+								if(this.Together_Member != undefined && this.Together_From_Member != undefined){
 									   TogetherarrayList[i]['아이디'] = this.Together_From_Member
 									   TogetherarrayList[i]['친구'] = this.Together_Member
-								} 
+								}
                            	};
 							 if(deal == 0){
 								 dealString = ""
 								 if(heal == 0){
-									healString = ""; 
+									healString = "";
 								 }
 								 else{
 									 healString = " 힐러 [" + heal + "] ";
 								 };
 								 if(double == 0){
-									doubleString = ""; 
+									doubleString = "";
 								 }
 								 else{
 									 doubleString = " 둘다가능 [" + double + "] ";
-								 };								 
+								 };
 							 }
 							 else if(heal == 0){
 								 healString = ""
 								 if(deal == 0){
-									dealString = ""; 
+									dealString = "";
 								 }
 								 else{
 									 dealString = " 딜러 [" + deal + "] ";
 								 };
 								 if(double == 0){
-									doubleString = ""; 
+									doubleString = "";
 								 }
 								 else{
 									 doubleString = " 둘다가능 [" + double + "] ";
-								 }								 
+								 }
 							 }
 							 else if(double == 0){
 								 doubleString = ""
 								 if(deal == 0){
-									dealString = ""; 
+									dealString = "";
 								 }
 								 else{
 									 dealString = " 딜러 [" + deal + "] ";
 								 };
 								 if(heal == 0){
-									healString = ""; 
+									healString = "";
 								 }
 								 else{
 									 healString = " 힐러 [" + heal + "] ";
@@ -326,9 +339,9 @@ export class WeekCalendarComponent implements OnInit {
 							 this.positionArray_List = dealString + healString + doubleString
 							 this.RaidList[index]['신청현황'] = this.positionArray_List
  					});
-				
+
 			/*요기*/
-				});			
+				});
 			});
 
 				}
@@ -365,55 +378,55 @@ export class WeekCalendarComponent implements OnInit {
 								}else if(MeberList['포지션'] == '둘다가능'){
 								  double++;
 								}
- 						  if(MeberList['아이디'].indexOf(",") > -1){					  
- 							    this.TogetherUserList = MeberList['아이디'].split(','); 
+ 						  if(MeberList['아이디'].indexOf(",") > -1){
+ 							    this.TogetherUserList = MeberList['아이디'].split(',');
                                 this.Together_Member = this.TogetherUserList[0]
                          		this.Together_From_Member = this.TogetherUserList[1]
-								if(this.Together_Member != undefined && this.Together_From_Member != undefined){									
+								if(this.Together_Member != undefined && this.Together_From_Member != undefined){
 									   TogetherarrayList[i]['아이디'] = this.Together_From_Member
 									   TogetherarrayList[i]['친구'] = this.Together_Member
-								} 
+								}
                            	};
 							 if(deal == 0){
 								 dealString = ""
 								 if(heal == 0){
-									healString = ""; 
+									healString = "";
 								 }
 								 else{
 									 healString = " 힐러 [" + heal + "] ";
 								 };
 								 if(double == 0){
-									doubleString = ""; 
+									doubleString = "";
 								 }
 								 else{
 									 doubleString = " 둘다가능 [" + double + "] ";
-								 };								 
+								 };
 							 }
 							 else if(heal == 0){
 								 healString = ""
 								 if(deal == 0){
-									dealString = ""; 
+									dealString = "";
 								 }
 								 else{
 									 dealString = " 딜러 [" + deal + "] ";
 								 };
 								 if(double == 0){
-									doubleString = ""; 
+									doubleString = "";
 								 }
 								 else{
 									 doubleString = " 둘다가능 [" + double + "] ";
-								 }								 
+								 }
 							 }
 							 else if(double == 0){
 								 doubleString = ""
 								 if(deal == 0){
-									dealString = ""; 
+									dealString = "";
 								 }
 								 else{
 									 dealString = " 딜러 [" + deal + "] ";
 								 };
 								 if(heal == 0){
-									healString = ""; 
+									healString = "";
 								 }
 								 else{
 									 healString = " 힐러 [" + heal + "] ";
@@ -422,7 +435,7 @@ export class WeekCalendarComponent implements OnInit {
                          });
 							 this.positionArray_List = dealString + healString + doubleString
 							 this.RaidList[index]['신청현황'] = this.positionArray_List
- 					});  
+ 					});
 				  });
 							this.RaidArray_Once = true;
                 }
@@ -465,7 +478,7 @@ export class WeekCalendarComponent implements OnInit {
   menuClcik(index, id, date, difficulty, RaidIndex, RaidList, AllRaidIndex, AllRaidList,UserList) {
 
 
-            
+
       this.menuId = id;
       this.menuIndex = index;
 	  this.Together_UserList = UserList;
@@ -578,7 +591,7 @@ export class WeekCalendarComponent implements OnInit {
         });
 
         });
-	  
+
 		if(this.MenuName == '전체'){
 				onSnapshot(
           doc(this.firestore, this.Day_Label , "레이드"),
@@ -588,10 +601,10 @@ export class WeekCalendarComponent implements OnInit {
 			var docdata: any;
 			docdata = doc.data();
 			this.AllRaidList = [];
-			this.TogetherUserList = [];			  
-			All_level.forEach((level)=>{				
-				this.AllRaidList.push(docdata[level]);				
- 				     this.RaidList = docdata[level];					
+			this.TogetherUserList = [];
+			All_level.forEach((level)=>{
+				this.AllRaidList.push(docdata[level]);
+ 				     this.RaidList = docdata[level];
                      this.RaidList.forEach((item, index) => {
  					  var TogetherarrayList:any = item['참가자리스트']
 					  var positionString:any = "";
@@ -612,55 +625,55 @@ export class WeekCalendarComponent implements OnInit {
 								}else if(MeberList['포지션'] == '둘다가능'){
 								  double++;
 								}
- 						  if(MeberList['아이디'].indexOf(",") > -1){					  
- 							    this.TogetherUserList = MeberList['아이디'].split(','); 
+ 						  if(MeberList['아이디'].indexOf(",") > -1){
+ 							    this.TogetherUserList = MeberList['아이디'].split(',');
                                 this.Together_Member = this.TogetherUserList[0]
                          		this.Together_From_Member = this.TogetherUserList[1]
-								if(this.Together_Member != undefined && this.Together_From_Member != undefined){									
+								if(this.Together_Member != undefined && this.Together_From_Member != undefined){
 									   TogetherarrayList[i]['아이디'] = this.Together_From_Member
 									   TogetherarrayList[i]['친구'] = this.Together_Member
-								} 
+								}
                            	};
 							 if(deal == 0){
 								 dealString = ""
 								 if(heal == 0){
-									healString = ""; 
+									healString = "";
 								 }
 								 else{
 									 healString = " 힐러 [" + heal + "] ";
 								 };
 								 if(double == 0){
-									doubleString = ""; 
+									doubleString = "";
 								 }
 								 else{
 									 doubleString = " 둘다가능 [" + double + "] ";
-								 };								 
+								 };
 							 }
 							 else if(heal == 0){
 								 healString = ""
 								 if(deal == 0){
-									dealString = ""; 
+									dealString = "";
 								 }
 								 else{
 									 dealString = " 딜러 [" + deal + "] ";
 								 };
 								 if(double == 0){
-									doubleString = ""; 
+									doubleString = "";
 								 }
 								 else{
 									 doubleString = " 둘다가능 [" + double + "] ";
-								 }								 
+								 }
 							 }
 							 else if(double == 0){
 								 doubleString = ""
 								 if(deal == 0){
-									dealString = ""; 
+									dealString = "";
 								 }
 								 else{
 									 dealString = " 딜러 [" + deal + "] ";
 								 };
 								 if(heal == 0){
-									healString = ""; 
+									healString = "";
 								 }
 								 else{
 									 healString = " 힐러 [" + heal + "] ";
@@ -670,9 +683,9 @@ export class WeekCalendarComponent implements OnInit {
 							 this.positionArray_List = dealString + healString + doubleString
 							 this.RaidList[index]['신청현황'] = this.positionArray_List
  					});
-				
+
 			/*요기*/
-				});			
+				});
 			});
 
 			}
@@ -706,55 +719,55 @@ export class WeekCalendarComponent implements OnInit {
 								}else if(MeberList['포지션'] == '둘다가능'){
 								  double++;
 								}
- 						  if(MeberList['아이디'].indexOf(",") > -1){					  
- 							    this.TogetherUserList = MeberList['아이디'].split(','); 
+ 						  if(MeberList['아이디'].indexOf(",") > -1){
+ 							    this.TogetherUserList = MeberList['아이디'].split(',');
                                 this.Together_Member = this.TogetherUserList[0]
                          		this.Together_From_Member = this.TogetherUserList[1]
-								if(this.Together_Member != undefined && this.Together_From_Member != undefined){									
+								if(this.Together_Member != undefined && this.Together_From_Member != undefined){
 									   TogetherarrayList[i]['아이디'] = this.Together_From_Member
 									   TogetherarrayList[i]['친구'] = this.Together_Member
-								} 
+								}
                            	};
 							 if(deal == 0){
 								 dealString = ""
 								 if(heal == 0){
-									healString = ""; 
+									healString = "";
 								 }
 								 else{
 									 healString = " 힐러 [" + heal + "] ";
 								 };
 								 if(double == 0){
-									doubleString = ""; 
+									doubleString = "";
 								 }
 								 else{
 									 doubleString = " 둘다가능 [" + double + "] ";
-								 };								 
+								 };
 							 }
 							 else if(heal == 0){
 								 healString = ""
 								 if(deal == 0){
-									dealString = ""; 
+									dealString = "";
 								 }
 								 else{
 									 dealString = " 딜러 [" + deal + "] ";
 								 };
 								 if(double == 0){
-									doubleString = ""; 
+									doubleString = "";
 								 }
 								 else{
 									 doubleString = " 둘다가능 [" + double + "] ";
-								 }								 
+								 }
 							 }
 							 else if(double == 0){
 								 doubleString = ""
 								 if(deal == 0){
-									dealString = ""; 
+									dealString = "";
 								 }
 								 else{
 									 dealString = " 딜러 [" + deal + "] ";
 								 };
 								 if(heal == 0){
-									healString = ""; 
+									healString = "";
 								 }
 								 else{
 									 healString = " 힐러 [" + heal + "] ";
@@ -763,7 +776,7 @@ export class WeekCalendarComponent implements OnInit {
                          });
 							 this.positionArray_List = dealString + healString + doubleString
 							 this.RaidList[index]['신청현황'] = this.positionArray_List
- 					});  
+ 					});
 				  });
 
 				}

@@ -82,6 +82,7 @@
 	  <mat-option value="[기타] 아브렐슈드 데자뷰">[기타] 아브렐슈드 데자뷰</mat-option>
 	  <mat-option value="[기타] 길드 토벌전">[기타] 길드 토벌전</mat-option>
 	  <mat-option value="[기타] 길드 점령전(메데이아)">[기타] 길드 점령전(메데이아)</mat-option>
+	  <mat-option value="[기타] 사용자 설정" (click)="ETC_Custom()">[기타] 사용자 설정[메모 작성*]</mat-option>
 	  <mat-option value="[기타] Only Test" disabled>[기타] Only Test</mat-option>
 
 	</mat-optgroup>
@@ -128,9 +129,10 @@
   	<mat-form-field appearance="outline" class="Together_Ok">
 		<mat-label>메모</mat-label>
 
-			 <input matInput type="text" [(ngModel)]="Memo" #AllUser_message maxlength="50" matInput placeholder="ex) 초행, 학원팟 가능, 공대장 있음" (keydown.enter)="save()">
+			 <input matInput type="text" [(ngModel)]="Memo" #AllUser_message maxlength="50" matInput placeholder="ex) 초행, 학원팟 가능, 공대장 있음" (keydown.enter)="save()" [required]="Memo_required">
 			<mat-hint align="start"><strong>50자 내외로 메세지 작성이 가능합니다.</strong> </mat-hint>
 			<mat-hint align="end">{{AllUser_message.value.length}} / 50</mat-hint>
+			<mat-error>[기타] 사용자 설정은 메모로 추가 사항을 작성해주세요* ex) 가디언토벌, 내실, 협동퀘스트</mat-error>
 		</mat-form-field>
 </div>
 

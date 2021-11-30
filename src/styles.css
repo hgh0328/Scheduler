@@ -241,7 +241,8 @@ button.mat-stroked-button.RedBtn:hover{background-color: var(--red-color); color
 .Content_Panel .mat-tab-body-content::-webkit-scrollbar{display: contents !important;}
 .Content_Panel_Title{height: 70px; width: 100%;}
 .Content_Panel_Title h3{font-size: 16px; color: #888; font-weight: 500; width: 100%; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; border-bottom: 1px solid #999;  height: 70px; line-height: 70px; padding: 0 16px; color: var(--sub-font-color);}
-.Content_Panel_Title h3 mat-icon{position: relative; top: 5px; margin-right: 5px; color: var(--sub-font-color);}
+.Content_Panel_Title h3 > mat-icon{position: relative; top: 5px; margin-right: 5px; color: var(--sub-font-color);}
+.Content_Panel_Title h3 button{position: absolute; right: 16px; top: 17px;}
 .Calendar_List_Box{position: relative; width: 100%; height: calc(100vh - 64px - 50px - 70px - 48px); overflow: auto; border-bottom: 1px solid var(--sub-whitefont-color);  background: #f9f9f9;}
 .Calendar_List_Box button{ border-radius: 0; height: 50px; line-height: 50px; width: 50px;}
 .Calendar_List_Box button .mat-list-icon{color: var(--sub-font-color); transition: .3s;}

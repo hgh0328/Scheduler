@@ -29,6 +29,8 @@ export class CalendarAddButtonComponent implements OnInit {
 	Together_Member;
   Raid_Build;
   form_Together_Member = [];
+	Memo_required = false;
+	
 
 
   constructor(
@@ -69,10 +71,19 @@ export class CalendarAddButtonComponent implements OnInit {
 
 
   }
+	ETC_Custom(){
+		if(this.Memo_required == true){
+			this.Memo_required = false;
+		}
+		else{
+			this.Memo_required = true;
+		}		
+		
+	}
     Raid_Select(){
-        // console.log(this.Raid);
 		if(this.Raid.length > 1){
 		  $(".Raid_Select .mat-select-value-text").text(this.Raid[0] + " 외 " + (this.Raid.length - 1) + " 개");
+
 		}
 	}
 
@@ -401,6 +412,9 @@ export class CalendarAddButtonComponent implements OnInit {
 		  window.alert('선택하지 않은 필드가 존재합니다.\n메모를 제외한 모든 필드를 입력해주세요.');
 
         }
+	  else if(this.Memo_required == true){
+			window.alert('[기타] 사용자 설정 선택은 메모 작성이 필수 항목입니다.\n메모에 원하시는 레이드 또는 작업을 입력해주세요.\nex)내실, 가디언, 협동퀘스트 등.');
+			}
 
       else {
 

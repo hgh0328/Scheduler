@@ -31,6 +31,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatTabGroupGestureModule } from '@angular-material-gesture/mat-tab-group-gesture';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatDialogModule} from '@angular/material/dialog';
+import { MyHorkWrokCheckListComponent } from './my-hork-wrok-check-list/my-hork-wrok-check-list.component';
 
 /*CDK Module*/
 import {TextFieldModule} from '@angular/cdk/text-field';
@@ -66,6 +67,7 @@ import { getAnalytics, provideAnalytics } from '@angular/fire/analytics';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,6 +78,7 @@ import { getAnalytics, provideAnalytics } from '@angular/fire/analytics';
     EventNoticeComponent,
     UserQnAComponent,
     UserGuideModalComponent,
+    MyHorkWrokCheckListComponent,
 
   ],
   imports: [
