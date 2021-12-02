@@ -284,14 +284,14 @@ export class AppComponent {
 		}
 
         /*휴면계정*/
-        /*달빛천사썬가드 소서리스*/
-		else if(this.IdText == "달빛천사썬가드" && this.PasswordText == "90909"){
+        /*테스트_계정*/
+		else if(this.IdText == "테스트_계정" && this.PasswordText == "90909"){
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
 			window.alert(this.IdText + "님 환영합니다.");
 		}
-		else if(this.IdText == "달빛천사썬가드" && this.PasswordText != "90909"){
+		else if(this.IdText == "테스트_계정" && this.PasswordText != "90909"){
 			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
 		}
 

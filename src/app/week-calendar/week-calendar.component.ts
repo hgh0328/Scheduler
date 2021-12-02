@@ -205,6 +205,11 @@ export class WeekCalendarComponent implements OnInit {
 									 healString = " 힐러 [" + heal + "] ";
 								 }
 							 }
+							 else{
+								 dealString = " 딜러 [" + deal + "] ";
+								 healString = " 힐러 [" + heal + "] ";
+								 doubleString = " 둘다가능 [" + double + "] ";								 
+							 }
                          });
 							 this.positionArray_List = dealString + healString + doubleString
 							 this.RaidList[index]['신청현황'] = this.positionArray_List
@@ -335,6 +340,11 @@ export class WeekCalendarComponent implements OnInit {
 									 healString = " 힐러 [" + heal + "] ";
 								 }
 							 }
+							 else{
+								 dealString = " 딜러 [" + deal + "] ";
+								 healString = " 힐러 [" + heal + "] ";
+								 doubleString = " 둘다가능 [" + double + "] ";								 
+							 }
                          });
 							 this.positionArray_List = dealString + healString + doubleString
 							 this.RaidList[index]['신청현황'] = this.positionArray_List
@@ -431,6 +441,11 @@ export class WeekCalendarComponent implements OnInit {
 								 else{
 									 healString = " 힐러 [" + heal + "] ";
 								 }
+							 }
+							 else{
+								 dealString = " 딜러 [" + deal + "] ";
+								 healString = " 힐러 [" + heal + "] ";
+								 doubleString = " 둘다가능 [" + double + "] ";								 
 							 }
                          });
 							 this.positionArray_List = dealString + healString + doubleString
@@ -679,6 +694,11 @@ export class WeekCalendarComponent implements OnInit {
 									 healString = " 힐러 [" + heal + "] ";
 								 }
 							 }
+							 else{
+								 dealString = " 딜러 [" + deal + "] ";
+								 healString = " 힐러 [" + heal + "] ";
+								 doubleString = " 둘다가능 [" + double + "] ";								 
+							 }
                          });
 							 this.positionArray_List = dealString + healString + doubleString
 							 this.RaidList[index]['신청현황'] = this.positionArray_List
@@ -772,6 +792,11 @@ export class WeekCalendarComponent implements OnInit {
 								 else{
 									 healString = " 힐러 [" + heal + "] ";
 								 }
+							 }
+							 else{
+								 dealString = " 딜러 [" + deal + "] ";
+								 healString = " 힐러 [" + heal + "] ";
+								 doubleString = " 둘다가능 [" + double + "] ";								 
 							 }
                          });
 							 this.positionArray_List = dealString + healString + doubleString

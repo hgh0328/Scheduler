@@ -1,7 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
-import { MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from '@angular/material/bottom-sheet';
+import {MatBottomSheet, MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA} from '@angular/material/bottom-sheet';
 import { ActivatedRoute } from '@angular/router';
+import { doc, onSnapshot } from 'firebase/firestore';
 
 @Component({
   selector: 'app-my-hork-wrok-check-list',
@@ -23,16 +24,28 @@ export class MyHorkWrokCheckListComponent implements OnInit {
     this.userid = this.data.userid
     console.log(this.userid)
 
-  //   onSnapshot(
-  //     doc(this.firestore, this.Day_Label , "레이드"),
-  //     { includeMetadataChanges: true },
-  //     (doc) => {
-  // var choiceRaid: any = [];
-  // var docdata: any;
-  // docdata = doc.data();
+     onSnapshot(
+       doc(this.firestore, 'My_Character' , this.userid),
+       { includeMetadataChanges: true },
+       (doc) => {
+//   			var Character_list: any = [];
+   			var My_Character_List: any;
+   			My_Character_List = doc.data();
+         console.log(My_Character_List)
+       });
 
-  //   )
-    }
+
+
+  }
+  
+  close() {
+    this.bottomSheetRef.dismiss()
+  }
+
+	save(){
+
+	}
+
 
 
 }

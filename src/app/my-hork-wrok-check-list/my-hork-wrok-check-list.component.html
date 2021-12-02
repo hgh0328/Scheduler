@@ -1,1 +1,9 @@
-<p>my-hork-wrok-check-list works!</p>
+<div class="User_Option_Dialog">
+	<h3><span>[ {{userid}} ]</span> 숙제 체크 리스트 <mat-icon (click)="close()">close</mat-icon></h3>
+  
+
+ <div class="User_Option_DialogButtonBox">
+		<button mat-stroked-button (click)="close()">취소</button>
+		<button mat-stroked-button class="NextBtn" (click)="save()">저장</button>
+	</div>
+</div>
