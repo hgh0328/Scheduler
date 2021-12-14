@@ -1,0 +1,25 @@
+<h3><strong> <span class="Mobile">{{Character_Job}} / {{Character_Name}}</span> 주간 초기화 </strong><mat-icon mat-dialog-close>close</mat-icon></h3>
+
+	
+	<div class="Character_Modal">
+		<div class="Character_Modal_Text">
+			<p>
+			<em>직업 :</em> <em>{{Character_Job}}</em> 
+			<em>캐릭터명 :</em> <span> {{Character_Name}}</span> 
+			<em class="Mobile">아이템 레벨 :</em> <em class="Mobile">{{Character_Level}}</em></p>
+			<h5>주간 초기화 목록</h5>
+			<p *ngFor="let Character_WeekList of Character_WeekList">{{Character_WeekList.name}}</p>
+
+			<h4>해당 캐릭의 주간 숙제가 초기화 됩니다.</h4>
+		</div>
+
+	</div>
+	
+
+	<div class="User_Option_DialogButtonBox">
+     		<button mat-stroked-button mat-dialog-close>취소</button>
+			<button mat-stroked-button class="NextBtn">초기화</button>
+	</div>
+
+
+

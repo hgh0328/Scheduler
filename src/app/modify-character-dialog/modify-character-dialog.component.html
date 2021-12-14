@@ -1,0 +1,146 @@
+<h3><strong>{{Character_Job}} / {{Character_Name}} 캐릭터 수정</strong> <mat-icon mat-dialog-close>close</mat-icon></h3>
+
+	<div class="Add_Character_Modal_Box">
+	<p>캐릭터 직업과 캐릭터명 변경은 불가합니다.</p>	
+	<p>캐릭터를 삭제 후 새로 생성해주세요.</p>	
+	<mat-form-field appearance="legacy">
+			<mat-label>캐릭터 직업</mat-label>
+			<mat-icon matPrefix>build</mat-icon>
+			<mat-select required [(ngModel)]="Character_Job" readonly disabled>
+			<!--슈사이어-->
+		 	  <mat-optgroup label="슈사이어">
+				  <mat-option value="워로드">워로드</mat-option>
+				  <mat-option value="디스트로이어">디스트로이어</mat-option>
+				  <mat-option value="버서커">버서커</mat-option>
+				  <mat-option value="홀리나이트">홀리나이트</mat-option>
+			  </mat-optgroup>
+
+			  <!--애니츠-->
+			  <mat-optgroup label="애니츠">
+			  	<mat-option value="인파이터">인파이터</mat-option>
+			  	<mat-option value="배틀마스터">배틀마스터</mat-option>
+			  	<mat-option value="기공사">기공사</mat-option>
+			  	<mat-option value="창술사">창술사</mat-option>
+			  	<mat-option value="스트라이커">스트라이커</mat-option>
+		  	  </mat-optgroup>
+
+		  	  <!--아르데타인-->
+			  <mat-optgroup label="아르데타인">
+			  	<mat-option value="데빌헌터">데빌헌터</mat-option>
+			  	<mat-option value="블래스터">블래스터</mat-option>
+			  	<mat-option value="호크아이">호크아이</mat-option>
+			  	<mat-option value="스카우터">스카우터</mat-option>
+			  	<mat-option value="건슬링어">건슬링어</mat-option>
+		  	  </mat-optgroup>
+
+		  	  <!--실린-->
+			  <mat-optgroup label="실린">
+			  	<mat-option value="서머너">서머너</mat-option>
+			  	<mat-option value="바드">바드</mat-option>
+			  	<mat-option value="아르카나">아르카나</mat-option>
+			  	<mat-option value="소서리스">소서리스</mat-option>
+		  	  </mat-optgroup>
+
+		  	  <!--데런-->
+			  <mat-optgroup label="데런">
+			  	<mat-option value="블레이드">블레이드</mat-option>
+			  	<mat-option value="데모닉">데모닉</mat-option>
+			  	<mat-option value="리퍼">리퍼</mat-option>
+		  	  </mat-optgroup>
+
+		  	  <!--스페셜리스트-->
+			  <mat-optgroup label="스페셜리스트">
+			  	<mat-option value="연금술사" disabled>연금술사 (출시예정)</mat-option>
+			  	<mat-option value="점성가" disabled>점성가 (출시예정)</mat-option>
+			  	<mat-option value="뮤지션" disabled>뮤지션 (출시미정)</mat-option>
+		  	  </mat-optgroup>
+
+
+
+
+			</mat-select>
+			 <mat-hint>캐릭터 직업 변경은 불가합니다.</mat-hint>
+			<mat-error>캐릭터 직업을 확인해주세요.</mat-error>
+		</mat-form-field>
+		
+		<mat-form-field appearance="legacy">
+			<mat-label>캐릭터명</mat-label>
+			<mat-icon matPrefix>person</mat-icon>
+			<input matInput required inputmode="text" [(ngModel)]="Character_Name" readonly disabled>
+			    <mat-hint>캐릭터명 변경을 불가합니다.</mat-hint>
+			<mat-error>캐릭터명을 확인해주세요.</mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="legacy">
+			<mat-label>아이템 레벨</mat-label>
+			<mat-icon matPrefix>sports_esports</mat-icon>
+			<input matInput required inputmode="numeric" [(ngModel)]="Character_Level">
+			    <mat-hint>아이템 레벨을 변경가능한 항목입니다.</mat-hint>
+			<mat-error>아이템 레벨을 확인해주세요.</mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="legacy">
+			<mat-label>숙제 리스트(매일)</mat-label>
+			<mat-icon matPrefix>calendar_month</mat-icon>
+			<mat-select multiple [(ngModel)]="Chraracter_DayList">
+			<!--일 단위 컨텐츠-->
+		 	  <mat-optgroup label="상시 컨텐츠">
+				  <mat-option value="카오스 던전">카오스 던전</mat-option>
+				  <mat-option value="가디언 토벌">가디언 토벌</mat-option>
+				  <mat-option value="에포나 퀘스트">에포나 퀘스트</mat-option>
+			  </mat-optgroup>
+			</mat-select>
+
+			 <mat-hint>상시 컨텐츠를 수정 할 수 있습니다.</mat-hint>
+			<mat-error>상시 컨텐츠는 매일 초기화 됩니다.</mat-error>
+		</mat-form-field>
+
+			<mat-form-field appearance="legacy">
+					<mat-label>숙제 리스트(주간)</mat-label>
+					<mat-icon matPrefix>calendar_month</mat-icon>
+					<mat-select multiple [(ngModel)]="Chraracter_WeekList" class="Raid_Select">
+					<!--주간 컨텐츠-->
+			<mat-optgroup label="일반" (click)="Raid_Select()">
+			  <mat-option value="[일반] 오레하 2종 (노말,하드)">[일반] 오레하 2종 (노말,하드)</mat-option>
+			  <mat-option value="[일반] 아르고스 1페">[일반] 아르고스 1페</mat-option>
+			  <mat-option value="[일반] 아르고스 2페">[일반] 아르고스 2페</mat-option>
+			  <mat-option value="[일반] 아르고스 3페">[일반] 아르고스 3페</mat-option>
+			  <mat-option value="[일반] 도전 어비스 던전">[일반] 도전 어비스 던전</mat-option>
+			  <mat-option value="[일반] 도전 가디언 토벌">[일반] 도전 가디언 토벌</mat-option>
+			</mat-optgroup>
+
+			<mat-optgroup label="노말" (click)="Raid_Select()">
+			  <mat-option value="[노말] 발탄">[노말] 발탄</mat-option>
+			  <mat-option value="[노말] 비아키스">[노말] 비아키스</mat-option>
+			  <mat-option value="[노말] 쿠크세이튼">[노말] 쿠크세이튼</mat-option>
+			  <mat-option value="[노말] 아브렐슈드 1~2 관문">[노말] 아브렐슈드 1~2 관문</mat-option>
+			  <mat-option value="[노말] 아브렐슈드 3~4 관문">[노말] 아브렐슈드 3~4 관문</mat-option>
+			  <mat-option value="[노말] 아브렐슈드 5~6 관문">[노말] 아브렐슈드 5~6 관문</mat-option>
+			</mat-optgroup>
+
+			<mat-optgroup label="하드" (click)="Raid_Select()">
+			  <mat-option value="[하드] 발탄">[하드] 발탄</mat-option>
+			  <mat-option value="[하드] 비아키스">[하드] 비아키스</mat-option>
+			  <mat-option value="[하드] 아브렐슈드 1~2 관문">[하드] 아브렐슈드 1~2 관문</mat-option>
+			  <mat-option value="[하드] 아브렐슈드 3~4 관문">[하드] 아브렐슈드 3~4 관문</mat-option>
+			  <mat-option value="[하드] 아브렐슈드 5~6 관문">[하드] 아브렐슈드 5~6 관문</mat-option>
+			  <mat-option value="[하드] 쿠크세이튼 (예정)" disabled>[하드] 쿠크세이튼 (예정)</mat-option>
+			</mat-optgroup>
+
+			<mat-optgroup label="기타" (click)="Raid_Select()">
+			  <mat-option value="[기타] 쿠크세이튼 리허설">[기타] 쿠크세이튼 리허설</mat-option>
+			  <mat-option value="[기타] 아브렐슈드 데자뷰">[기타] 아브렐슈드 데자뷰</mat-option>
+			</mat-optgroup>
+			</mat-select>
+
+			 <mat-hint>주간 컨텐츠를 수정 할 수 있습니다.</mat-hint>
+			<mat-error>주간 컨텐츠는 사용자가 직접 초기화 해야합니다.</mat-error>
+		</mat-form-field>
+
+	<div class="User_Option_DialogButtonBox">
+     		<button mat-stroked-button mat-dialog-close>취소</button>
+			<button mat-stroked-button class="NextBtn">수정</button>
+		</div>
+
+	</div>
+

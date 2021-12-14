@@ -1,7 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
 import {MatBottomSheet, MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA} from '@angular/material/bottom-sheet';
-import { addDoc, collection, doc, getDoc, updateDoc,setDoc  } from 'firebase/firestore';import * as $ from 'jquery';
+import { addDoc, collection, doc, getDoc, updateDoc,setDoc  } from 'firebase/firestore';
+import * as $ from 'jquery';
 
 import { ActivatedRoute } from '@angular/router';
 

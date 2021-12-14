@@ -32,6 +32,12 @@ import { MatTabGroupGestureModule } from '@angular-material-gesture/mat-tab-grou
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MyHorkWrokCheckListComponent } from './my-hork-wrok-check-list/my-hork-wrok-check-list.component';
+import {MatSortModule} from '@angular/material/sort';
+import { AddCharacterDialogComponent } from './add-character-dialog/add-character-dialog.component';
+import { RemoveCharacterDialogComponent } from './remove-character-dialog/remove-character-dialog.component';
+import { ModifyCharacterDialogComponent } from './modify-character-dialog/modify-character-dialog.component';
+import { AllWeekResetDialogComponent } from './all-week-reset-dialog/all-week-reset-dialog.component';
+import { WeekResetDialogComponent } from './week-reset-dialog/week-reset-dialog.component';
 
 /*CDK Module*/
 import {TextFieldModule} from '@angular/cdk/text-field';
@@ -68,6 +74,9 @@ import { getAnalytics, provideAnalytics } from '@angular/fire/analytics';
 
 
 
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -79,6 +88,11 @@ import { getAnalytics, provideAnalytics } from '@angular/fire/analytics';
     UserQnAComponent,
     UserGuideModalComponent,
     MyHorkWrokCheckListComponent,
+    AddCharacterDialogComponent,
+    RemoveCharacterDialogComponent,
+    ModifyCharacterDialogComponent,
+    WeekResetDialogComponent,
+    AllWeekResetDialogComponent,
 
   ],
   imports: [
@@ -116,6 +130,7 @@ import { getAnalytics, provideAnalytics } from '@angular/fire/analytics';
     MatBadgeModule,
     MatDialogModule,
 	MatProgressBarModule,
+	  MatSortModule,
     StoreModule.forRoot(reducers, {
       metaReducers,
       runtimeChecks: {

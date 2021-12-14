@@ -42,7 +42,7 @@ box-sizing:border-box; cursor: default;-ms-user-select: none;
 user-select: none; ; font-size: 12px; font-family:'NotoSansKR' !important;}
 input[type = "text"]{cursor: text; user-select: text;}
 input.mat-input-element{cursor: text; user-select: text; transform: scale(0.75); transform-origin: left center; font-size: 16px; color: var(--sub-font-color)}
-button{cursor: pointer; }
+input.mat-input-element::placeholder{color: var(--sub-font-color)}
 a { color:inherit; text-decoration: none ; }
 img { border:none; max-width:100% }
 ol, ul { list-style-type: none }
@@ -60,7 +60,7 @@ html, body {min-height:100%; }
 body {background: var(--main-background-color); background: -webkit-linear-gradient(top, #f5f5f5, #cccccc 100%);background: -moz-linear-gradient(top, #f5f5f5, #cccccc 100%);background: -o-linear-gradient(top, #f5f5f5, #cccccc 100%);background: -ms-linear-gradient(top, #f5f5f5, #cccccc 100%);background: linear-gradient(top, #f5f5f5, #cccccc 100%);background-attachment:fixed; }
 i{font: normal normal normal 14px/1 FontAwesome !important;}
 .mat-primary .mat-pseudo-checkbox-checked, .mat-primary .mat-pseudo-checkbox-indeterminate{background: var(--main-color);}
-mat-form-field *{line-height: normal; font-size: 14px;}
+mat-form-field *{line-height: normal; font-size: 12px;}
 *.material-icons{font-family:'Material Icons' !important;}
 mat-icon{text-align: center; display: inline-block; position: relative; font-family:'Material Icons' !important;}
 .mat-icon{text-align: center; display: inline-block; position: relative; font-family:'Material Icons' !important;}
@@ -75,19 +75,16 @@ mat-bottom-sheet-container{padding: 0 !important;}
 .mat-ink-bar{height: 3px !important;}
 .Calendar_List_Box .mat-ink-bar{top: 0 ;}
 .Calendar_CatalogList .mat-ink-bar{bottom: 0 !important; top: auto !important;}
+.Calendar_List_Box .mat-expansion-panel:not(.mat-expanded){background-color: var(--main-whitefont-color) !important;}
+.mat-expansion-panel-body{background-color: var(--main-background-color);}
 .mat-accent .mat-pseudo-checkbox-checked, .mat-accent .mat-pseudo-checkbox-indeterminate, .mat-pseudo-checkbox-checked, .mat-pseudo-checkbox-indeterminate{background-color: var(--maindark-color);}
 .mat-expansion-panel-header{transition: .3s !important;}
-.mat-expansion-panel:not(.mat-expanded){background-color: var(--main-whitefont-color) !important;}
 .mat-expansion-panel-header:hover{background-color: var(--main-whitefont-color) !important;}
 .mat-menu-content{padding: 0 !important;}
 .mat-menu-content button{height: 35px; line-height: 35px;}
 .mat-menu-content span{font-size: 12px; color: var(--main-font-color) !important;}
 .mat-menu-content mat-icon{font-size: 18px; line-height: 24px; color: var(--main-color) !important;}
-.Search_resulttext{text-align: center; font-size: 14px; color: var(--sub-font-color); height: 300px;  min-width: 100%; max-width: 200%;}
-.Search_resulttext mat-icon{text-align: center; font-size: 48px; color: var(--sub-font-color); height: 150px; line-height: 150px; display: block; width: 150px; margin: 0 auto; margin-top: 50px;}
-.Search_resulttext p{text-align: center; font-size: 14px; color: var(--sub-font-color); height: 100px; width: 100%;}
 .mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background{background-color: var(--maindark-color);}
-.mat-expansion-panel-body{background-color: var(--main-background-color);}
 .mat-checkbox-checked:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element, .mat-checkbox:active:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element{background-color: var(--main-color);}
 .cdk-keyboard-focused .mat-calendar-body-active>.mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical), .cdk-program-focused .mat-calendar-body-active>.mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical), .mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover>.mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical){background-color: var(--sub-whitefont-color); transition: .3s;}
 .mat-calendar-body-selected{background-color: var(--maindark-color);}
@@ -95,6 +92,9 @@ mat-bottom-sheet-container{padding: 0 !important;}
 .mat-primary .mat-option.mat-selected:not(.mat-option-disabled){color: var(--maindark-color);}
 .mat-badge-content{font-size: 10px; border-radius: 3px;}
 
+.User_Option_Dialog .Search_resulttext{text-align: center; font-size: 14px; color: var(--sub-font-color); max-height: 300px;  min-width: 100%; max-width: 200%;}
+.User_Option_Dialog .Search_resulttext mat-icon{text-align: center; font-size: 48px; color: var(--sub-font-color); height: 150px; line-height: 150px; display: block; width: 150px; margin: 0 auto; margin-top: 50px;}
+.User_Option_Dialog .Search_resulttext p{text-align: center; font-size: 14px; color: var(--sub-font-color); height: 100px; width: 100%;}
 
 .Table_AllCheckBox{min-width: 50px; width: 50px; padding: 0 !important; background: var(--maindark-color);}
 .Table_AllCheckBox .mat-checkbox-checked.mat-accent .mat-checkbox-background{background: var(--red-color) !important;}
@@ -341,14 +341,111 @@ mat-accordion .All_RaidList:nth-child(even) mat-expansion-panel:nth-child(even) 
 .User_Qna .mat-expansion-panel-body{border-bottom: 1px solid var(--sub-font-color)}
 .User_Qna p{white-space: pre-wrap; }
 
-.UserGuide_Dialog .mat-dialog-container{padding: 0;}
-.UserGuide_Dialog h3{width: 100%; padding: 0 10px; height: 50px; line-height: 50px; font-size: 14px; background: var(--main-color); color: #fff; font-weight: 500; position: relative;}
-.UserGuide_Dialog h3 mat-icon{position: absolute; right: 0; top: 0; height: 50px !important; line-height: 50px !important; font-size: 20px; margin-right: 10px;}
-.UserGuide_Dialog p{width: 100%; padding: 0 15px; height: 50px; line-height: 50px; font-size: 14px; color: #666;}
+/*유저 다이얼로그 기본설정*/
+.Dialog_Defult{max-width: 90vw !important; min-width: 60vw;}
+.Dialog_Defult .mat-dialog-container{padding: 0;}
+.Dialog_Defult h3{width: 100%; padding: 0 10px; height: 50px; line-height: 50px; font-size: 14px; background: var(--main-color); color: #fff; font-weight: 500; position: relative;}
+.Dialog_Defult h3 mat-icon{position: absolute; right: 0; top: 0; height: 50px !important; line-height: 50px !important; font-size: 20px; margin-right: 10px;}
+.Dialog_Defult p{width: 100%; padding: 0 15px; height: 50px; line-height: 50px; font-size: 14px; color: #666;}
+
+/*유저 다이얼로그 모달 기본설정*/
+.Setting_Dialog_Defult{max-width: 95vw !important; min-width: 35vw;}
+.Setting_Dialog_Defult .mat-dialog-container{padding: 0;}
+.Setting_Dialog_Defult h3{width: 100%; padding: 0 10px; height: 50px; line-height: 50px; font-size: 14px; background: var(--main-color); color: #fff; font-weight: 500; position: relative;}
+.Setting_Dialog_Defult h3 mat-icon{position: absolute; right: 0; top: 0; height: 50px !important; line-height: 50px !important; font-size: 20px; margin-right: 10px;}
+.Setting_Dialog_Defult p{width: 100%; padding: 0 15px; height: 50px; line-height: 50px; font-size: 14px; color: #666;}
+.Character_Modal{position: relative;height: auto; padding: 0px;}
+.Character_Modal_Text{margin-top: 2vh; padding: 0 16px;}
+.Character_Modal_Left{float: left;line-height: 60px; height: 60px; text-align: center;}
+.Character_Modal_Left mat-icon{width: 100px; line-height: 50px; font-size: 50px; height: 50px; color: var(--main-font-color);}
+.Character_Modal_Right{float: left; width: calc(100% - 100px);}
+.Character_Modal_Text::after{content: ''; display: block; clear: both;}
+.Character_Modal_Text p strong.Job{width: 30%; display: inline-block;}
+.Character_Modal_Text p strong.Name{width: 45%; display: inline-block;}
+.Character_Modal_Text p strong.Level{width: 20%; display: inline-block;}
+.Character_Modal p{margin-left: 5px; position: relative; height: 25px; line-height: 25px; font-size: 12px;letter-spacing: 0.1px; font-weight: 400; color: var(--main-font-color); width: 100%; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; padding: 0 !important;}
+.Character_Modal p em{margin-right: 5px; display: inline-block; position: relative; top: -8px;}
+.Character_Modal p span{color: var(--maindark-color); font-size: 12px; margin-right: 10px; display: inline-block; text-align: center; text-overflow: ellipsis;  white-space: nowrap; overflow-x: hidden; font-weight: 500;}
+.Character_Modal h4{margin-left: 5px; position: relative; height: 25px; line-height: 25px; font-size: 12px; color: var(--red-color); letter-spacing: 0.1px; font-weight: 400; width: 100%; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; margin-top: 5px; border-top: 1px solid #ccc;}
+.Character_Modal h5{margin-left: 5px; position: relative;  height: 25px; line-height: 25px; font-size: 12px; color: var(--main-font-color); letter-spacing: 0.1px; font-weight: 500; width: 100%; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; border-bottom: 1px solid #ccc;}
+
 .UserGuide_Modal_Box{height: auto; width: 100%; background: var(--main-font-color);}
 .UserGuide_Modal_Box .GuideModalBox {position: relative; width: 100%;  height:auto; overflow: auto; background: var(--main-font-color);}
 .UserGuide_Modal_Box .mat-tab-body-wrapper{height: auto; width: 100%; background: var(--main-font-color);}
 .UserGuide_Modal_Box .GuideModalBox img{position: relative; width: 600px; padding: 16px; margin: 0 auto; display: block;  margin-top: 2vh; margin-bottom: 2vh;}
+
+.Add_Character_Modal_Box{height: auto; width: 100%;}
+.Add_Character_Modal_Box p{font-size: 10px; line-height: inherit; height: auto; color: var(--sub-whitefont-color); font-weight: 400; margin-top: 10px;}
+.Add_Character_Modal_Box mat-form-field{padding: 0 16px; margin-top: 2vh; margin-bottom: 2vh; width: 33.33%;}
+.Add_Character_Modal_Box mat-form-field:nth-child(4){width: 50%;}
+.Add_Character_Modal_Box mat-form-field:nth-child(5){width: 50%;}
+.Add_Character_Modal_Box mat-form-field .mat-form-field-prefix .mat-icon{position: relative; top: 5px; margin-right: 5px; color: var(--main-color);;}
+.Add_Character_Modal_Box mat-form-field .mat-form-field-suffix .mat-icon{position: relative; top: 0px; color: var(--main-font-color); opacity: 0.8}
+.Add_Character_Modal_Box mat-form-field .mat-input-element{color: var(--main-font-color);}
+.Add_Character_ButtonBox{display: block; padding: 0 16px; margin-top: 5vh;}
+.Add_Character_ButtonBox button{display: block; width: 100%; margin-top: 3vh; border-radius: 10px; height: 45px; line-height: 45px; font-weight: 500; font-size: 14px;}
+.Add_Character_ButtonBox > span{display: inline-block; width: auto; margin-top: 2vh; border-radius: 10px; height: 35px; line-height: 35px; text-align: center; transition: .2s; position: relative; left: 50%; transform: translateX(-50%);}
+.Add_Character_ButtonBox > span:hover{font-weight: 500;}
+
+/*유저 다이얼로그 숙제 리스트*/
+.User_Homework_TableBox{position: relative; max-height: calc(100vh - 276px); overflow: auto;}
+.User_Homework_TableBox::-webkit-scrollbar{display: contents !important;}
+.User_Homework_TableBox table{width: 100%;}
+.User_Homework_TableBox table thead {background: var(--main-color); height: 5vh;}
+.User_Homework_TableBox table thead tr{border-color: var(--main-font-color); height: 5vh;}
+.User_Homework_TableBox table thead tr th{font-size: 12px;  color: var(--sub-whitefont-color); padding: 0 !important;}
+.User_Homework_TableBox table thead tr th div.mat-sort-header-container{display: block; position: relative; width: 100%; height: 5vh;}
+.User_Homework_TableBox table thead tr th div.mat-sort-header-container .mat-sort-header-content{display: block; width: 100%; height: 5vh; line-height: 5vh; text-align: center;}
+.User_Homework_TableBox table thead tr th div.mat-sort-header-container .mat-sort-header-arrow{position: absolute; right: 1vh; top: 2vh; color: var(--sub-whitefont-color)}
+.User_Homework_TableBox table tbody tr:nth-child(odd){background: var(--main-background-color);;}
+.User_Homework_TableBox table tbody tr:nth-child(even){background: var(--main-whitefont-color);}
+.User_Homework_TableBox table tbody tr{height: 5vh; transition: .3s; }
+
+.User_Homework_TableBox table tbody tr td{color:  var(--sub-font-color); height: 5vh; font-size: 12px; white-space: nowrap; position: relative; padding: 0 !important ;}
+.User_Homework_TableBox table button{margin-left: 5px; margin-right: 5px; position: relative; z-index: 1; font-size: 10px; height: 30px; line-height: 30px; padding: 0 4px; font-weight: 500; min-width: 55px; cursor: pointer;}
+.User_Homework_TableBox table button span{cursor: pointer;}
+
+.User_Homework_Search{height: 80px; width: 100%; line-height: 80px; text-align: center; overflow-x: auto; white-space: nowrap; overflow-y: hidden; margin-top: 5px;}
+.User_Homework_Search::-webkit-scrollbar{display: contents !important;}
+.User_Homework_Search .mat-form-field-flex{position: relative; top: 5px;}
+.User_Homework_Search mat-form-field{margin: 0 auto; padding: 0 16px; width: 95%; min-width: 200px;}
+.User_Homework_Search > button{min-width: 55px; margin-right: 16px; height: 55px; line-height: 55px;}
+.User_Homework_Search mat-form-field .mat-form-field-prefix .mat-icon{position: relative; top: -2px; margin-right: 5px; color: var(--main-color);}
+.User_Homework_Search mat-form-field .mat-form-field-suffix .mat-icon{position: relative; top: -2px; color: var(--main-font-color); opacity: 0.8;}
+
+.User_Homework_Search .mat-form-field-label{color: var(--sub-whitefont-color);}
+.User_Homework_Search .mat-form-field-appearance-outline .mat-form-field-outline-thick{color: var(--sub-whitefont-color);}
+.User_Homework_Search .mat-form-field.mat-focused .mat-form-field-outline-thick{color: var(--main-color);}
+.User_Homework_Search .mat-form-field.mat-focused .mat-form-field-label mat-label{ position: relative;top: -5px; font-size: 12px; right: 1px;}
+.User_Homework_Search .mat-form-field-suffix .mat-icon{font-size: 21px !important; color: var(--sub-font-color); position: relative; top: -4px;}
+
+.User_Homework_TableBox mat-expansion-panel{box-shadow: none !important; background-color: transparent; border-radius: 0 !important; }
+.DayList mat-expansion-panel.mat-expanded{border-left: 1px solid #ccc; border-right: 1px solid #ccc;}
+.WeekList mat-expansion-panel.mat-expanded{border-right: 1px solid #ccc;}
+.User_Homework_TableBox mat-expansion-panel .mat-pseudo-checkbox{margin-right: 8px; border-color: var(--sub-font-color);}
+.User_Homework_TableBox .mat-expansion-panel-header-title{cursor: pointer; color: var(--sub-font-color);}
+.User_Homework_TableBox .mat-expansion-indicator::after{cursor: pointer; border-color: var(--sub-font-color);}
+.User_Homework_TableBox .mat-expansion-panel-header{height: 48px !important; padding: 0 8px !important;}
+.User_Homework_TableBox .mat-expansion-panel-header:hover{background: rgba(0,0,0,0.05) !important;}
+.User_Homework_TableBox .mat-expansion-panel-header.mat-expanded{height: 48px !important; padding: 0 8px !important; }
+.User_Homework_TableBox .mat-expansion-panel-header-description{position: absolute; right: 36px; font-size: 10px; color: var(--sub-font-color); }
+.User_Homework_TableBox .mat-expansion-panel-header-description span{font-size: 12px; color: var(--maindark-color); position: relative; top: -1px; margin-left: 5px; font-weight: bold;}
+.User_Homework_TableBox .mat-expansion-panel-body{height: 150px; overflow: auto;  padding: 0 0px !important;}
+
+.User_Homework_TableBox mat-list{ border: 1px solid var(--sub-whitefont-color); margin-top: 10px;}
+.User_Homework_TableBox mat-selection-list{padding-top: 0 !important;}
+.User_Homework_TableBox mat-list-option{transition: .3s; border-bottom: 1px solid var(--sub-whitefont-color);height: 30px !important;}
+.User_Homework_TableBox mat-list-option .mat-list-item-content{padding: 0 !important; font-size: 12px !important; color: var(--sub-font-color); font-weight: 400;}
+.User_Homework_TableBox mat-list-option .mat-list-text{text-align: left; cursor: pointer; text-indent: 8px;}
+.User_Homework_TableBox mat-list-option:last-child{border-bottom: 0px solid var(--sub-whitefont-color);}
+.User_Homework_TableBox mat-list-option:nth-child(odd){background: rgba(0,0,0,0.08)}
+.User_Homework_TableBox mat-list-option:nth-child(even){background: rgba(0,0,0,0.04)}
+
+.User_Homework_TableBox table tbody tr:nth-child(odd) .mat-expansion-panel-header:focus{background: var(--main-background-color);}
+.User_Homework_TableBox table tbody tr:nth-child(even) .mat-expansion-panel-header:focus{background: var(--main-whitefont-color);}
+.User_Homework_TableBox table tbody tr:nth-child(odd) .mat-expansion-panel-body{background: var(--main-background-color);}
+.User_Homework_TableBox table tbody tr:nth-child(even) .mat-expansion-panel-body{background: var(--main-whitefont-color);}
+
 
 @media screen and (max-width: 1024px) {
     .jhlostark{top: 90px;}
@@ -389,59 +486,74 @@ mat-accordion .All_RaidList:nth-child(even) mat-expansion-panel:nth-child(even) 
 	.Calendar_List_Box .mat-list-base .mat-list-item .Calendar_List_Box_Together.mat-list-icon{width: 110px; font-size: 10px; text-align: center;}
 	.Calendar_List_Box .mat-list-base .mat-list-item .Calendar_List_Box_Together.mat-list-icon .mat-icon{font-size: 16px; width: 16px; height: 16px; top: 3px; margin-right: 2px; margin-left: 2px;}
 	
-
-
-}
-
-@media screen and (max-width: 415px) {
-	.Calendar_Edit_Box p{padding: 4px;}
-	.Calendar_List_Box .mat-expansion-panel-header{padding: 0 10px;}
-	.Calendar_List_Box .mat-expansion-panel-header-description{top: 17px; right: 10px; font-size: 10px;}
-	.Calendar_List_Box .mat-expansion-panel-header-description span{top: -1px; font-size: 11px;}
-	.Calendar_List_Box .mat-expansion-indicator::after{border: 0 1px 1px 0; padding: 2px;}
-	.Calendar_List_Box .mat-expansion-panel-header mat-panel-title{font-size: 12px;font-weight: 500;}
-	.User_Qna .mat-expansion-panel-header mat-panel-title{font-size: 10px;}
-	.User_Qna .mat-expansion-panel-header-description{display: none}
-	.User_Qna p{font-size: 11px;}
-	.Calendar_List_Box .mat-list-base .mat-list-item .Calendar_List_Box_Together.mat-list-icon{text-align: center}
-	.Calendar_List_Box .mat-list-base .mat-list-item .Calendar_List_Box_Together.mat-list-icon .mat-icon{display: none;}
-
-}
-
-@media screen and (max-width: 340px) {
-	.Calendar_Edit_Box p{padding: 0px;}
-	.Calendar_List_Box .mat-expansion-panel-header{padding: 0 16px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;}
-	.Calendar_List_Box .mat-expansion-panel-header-description{top: 17px; right: 18px; font-size: 10px;}
-	.Calendar_List_Box .mat-expansion-panel-header-description em{display: none;}
-	.User_Qna .mat-expansion-panel-header-description{display: none}
-
+	.Dialog_Defult{max-width: 90vw !important; min-width: 90vw;}
+	.Add_Character_Modal_Box mat-form-field{padding: 0 16px; margin-top: 2vh; margin-bottom: 2vh; width: 100%; display: block;}
+	.Add_Character_Modal_Box mat-form-field:nth-child(4){width: 100%;}
+	.Add_Character_Modal_Box mat-form-field:nth-child(5){width: 100%;}
+	.User_Option_DialogButtonBox button{padding: 0 16px; font-size: 10px;}
 	
-}
 
-/*아이디별 색상*/
-.Group_점화걸면정화{background: #6937a1 !important;}
-.Group_데둠미{background: #20569a !important;}
-.Group_펭난나{background: #008c4f !important;}
-.Group_블군자{background: #54a4e7 !important;}
-.Group_욕망군단장형아키스{background: #54e7d7 !important;}
 
-.Group_인조인간91호{background: #48af4f !important;}
-.Group_긴바나나{background: #a38817 !important;}
-.Group_똘렝{background: #d94f70 !important;}
-.Group_라즈베리단풍{background: #ed437f !important;}
-.Group_식끈박끈{background: #d17a33 !important;}
+	}
 
-.Group_신성범위{background: #dc4123 !important;}
-.Group_하얀활{background: #965251 !important;}
-.Group_HK278{background: #009472 !important;}
-.Group_뽀야마요{background: #b263a4 !important;}
-.Group_K여포{background: #f0c05a !important;}
+	@media screen and (max-width: 415px) {
+		.Calendar_Edit_Box p{padding: 4px;}
+		.Calendar_List_Box .mat-expansion-panel-header{padding: 0 10px;}
+		.Calendar_List_Box .mat-expansion-panel-header-description{top: 17px; right: 10px; font-size: 10px;}
+		.Calendar_List_Box .mat-expansion-panel-header-description span{top: -1px; font-size: 11px;}
+		.Calendar_List_Box .mat-expansion-indicator::after{border: 0 1px 1px 0; padding: 2px;}
+		.Calendar_List_Box .mat-expansion-panel-header mat-panel-title{font-size: 12px;font-weight: 500;}
+		.User_Qna .mat-expansion-panel-header mat-panel-title{font-size: 10px;}
+		.User_Qna .mat-expansion-panel-header-description{display: none}
+		.User_Qna p{font-size: 11px;}
+		.Calendar_List_Box .mat-list-base .mat-list-item .Calendar_List_Box_Together.mat-list-icon{text-align: center}
+		.Calendar_List_Box .mat-list-base .mat-list-item .Calendar_List_Box_Together.mat-list-icon .mat-icon{display: none;}
+		.User_Option_DialogButtonBox button{padding: 0 4px; font-size: 10px; margin-right: 10px;}
+		
+		.Setting_Dialog_Defult{max-width: 95vw !important; width: 95vw;}
+		.Character_Modal_Text p strong.Job{width: 40%; font-size: 10px;}
+		.Character_Modal_Text p strong.Name{width: 50%; font-size: 10px;}
+		.Character_Modal_Text p em{font-size: 10px;}
+		.Character_Modal_Text p span{font-size: 10px;}
+		.Character_Modal_Text p strong.Level{width: 0%; display: none;}
+		.Mobile{display: none !important;}
 
-.Group_노마블러드워{background: #32a98e !important;}
-.Group_메르헨테루{background: #9b1b30 !important;}
-.Group_나긋하{background: #0f4c82 !important;}
-.Group_야이빙충아{background: #3232a9 !important;}
-.Group_이밴절리스타{background: #a9324c !important;}
+	}
+
+	@media screen and (max-width: 340px) {
+		.Calendar_Edit_Box p{padding: 0px;}
+		.Calendar_List_Box .mat-expansion-panel-header{padding: 0 16px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;}
+		.Calendar_List_Box .mat-expansion-panel-header-description{top: 17px; right: 18px; font-size: 10px;}
+		.Calendar_List_Box .mat-expansion-panel-header-description em{display: none;}
+		.User_Qna .mat-expansion-panel-header-description{display: none}
+
+
+	}
+
+	/*아이디별 색상*/
+	.Group_점화걸면정화{background: #6937a1 !important;}
+	.Group_데둠미{background: #20569a !important;}
+	.Group_펭난나{background: #008c4f !important;}
+	.Group_블군자{background: #54a4e7 !important;}
+	.Group_욕망군단장형아키스{background: #54e7d7 !important;}
+
+	.Group_인조인간91호{background: #48af4f !important;}
+	.Group_긴바나나{background: #a38817 !important;}
+	.Group_똘렝{background: #d94f70 !important;}
+	.Group_라즈베리단풍{background: #ed437f !important;}
+	.Group_식끈박끈{background: #d17a33 !important;}
+
+	.Group_신성범위{background: #dc4123 !important;}
+	.Group_하얀활{background: #965251 !important;}
+	.Group_HK278{background: #009472 !important;}
+	.Group_뽀야마요{background: #b263a4 !important;}
+	.Group_K여포{background: #f0c05a !important;}
+
+	.Group_노마블러드워{background: #32a98e !important;}
+	.Group_메르헨테루{background: #9b1b30 !important;}
+	.Group_나긋하{background: #0f4c82 !important;}
+	.Group_야이빙충아{background: #3232a9 !important;}
+	.Group_이밴절리스타{background: #a9324c !important;}
 
 
 

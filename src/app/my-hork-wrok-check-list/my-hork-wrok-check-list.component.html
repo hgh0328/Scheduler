@@ -1,9 +1,122 @@
 <div class="User_Option_Dialog">
 	<h3><span>[ {{userid}} ]</span> 숙제 체크 리스트 <mat-icon (click)="close()">close</mat-icon></h3>
-  
+
+	<div>
+		<div class="User_Homework_Search">
+			<mat-form-field appearance="outline"  class="AdminNotice_Edit_SearchFiled">
+			  <mat-label>캐릭터 통합 검색</mat-label>
+			  <mat-icon matPrefix>person_search</mat-icon>
+			  <input matInput (keyup)="applyFilter($event)" placeholder="ex) 직업명, 캐릭터명, 아이템 레벨" #input>
+			  <button mat-icon-button matSuffix >
+   				  <mat-icon>search</mat-icon>
+   			  </button>
+			</mat-form-field>
+		</div>
+
+<div class="User_Homework_TableBox">
+  <table mat-table [dataSource]="dataSource" matSort>
+
+    <ng-container matColumnDef="Job" sticky>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 100px; text-align: center;"> 직업 </th>
+      <td mat-cell *matCellDef="let row" style="width: 100px; text-align: center;"> {{row.Job}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Name" sticky>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 150px; text-align: center;"> 캐릭터명 </th>
+      <td mat-cell *matCellDef="let row" style=" width: 150px;text-align: center;"> {{row.Name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Level">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 100px; text-align: center;"> 아이템 레벨 </th>
+      <td mat-cell *matCellDef="let row" style=" width: 100px;text-align: center;"> {{row.Level}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Day_homeworklist">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 300px;text-align: center;" colspan="4"> 일일 숙제 </th>
+      <td mat-cell *matCellDef="let row; let i = index" style="width: 300px;text-align: center;" colspan="4" class="DayList">
+      <mat-accordion multi="false">
+		  <mat-expansion-panel>
+			<mat-expansion-panel-header>
+			  <mat-panel-title>
+				{{row.Day_homeworklist[0].name}} <span *ngIf="row.Day_homeworklist.length - 1 > 0">&nbsp;외 {{row.Day_homeworklist.length - 1}} 개</span>
+			  </mat-panel-title>
+			  <mat-panel-description>
+       			완료 <span>{{Completion_Day[i].ok}}</span>건 미완료 <span>{{Completion_Day[i].none}}</span>건
+      		  </mat-panel-description>
+			</mat-expansion-panel-header>
+			<mat-selection-list>
+  				<mat-list-option *ngFor="let Day_homeworklist of row.Day_homeworklist" selected="{{Day_homeworklist.value}}">{{Day_homeworklist.name}}</mat-list-option>
+
+			</mat-selection-list>
+
+		  </mat-expansion-panel>
+		</mat-accordion>
+    </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Week_homeworklist">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 360px;text-align: center;" colspan="4"> 주간 숙제 </th>
+      <td mat-cell *matCellDef="let row; let i = index" style="width: 360px;text-align: center;" colspan="4" class="WeekList">
+      <mat-accordion>
+		  <mat-expansion-panel>
+			<mat-expansion-panel-header>
+			  <mat-panel-title>
+				{{row.Week_homeworklist[0].name}} <span *ngIf="row.Week_homeworklist.length - 1 > 0">&nbsp;외 {{row.Week_homeworklist.length - 1}} 개</span>
+			  </mat-panel-title>
+			  <mat-panel-description>
+       			완료 <span>{{Completion_Week[i].ok}}</span>건 미완료 <span>{{Completion_Week[i].none}}</span>건
+      		  </mat-panel-description>
+			</mat-expansion-panel-header>
+			<mat-selection-list>
+  				<mat-list-option *ngFor="let Week_homeworklist of row.Week_homeworklist" selected="{{Week_homeworklist.value}}">{{Week_homeworklist.name}}</mat-list-option>
+
+			</mat-selection-list>
+
+		  </mat-expansion-panel>
+		</mat-accordion>
+    </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="action">
+		<th mat-header-cell *matHeaderCellDef style="width: 280px; text-align: center;"> 옵션 </th>
+		<td mat-cell *matCellDef="let element let i = index" style="width: 280px; text-align: center;">
+
+		<button mat-stroked-button (click)="Modify_Character(i,element.Job,element.Name,element.Level,element.Day_homeworklist,element.Week_homeworklist)">캐릭터 수정</button>
+		<button mat-stroked-button (click)="Week_Reset(i,element.Job,element.Name,element.Level,element.Week_homeworklist)" class="AddBtn">주간 초기화</button>
+		<button mat-stroked-button (click)="Remove_Character(i,element.Job,element.Name,element.Level)" class="RedBtn">캐릭터 삭제</button>
+
+
+		</td>
+	  </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <tr class="Search_resulttext" *matNoDataRow>
+    
+				<td class="mat-cell" colspan="12" *ngIf="Search_resulttext==false">
+				<mat-icon>person_add_alt_1</mat-icon>
+				<p>캐릭터 추가 버튼을 눌러 캐릭터를 추가해주세요.</p>
+				</td>
+				
+				<td class="mat-cell" colspan="12" *ngIf="Search_resulttext==true">
+				<mat-icon>search_off</mat-icon>
+				<p>"{{input.value}}"에 대한 검색결과가 없습니다.</p>
+				</td>
+	</tr>
+
+	
+	
+	
+  </table>
+</div>
+	</div>
+
 
  <div class="User_Option_DialogButtonBox">
-		<button mat-stroked-button (click)="close()">취소</button>
+		<button mat-stroked-button (click)="close()">닫기</button>
+		<button mat-stroked-button class="RedBtn" (click)="All_Week_Reset(dataSource)">전체 주간 초기화</button>
+		<button mat-stroked-button class="AddBtn" (click)="Add_Character()">캐릭터 추가</button>
 		<button mat-stroked-button class="NextBtn" (click)="save()">저장</button>
 	</div>
 </div>

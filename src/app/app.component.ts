@@ -79,7 +79,7 @@ export class AppComponent {
 			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
 		}
 
-		/*유저 목록 현재 1 ~ 13명 카톡 프로필 순 카단 ~ 아만 순*/
+		/*카단 ~ 아만 순*/
 
 		/*카단섭*/
 		/*펭난나 서머너*/
@@ -90,17 +90,6 @@ export class AppComponent {
 			window.alert(this.IdText + "님 환영합니다.\n환상의 나라 에~버~랜드");
 		}
 		else if(this.IdText == "펭난나" && this.PasswordText != "951215"){
-			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
-		}
-
-		/*블군자 블래스터*/
-		else if(this.IdText == "블군자" && this.PasswordText == "363652"){
-			$(".Login_Box").fadeOut(500);
-			$(".Main_PanelBox").fadeIn(300);
-			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 환영합니다.\n휠체어 어르신");
-		}
-		else if(this.IdText == "블군자" && this.PasswordText != "363652"){
 			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
 		}
 
@@ -156,17 +145,6 @@ export class AppComponent {
 			window.alert(this.IdText + "님 환영합니다.\n라즈베리초크베리구스베리베리베리 단풍");
 		}
 		else if(this.IdText == "라즈베리단풍" && this.PasswordText != "821212"){
-			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
-		}
-
-		/*식끈박끈 홀나*/
-		else if(this.IdText == "식끈박끈" && this.PasswordText == "123456"){
-			$(".Login_Box").fadeOut(500);
-			$(".Main_PanelBox").fadeIn(300);
-			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 환영합니다.\n같이 레이드 돌고 놀아요~");
-		}
-		else if(this.IdText == "식끈박끈" && this.PasswordText != "123456"){
 			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
 		}
 
@@ -282,6 +260,50 @@ export class AppComponent {
 		else if(this.IdText == "이밴절리스타" && this.PasswordText != "0704"){
 			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
 		}
+		
+		/*산길 홀리나이트(아만)*/
+		else if(this.IdText == "산길" && this.PasswordText == "0119"){
+			$(".Login_Box").fadeOut(500);
+			$(".Main_PanelBox").fadeIn(300);
+			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+			window.alert(this.IdText + "님 환영합니다.\n홀닥불 타닥~ 타닥~");
+		}
+		else if(this.IdText == "산길" && this.PasswordText != "0119"){
+			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
+		}
+		
+		/*호시하츠 바드(아만)*/
+		else if(this.IdText == "호시하츠" && this.PasswordText == "7713"){
+			$(".Login_Box").fadeOut(500);
+			$(".Main_PanelBox").fadeIn(300);
+			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+			window.alert(this.IdText + "님 환영합니다.\n킹 갓 제네럴 귀족 바드님 ^^");
+		}
+		else if(this.IdText == "호시하츠" && this.PasswordText != "7713"){
+			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
+		}
+		
+		/*급양반장 아르카나(아만)*/
+		else if(this.IdText == "급양반장" && this.PasswordText == "2486"){
+			$(".Login_Box").fadeOut(500);
+			$(".Main_PanelBox").fadeIn(300);
+			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+			window.alert(this.IdText + "님 환영합니다.\n빡딜갑니다. 템포 따라 오세요.");
+		}
+		else if(this.IdText == "급양반장" && this.PasswordText != "2486"){
+			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
+		}
+		
+		/*갱뽀 호크아이(아만)*/
+		else if(this.IdText == "갱뽀" && this.PasswordText == "2007"){
+			$(".Login_Box").fadeOut(500);
+			$(".Main_PanelBox").fadeIn(300);
+			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+			window.alert(this.IdText + "님 환영합니다.\n민국이 아버님 환영해요.");
+		}
+		else if(this.IdText == "갱뽀" && this.PasswordText != "2007"){
+			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
+		}
 
         /*휴면계정*/
         /*테스트_계정*/
@@ -292,6 +314,17 @@ export class AppComponent {
 			window.alert(this.IdText + "님 환영합니다.");
 		}
 		else if(this.IdText == "테스트_계정" && this.PasswordText != "90909"){
+			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
+		}
+		
+		/*블군자 블래스터*/
+		else if(this.IdText == "블군자" && this.PasswordText == "363652"){
+			$(".Login_Box").fadeOut(500);
+			$(".Main_PanelBox").fadeIn(300);
+			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+			window.alert(this.IdText + "님 환영합니다.\n휠체어 어르신");
+		}
+		else if(this.IdText == "블군자" && this.PasswordText != "363652"){
 			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
 		}
 
@@ -383,7 +416,7 @@ export class AppComponent {
 
   User_Guide() {
     const dialogRef = this.dialog.open(UserGuideModalComponent, {
-      panelClass: 'UserGuide_Dialog',
+      panelClass: 'Dialog_Defult',
       data: {
       }
     });
