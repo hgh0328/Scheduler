@@ -311,7 +311,7 @@ mat-accordion .All_RaidList:nth-child(even) mat-expansion-panel:nth-child(even) 
 .Calendar_Edit_Box .mat-form-field-flex{position: relative;}
 .Calendar_Edit_Box .mat-form-field-appearance-outline .mat-form-field-outline-thick{color: var(--main-color);}
 .Calendar_Edit_Box .mat-form-field.mat-focused .mat-form-field-outline-thick{color: var(--main-color);}
-.Calendar_Edit_Box .mat-form-field-label mat-label{ position: relative;top: -5px; font-size: 12px; right: 0; color: var(--sub-font-color);}
+.Calendar_Edit_Box .mat-form-field-label mat-label{position: relative;top: -3px; font-size: 12px; right: 0; color: var(--sub-font-color);}
 .Calendar_Edit_Box .Together_Ok.false{width: 50%;}
 .Calendar_Edit_Box .Together_Ok.false:nth-child(4){width: 100%;}
 
