@@ -376,10 +376,12 @@ mat-accordion .All_RaidList:nth-child(even) mat-expansion-panel:nth-child(even) 
 .UserGuide_Modal_Box .GuideModalBox img{position: relative; width: 600px; padding: 16px; margin: 0 auto; display: block;  margin-top: 2vh; margin-bottom: 2vh;}
 
 .Add_Character_Modal_Box{height: auto; width: 100%;}
-.Add_Character_Modal_Box p{font-size: 10px; line-height: inherit; height: auto; color: var(--sub-whitefont-color); font-weight: 400; margin-top: 10px;}
+.Add_Character_Modal_Box p{font-size: 10px; line-height: inherit; height: auto; color: var(--sub-font-color); font-weight: 400; margin-top: 10px;}
 .Add_Character_Modal_Box mat-form-field{padding: 0 16px; margin-top: 2vh; margin-bottom: 2vh; width: 33.33%;}
+.Add_Character_Modal_Box mat-form-field.mat-form-field-disabled ~ mat-form-field.Modify_Field{width: 33.33%;}
 .Add_Character_Modal_Box mat-form-field:nth-child(4){width: 50%;}
 .Add_Character_Modal_Box mat-form-field:nth-child(5){width: 50%;}
+.Add_Character_Modal_Box mat-form-field:nth-child(6){width: 50%;}
 .Add_Character_Modal_Box mat-form-field .mat-form-field-prefix .mat-icon{position: relative; top: 5px; margin-right: 5px; color: var(--main-color);;}
 .Add_Character_Modal_Box mat-form-field .mat-form-field-suffix .mat-icon{position: relative; top: 0px; color: var(--main-font-color); opacity: 0.8}
 .Add_Character_Modal_Box mat-form-field .mat-input-element{color: var(--main-font-color);}
@@ -489,8 +491,10 @@ mat-accordion .All_RaidList:nth-child(even) mat-expansion-panel:nth-child(even) 
 	
 	.Dialog_Defult{max-width: 90vw !important; min-width: 90vw;}
 	.Add_Character_Modal_Box mat-form-field{padding: 0 16px; margin-top: 2vh; margin-bottom: 2vh; width: 100%; display: block;}
+	.Add_Character_Modal_Box mat-form-field.mat-form-field-disabled ~ mat-form-field.Modify_Field{width: 100%;}
 	.Add_Character_Modal_Box mat-form-field:nth-child(4){width: 100%;}
 	.Add_Character_Modal_Box mat-form-field:nth-child(5){width: 100%;}
+	.Add_Character_Modal_Box mat-form-field:nth-child(6){width: 100%;}
 	.User_Option_DialogButtonBox button{padding: 0 16px; font-size: 10px;}
 	
 
@@ -518,6 +522,7 @@ mat-accordion .All_RaidList:nth-child(even) mat-expansion-panel:nth-child(even) 
 		.Character_Modal_Text p span{font-size: 10px;}
 		.Character_Modal_Text p strong.Level{width: 0%; display: none;}
 		.Mobile{display: none !important;}
+		.Mobile_Show{display: inherit!important;}
 
 	}
 
@@ -535,7 +540,6 @@ mat-accordion .All_RaidList:nth-child(even) mat-expansion-panel:nth-child(even) 
 	.Group_점화걸면정화{background: #6937a1 !important;}
 	.Group_데둠미{background: #20569a !important;}
 	.Group_펭난나{background: #008c4f !important;}
-	.Group_블군자{background: #54a4e7 !important;}
 	.Group_욕망군단장형아키스{background: #54e7d7 !important;}
 
 	.Group_인조인간91호{background: #48af4f !important;}
@@ -556,6 +560,10 @@ mat-accordion .All_RaidList:nth-child(even) mat-expansion-panel:nth-child(even) 
 	.Group_야이빙충아{background: #3232a9 !important;}
 	.Group_이밴절리스타{background: #a9324c !important;}
 
+	.Group_산길{background: #0080ff !important;}
+	.Group_호시하츠{background: #921458 !important;}
+	.Group_급양반장{background: #5e7e9b !important;}
+	.Group_갱뽀{background: #0067a3 !important;}
 
 
 

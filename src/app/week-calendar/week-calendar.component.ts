@@ -66,18 +66,6 @@ export class WeekCalendarComponent implements OnInit {
 	this.panelOpenState = true;
     this.userid = this.route.snapshot.queryParamMap.get("id");
 
-//    if (this.userid.indexOf(",") > -1) {
-//      console.log("aaaaaaaaa")
-//
-//    }
-//    else {
-//
-//
-//
-//    }
-
-
-
       /*레이드 리셋*/
       this.Raid_Reset = true;
 

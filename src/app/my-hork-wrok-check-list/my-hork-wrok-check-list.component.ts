@@ -3,7 +3,7 @@ import {AfterViewInit, ViewChild} from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
 import {MatBottomSheet, MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA} from '@angular/material/bottom-sheet';
 import { ActivatedRoute } from '@angular/router';
-import { doc, onSnapshot } from 'firebase/firestore';
+import { collection, doc, getDoc, getDocs, onSnapshot, setDoc } from 'firebase/firestore';
 import {MatSort} from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
@@ -43,7 +43,11 @@ export class MyHorkWrokCheckListComponent implements OnInit {
 	Completion_Day_Ok = 0;
 	Completion_Day :any = [];
 	Search_resulttext: boolean;
+	Character_Load: boolean;
+  dialogRef: any;
 
+  test
+  tableList
   constructor(
     @Inject(MAT_BOTTOM_SHEET_DATA) public data: any,
     public dialog: MatDialog,
@@ -56,39 +60,29 @@ export class MyHorkWrokCheckListComponent implements OnInit {
   ngOnInit(): void {
     this.userid = this.data.userid
     this.Search_resulttext = false;
+    this.Character_Load = true;
 
 
 
+	if(this.Character_Load){
      onSnapshot(
        doc(this.firestore, 'My_Character' , this.userid),
        { includeMetadataChanges: true },
-       (doc) => {
-//   			var Character_list: any = [];
+       async (doc) => {
+	  	if(doc.data() != undefined){
    			var My_Character_List: any;
    			My_Character_List = doc.data();
-
-           var tableList =My_Character_List['캐릭터']
-           this.dataSource = new MatTableDataSource(tableList);
+           this.tableList = My_Character_List['캐릭터']
+           this.dataSource = new MatTableDataSource(this.tableList);
 	       this.dataSource.sort = this.sort;
-	  		var false_Completion_Week = 0;
-			var true_Completion_Week = 0;
-	  		var false_Completion_Day = 0;
-			var true_Completion_Day = 0;
-	  		tableList.forEach((item)=>{
-				
-				false_Completion_Week = 0;
-			    true_Completion_Week = 0;
-				false_Completion_Day = 0;
-			    true_Completion_Day = 0;
-				item['Week_homeworklist'].forEach((list)=>{
-						if(list['value'] == false){
-							false_Completion_Week++
-						}
-						else{
-							true_Completion_Week++
-						}
+			this.Completion_Week = [];
+			this.Completion_Day = [];
+      		this.tableList.forEach((item)=>{
 
-					});
+				var false_Completion_Day = 0;
+				var true_Completion_Day = 0;
+				var false_Completion_Week = 0;
+				var true_Completion_Week = 0;
 				item['Day_homeworklist'].forEach((list)=>{
 						if(list['value'] == false){
 							false_Completion_Day++
@@ -97,14 +91,28 @@ export class MyHorkWrokCheckListComponent implements OnInit {
 							true_Completion_Day++
 						}
 
-					});
-					this.Completion_Week.push({ok:true_Completion_Week,none:false_Completion_Week});
-					this.Completion_Day.push({ok:true_Completion_Day,none:false_Completion_Day});
 				});
-
-			});
-
-  }
+				item['Week_homeworklist'].forEach((list)=>{
+						if(list['value'] == false){
+							false_Completion_Week++
+						}
+						else{
+							true_Completion_Week++
+						}
+					});
+					this.Completion_Day.push({ok:true_Completion_Day,none:false_Completion_Day});
+					this.Completion_Week.push({ok:true_Completion_Week,none:false_Completion_Week});
+				    this.Character_Load = false;
+				});
+			}
+		  else{
+			  var My_Character_List:any = [];
+			  this.tableList = My_Character_List
+			  this.dataSource = new MatTableDataSource(this.tableList);
+			  }
+		   });
+  		}
+	}
 
 
   applyFilter(event: Event) {
@@ -119,8 +127,63 @@ export class MyHorkWrokCheckListComponent implements OnInit {
     this.bottomSheetRef.dismiss();
   }
 
-	save(){
-    window.alert(this.userid + "님의 정보가 저장되었습니다.");
+  Day_list(i,DayI, Daylist) {
+   this.tableList[i]['Day_homeworklist'][DayI]['value'] = Daylist.selected;
+			this.Completion_Day = [];
+      		this.tableList.forEach((item)=>{
+				var false_Completion_Day = 0;
+				var true_Completion_Day = 0;
+				item['Day_homeworklist'].forEach((list)=>{
+						if(list['value'] == false){
+							false_Completion_Day++
+						}
+						else{
+							true_Completion_Day++
+						}
+
+				});
+
+					this.Completion_Day.push({ok:true_Completion_Day,none:false_Completion_Day});
+				    this.Character_Load = false;
+				});
+ 	}
+ Week_list(i,WeekI, Weeklist) {
+   this.tableList[i]['Week_homeworklist'][WeekI]['value'] = Weeklist.selected;
+	 this.Completion_Week = [];
+      		this.tableList.forEach((item)=>{
+				var false_Completion_Week = 0;
+				var true_Completion_Week = 0;
+				item['Week_homeworklist'].forEach((list)=>{
+						if(list['value'] == false){
+							false_Completion_Week++
+						}
+						else{
+							true_Completion_Week++
+						}
+					});
+					this.Completion_Week.push({ok:true_Completion_Week,none:false_Completion_Week});
+				    this.Character_Load = false;
+				});
+ 	}
+
+  async Save() {
+
+
+    await setDoc(doc(this.firestore, "My_Character", this.userid), {
+      "캐릭터" : this.tableList,
+    }).then(()=>{
+      window.alert(this.userid + "님 숙제 리스트가 저장되었습니다.");
+     });
+
+
+
+
+    // setTimeout(async () => {
+
+
+
+    // });
+
   }
   All_Week_Reset(dataSource) {
 	  console.log(dataSource._data._value);
@@ -138,13 +201,19 @@ export class MyHorkWrokCheckListComponent implements OnInit {
     const dialogRef = this.dialog.open(AddCharacterDialogComponent, {
       panelClass: 'Dialog_Defult',
       data: {
+
 		 userid: this.userid
       }
+
+    });
+    dialogRef.afterClosed().subscribe(result => {
+	  this.Character_Load = true;
+
     });
 
   }
   Modify_Character(index, Job, Name, Level, DayList, WeekList) {
-	  
+
     const dialogRef = this.dialog.open(ModifyCharacterDialogComponent, {
       panelClass: 'Dialog_Defult',
       data: {
@@ -168,12 +237,12 @@ export class MyHorkWrokCheckListComponent implements OnInit {
 		 Character_Job : Job,
 		 Character_Name : Name,
 		 Character_Level : Level,
-		  
+
       }
     });
 
   }
-  Week_Reset(index, Job, Name, Level, WeekList) {
+  Week_Reset(index, Job, Name, Level,DayList, WeekList) {
     const dialogRef = this.dialog.open(WeekResetDialogComponent, {
       panelClass: 'Setting_Dialog_Defult',
       data: {
@@ -182,7 +251,8 @@ export class MyHorkWrokCheckListComponent implements OnInit {
 		 Character_Job : Job,
 		 Character_Name : Name,
 		 Character_Level : Level,
-		 Character_WeekList : WeekList,		  
+		 Character_DayList : DayList,
+		 Character_WeekList : WeekList,
       }
     });
   }

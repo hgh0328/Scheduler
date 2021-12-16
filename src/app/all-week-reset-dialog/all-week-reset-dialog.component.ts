@@ -10,18 +10,18 @@ import * as $ from 'jquery';
   styleUrls: ['./all-week-reset-dialog.component.css']
 })
 export class AllWeekResetDialogComponent implements OnInit {
-	
+
 	userid;
 	AllCharacterList:any =[];
 
   constructor(
 	@Inject(MAT_DIALOG_DATA) public data: any,
     private firestore: Firestore,
-    private dialogRef: MatDialogRef<AllWeekResetDialogComponent>,	 
+    private dialogRef: MatDialogRef<AllWeekResetDialogComponent>,
 	) { }
 
   ngOnInit(): void {
-	  
+
 	  this.userid = this.data.userid;
 	  this.AllCharacterList = this.data.AllCharacterList
 	  console.log(this.userid)
