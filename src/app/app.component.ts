@@ -225,6 +225,50 @@ export class AppComponent {
 		else if(this.IdText == "메르헨테루" && this.PasswordText != "2862"){
 			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
 		}
+		
+		/*모쿄건 데빌헌터*/
+		else if(this.IdText == "모쿄건" && this.PasswordText == "1293"){
+			$(".Login_Box").fadeOut(500);
+			$(".Main_PanelBox").fadeIn(300);
+			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+			window.alert(this.IdText + "님 환영합니다.\n사멸셋 부활!~");
+		}
+		else if(this.IdText == "모쿄건" && this.PasswordText != "1293"){
+			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
+		}
+		
+		/*소서뇽쓰 소서리스*/
+		else if(this.IdText == "소서뇽쓰" && this.PasswordText == "3598"){
+			$(".Login_Box").fadeOut(500);
+			$(".Main_PanelBox").fadeIn(300);
+			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+			window.alert(this.IdText + "님 환영합니다.\n데둠이 친구 안녕~");
+		}
+		else if(this.IdText == "소서뇽쓰" && this.PasswordText != "3598"){
+			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
+		}
+		
+		/*티거라하오 스카우터*/
+		else if(this.IdText == "티거라하오" && this.PasswordText == "69"){
+			$(".Login_Box").fadeOut(500);
+			$(".Main_PanelBox").fadeIn(300);
+			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+			window.alert(this.IdText + "님 환영합니다.\n보석이 둘뿐이네?");
+		}
+		else if(this.IdText == "티거라하오" && this.PasswordText != "69"){
+			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
+		}
+		
+		/*낭만의변신로봇 스카우터*/
+		else if(this.IdText == "낭만의변신로봇" && this.PasswordText == "11331188"){
+			$(".Login_Box").fadeOut(500);
+			$(".Main_PanelBox").fadeIn(300);
+			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+			window.alert(this.IdText + "님 환영합니다.\n변신도 아바타 만들어주세요.");
+		}
+		else if(this.IdText == "낭만의변신로봇" && this.PasswordText != "11331188"){
+			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
+		}
         
 
         /*아만섭*/
@@ -302,6 +346,17 @@ export class AppComponent {
 			window.alert(this.IdText + "님 환영합니다.\n민국이 아버님 환영해요.");
 		}
 		else if(this.IdText == "갱뽀" && this.PasswordText != "2007"){
+			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
+		}
+		
+		/*끼강탑 워로드(아만)*/
+		else if(this.IdText == "끼강탑" && this.PasswordText == "4921"){
+			$(".Login_Box").fadeOut(500);
+			$(".Main_PanelBox").fadeIn(300);
+			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+			window.alert(this.IdText + "님 환영합니다.\n워황 넬라굳");
+		}
+		else if(this.IdText == "끼강탑" && this.PasswordText != "4921"){
 			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
 		}
 
