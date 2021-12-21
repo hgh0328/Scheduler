@@ -16,14 +16,14 @@
 <div class="User_Homework_TableBox">
   <table mat-table [dataSource]="dataSource" matSort>
 
-    <ng-container matColumnDef="Job" sticky>
+    <ng-container matColumnDef="Job">
       <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 100px; text-align: center;"> 직업 </th>
       <td mat-cell *matCellDef="let row" style="width: 100px; text-align: center;"> {{row.Job}} </td>
     </ng-container>
 
     <ng-container matColumnDef="Name" sticky>
-      <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 150px; text-align: center;"> 캐릭터명 </th>
-      <td mat-cell *matCellDef="let row" style=" width: 150px;text-align: center;"> {{row.Name}} </td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 150px; text-align: center;" class="Mobile_HomeWrok_Name"> 캐릭터명 </th>
+      <td mat-cell *matCellDef="let row" style=" width: 150px;text-align: center;" class="Mobile_HomeWrok_Name"> {{row.Name}} </td>
     </ng-container>
 
     <ng-container matColumnDef="Level">
@@ -32,8 +32,8 @@
     </ng-container>
 
     <ng-container matColumnDef="Day_homeworklist">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 300px;text-align: center;" colspan="4"> 일일 컨텐츠 </th>
-      <td mat-cell *matCellDef="let row; let i = index" style="width: 300px;text-align: center;" colspan="4" class="DayList">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 300px;text-align: center;" colspan="4" class="Mobile_Day_homeworklist"> 일일 컨텐츠 </th>
+      <td mat-cell *matCellDef="let row; let i = index" style="width: 300px;text-align: center;" colspan="4" class="DayList Mobile_Day_homeworklist">
       <mat-accordion multi="false">
 		  <mat-expansion-panel>
 			<mat-expansion-panel-header>
@@ -54,8 +54,8 @@
     </ng-container>
 
     <ng-container matColumnDef="Week_homeworklist">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 360px;text-align: center;" colspan="4"> 주간 컨텐츠 </th>
-      <td mat-cell *matCellDef="let row; let i = index" style="width: 360px;text-align: center;" colspan="4" class="WeekList">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 360px;text-align: center;" colspan="4" class="Mobile_Week_homeworklist"> 주간 컨텐츠 </th>
+      <td mat-cell *matCellDef="let row; let i = index" style="width: 360px;text-align: center;" colspan="4" class="WeekList Mobile_Week_homeworklist">
       <mat-accordion>
 		  <mat-expansion-panel>
 			<mat-expansion-panel-header>

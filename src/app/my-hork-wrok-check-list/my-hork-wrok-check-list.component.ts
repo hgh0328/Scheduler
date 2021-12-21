@@ -68,16 +68,14 @@ export class MyHorkWrokCheckListComponent implements OnInit {
 
 
     await getDocs(collection(this.firestore, "Day_Reset")).then((collection) => {
-//      var date = new Date().getDate();
-      var date = 22;
-
+      var date = new Date().getDate();
 
       collection.forEach(async (DaySnap) => {
         var Day_ResetyList: any = DaySnap.data();
         if (DaySnap.id === this.userid) {
           if (Day_ResetyList.Day == date) {
             if (Day_ResetyList.Reset == false) {
-              console.log('일일 초기화');
+//              console.log('일일 초기화');
               Day_ResetyList.Day = date
               Day_ResetyList.Reset = true;
               await setDoc(doc(this.firestore, "Day_Reset", this.userid), {
@@ -94,8 +92,7 @@ export class MyHorkWrokCheckListComponent implements OnInit {
           }
           else {
             Day_ResetyList.Day = date
-            console.log(Day_ResetyList.Day);
-            console.log('일일 초기화');
+//            console.log('일일 초기화');
             Day_ResetyList.Reset = true;
             await setDoc(doc(this.firestore, "Day_Reset", this.userid), {
               "Day": Day_ResetyList.Day,
@@ -220,7 +217,7 @@ export class MyHorkWrokCheckListComponent implements OnInit {
       await setDoc(doc(this.firestore, "My_Character", this.userid), {
        "캐릭터" : DayResetCharacter,
       }).then(() => {
-            this.MatSnackBar.open(this.userid + "님"  + "\일일 컨텐츠 초기화되었습니다.", "확인", {
+            this.MatSnackBar.open(this.userid + "님"  + "\n일일 컨텐츠 초기화되었습니다.", "확인", {
             horizontalPosition: "center",
             verticalPosition: "top",
             duration: 3000,

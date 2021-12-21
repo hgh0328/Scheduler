@@ -70,7 +70,7 @@ export class AppComponent {
             this.MatSnackBar.open(this.IdText + "님 환영합니다.", "확인", {
                 horizontalPosition: "center",
                 verticalPosition: "top",
-//                duration: 3000,
+                duration: 3000,
               });
 
 		}

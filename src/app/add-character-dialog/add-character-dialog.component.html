@@ -83,7 +83,7 @@
 			<mat-icon matPrefix>calendar_month</mat-icon>
 			<mat-select multiple [(ngModel)]="Character_DayHomework">
 			<!--일 단위 컨텐츠-->
-      <mat-option value="선택 안함" (click)="DayNone_Select()">선택 안함</mat-option>
+      <mat-option value="선택 안함" disabled>선택 안함</mat-option>
 		 	  <mat-optgroup label="상시 컨텐츠">
 				  <mat-option value="카오스 던전">카오스 던전</mat-option>
 				  <mat-option value="가디언 토벌">가디언 토벌</mat-option>
@@ -99,7 +99,7 @@
 					<mat-label>컨텐츠 리스트(주간)</mat-label>
 					<mat-icon matPrefix>calendar_month</mat-icon>
 					<mat-select multiple [(ngModel)]="Character_WeekHomework" class="Raid_Select">
-					<mat-option value="선택 안함" (click)="WeekNone_Select()">선택 안함</mat-option>
+					<mat-option value="선택 안함" disabled>선택 안함</mat-option>
 					<!--주간 컨텐츠-->
 			<mat-optgroup label="일반" (click)="Week_Select()">
 			  <mat-option value="[일반] 오레하 2종 (노말,하드)">[일반] 오레하 2종 (노말,하드)</mat-option>

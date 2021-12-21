@@ -63,7 +63,6 @@ export class RemoveCharacterDialogComponent implements OnInit {
       async (doc) => {
         var My_Character_List: any;
         My_Character_List = doc.data();
-        console.log(My_Character_List)
       });
       this.dialogRef.close();
 

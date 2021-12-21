@@ -33,7 +33,7 @@
 			<mat-select multiple [(ngModel)]="Chraracter_DayList">
 			<!--일 단위 컨텐츠-->
       <mat-option value="선택 안함" (click)="DayNone_Select()">선택 안함</mat-option>
-		 	  <mat-optgroup label="상시 컨텐츠">
+		 	  <mat-optgroup label="상시 컨텐츠" (click)="Day_Select()">
 				  <mat-option value="카오스 던전">카오스 던전</mat-option>
 				  <mat-option value="가디언 토벌">가디언 토벌</mat-option>
 				  <mat-option value="에포나 퀘스트">에포나 퀘스트</mat-option>

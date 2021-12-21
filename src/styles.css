@@ -337,7 +337,7 @@ mat-accordion .All_RaidList:nth-child(even) mat-expansion-panel:nth-child(even) 
 .Event_Result h2{color: #eee; -webkit-text-stroke: 1px #736f6e; font-size: 5vw; margin-top: 5vh;}
 .Event_Notcie{position: relative; width: 100%;  height: calc(100vh - 64px); overflow: auto; background: var(--main-font-color);}
 .Event_Notcie::-webkit-scrollbar{display: contents !important;}
-.Event_Notcie img{position: relative; height: calc(100vh - 64px); margin: 0 auto; display: block;}
+.Event_Notcie img{position: absolute; height: 100%; margin: 0 auto; display: block; left: 50%; transform: translateX(-50%)}
 
 .UserGuide_List_Box{height: calc(100vh - 64px - 70px); width: 100%; background: var(--main-font-color);}
 .UserGuide_List_Box .mat-tab-body-wrapper{height: calc(100vh - 64px - 70px - 48px); width: 100%; background: var(--main-font-color);}
@@ -459,7 +459,6 @@ mat-accordion .All_RaidList:nth-child(even) mat-expansion-panel:nth-child(even) 
     .jhlostark{top: 90px;}
 	.EventPage{width: 100%; height: calc(100vh - 54px);}
 	.Event_Notcie{width: 100%; height: calc(100vh - 54px);}
-	.Event_Notcie img{height: calc(100vh - 54px);}
 	.Event_Progress{ width: 80vw; left: 10vw;}
 	.Login_FormBox{width: 95vw; height: 96vh; left: 50%;}
 	.Login_Bg{opacity: 0.8;}
@@ -507,12 +506,24 @@ mat-accordion .All_RaidList:nth-child(even) mat-expansion-panel:nth-child(even) 
 	.Character_Modal_Text p strong.Name{width: 49%; display: inline-block;}
 	.Character_Modal_Text p strong.Level{width: 25%; display: none;}
 	.Character_Modal_Text p strong.WeekJob{width: 15%; display: inline-block;}
+    
+    .User_Homework_TableBox table tbody tr td{font-size: 10px !important;}
+    .User_Homework_TableBox mat-list-option .mat-list-item-content{font-size: 10px !important;}
+    .User_Homework_TableBox .mat-expansion-panel-header-title{font-size: 10px !important;}
+    .Mobile_HomeWrok_Name{width: 115px !important; font-size: 10px !important;}
+    .Mobile_Day_homeworklist{width: 245px !important;}
+    .Mobile_Week_homeworklist{width: 305px !important;}
+    
+    .Event_Notcie img{position: absolute; height: 70%; margin: 0 auto; top: 15%; display: block; left: 50%; transform: translateX(-50%)}
+    
+    
 	
 
 
 	}
 
 	@media screen and (max-width: 415px) {
+        
 		.Calendar_Edit_Box p{padding: 4px;}
 		.Calendar_List_Box .mat-expansion-panel-header{padding: 0 10px;}
 		.Calendar_List_Box .mat-expansion-panel-header-description{top: 17px; right: 10px; font-size: 10px;}
@@ -525,7 +536,7 @@ mat-accordion .All_RaidList:nth-child(even) mat-expansion-panel:nth-child(even) 
 		.Calendar_List_Box .mat-list-base .mat-list-item .Calendar_List_Box_Together.mat-list-icon{text-align: center}
 		.Calendar_List_Box .mat-list-base .mat-list-item .Calendar_List_Box_Together.mat-list-icon .mat-icon{display: none;}
 		.User_Option_DialogButtonBox button{padding: 0 4px; font-size: 10px; margin-right: 10px;}
-		
+        
 		.Dialog_Defult{max-width: 95vw !important; width: 95vw;}
 		.Setting_Dialog_Defult{max-width: 95vw !important; width: 95vw;}
 		.Character_Modal_Text p strong.Job{width: 40%; font-size: 10px;}
@@ -535,6 +546,15 @@ mat-accordion .All_RaidList:nth-child(even) mat-expansion-panel:nth-child(even) 
 		.Character_Modal_Text p strong.Level{width: 0%; display: none;}
 		.Mobile{display: none !important;}
 		.Mobile_Show{display: inherit!important;}
+        .User_Homework_TableBox table tbody tr td{font-size: 10px !important;}
+        .User_Homework_TableBox mat-list-option .mat-list-item-content{font-size: 10px !important;}
+        .User_Homework_TableBox .mat-expansion-panel-header-title{font-size: 10px !important; }
+        .User_Homework_TableBox .mat-expansion-panel-header-description{display: none !important;}
+        .Mobile_HomeWrok_Name{width: 150px !important; font-size: 10px !important;}
+        .Mobile_Day_homeworklist{width: 200px !important;}
+        .Mobile_Week_homeworklist{width: 200px !important;}
+        
+        .Event_Notcie img{position: absolute; height: auto; margin: 0 auto; top: 50%; display: block; left: 50%; transform: translate(-50%, -50%)}
 
 	}
 

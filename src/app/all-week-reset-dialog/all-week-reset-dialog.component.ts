@@ -102,7 +102,6 @@ export class AllWeekResetDialogComponent implements OnInit {
     });
 
     setTimeout(async () => {
-      console.log(CharacterArray);
 
       await setDoc(doc(this.firestore, "My_Character", this.userid), {
        "캐릭터" : CharacterArray,
