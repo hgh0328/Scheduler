@@ -10,8 +10,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddCharacterDialogComponent } from '../add-character-dialog/add-character-dialog.component';
 import { ModifyCharacterDialogComponent } from '../modify-character-dialog/modify-character-dialog.component';
 import { RemoveCharacterDialogComponent } from '../remove-character-dialog/remove-character-dialog.component';
-import { WeekResetDialogComponent } from '../week-reset-dialog/week-reset-dialog.component';
 import { AllWeekResetDialogComponent } from '../all-week-reset-dialog/all-week-reset-dialog.component';
+import { CharacterAddCalendarDialogComponent } from '../character-add-calendar-dialog/character-add-calendar-dialog.component';
+import * as $ from 'jquery';
 
 
 export interface UserData {
@@ -45,8 +46,8 @@ export class MyHorkWrokCheckListComponent implements OnInit {
 	Search_resulttext: boolean;
 	Character_Load: boolean;
   dialogRef: any;
+  check: any;
 
-  test
   tableList
   constructor(
     @Inject(MAT_BOTTOM_SHEET_DATA) public data: any,
@@ -57,10 +58,59 @@ export class MyHorkWrokCheckListComponent implements OnInit {
   ) {
   }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+
     this.userid = this.data.userid
     this.Search_resulttext = false;
     this.Character_Load = true;
+
+
+    await getDocs(collection(this.firestore, "Day_Reset")).then((collection) => {
+      var date = new Date().getDate();
+
+
+      collection.forEach(async (DaySnap) => {
+        var Day_ResetyList: any = DaySnap.data();
+        if (DaySnap.id === this.userid) {
+          if (Day_ResetyList.Day == date) {
+            if (Day_ResetyList.Reset == false) {
+              console.log('일일 초기화');
+              Day_ResetyList.Day = date
+              Day_ResetyList.Reset = true;
+              await setDoc(doc(this.firestore, "Day_Reset", this.userid), {
+                "Day": Day_ResetyList.Day,
+                "Reset": Day_ResetyList.Reset,
+              }).then(() => {
+                return myFunc;
+                /// window.alert(this.userid + "님 일일 초기화 되었습니다.");
+              });
+
+            }
+            else {
+              console.log('이미 초기화');
+            }
+          }
+          else {
+            Day_ResetyList.Day = date
+            console.log(Day_ResetyList.Day);
+            console.log('일일 초기화');
+            Day_ResetyList.Reset = true;
+            await setDoc(doc(this.firestore, "Day_Reset", this.userid), {
+              "Day": Day_ResetyList.Day,
+              "Reset": Day_ResetyList.Reset,
+            }).then(() => {
+              // window.alert(this.userid + "님 일일 초기화 되었습니다.");
+            });
+
+          }
+        }
+
+      });
+    });
+    function myFunc(theObject) {
+      console.log("aaa");
+
+    }
 
 
 
@@ -109,8 +159,13 @@ export class MyHorkWrokCheckListComponent implements OnInit {
 			  var My_Character_List:any = [];
 			  this.tableList = My_Character_List
 			  this.dataSource = new MatTableDataSource(this.tableList);
-			  }
-		   });
+      }
+
+       });
+
+
+
+
   		}
 	}
 
@@ -186,7 +241,6 @@ export class MyHorkWrokCheckListComponent implements OnInit {
 
   }
   All_Week_Reset(dataSource) {
-	  console.log(dataSource._data._value);
     const dialogRef = this.dialog.open(AllWeekResetDialogComponent, {
       panelClass: 'Setting_Dialog_Defult',
       data: {
@@ -242,8 +296,8 @@ export class MyHorkWrokCheckListComponent implements OnInit {
     });
 
   }
-  Week_Reset(index, Job, Name, Level,DayList, WeekList) {
-    const dialogRef = this.dialog.open(WeekResetDialogComponent, {
+  Week_Calendar(index, Job, Name, Level,DayList, WeekList) {
+    const dialogRef = this.dialog.open(CharacterAddCalendarDialogComponent, {
       panelClass: 'Setting_Dialog_Defult',
       data: {
 		 userid: this.userid,

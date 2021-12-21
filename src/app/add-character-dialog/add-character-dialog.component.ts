@@ -62,52 +62,52 @@ export class AddCharacterDialogComponent implements OnInit {
       console.log(this.Character_WeekHomework);
 
 
-    if (this.Character_DayHomework.length == 0 && this.Character_WeekHomework.length == 0) {
-      this.Character_DayHomework = ["선택 안함"];
-      this.Character_WeekHomework = ["선택 안함"];
-    }
-    else if (this.Character_DayHomework.length == 0 && this.Character_WeekHomework.length > 0) {
-      this.Character_DayHomework = ["선택 안함"];
-    }
-    else if (this.Character_WeekHomework.length == 0 && this.Character_DayHomework.length > 0) {
-      this.Character_WeekHomework = ["선택 안함"];
-    }
-    window.alert(this.userid + "님 입력되지 않은 값이 존재합니다.\n필수 입력사항을 확인해주세요.");
+      if (this.Character_DayHomework.length == 0 && this.Character_WeekHomework.length == 0) {
+        this.Character_DayHomework = ["선택 안함"];
+        this.Character_WeekHomework = ["선택 안함"];
+      }
+      else if (this.Character_DayHomework.length == 0 && this.Character_WeekHomework.length > 0) {
+        this.Character_DayHomework = ["선택 안함"];
+      }
+      else if (this.Character_WeekHomework.length == 0 && this.Character_DayHomework.length > 0) {
+        this.Character_WeekHomework = ["선택 안함"];
+      }
+      window.alert(this.userid + "님 입력되지 않은 값이 존재합니다.\n필수 입력사항을 확인해주세요.");
 
 
 
-		}
+    }
 
     else {
-      var Character_DayHomework:any=[];
+      var Character_DayHomework: any = [];
       this.Character_DayHomework.forEach(element => {
-		  if(element == "선택 안함"){
-			  Character_DayHomework.push({name:"일일 숙제 선택 안함",value:true})
-		  }
-		  else{
-			  Character_DayHomework.push({name:element,value:false})
-		  }
+        if (element == "선택 안함") {
+          Character_DayHomework.push({ name: "일일 숙제 선택 안함", value: true })
+        }
+        else {
+          Character_DayHomework.push({ name: element, value: false })
+        }
 
       });
-      var Character_WeekHomework:any=[];
+      var Character_WeekHomework: any = [];
       this.Character_WeekHomework.forEach(element => {
-		  if(element == "선택 안함"){
-        	Character_WeekHomework.push({name:"주간 숙제 선택 안함",value:true})
-			  }
-		  else{
-			  Character_WeekHomework.push({name:element,value:false})
-		  }
+        if (element == "선택 안함") {
+          Character_WeekHomework.push({ name: "주간 숙제 선택 안함", value: true })
+        }
+        else {
+          Character_WeekHomework.push({ name: element, value: false })
+        }
       });
 
       var CharacterArray: any = []
-      var CharacterList:any = []
+      var CharacterList: any = []
 
       await getDocs(collection(this.firestore, "My_Character")).then((collection) => {
 
         collection.forEach((doc) => {
           if (doc.id === this.userid) {
             var myList: any = doc.data()
-            CharacterArray= myList['캐릭터'];
+            CharacterArray = myList['캐릭터'];
           }
         });
       })
@@ -116,21 +116,31 @@ export class AddCharacterDialogComponent implements OnInit {
         "Name": this.Character_Name,
         "Level": this.Character_Level,
         "Day_homeworklist": Character_DayHomework,
-        "Week_homeworklist" : Character_WeekHomework,
+        "Week_homeworklist": Character_WeekHomework,
       }
       CharacterArray.push(List)
       await setDoc(doc(this.firestore, "My_Character", this.userid), {
-        "캐릭터" : CharacterArray,
+        "캐릭터": CharacterArray,
 
-      }).then(()=>{
+      }).then(() => {
         window.alert(this.userid + "님 캐릭터 추가 완료되었습니다.\n" + this.Character_Job + "/" + this.Character_Name);
-		  this.dialogRef.close();
+        this.dialogRef.close();
 
-       });
+      });
+      await getDocs(collection(this.firestore, "Day_Reset")).then(async (collection) => {
+        var date = new Date().getDate();
+        var Day_Reset_List = true;
+        await setDoc(doc(this.firestore, "Day_Reset", this.userid), {
+          "Day": date,
+          "Reset": Day_Reset_List,
+        }).then(() => {
+        });
+
+
+      });
+
     }
+  }
 
   }
 
-
-
-}

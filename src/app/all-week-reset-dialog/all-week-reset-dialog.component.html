@@ -1,23 +1,24 @@
 <h3><strong> {{userid}}님 전체 주간 초기화 </strong><mat-icon mat-dialog-close>close</mat-icon></h3>
 
-	
+
 	<div class="Character_Modal">
 		<div class="Character_Modal_Text">
 			<h5>주간 초기화 캐릭터 목록</h5>
 			<p *ngFor="let AllCharacterList of AllCharacterList">
-			<strong class="Job"><em>직업 :</em> <em>{{AllCharacterList.Job}}</em></strong> 
+			<strong class="Job"><em>직업 :</em> <em>{{AllCharacterList.Job}}</em></strong>
 			<strong class="Name"><em>캐릭터명 :</em> <span> {{AllCharacterList.Name}}</span> </strong>
 			<strong class="Level"><em>아이템 레벨 :</em> <em>{{AllCharacterList.Level}}</em></strong>
+			<strong class="WeekJob"><em>주간 숙제 :</em> <em>{{AllCharacterList.Week_homeworklist.length}} 개</em></strong>
 			</p>
 			<h4>{{AllCharacterList.length}}개의 캐릭터가 주간 숙제 초기화 됩니다.</h4>
 		</div>
 
 	</div>
-	
+
 
 	<div class="User_Option_DialogButtonBox">
      		<button mat-stroked-button mat-dialog-close>취소</button>
-			<button mat-stroked-button class="NextBtn">초기화</button>
+			<button mat-stroked-button class="NextBtn" (click)="All_WeekHomeWrok_Reset()">초기화</button>
 	</div>
 
 

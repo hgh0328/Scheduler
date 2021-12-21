@@ -361,9 +361,10 @@ mat-accordion .All_RaidList:nth-child(even) mat-expansion-panel:nth-child(even) 
 .Character_Modal_Left mat-icon{width: 100px; line-height: 50px; font-size: 50px; height: 50px; color: var(--main-font-color);}
 .Character_Modal_Right{float: left; width: calc(100% - 100px);}
 .Character_Modal_Text::after{content: ''; display: block; clear: both;}
-.Character_Modal_Text p strong.Job{width: 30%; display: inline-block;}
-.Character_Modal_Text p strong.Name{width: 45%; display: inline-block;}
-.Character_Modal_Text p strong.Level{width: 20%; display: inline-block;}
+.Character_Modal_Text p strong.Job{width: 20%; display: inline-block;}
+.Character_Modal_Text p strong.Name{width: 35%; display: inline-block;}
+.Character_Modal_Text p strong.Level{width: 25%; display: inline-block;}
+.Character_Modal_Text p strong.WeekJob{width: 20%; display: inline-block;}
 .Character_Modal p{margin-left: 5px; position: relative; height: 25px; line-height: 25px; font-size: 12px;letter-spacing: 0.1px; font-weight: 400; color: var(--main-font-color); width: 100%; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; padding: 0 !important;}
 .Character_Modal p em{margin-right: 5px; display: inline-block; position: relative; top: -8px;}
 .Character_Modal p span{color: var(--maindark-color); font-size: 12px; margin-right: 10px; display: inline-block; text-align: center; text-overflow: ellipsis;  white-space: nowrap; overflow-x: hidden; font-weight: 500;}
@@ -490,12 +491,18 @@ mat-accordion .All_RaidList:nth-child(even) mat-expansion-panel:nth-child(even) 
 	.Calendar_List_Box .mat-list-base .mat-list-item .Calendar_List_Box_Together.mat-list-icon .mat-icon{font-size: 16px; width: 16px; height: 16px; top: 3px; margin-right: 2px; margin-left: 2px;}
 	
 	.Dialog_Defult{max-width: 90vw !important; min-width: 90vw;}
+	.Setting_Dialog_Defult{max-width: 90vw !important; min-width: 90vw;}
 	.Add_Character_Modal_Box mat-form-field{padding: 0 16px; margin-top: 2vh; margin-bottom: 2vh; width: 100%; display: block;}
 	.Add_Character_Modal_Box mat-form-field.mat-form-field-disabled ~ mat-form-field.Modify_Field{width: 100%;}
 	.Add_Character_Modal_Box mat-form-field:nth-child(4){width: 100%;}
 	.Add_Character_Modal_Box mat-form-field:nth-child(5){width: 100%;}
 	.Add_Character_Modal_Box mat-form-field:nth-child(6){width: 100%;}
 	.User_Option_DialogButtonBox button{padding: 0 16px; font-size: 10px;}
+	
+	.Character_Modal_Text p strong.Job{width: 28%; display: inline-block;}
+	.Character_Modal_Text p strong.Name{width: 49%; display: inline-block;}
+	.Character_Modal_Text p strong.Level{width: 25%; display: none;}
+	.Character_Modal_Text p strong.WeekJob{width: 15%; display: inline-block;}
 	
 
 
@@ -515,6 +522,7 @@ mat-accordion .All_RaidList:nth-child(even) mat-expansion-panel:nth-child(even) 
 		.Calendar_List_Box .mat-list-base .mat-list-item .Calendar_List_Box_Together.mat-list-icon .mat-icon{display: none;}
 		.User_Option_DialogButtonBox button{padding: 0 4px; font-size: 10px; margin-right: 10px;}
 		
+		.Dialog_Defult{max-width: 95vw !important; width: 95vw;}
 		.Setting_Dialog_Defult{max-width: 95vw !important; width: 95vw;}
 		.Character_Modal_Text p strong.Job{width: 40%; font-size: 10px;}
 		.Character_Modal_Text p strong.Name{width: 50%; font-size: 10px;}

@@ -38,6 +38,7 @@ import { RemoveCharacterDialogComponent } from './remove-character-dialog/remove
 import { ModifyCharacterDialogComponent } from './modify-character-dialog/modify-character-dialog.component';
 import { AllWeekResetDialogComponent } from './all-week-reset-dialog/all-week-reset-dialog.component';
 import { WeekResetDialogComponent } from './week-reset-dialog/week-reset-dialog.component';
+import { CharacterAddCalendarDialogComponent } from './character-add-calendar-dialog/character-add-calendar-dialog.component';
 
 /*CDK Module*/
 import {TextFieldModule} from '@angular/cdk/text-field';
@@ -77,6 +78,7 @@ import { getAnalytics, provideAnalytics } from '@angular/fire/analytics';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -93,6 +95,7 @@ import { getAnalytics, provideAnalytics } from '@angular/fire/analytics';
     ModifyCharacterDialogComponent,
     WeekResetDialogComponent,
     AllWeekResetDialogComponent,
+    CharacterAddCalendarDialogComponent,
 
   ],
   imports: [
