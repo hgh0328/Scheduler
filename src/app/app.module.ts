@@ -39,6 +39,7 @@ import { ModifyCharacterDialogComponent } from './modify-character-dialog/modify
 import { AllWeekResetDialogComponent } from './all-week-reset-dialog/all-week-reset-dialog.component';
 import { WeekResetDialogComponent } from './week-reset-dialog/week-reset-dialog.component';
 import { CharacterAddCalendarDialogComponent } from './character-add-calendar-dialog/character-add-calendar-dialog.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 /*CDK Module*/
 import {TextFieldModule} from '@angular/cdk/text-field';
@@ -100,6 +101,7 @@ import { getAnalytics, provideAnalytics } from '@angular/fire/analytics';
   ],
   imports: [
     MatTabGroupGestureModule,
+    MatSnackBarModule,
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideFirestore(() => getFirestore()),
     provideAuth(() => getAuth()),

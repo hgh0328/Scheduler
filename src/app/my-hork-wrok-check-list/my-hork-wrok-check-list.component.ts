@@ -12,6 +12,7 @@ import { ModifyCharacterDialogComponent } from '../modify-character-dialog/modif
 import { RemoveCharacterDialogComponent } from '../remove-character-dialog/remove-character-dialog.component';
 import { AllWeekResetDialogComponent } from '../all-week-reset-dialog/all-week-reset-dialog.component';
 import { CharacterAddCalendarDialogComponent } from '../character-add-calendar-dialog/character-add-calendar-dialog.component';
+import {MatSnackBar} from '@angular/material/snack-bar';
 import * as $ from 'jquery';
 
 
@@ -46,10 +47,10 @@ export class MyHorkWrokCheckListComponent implements OnInit {
 	Search_resulttext: boolean;
 	Character_Load: boolean;
   dialogRef: any;
-  check: any;
 
   tableList
   constructor(
+    private MatSnackBar: MatSnackBar,
     @Inject(MAT_BOTTOM_SHEET_DATA) public data: any,
     public dialog: MatDialog,
     private route: ActivatedRoute,
@@ -63,10 +64,12 @@ export class MyHorkWrokCheckListComponent implements OnInit {
     this.userid = this.data.userid
     this.Search_resulttext = false;
     this.Character_Load = true;
+    
 
 
     await getDocs(collection(this.firestore, "Day_Reset")).then((collection) => {
-      var date = new Date().getDate();
+//      var date = new Date().getDate();
+      var date = 22;
 
 
       collection.forEach(async (DaySnap) => {
@@ -81,13 +84,12 @@ export class MyHorkWrokCheckListComponent implements OnInit {
                 "Day": Day_ResetyList.Day,
                 "Reset": Day_ResetyList.Reset,
               }).then(() => {
-                return myFunc;
-                /// window.alert(this.userid + "님 일일 초기화 되었습니다.");
+                this.DayReset_System()
               });
 
             }
             else {
-              console.log('이미 초기화');
+              console.log('이미 일일 초기화가 완료되었습니다.');              
             }
           }
           else {
@@ -99,18 +101,18 @@ export class MyHorkWrokCheckListComponent implements OnInit {
               "Day": Day_ResetyList.Day,
               "Reset": Day_ResetyList.Reset,
             }).then(() => {
-              // window.alert(this.userid + "님 일일 초기화 되었습니다.");
+              this.DayReset_System()
             });
-
           }
         }
 
       });
     });
-    function myFunc(theObject) {
-      console.log("aaa");
-
-    }
+    
+   
+                        
+    
+    
 
 
 
@@ -168,6 +170,67 @@ export class MyHorkWrokCheckListComponent implements OnInit {
 
   		}
 	}
+  async DayReset_System() {   
+    var DayResetCharacter: any = [];          
+    await getDocs(collection(this.firestore, "My_Character")).then((collection) => {
+      var CharacterArray: any = [];
+       
+      
+      collection.forEach((doc) => {
+        if (doc.id === this.userid) {
+          var myList: any = doc.data()
+          CharacterArray= myList['캐릭터'];
+          CharacterArray.forEach(element => {
+            var List: any = {};
+            var Character_WeekHomework: any = [];
+            var Character_DayHomework: any = [];
+            element.Week_homeworklist.forEach(item => {  
+              if (item['name'] == "주간 컨텐츠 선택 안함") {
+                Character_WeekHomework.push({name:"주간 컨텐츠 선택 안함",value:true})
+              }
+            else{
+              
+                Character_WeekHomework.push({name:item['name'],value: item['value']})
+              }
+            });
+            element.Day_homeworklist.forEach(item => {
+              var ResetValue = false;
+              if(item['name'] == "일일 컨텐츠 선택 안함"){
+                Character_DayHomework.push({name:"일일 컨텐츠 선택 안함",value:true})
+              }
+              else{
+                ResetValue = false;
+                Character_DayHomework.push({name:item['name'],value:ResetValue})
+              }
+            });
+      
+            List = {
+              "Job": element['Job'],
+              "Name": element['Name'],
+              "Level": element['Level'],
+              "Day_homeworklist": Character_DayHomework,
+              "Week_homeworklist": Character_WeekHomework,
+            }
+            DayResetCharacter.push(List)
+          });        
+        }
+      });      
+    });
+    setTimeout(async () => {
+      await setDoc(doc(this.firestore, "My_Character", this.userid), {
+       "캐릭터" : DayResetCharacter,
+      }).then(() => {
+            this.MatSnackBar.open(this.userid + "님"  + "\일일 컨텐츠 초기화되었습니다.", "확인", {
+            horizontalPosition: "center",
+            verticalPosition: "top",
+            duration: 3000,
+          });
+       });
+
+  });
+  }
+
+
 
 
   applyFilter(event: Event) {
@@ -227,7 +290,12 @@ export class MyHorkWrokCheckListComponent implements OnInit {
     await setDoc(doc(this.firestore, "My_Character", this.userid), {
       "캐릭터" : this.tableList,
     }).then(()=>{
-      window.alert(this.userid + "님 숙제 리스트가 저장되었습니다.");
+            this.MatSnackBar.open(this.userid + "님 컨텐츠 리스트가 저장되었습니다.", "확인", {
+            horizontalPosition: "center",
+            verticalPosition: "top",
+            duration: 3000,
+          });
+
      });
 
 

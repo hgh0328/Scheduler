@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { collection, doc, getDoc, getDocs, onSnapshot, setDoc } from 'firebase/firestore';
+import {MatSnackBar} from '@angular/material/snack-bar';
 import * as $ from 'jquery';
 
 @Component({
@@ -16,7 +17,7 @@ export class RemoveCharacterDialogComponent implements OnInit {
   Character_Name;
   Character_Level;
   constructor(
-
+    private MatSnackBar: MatSnackBar,
 	@Inject(MAT_DIALOG_DATA) public data: any,
     private firestore: Firestore,
     private dialogRef: MatDialogRef<RemoveCharacterDialogComponent>,
@@ -49,7 +50,11 @@ export class RemoveCharacterDialogComponent implements OnInit {
       await setDoc(doc(this.firestore, "My_Character", this.userid), {
         "캐릭터" : CharacterArray,
       }).then(()=>{
-        window.alert(this.userid + "님"  + this.Character_Job + "/" + this.Character_Name + "\n캐릭터가 삭제되었습니다.");
+          this.MatSnackBar.open(this.userid + "님"  + this.Character_Job + "/" + this.Character_Name + "\n캐릭터가 삭제되었습니다.", "확인", {
+                    horizontalPosition: "center",
+                    verticalPosition: "top",
+                    duration: 3000,
+                  });
        });
     });
     onSnapshot(

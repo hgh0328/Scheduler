@@ -1,4 +1,4 @@
-<h3><strong>{{userid}}님의 숙제 캐릭터 추가</strong> <mat-icon mat-dialog-close>close</mat-icon></h3>
+<h3><strong>{{userid}}님의 컨텐츠 캐릭터 추가</strong> <mat-icon mat-dialog-close>close</mat-icon></h3>
 
 	<div class="Add_Character_Modal_Box">
 
@@ -79,7 +79,7 @@
 	</mat-form-field>
 
 	<mat-form-field appearance="legacy">
-			<mat-label>숙제 리스트(매일)</mat-label>
+			<mat-label>컨텐츠 리스트(매일)</mat-label>
 			<mat-icon matPrefix>calendar_month</mat-icon>
 			<mat-select multiple [(ngModel)]="Character_DayHomework">
 			<!--일 단위 컨텐츠-->
@@ -96,7 +96,7 @@
 		</mat-form-field>
 
 			<mat-form-field appearance="legacy">
-					<mat-label>숙제 리스트(주간)</mat-label>
+					<mat-label>컨텐츠 리스트(주간)</mat-label>
 					<mat-icon matPrefix>calendar_month</mat-icon>
 					<mat-select multiple [(ngModel)]="Character_WeekHomework" class="Raid_Select">
 					<mat-option value="선택 안함" (click)="WeekNone_Select()">선택 안함</mat-option>

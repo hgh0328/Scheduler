@@ -122,6 +122,10 @@ mat-bottom-sheet-container{background: var(--main-background-color) !important;}
 .mat-badge-content{background: var(--main-color);}
 .mat-tab-label.mat-tab-disabled .mat-tab-label-content{opacity: 0.5}
 .mat-menu-item[disabled]{opacity: 0.5}
+snack-bar-container{background: var(--sub-font-color) !important;}
+.mat-snack-bar-handset .mat-snack-bar-container{margin-top: 10vh !important;}
+.mat-snack-bar-container span{font-size: 12px; white-space: pre-line; color: var(--main-whitefont-color);}
+.mat-snack-bar-container .mat-button-wrapper{cursor: pointer; color: var(--mainwhite-color);}
 /*크롬 테두리 삭제*/
  *:focus {outline:none;}
 body,html{position: relative; width: 100%; height: auto; overflow: hidden;}

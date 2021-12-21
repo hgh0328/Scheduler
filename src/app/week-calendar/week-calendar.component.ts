@@ -7,7 +7,7 @@ import * as $ from 'jquery';
 import { CalendarAddButtonComponent } from '../calendar-add-button/calendar-add-button.component';
 import {FormControl} from '@angular/forms';
 import { MyHorkWrokCheckListComponent } from '../my-hork-wrok-check-list/my-hork-wrok-check-list.component';
-
+import {MatSnackBar} from '@angular/material/snack-bar';
 @Component({
   selector: 'app-week-calendar',
   templateUrl: './week-calendar.component.html',
@@ -51,7 +51,9 @@ export class WeekCalendarComponent implements OnInit {
 
   panelOpenState;
 
-  constructor(private MatBottomSheet: MatBottomSheet,
+  constructor(
+    private MatSnackBar: MatSnackBar,
+    private MatBottomSheet: MatBottomSheet,
     private firestore: Firestore,
     private route: ActivatedRoute
   ) { }
@@ -523,15 +525,26 @@ export class WeekCalendarComponent implements OnInit {
     }
     out(){
         if(this.menuId === this.userid){
-
-          window.alert(this.menuId + "님이 " + this.menuRaidList["레이드이름"] + "에서 나갔습니다.");
+        this.MatSnackBar.open(this.menuId + "님이 " + this.menuRaidList["레이드이름"] + "에서 나갔습니다.", "확인", {
+            horizontalPosition: "center",
+            verticalPosition: "top",
+            duration: 3000,
+          });
           this.outUser()
         }else{
-          window.alert("본인이 아닌 경우 나갈수 없습니다.");
+            this.MatSnackBar.open("본인이 아닌 경우 나갈수 없습니다.", "확인", {
+            horizontalPosition: "center",
+            verticalPosition: "top",
+            duration: 3000,
+          });
         }
       }
     export(){
-      window.alert(this.menuId + "를 " + this.menuRaidList["레이드이름"] + " 에서 내보냈습니다.");
+    this.MatSnackBar.open(this.menuId + "를 " + this.menuRaidList["레이드이름"] + " 에서 내보냈습니다.", "확인", {
+        horizontalPosition: "center",
+        verticalPosition: "top",
+        duration: 3000,
+      });
       this.outUser()
   }
 

@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { collection, doc, getDoc, getDocs, onSnapshot, setDoc, updateDoc } from 'firebase/firestore';
+import {MatSnackBar} from '@angular/material/snack-bar';
 import * as $ from 'jquery';
 
 @Component({
@@ -20,6 +21,7 @@ export class WeekResetDialogComponent implements OnInit {
   Character_WeekList;
 
   constructor(
+     private MatSnackBar: MatSnackBar,
 	@Inject(MAT_DIALOG_DATA) public data: any,
     private firestore: Firestore,
     private dialogRef: MatDialogRef<WeekResetDialogComponent>,
@@ -53,8 +55,8 @@ export class WeekResetDialogComponent implements OnInit {
 
     this.Character_WeekList.forEach(element => {
 
-      if (element['name'] == "주간 숙제 선택 안함") {
-        Character_WeekHomework.push({name:"주간 숙제 선택 안함",value:true})
+      if (element['name'] == "주간 컨텐츠 선택 안함") {
+        Character_WeekHomework.push({name:"주간 컨텐츠 선택 안함",value:true})
       }
     else{
         element['value'] = false;
@@ -64,8 +66,8 @@ export class WeekResetDialogComponent implements OnInit {
 
     var Character_DayHomework:any=[];
       this.Character_DayList.forEach(element => {
-		  if(element['name'] == "일일 숙제 선택 안함"){
-			  Character_DayHomework.push({name:"일일 숙제 선택 안함",value:true})
+		  if(element['name'] == "일일 컨텐츠 선택 안함"){
+			  Character_DayHomework.push({name:"일일 컨텐츠 선택 안함",value:true})
 		  }
 		  else{
 			  Character_DayHomework.push({name:element['name'],value:element['value']})
@@ -92,7 +94,11 @@ export class WeekResetDialogComponent implements OnInit {
        "캐릭터" : CharacterArray,
       }).then(() => {
 
-        window.alert(this.userid + "님"  + this.Character_Job + "/" + this.Character_Name + "\n캐릭터가 초기화되었습니다.");
+          this.MatSnackBar.open(this.userid + "님"  + this.Character_Job + "/" + this.Character_Name + "\n캐릭터가 초기화되었습니다.", "확인", {
+                    horizontalPosition: "center",
+                    verticalPosition: "top",
+                    duration: 3000,
+                  });
         this.dialogRef.close();
        });
 

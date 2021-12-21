@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
 import {MatBottomSheet, MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA} from '@angular/material/bottom-sheet';
 import { addDoc, collection, doc, getDoc, updateDoc,setDoc  } from 'firebase/firestore';
+import {MatSnackBar} from '@angular/material/snack-bar';
 import * as $ from 'jquery';
 
 import { ActivatedRoute } from '@angular/router';
@@ -36,6 +37,7 @@ export class CalendarAddButtonComponent implements OnInit {
 
   constructor(
     @Inject(MAT_BOTTOM_SHEET_DATA) public data: any,
+    private MatSnackBar: MatSnackBar,
     private route: ActivatedRoute,
     private bottomSheetRef: MatBottomSheetRef<CalendarAddButtonComponent>,
     private firestore: Firestore,
@@ -105,7 +107,12 @@ export class CalendarAddButtonComponent implements OnInit {
       if(this.data.Together_user != undefined){
 
 		  if(this.Party == undefined || this.Position == undefined){
-				window.alert('선택하지 않은 필드가 존재합니다.\n메모를 제외한 모든 필드를 입력해주세요.');
+                  this.MatSnackBar.open('선택하지 않은 필드가 존재합니다.\n메모를 제외한 모든 필드를 입력해주세요.', "확인", {
+                    horizontalPosition: "center",
+                    verticalPosition: "top",
+                    duration: 3000,
+                  });
+              
 		  }
 
       else {
@@ -399,10 +406,18 @@ export class CalendarAddButtonComponent implements OnInit {
     }, 1000);
 
           if(this.Raid.length > 1){
-  window.alert("[" + this.Day + "] 스케쥴\n" + this.Raid[0] + " 외 " + (this.Raid.length - 1) + "개의"  + "\n" +  this.data.Together_user + " 님과 일정이 추가되었습니다.");
+              this.MatSnackBar.open("[" + this.Day + "] 스케쥴\n" + this.Raid[0] + " 외 " + (this.Raid.length - 1) + "개의"  + "\n" +  this.data.Together_user + " 님과 일정이 추가되었습니다.", "확인", {
+                    horizontalPosition: "center",
+                    verticalPosition: "top",
+                    duration: 3000,
+                  });
 		 }
           else{
-			  window.alert("[" + this.Day + "] 스케쥴\n" + this.Raid[0] + "\n" +  this.data.Together_user + " 님과  일정이 추가되었습니다.");
+              this.MatSnackBar.open("[" + this.Day + "] 스케쥴\n" + this.Raid[0] + "\n" +  this.data.Together_user + " 님과  일정이 추가되었습니다.", "확인", {
+                    horizontalPosition: "center",
+                    verticalPosition: "top",
+                    duration: 3000,
+                  });
           };
 		  $(".jhlostark").addClass("Opened");
       }
@@ -410,11 +425,20 @@ export class CalendarAddButtonComponent implements OnInit {
       }
       else{
       if (this.Day == undefined || this.Party == undefined || this.Raid == undefined || this.Time == undefined || this.Position == undefined) {
-		  window.alert('선택하지 않은 필드가 존재합니다.\n메모를 제외한 모든 필드를 입력해주세요.');
+          this.MatSnackBar.open('선택하지 않은 필드가 존재합니다.\n메모를 제외한 모든 필드를 입력해주세요.', "확인", {
+                    horizontalPosition: "center",
+                    verticalPosition: "top",
+                    duration: 3000,
+                  });
 
         }
 	  else if(this.Memo_required == true){
-			window.alert('[기타] 사용자 설정 선택은 메모 작성이 필수 항목입니다.\n메모에 원하시는 레이드 또는 작업을 입력해주세요.\nex)내실, 가디언, 협동퀘스트 등.');
+
+          this.MatSnackBar.open('[기타] 사용자 설정 선택은 메모 작성이 필수 항목입니다.\n메모에 원하시는 레이드 또는 작업을 입력해주세요.\nex)내실, 가디언, 협동퀘스트 등.', "확인", {
+                    horizontalPosition: "center",
+                    verticalPosition: "top",
+                    duration: 3000,
+                  });
 			}
 
       else {
@@ -704,10 +728,18 @@ export class CalendarAddButtonComponent implements OnInit {
     }, 1000);
 
           if(this.Raid.length > 1){
-		  window.alert(this.userid + "님 " + "[" + this.Day + "] 스케쥴\n" + this.Raid[0] + " 외 " + (this.Raid.length - 1) + "개의" + " 일정이 추가되었습니다.");
+              this.MatSnackBar.open(this.userid + "님 " + "[" + this.Day + "] 스케쥴\n" + this.Raid[0] + " 외 " + (this.Raid.length - 1) + "개의" + " 일정이 추가되었습니다.", "확인", {
+                    horizontalPosition: "center",
+                    verticalPosition: "top",
+                    duration: 3000,
+                  });
 		 }
           else{
-			  window.alert(this.userid + "님 " + "[" + this.Day + "] 스케쥴\n" + this.Raid[0] + " 일정이 추가되었습니다.");
+              this.MatSnackBar.open(this.userid + "님 " + "[" + this.Day + "] 스케쥴\n" + this.Raid[0] + " 일정이 추가되었습니다.", "확인", {
+                    horizontalPosition: "center",
+                    verticalPosition: "top",
+                    duration: 3000,
+                  });
           };
 		  $(".jhlostark").addClass("Opened");
 

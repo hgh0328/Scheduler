@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { collection, doc, getDocs, setDoc } from 'firebase/firestore';
+import {MatSnackBar} from '@angular/material/snack-bar';
 import * as $ from 'jquery';
 
 @Component({
@@ -21,6 +22,7 @@ export class AddCharacterDialogComponent implements OnInit {
 
 
   constructor(
+    private MatSnackBar: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private firestore: Firestore,
     private dialogRef: MatDialogRef<AddCharacterDialogComponent>,
@@ -72,7 +74,11 @@ export class AddCharacterDialogComponent implements OnInit {
       else if (this.Character_WeekHomework.length == 0 && this.Character_DayHomework.length > 0) {
         this.Character_WeekHomework = ["선택 안함"];
       }
-      window.alert(this.userid + "님 입력되지 않은 값이 존재합니다.\n필수 입력사항을 확인해주세요.");
+      this.MatSnackBar.open(this.userid + "님 입력되지 않은 값이 존재합니다.\n필수 입력사항을 확인해주세요.", "확인", {
+                    horizontalPosition: "center",
+                    verticalPosition: "top",
+                    duration: 3000,
+                  });
 
 
 
@@ -82,7 +88,7 @@ export class AddCharacterDialogComponent implements OnInit {
       var Character_DayHomework: any = [];
       this.Character_DayHomework.forEach(element => {
         if (element == "선택 안함") {
-          Character_DayHomework.push({ name: "일일 숙제 선택 안함", value: true })
+          Character_DayHomework.push({ name: "일일 컨텐츠 선택 안함", value: true })
         }
         else {
           Character_DayHomework.push({ name: element, value: false })
@@ -92,7 +98,7 @@ export class AddCharacterDialogComponent implements OnInit {
       var Character_WeekHomework: any = [];
       this.Character_WeekHomework.forEach(element => {
         if (element == "선택 안함") {
-          Character_WeekHomework.push({ name: "주간 숙제 선택 안함", value: true })
+          Character_WeekHomework.push({ name: "주간 컨텐츠 선택 안함", value: true })
         }
         else {
           Character_WeekHomework.push({ name: element, value: false })
@@ -123,7 +129,11 @@ export class AddCharacterDialogComponent implements OnInit {
         "캐릭터": CharacterArray,
 
       }).then(() => {
-        window.alert(this.userid + "님 캐릭터 추가 완료되었습니다.\n" + this.Character_Job + "/" + this.Character_Name);
+        this.MatSnackBar.open(this.userid + "님 캐릭터 추가 완료되었습니다.\n" + this.Character_Job + "/" + this.Character_Name, "확인", {
+                    horizontalPosition: "center",
+                    verticalPosition: "top",
+                    duration: 3000,
+                  });
         this.dialogRef.close();
 
       });

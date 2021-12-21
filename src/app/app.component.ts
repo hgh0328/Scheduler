@@ -8,7 +8,7 @@ import { doc } from '@firebase/firestore';
 import { Firestore, getDoc, setDoc } from '@angular/fire/firestore';
 import {MatDialog} from '@angular/material/dialog';
 import { UserGuideModalComponent } from './user-guide-modal/user-guide-modal.component';
-
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-root',
@@ -33,6 +33,7 @@ export class AppComponent {
 
 
   constructor(
+    private MatSnackBar: MatSnackBar,
     private MatBottomSheet: MatBottomSheet,
     public dialog: MatDialog,
     private router: Router,
@@ -52,7 +53,11 @@ export class AppComponent {
         this.login = false;
         $(".Main_PanelBox").fadeOut(300);
       this.router.navigate(['/']);
-      window.alert("로그인을 다시 시도해 주세요.");
+      this.MatSnackBar.open("로그인을 다시 시도해 주세요.", "확인", {
+        horizontalPosition: "center",
+        verticalPosition: "top",
+        duration: 3000,
+      });
       }
     }
 
@@ -62,21 +67,37 @@ export class AppComponent {
 			$(".Main_PanelBox").fadeIn(300);
 			$(".Main_SettingButtonBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 환영합니다.");
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+//                duration: 3000,
+              });
 
 		}
 		else if(this.IdText == "점화걸면정화" && this.PasswordText != "3280"){
-			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 		else if(this.IdText == "데둠미" && this.PasswordText == "8418"){
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			$(".Main_SettingButtonBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + " 데둠배빵빵데둠배빵빵데둠배빵빵데둠배빵빵데둠배빵빵데둠배빵빵데둠배빵빵데둠배빵빵데둠배빵빵데둠배빵빵데둠배빵빵데둠배빵빵이 부헤헤 안뇽 방가워");
+            this.MatSnackBar.open(this.IdText + " 데둠배빵빵데둠배빵빵데둠배빵빵데둠배빵빵데둠배빵빵데둠배빵빵데둠배빵빵데둠배빵빵데둠배빵빵데둠배빵빵데둠배빵빵데둠배빵빵이 부헤헤 안뇽 방가워", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 		else if(this.IdText == "데둠미" && this.PasswordText != "8418"){
-			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 
 		/*카단 ~ 아만 순*/
@@ -87,10 +108,18 @@ export class AppComponent {
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 환영합니다.\n환상의 나라 에~버~랜드");
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n환상의 나라 에~버~랜드", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 		else if(this.IdText == "펭난나" && this.PasswordText != "951215"){
-			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 
 		/*욕망군단장형아키스 소서리스*/
@@ -98,10 +127,18 @@ export class AppComponent {
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 환영합니다.\n언니 나 죽어");
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n언니 나 죽어", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 		else if(this.IdText == "욕망군단장형아키스" && this.PasswordText != "1234"){
-			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 
 		/*인조인간91호*/
@@ -109,10 +146,18 @@ export class AppComponent {
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 환영합니다.\n인조인간 ~ 로보트 ~ ");
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n인조인간 ~ 로보트 ~ ", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 		else if(this.IdText == "인조인간91호" && this.PasswordText != "28452600"){
-			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 
 		/*긴바나나 소서리스*/
@@ -120,10 +165,18 @@ export class AppComponent {
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 환영합니다.\n이태원바나나는 제겁니다.");
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n이태원바나나는 제겁니다.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 		else if(this.IdText == "긴바나나" && this.PasswordText != "1231"){
-			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 
 		/*똘렝 바드*/
@@ -131,10 +184,18 @@ export class AppComponent {
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 [신방현]개인정보는\n제가 다 가져가겠습니다.");
+            this.MatSnackBar.open(this.IdText + "님 [신방현]개인정보는\n제가 다 가져가겠습니다.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 		else if(this.IdText == "똘렝" && this.PasswordText != "90909"){
-			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 
 		/*라즈베리단풍 디붕이*/
@@ -142,10 +203,18 @@ export class AppComponent {
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 환영합니다.\n라즈베리초크베리구스베리베리베리 단풍");
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n라즈베리초크베리구스베리베리베리 단풍", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 		else if(this.IdText == "라즈베리단풍" && this.PasswordText != "821212"){
-			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 
 		/*신성범위 스카우터*/
@@ -153,10 +222,18 @@ export class AppComponent {
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + " 선생님 환영합니다.\n아브렐 버스 부탁드려요.");
+            this.MatSnackBar.open(this.IdText + " 선생님 환영합니다.\n아브렐 버스 부탁드려요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 		else if(this.IdText == "신성범위" && this.PasswordText != "1013"){
-			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 
 		/*하얀활 호크아이*/
@@ -164,10 +241,18 @@ export class AppComponent {
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 환영합니다.\n건슬은 너프 안될겁니다.");
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n건슬은 너프 안될겁니다.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 		else if(this.IdText == "하얀활" && this.PasswordText != "9559"){
-			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 
 		/*HK278 디붕이*/
@@ -175,11 +260,19 @@ export class AppComponent {
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 환영합니다.\n디붕이는 사랑입니다.");
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n디붕이는 사랑입니다.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 
 		}
 		else if(this.IdText == "HK278" && this.PasswordText != "0000"){
-			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 
         /*뽀야마요 기공사*/
@@ -187,10 +280,18 @@ export class AppComponent {
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 환영합니다.\n원기옥 원툴 ^^");
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n원기옥 원툴 ^^", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 		else if(this.IdText == "뽀야마요" && this.PasswordText != "3920"){
-			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 
         /*K여포 창술사*/
@@ -198,10 +299,18 @@ export class AppComponent {
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 환영합니다.\n코리안 여포 반가워요.");
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n코리안 여포 반가워요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 		else if(this.IdText == "K여포" && this.PasswordText != "99000"){
-			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
         
         /*노마블러드워 홀리나이트*/
@@ -209,10 +318,18 @@ export class AppComponent {
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 환영합니다.\n서폿은 귀족입니다.");
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n서폿은 귀족입니다.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 		else if(this.IdText == "노마블러드워" && this.PasswordText != "0225"){
-			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 		
 		/*메르헨테루 아르카나*/
@@ -220,10 +337,18 @@ export class AppComponent {
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 환영합니다.\n딜 빡세게 갑니다.\n템포 따라 오세요");
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n딜 빡세게 갑니다.\n템포 따라 오세요", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 		else if(this.IdText == "메르헨테루" && this.PasswordText != "2862"){
-			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 		
 		/*모쿄건 데빌헌터*/
@@ -231,10 +356,18 @@ export class AppComponent {
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 환영합니다.\n사멸셋 부활!~");
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n사멸셋 부활!~", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 		else if(this.IdText == "모쿄건" && this.PasswordText != "1293"){
-			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 		
 		/*소서뇽쓰 소서리스*/
@@ -242,10 +375,18 @@ export class AppComponent {
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 환영합니다.\n데둠이 친구 안녕~");
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n데둠이 친구 안녕~", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 		else if(this.IdText == "소서뇽쓰" && this.PasswordText != "3598"){
-			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 		
 		/*티거라하오 스카우터*/
@@ -253,10 +394,18 @@ export class AppComponent {
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 환영합니다.\n보석이 둘뿐이네?");
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n보석이 둘뿐이네?", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 		else if(this.IdText == "티거라하오" && this.PasswordText != "69"){
-			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 		
 		/*낭만의변신로봇 스카우터*/
@@ -264,10 +413,56 @@ export class AppComponent {
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 환영합니다.\n변신도 아바타 만들어주세요.");
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n변신도 아바타 만들어주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 		else if(this.IdText == "낭만의변신로봇" && this.PasswordText != "11331188"){
-			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
+		}
+        
+        /*옥댄버 소서리스*/
+		else if(this.IdText == "옥댄버" && this.PasswordText == "09100813"){
+			$(".Login_Box").fadeOut(500);
+			$(".Main_PanelBox").fadeIn(300);
+			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n 같은 타대수저로 반갑습니다.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
+		}
+		else if(this.IdText == "옥댄버" && this.PasswordText != "09100813"){
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
+		}
+        
+        /*동쓰알카 아르카나*/
+		else if(this.IdText == "동쓰알카" && this.PasswordText == "0230"){
+			$(".Login_Box").fadeOut(500);
+			$(".Main_PanelBox").fadeIn(300);
+			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n 20대 축하해요 데둠이친구의 아는동생 ㅋㅋ", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
+		}
+		else if(this.IdText == "동쓰알카" && this.PasswordText != "0230"){
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
         
 
@@ -277,10 +472,18 @@ export class AppComponent {
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 환영합니다.\n군장 검사 행정 보급관");
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n군장 검사 행정 보급관", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 		else if(this.IdText == "나긋하" && this.PasswordText != "3161017"){
-			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 
 		/*야이빙충아 아르카나*/
@@ -288,10 +491,18 @@ export class AppComponent {
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 환영합니다.\n템포 따라 오세요.");
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n템포 따라 오세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 		else if(this.IdText == "야이빙충아" && this.PasswordText != "5749"){
-			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 
 		/*이밴절리스타 블래스터(아브렐슈드)*/
@@ -299,10 +510,19 @@ export class AppComponent {
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 환영합니다.\n펼쳐지는 Singing star 너에게 들려질까~");
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n펼쳐지는 Singing star 너에게 들려질까~", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
+            
 		}
 		else if(this.IdText == "이밴절리스타" && this.PasswordText != "0704"){
-			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 		
 		/*산길 홀리나이트(아만)*/
@@ -310,10 +530,18 @@ export class AppComponent {
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 환영합니다.\n홀닥불 타닥~ 타닥~");
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n홀닥불 타닥~ 타닥~", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 		else if(this.IdText == "산길" && this.PasswordText != "0119"){
-			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 		
 		/*호시하츠 바드(아만)*/
@@ -321,10 +549,18 @@ export class AppComponent {
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 환영합니다.\n킹 갓 제네럴 귀족 바드님 ^^");
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n킹 갓 제네럴 귀족 바드님 ^^", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 		else if(this.IdText == "호시하츠" && this.PasswordText != "7713"){
-			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 		
 		/*급양반장 아르카나(아만)*/
@@ -332,10 +568,18 @@ export class AppComponent {
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 환영합니다.\n빡딜갑니다. 템포 따라 오세요.");
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n빡딜갑니다. 템포 따라 오세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 		else if(this.IdText == "급양반장" && this.PasswordText != "2486"){
-			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 		
 		/*갱뽀 호크아이(아만)*/
@@ -343,10 +587,18 @@ export class AppComponent {
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 환영합니다.\n민국이 아버님 환영해요.");
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n민국이 아버님 환영해요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 		else if(this.IdText == "갱뽀" && this.PasswordText != "2007"){
-			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 		
 		/*끼강탑 워로드(아만)*/
@@ -354,10 +606,37 @@ export class AppComponent {
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 환영합니다.\n워황 넬라굳");
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n워황 넬라굳", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 		else if(this.IdText == "끼강탑" && this.PasswordText != "4921"){
-			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
+		}
+        
+        /*아마평생뉴비 바드(아만)*/
+		else if(this.IdText == "아마평생뉴비" && this.PasswordText == "0507"){
+			$(".Login_Box").fadeOut(500);
+			$(".Main_PanelBox").fadeIn(300);
+			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n귀족 바드 사랑입니다.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
+		}
+		else if(this.IdText == "아마평생뉴비" && this.PasswordText != "0507"){
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 
         /*휴면계정*/
@@ -366,10 +645,18 @@ export class AppComponent {
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 환영합니다.");
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 		else if(this.IdText == "테스트_계정" && this.PasswordText != "90909"){
-			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 		
 		/*블군자 블래스터*/
@@ -377,22 +664,42 @@ export class AppComponent {
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-			window.alert(this.IdText + "님 환영합니다.\n휠체어 어르신");
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n휠체어 어르신", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 		else if(this.IdText == "블군자" && this.PasswordText != "363652"){
-			window.alert(this.IdText + "님 비밀번호를 확인해주세요.");
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 
 
 		if(this.IdText == undefined && this.PasswordText == undefined){
-			window.alert("로그인 정보를 입력해주세요.");
+            this.MatSnackBar.open("로그인 정보를 입력해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 
 		else if(this.IdText == undefined && this.PasswordText != undefined){
-			window.alert("아이디를 선택해주세요.");
+             this.MatSnackBar.open("아이디를 선택해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 		}
 		else if(this.IdText != undefined && this.PasswordText == undefined){
-			window.alert(this.IdText + "님 비밀번호를 입력해주세요.");
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 입력해주세요.", "확인", {
+        horizontalPosition: "center",
+        verticalPosition: "top",
+        duration: 3000,
+      });
 		}
 
         else{
@@ -427,7 +734,11 @@ export class AppComponent {
 
 	Logout(){
 
-    window.alert(this.route.snapshot.queryParamMap.get("id") + "님 로그아웃");
+        this.MatSnackBar.open(this.route.snapshot.queryParamMap.get("id") + "님 로그아웃", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 
     this.settings.toggle();
     this.login =false;
@@ -497,7 +808,11 @@ export class AppComponent {
       });
       this.settings.toggle();
     });
-      window.alert(this.route.snapshot.queryParamMap.get("id") + "님 주긴 초기화 완료되었습니다.");
+      this.MatSnackBar.open(this.route.snapshot.queryParamMap.get("id") + "님 주긴 초기화 완료되었습니다.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
 
   }
 
