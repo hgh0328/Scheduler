@@ -38,7 +38,7 @@ export class AddCharacterDialogComponent implements OnInit {
   Week_Select() {
 
       if(this.Character_WeekHomework[0] == '선택 안함'){
-          console.log("a")
+
       }
 		if(this.Character_WeekHomework.length > 1){
 		  $(".Raid_Select .mat-select-value-text").text(this.Character_WeekHomework[0] + " 외 " + (this.Character_WeekHomework.length - 2) + " 개");

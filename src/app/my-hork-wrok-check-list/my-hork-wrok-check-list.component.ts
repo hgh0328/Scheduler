@@ -75,7 +75,7 @@ export class MyHorkWrokCheckListComponent implements OnInit {
         if (DaySnap.id === this.userid) {
           if (Day_ResetyList.Day == date) {
             if (Day_ResetyList.Reset == false) {
-//              console.log('일일 초기화');
+
               Day_ResetyList.Day = date
               Day_ResetyList.Reset = true;
               await setDoc(doc(this.firestore, "Day_Reset", this.userid), {
@@ -92,7 +92,7 @@ export class MyHorkWrokCheckListComponent implements OnInit {
           }
           else {
             Day_ResetyList.Day = date
-//            console.log('일일 초기화');
+
             Day_ResetyList.Reset = true;
             await setDoc(doc(this.firestore, "Day_Reset", this.userid), {
               "Day": Day_ResetyList.Day,

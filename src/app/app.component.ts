@@ -42,7 +42,6 @@ export class AppComponent {
   ){}
 	ngOnInit(): void {
 
-	console.log(this.IdText)
 
 
     if (window.location.href.indexOf("id") != -1) {
