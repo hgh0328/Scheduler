@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { collection, doc, getDocs, setDoc } from 'firebase/firestore';
+import { collection, doc, getDoc, getDocs, setDoc } from 'firebase/firestore';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import * as $ from 'jquery';
 
@@ -19,8 +19,8 @@ export class ModifyCharacterDialogComponent implements OnInit {
   Character_Job;
   Character_Name;
   Character_Level;
-  Chraracter_DayList:any =[];
-  Chraracter_WeekList: any = [];
+  Character_DayList:any =[];
+  Character_WeekList: any = [];
   My_Character_DayList;
   My_Character_WeekList;
 
@@ -45,20 +45,20 @@ export class ModifyCharacterDialogComponent implements OnInit {
 
 
 	  	this.Character_DayHomework.forEach((list)=>{
-	     this.Chraracter_DayList.push(list.name)
+	     this.Character_DayList.push(list.name)
 		});
 
-    this.Character_WeekHomework.forEach((list) => {
-      if (list['name'] == '주간 컨텐츠 선택 안함') {
-        list.name = '주간 컨텐츠 선택 안함'
-        this.Chraracter_WeekList.push(list.name)
-      }
-        this.Chraracter_WeekList.push(list.name)
-    })
+		this.Character_WeekHomework.forEach((list) => {
+		  if (list['name'] == '주간 컨텐츠 선택 안함') {
+			list.name = '주간 컨텐츠 선택 안함'
+			this.Character_WeekList.push(list.name)
+		  }
+			this.Character_WeekList.push(list.name)
+		})
 
 	setTimeout(()=>{
-      if(this.Chraracter_WeekList.length > 1){
-			  $(".Raid_Select .mat-select-value-text").text(this.Chraracter_WeekList[0] + " 외 " + (this.Chraracter_WeekList.length - 1) + " 개");
+      if(this.Character_WeekList.length > 1){
+			  $(".Raid_Select .mat-select-value-text").text(this.Character_WeekList[0] + " 외 " + (this.Character_WeekList.length - 1) + " 개");
 		}
     },100)
 
@@ -67,34 +67,34 @@ export class ModifyCharacterDialogComponent implements OnInit {
   }
 
 	Week_Select() {
-        if(this.Chraracter_WeekList[0] == ["선택 안함"]){
-          this.Chraracter_WeekList = [];
+        if(this.Character_WeekList[0] == ["선택 안함"]){
+          this.Character_WeekList = [];
         }
 
-		if(this.Chraracter_WeekList.length > 1){
-		  $(".Raid_Select .mat-select-value-text").text(this.Chraracter_WeekList[0] + " 외 " + (this.Chraracter_WeekList.length - 1) + " 개");
+		if(this.Character_WeekList.length > 1){
+		  $(".Raid_Select .mat-select-value-text").text(this.Character_WeekList[0] + " 외 " + (this.Character_WeekList.length - 1) + " 개");
 
 		}
     }
 
     Day_Select() {
-        if(this.Chraracter_DayList[0] == ["선택 안함"]){
-          this.Chraracter_DayList = [];
+        if(this.Character_DayList[0] == ["선택 안함"]){
+          this.Character_DayList = [];
         }
 
     }
 
   DayNone_Select() {
-      this.Chraracter_DayList = [];
-      this.Chraracter_DayList  = ["선택 안함"];
+      this.Character_DayList = [];
+      this.Character_DayList  = ["선택 안함"];
 
     }
 
 
   WeekNone_Select() {
-      this.Chraracter_WeekList = [];
-    this.Chraracter_WeekList = ["선택 안함"];
-      $(".Raid_Select .mat-select-value-text").text(this.Chraracter_WeekList[0]);
+      this.Character_WeekList = [];
+    this.Character_WeekList = ["선택 안함"];
+      $(".Raid_Select .mat-select-value-text").text(this.Character_WeekList[0]);
 
   }
 
@@ -132,12 +132,13 @@ export class ModifyCharacterDialogComponent implements OnInit {
             if (doc.id === this.userid) {
               var myList: any = doc.data()
               CharacterArray= myList['캐릭터'];
+			
             }
           });
         })
 
         var Character_DayHomework:any=[];
-        this.Chraracter_DayList.forEach(element => {
+        this.Character_DayList.forEach(element => {
         if(element == "선택 안함"){
           Character_DayHomework.push({name:"일일 컨텐츠 선택 안함",value:true})
         }
@@ -147,7 +148,7 @@ export class ModifyCharacterDialogComponent implements OnInit {
 
         });
         var Character_WeekHomework:any=[];
-        this.Chraracter_WeekList.forEach(element => {
+        this.Character_WeekList.forEach(element => {
         if(element == "선택 안함"){
             Character_WeekHomework.push({name:"주간 컨텐츠 선택 안함",value:true})
           }
@@ -167,10 +168,18 @@ export class ModifyCharacterDialogComponent implements OnInit {
         "Day_homeworklist": Character_DayHomework,
         "Week_homeworklist" : Character_WeekHomework,
       }
-      CharacterArray.push(List)
+
+	var CharacterArray: any = []
+	const docRef = doc(this.firestore, "My_Character", this.userid);
+    const docSnap = await getDoc(docRef);
+    var myList: any = docSnap.data();
+    CharacterArray = myList['캐릭터']
+    var RemoveCharterList = CharacterArray[this.Character_index]
+	CharacterArray.splice(this.Character_index,1,List);
+
+    setTimeout(async () => {
       await setDoc(doc(this.firestore, "My_Character", this.userid), {
         "캐릭터" : CharacterArray,
-
       }).then(()=>{
           this.MatSnackBar.open(this.userid + "님 캐릭터 수정 완료되었습니다.\n" + this.Character_Job + "/" + this.Character_Name, "확인", {
                     horizontalPosition: "center",
@@ -180,7 +189,8 @@ export class ModifyCharacterDialogComponent implements OnInit {
 		  this.dialogRef.close();
 
        });
-    }
+    })
+  }
   }
 
 }

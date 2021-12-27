@@ -370,10 +370,20 @@ mat-accordion .All_RaidList:nth-child(even) mat-expansion-panel:nth-child(even) 
 .Character_Modal_Text p strong.Level{width: 25%; display: inline-block;}
 .Character_Modal_Text p strong.WeekJob{width: 20%; display: inline-block;}
 .Character_Modal p{margin-left: 5px; position: relative; height: 25px; line-height: 25px; font-size: 12px;letter-spacing: 0.1px; font-weight: 400; color: var(--main-font-color); width: 100%; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; padding: 0 !important;}
+
+.Character_Modal mat-list{ border: 1px solid var(--sub-whitefont-color); margin-top: 10px;}
+.Character_Modal mat-selection-list{padding-top: 0 !important;}
+.Character_Modal mat-list-option{transition: .3s; border-bottom: 1px solid var(--sub-whitefont-color);height: 30px !important;}
+.Character_Modal mat-list-option .mat-list-item-content{padding: 0  8px !important; font-size: 12px !important; color: var(--sub-font-color); font-weight: 400;}
+.Character_Modal mat-list-option .mat-list-text{text-align: left; cursor: pointer; text-indent: 8px;}
+.Character_Modal mat-list-option:last-child{border-bottom: 0px solid var(--sub-whitefont-color);}
+.Character_Modal mat-list-option:nth-child(odd){background: rgba(0,0,0,0.08)}
+.Character_Modal mat-list-option:nth-child(even){background: rgba(0,0,0,0.04)}
+
 .Character_Modal p em{margin-right: 5px; display: inline-block; position: relative; top: -8px;}
 .Character_Modal p span{color: var(--maindark-color); font-size: 12px; margin-right: 10px; display: inline-block; text-align: center; text-overflow: ellipsis;  white-space: nowrap; overflow-x: hidden; font-weight: 500;}
 .Character_Modal h4{margin-left: 5px; position: relative; height: 25px; line-height: 25px; font-size: 12px; color: var(--red-color); letter-spacing: 0.1px; font-weight: 400; width: 100%; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; margin-top: 5px; border-top: 1px solid #ccc;}
-.Character_Modal h5{margin-left: 5px; position: relative;  height: 25px; line-height: 25px; font-size: 12px; color: var(--main-font-color); letter-spacing: 0.1px; font-weight: 500; width: 100%; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; border-bottom: 1px solid #ccc;}
+.Character_Modal h5{padding: 0 8px;  position: relative;  height: 25px; line-height: 25px; font-size: 12px; color: var(--main-font-color); letter-spacing: 0.1px; font-weight: 500; width: 100%; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; border-bottom: 1px solid #ccc;}
 
 .UserGuide_Modal_Box{height: auto; width: 100%; background: var(--main-font-color);}
 .UserGuide_Modal_Box .GuideModalBox {position: relative; width: 100%;  height:auto; overflow: auto; background: var(--main-font-color);}
@@ -439,6 +449,7 @@ mat-accordion .All_RaidList:nth-child(even) mat-expansion-panel:nth-child(even) 
 .User_Homework_TableBox .mat-expansion-panel-header-description{position: absolute; right: 36px; font-size: 10px; color: var(--sub-font-color); }
 .User_Homework_TableBox .mat-expansion-panel-header-description span{font-size: 12px; color: var(--maindark-color); position: relative; top: -1px; margin-left: 5px; font-weight: bold;}
 .User_Homework_TableBox .mat-expansion-panel-body{height: 150px; overflow: auto;  padding: 0 0px !important;}
+.User_Homework_TableBox .mat-expansion-panel-body::-webkit-scrollbar{display: contents !important;}
 
 .User_Homework_TableBox mat-list{ border: 1px solid var(--sub-whitefont-color); margin-top: 10px;}
 .User_Homework_TableBox mat-selection-list{padding-top: 0 !important;}

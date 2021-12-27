@@ -80,7 +80,7 @@
 		<th mat-header-cell *matHeaderCellDef style="width: 280px; text-align: center;"> 옵션 </th>
 		<td mat-cell *matCellDef="let element let i = index" style="width: 280px; text-align: center;">
 
-		<button mat-stroked-button disabled (click)="Week_Calendar(i,element.Job,element.Name,element.Level,element.Day_homeworklist,element.Week_homeworklist)" class="_AddBtn">캘린더 등록</button>
+		<button mat-stroked-button (click)="Week_Calendar(i,element.Job,element.Name,element.Level,element.Day_homeworklist,element.Week_homeworklist)" class="_AddBtn" *ngIf="userid =='점화걸면정화'">캘린더 등록</button>
 		<button mat-stroked-button (click)="Modify_Character(i,element.Job,element.Name,element.Level,element.Day_homeworklist,element.Week_homeworklist)">캐릭터 수정</button>
 		<button mat-stroked-button (click)="Remove_Character(i,element.Job,element.Name,element.Level)" class="RedBtn">캐릭터 삭제</button>
 

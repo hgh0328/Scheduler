@@ -42,6 +42,7 @@ export class AppComponent {
   ){}
 	ngOnInit(): void {
 
+	console.log(this.IdText)
 
 
     if (window.location.href.indexOf("id") != -1) {
@@ -60,6 +61,7 @@ export class AppComponent {
       });
       }
     }
+	
 
 	Login(){
 		if(this.IdText == "점화걸면정화" && this.PasswordText == "3280"){
@@ -464,6 +466,44 @@ export class AppComponent {
                 duration: 3000,
               });
 		}
+		
+		/*그누지롱 바드*/
+		else if(this.IdText == "그누지롱" && this.PasswordText == "0070"){
+			$(".Login_Box").fadeOut(500);
+			$(".Main_PanelBox").fadeIn(300);
+			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n 바드의 설자리가 점점...도화가는 없어져야합니다.. 화이팅", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
+		}
+		else if(this.IdText == "그누지롱" && this.PasswordText != "0070"){
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
+		}
+		
+		/*카드케찹체뤼 아르카나*/
+		else if(this.IdText == "카드케찹체뤼" && this.PasswordText == "0630"){
+			$(".Login_Box").fadeOut(500);
+			$(".Main_PanelBox").fadeIn(300);
+			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n 템포좌 알카나님 환영해요~", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
+		}
+		else if(this.IdText == "카드케찹체뤼" && this.PasswordText != "0630"){
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
+		}
         
 
         /*아만섭*/
@@ -632,6 +672,25 @@ export class AppComponent {
               });
 		}
 		else if(this.IdText == "아마평생뉴비" && this.PasswordText != "0507"){
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
+		}
+		
+		/*미노르바 홀리나이트(아만)*/
+		else if(this.IdText == "미노르바" && this.PasswordText == "7452"){
+			$(".Login_Box").fadeOut(500);
+			$(".Main_PanelBox").fadeIn(300);
+			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n 홀닥불 > 바드 ㅎㅎ", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
+		}
+		else if(this.IdText == "미노르바" && this.PasswordText != "7452"){
 			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
                 horizontalPosition: "center",
                 verticalPosition: "top",

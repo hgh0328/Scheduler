@@ -30,7 +30,7 @@
 	<mat-form-field appearance="legacy">
 			<mat-label>컨텐츠 리스트(매일)</mat-label>
 			<mat-icon matPrefix>calendar_month</mat-icon>
-			<mat-select multiple [(ngModel)]="Chraracter_DayList">
+			<mat-select multiple [(ngModel)]="Character_DayList">
 			<!--일 단위 컨텐츠-->
       <mat-option value="선택 안함" (click)="DayNone_Select()">선택 안함</mat-option>
 		 	  <mat-optgroup label="상시 컨텐츠" (click)="Day_Select()">
@@ -47,7 +47,7 @@
 			<mat-form-field appearance="legacy">
 					<mat-label>컨텐츠 리스트(주간)</mat-label>
 					<mat-icon matPrefix>calendar_month</mat-icon>
-					<mat-select multiple [(ngModel)]="Chraracter_WeekList" class="Raid_Select">
+					<mat-select multiple [(ngModel)]="Character_WeekList" class="Raid_Select">
             <mat-option value="선택 안함" (click)="WeekNone_Select()">선택 안함</mat-option>
 					<!--주간 컨텐츠-->
 			<mat-optgroup label="일반" (click)="Week_Select()">
