@@ -9,10 +9,11 @@
 			<em class="Mobile">아이템 레벨 :</em> <em class="Mobile">{{Character_Level}}</em></p>
 			<h5>주간 컨텐츠 목록</h5>
 			<mat-selection-list>
-  				<mat-list-option #Weeklist *ngFor="let Character_WeekHomework of Character_WeekHomework;" selected="{{Character_WeekHomework.value}}" value="{{Character_WeekHomework.name}}">{{Character_WeekHomework.name}}</mat-list-option>
+  				<mat-list-option #Weeklist *ngFor="let Character_WeekHomework of Character_WeekHomework;" selected="{{Character_WeekHomework.value}}" value="{{Character_WeekHomework.name}}" (click)="Week_Select()" [disabled]="WeekList_None">{{Character_WeekHomework.name}}</mat-list-option>
 			</mat-selection-list>
 
-			<h4>해당 캐릭터의 주간 컨텐츠가 캘린더에 등록됩니다.</h4>
+			<h4 *ngIf="Character_WeekHomework[0].name != '주간 컨텐츠 선택 안함'">해당 캐릭터의 주간 컨텐츠가 캘린더에 등록됩니다.</h4>
+			<h4 *ngIf="Character_WeekHomework[0].name == '주간 컨텐츠 선택 안함'">주간 컨텐츠가 없으므로 등록이 불가합니다.</h4>
 		</div>
 
 	</div>
@@ -20,7 +21,7 @@
 
 	<div class="User_Option_DialogButtonBox">
      		<button mat-stroked-button mat-dialog-close>취소</button>
-			<button mat-stroked-button class="NextBtn" (click)="Week_Calendar_Charater()">등록</button>
+			<button mat-stroked-button class="NextBtn" (click)="Week_Calendar_Charater()" *ngIf="WeekList_None==false">등록</button>
 	</div>
 
 

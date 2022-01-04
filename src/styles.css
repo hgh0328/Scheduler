@@ -350,6 +350,7 @@ mat-accordion .All_RaidList:nth-child(even) mat-expansion-panel:nth-child(even) 
 .Dialog_Defult{max-width: 90vw !important; min-width: 60vw;}
 .Dialog_Defult .mat-dialog-container{padding: 0;}
 .Dialog_Defult h3{width: 100%; padding: 0 10px; height: 50px; line-height: 50px; font-size: 14px; background: var(--main-color); color: #fff; font-weight: 500; position: relative;}
+.Dialog_Defult .mat-dialog-container .mat-hint{color: #666 !important;}
 .Dialog_Defult h3 mat-icon{position: absolute; right: 0; top: 0; height: 50px !important; line-height: 50px !important; font-size: 20px; margin-right: 10px;}
 .Dialog_Defult p{width: 100%; padding: 0 15px; height: 50px; line-height: 50px; font-size: 14px; color: #666;}
 
@@ -374,7 +375,7 @@ mat-accordion .All_RaidList:nth-child(even) mat-expansion-panel:nth-child(even) 
 .Character_Modal mat-list{ border: 1px solid var(--sub-whitefont-color); margin-top: 10px;}
 .Character_Modal mat-selection-list{padding-top: 0 !important;}
 .Character_Modal mat-list-option{transition: .3s; border-bottom: 1px solid var(--sub-whitefont-color);height: 30px !important;}
-.Character_Modal mat-list-option .mat-list-item-content{padding: 0  8px !important; font-size: 12px !important; color: var(--sub-font-color); font-weight: 400;}
+.Character_Modal mat-list-option .mat-list-item-content{padding: 0  8px !important; font-size: 12px !important; color: var(--main-font-color); font-weight: 400;}
 .Character_Modal mat-list-option .mat-list-text{text-align: left; cursor: pointer; text-indent: 8px;}
 .Character_Modal mat-list-option:last-child{border-bottom: 0px solid var(--sub-whitefont-color);}
 .Character_Modal mat-list-option:nth-child(odd){background: rgba(0,0,0,0.08)}
@@ -391,7 +392,7 @@ mat-accordion .All_RaidList:nth-child(even) mat-expansion-panel:nth-child(even) 
 .UserGuide_Modal_Box .GuideModalBox img{position: relative; width: 600px; padding: 16px; margin: 0 auto; display: block;  margin-top: 2vh; margin-bottom: 2vh;}
 
 .Add_Character_Modal_Box{height: auto; width: 100%;}
-.Add_Character_Modal_Box p{font-size: 10px; line-height: inherit; height: auto; color: var(--sub-font-color); font-weight: 400; margin-top: 10px;}
+.Add_Character_Modal_Box p{font-size: 10px; line-height: inherit; height: auto; color: #666; font-weight: 400; margin-top: 10px;}
 .Add_Character_Modal_Box mat-form-field{padding: 0 16px; margin-top: 2vh; margin-bottom: 2vh; width: 33.33%;}
 .Add_Character_Modal_Box mat-form-field.mat-form-field-disabled ~ mat-form-field.Modify_Field{width: 33.33%;}
 .Add_Character_Modal_Box mat-form-field:nth-child(4){width: 50%;}

@@ -22,6 +22,7 @@ export class CharacterAddCalendarDialogComponent implements OnInit {
   Character_WeekList: any = [];
   My_Character_DayList;
   My_Character_WeekList;
+  WeekList_None;
 
   constructor(
 	@Inject(MAT_DIALOG_DATA) public data: any,
@@ -30,6 +31,7 @@ export class CharacterAddCalendarDialogComponent implements OnInit {
 	) { }
 
   ngOnInit(): void {
+	  this.WeekList_None = false;
 	  this.userid = this.data.userid
 	  this.Character_index = this.data.Character_index
 	  this.Character_Job = this.data.Character_Job
@@ -45,11 +47,16 @@ export class CharacterAddCalendarDialogComponent implements OnInit {
 		  if (list['name'] == '주간 컨텐츠 선택 안함') {
 			list.name = '주간 컨텐츠 선택 안함'
 			this.Character_WeekList.push(list.name)
+	  		this.WeekList_None = true;
+	  
 		  }
 			this.Character_WeekList.push(list.name)
 		})
 
   }
+  Week_Select() {
+ 
+    }
 
   async Week_Calendar_Charater() {
 

@@ -503,6 +503,63 @@ export class AppComponent {
                 duration: 3000,
               });
 		}
+		
+		/*별온샘 소서리스*/
+		else if(this.IdText == "별온샘" && this.PasswordText == "0105"){
+			$(".Login_Box").fadeOut(500);
+			$(".Main_PanelBox").fadeIn(300);
+			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n 소서리스 타대수저..", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
+		}
+		else if(this.IdText == "별온샘" && this.PasswordText != "0105"){
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
+		}
+		
+		/*빛수련 소서리스*/
+		else if(this.IdText == "빛수련" && this.PasswordText == "1756"){
+			$(".Login_Box").fadeOut(500);
+			$(".Main_PanelBox").fadeIn(300);
+			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n 소서리스 너프 시급...너무 강해...요", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
+		}
+		else if(this.IdText == "빛수련" && this.PasswordText != "1756"){
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
+		}
+		
+		/*블군자 블래스터*/
+		else if(this.IdText == "블군자" && this.PasswordText == "363652"){
+			$(".Login_Box").fadeOut(500);
+			$(".Main_PanelBox").fadeIn(300);
+			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n휠체어 어르신", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
+		}
+		else if(this.IdText == "블군자" && this.PasswordText != "363652"){
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
+		}
         
 
         /*아만섭*/
@@ -696,6 +753,25 @@ export class AppComponent {
                 duration: 3000,
               });
 		}
+		
+		/*지존해완 서머너(아만)*/
+		else if(this.IdText == "지존해완" && this.PasswordText == "1212"){
+			$(".Login_Box").fadeOut(500);
+			$(".Main_PanelBox").fadeIn(300);
+			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n 서머너 로웬사기..캐릭터..", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
+		}
+		else if(this.IdText == "지존해완" && this.PasswordText != "1212"){
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
+		}
 
         /*휴면계정*/
         /*테스트_계정*/
@@ -716,26 +792,6 @@ export class AppComponent {
                 duration: 3000,
               });
 		}
-		
-		/*블군자 블래스터*/
-		else if(this.IdText == "블군자" && this.PasswordText == "363652"){
-			$(".Login_Box").fadeOut(500);
-			$(".Main_PanelBox").fadeIn(300);
-			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n휠체어 어르신", "확인", {
-                horizontalPosition: "center",
-                verticalPosition: "top",
-                duration: 3000,
-              });
-		}
-		else if(this.IdText == "블군자" && this.PasswordText != "363652"){
-			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
-                horizontalPosition: "center",
-                verticalPosition: "top",
-                duration: 3000,
-              });
-		}
-
 
 		if(this.IdText == undefined && this.PasswordText == undefined){
             this.MatSnackBar.open("로그인 정보를 입력해주세요.", "확인", {
