@@ -485,25 +485,6 @@ export class AppComponent {
               });
 		}
 		
-		/*카드케찹체뤼 아르카나*/
-		else if(this.IdText == "카드케찹체뤼" && this.PasswordText == "0630"){
-			$(".Login_Box").fadeOut(500);
-			$(".Main_PanelBox").fadeIn(300);
-			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n 템포좌 알카나님 환영해요~", "확인", {
-                horizontalPosition: "center",
-                verticalPosition: "top",
-                duration: 3000,
-              });
-		}
-		else if(this.IdText == "카드케찹체뤼" && this.PasswordText != "0630"){
-			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
-                horizontalPosition: "center",
-                verticalPosition: "top",
-                duration: 3000,
-              });
-		}
-		
 		/*별온샘 소서리스*/
 		else if(this.IdText == "별온샘" && this.PasswordText == "0105"){
 			$(".Login_Box").fadeOut(500);
@@ -554,6 +535,63 @@ export class AppComponent {
               });
 		}
 		else if(this.IdText == "블군자" && this.PasswordText != "363652"){
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
+		}
+		
+		/*꿈희쭈 워로드*/
+		else if(this.IdText == "꿈희쭈" && this.PasswordText == "1203"){
+			$(".Login_Box").fadeOut(500);
+			$(".Main_PanelBox").fadeIn(300);
+			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n워황!~", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
+		}
+		else if(this.IdText == "꿈희쭈" && this.PasswordText != "1203"){
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
+		}
+		
+		/*축복영업사원 홀나*/
+		else if(this.IdText == "축복영업사원" && this.PasswordText == "20220108"){
+			$(".Login_Box").fadeOut(500);
+			$(".Main_PanelBox").fadeIn(300);
+			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n홀닥불!~", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
+		}
+		else if(this.IdText == "축복영업사원" && this.PasswordText != "20220108"){
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
+		}
+		
+		/*개란두계 홀나*/
+		else if(this.IdText == "개란두계" && this.PasswordText == "8787"){
+			$(".Login_Box").fadeOut(500);
+			$(".Main_PanelBox").fadeIn(300);
+			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n홀닥불!~ 타다닥", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
+		}
+		else if(this.IdText == "개란두계" && this.PasswordText != "8787"){
 			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
                 horizontalPosition: "center",
                 verticalPosition: "top",
