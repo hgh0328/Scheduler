@@ -40,6 +40,8 @@ import { AllWeekResetDialogComponent } from './all-week-reset-dialog/all-week-re
 import { WeekResetDialogComponent } from './week-reset-dialog/week-reset-dialog.component';
 import { CharacterAddCalendarDialogComponent } from './character-add-calendar-dialog/character-add-calendar-dialog.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 /*CDK Module*/
 import {TextFieldModule} from '@angular/cdk/text-field';
@@ -136,6 +138,8 @@ import { getAnalytics, provideAnalytics } from '@angular/fire/analytics';
     MatDialogModule,
 	MatProgressBarModule,
 	  MatSortModule,
+	  NgxMatSelectSearchModule,
+	  MatAutocompleteModule,
     StoreModule.forRoot(reducers, {
       metaReducers,
       runtimeChecks: {

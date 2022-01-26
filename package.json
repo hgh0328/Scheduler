@@ -31,6 +31,7 @@
     "angular-cli-ghpages": "^1.0.0-rc.2",
     "firebase": "^9.5.0",
     "jquery": "^3.6.0",
+    "ngx-mat-select-search": "^4.0.1",
     "rxfire": "^6.0.3",
     "rxjs": "^7.4.0",
     "tslib": "^2.3.0",
