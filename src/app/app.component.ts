@@ -906,6 +906,25 @@ export class AppComponent {
                 duration: 3000,
               });
 		}
+		
+		/*북국너구리  스카(아만)*/
+		else if(this.IdText == "북국너구리 " && this.PasswordText == "3816"){
+			$(".Login_Box").fadeOut(500);
+			$(".Main_PanelBox").fadeIn(300);
+			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n보석이 둘뿐이네?", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
+		}
+		else if(this.IdText == "북국너구리 " && this.PasswordText != "3816"){
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
+		}
 
         /*휴면계정*/
         /*테스트_계정*/
