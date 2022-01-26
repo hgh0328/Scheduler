@@ -907,8 +907,8 @@ export class AppComponent {
               });
 		}
 		
-		/*북국너구리  스카(아만)*/
-		else if(this.IdText == "북국너구리 " && this.PasswordText == "3816"){
+		/*북국너구리  스카우터(아만)*/
+		else if(this.IdText == "북국너구리" && this.PasswordText == "3816"){
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
@@ -918,7 +918,7 @@ export class AppComponent {
                 duration: 3000,
               });
 		}
-		else if(this.IdText == "북국너구리 " && this.PasswordText != "3816"){
+		else if(this.IdText == "북국너구리" && this.PasswordText != "3816"){
 			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
                 horizontalPosition: "center",
                 verticalPosition: "top",
