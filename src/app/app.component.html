@@ -7,79 +7,37 @@
 	<mat-card class="Login_FormBox">
 
        <img src="assets/img/logo/Logo_origin.png" alt="LostArk" width="100%">
-		<mat-form-field appearance="legacy">
-			<mat-label>아이디를 선택하세요.</mat-label>
+       
+       <form [formGroup]="stateForm">
+		  <mat-form-field appearance="legacy">
+			<mat-label>아이디를 입력하세요.</mat-label>
 			<mat-icon matPrefix>person</mat-icon>
-			<mat-select [(ngModel)]="IdText" (keydown.enter)="Login()">
-
-			<!--카단섭-->
-		 	  <mat-optgroup label="카단섭">
-		 	      <span matBadge="37명" class="Sever_MemberCount"></span>
-		 	      
-				  <mat-option value="점화걸면정화">점화걸면정화</mat-option>
-				  <mat-option value="데둠미">데둠미</mat-option>
-				  <mat-option value="펭난나">펭난나</mat-option>				  
-				  <mat-option value="욕망군단장형아키스">욕망군단장형아키스</mat-option>
-				  <mat-option value="인조인간91호">인조인간91호</mat-option>
-				  <mat-option value="긴바나나">긴바나나</mat-option>
-				  <mat-option value="똘렝">똘렝</mat-option>
-				  <mat-option value="라즈베리단풍">라즈베리단풍</mat-option>
-				  <mat-option value="신성범위">신성범위</mat-option>
-				  <mat-option value="나긋하">나긋하</mat-option>
-				  <mat-option value="야이빙충아">야이빙충아</mat-option>
-				  <mat-option value="이밴절리스타">이밴절리스타</mat-option>
-				  <mat-option value="HK278">HK278</mat-option>
-				  <mat-option value="뽀야마요">뽀야마요</mat-option>
-				  <mat-option value="K여포">K여포</mat-option>
-				  <mat-option value="노마블러드워">노마블러드워</mat-option>
-				  <mat-option value="피카소테루">피카소테루</mat-option>
-				  <mat-option value="모쿄건">모쿄건</mat-option>
-				  <mat-option value="소서뇽쓰">소서뇽쓰</mat-option>
-				  <mat-option value="티거라하오">티거라하오</mat-option>
-				  <mat-option value="명장도화백">명장도화백</mat-option>
-				  <mat-option value="옥댄버">옥댄버</mat-option>
-				  <mat-option value="동쓰알카">동쓰알카</mat-option>				  
-				  <mat-option value="그누지롱">그누지롱</mat-option>
-				  <mat-option value="공초">공초</mat-option>
-				  <mat-option value="빛수련">빛수련</mat-option>
-				  <mat-option value="꿈희쭈">꿈희쭈</mat-option>
-				  <mat-option value="축복영업사원">축복영업사원</mat-option>
-				  <mat-option value="개란두계">개란두계</mat-option>
-				  <mat-option value="드부조아">드부조아</mat-option>
-				  <mat-option value="해질녘시티">해질녘시티</mat-option>
-				  <mat-option value="핑후">핑후</mat-option>
-				  <mat-option value="오빠는어디가커">오빠는어디가커</mat-option>
-				  <mat-option value="빠흐흐">빠흐흐</mat-option>
-				  <mat-option value="1월의상태">1월의상태</mat-option>
-				  <mat-option value="txt우현">txt우현</mat-option>
-				  <mat-option value="윤시은">윤시은</mat-option>
+			<input type="text"
+				   matInput
+				   formControlName="stateGroup"
+				   required
+				   [matAutocomplete]="autoGroup" [(ngModel)]="IdText">
+			  <mat-autocomplete #autoGroup="matAutocomplete">
+				<mat-optgroup *ngFor="let group of Cardan_GroupOptions | async" [label]="group.letter">
+			  	  <span matBadge="{{group.names.length}} 명" class="Sever_MemberCount"></span>
+				  <mat-option *ngFor="let name of group.names" [value]="name">
+					{{name}}
+				  </mat-option>				  
 			  </mat-optgroup>
-
-			  <!--아만섭-->
-			  <mat-optgroup label="아만섭">
-			    <span matBadge="8명" class="Sever_MemberCount"></span>			  	
-			  	<mat-option value="산길">산길</mat-option>
-			  	<mat-option value="호시하츠">호시하츠</mat-option>
-			  	<mat-option value="급양반장">급양반장</mat-option>
-			  	<mat-option value="갱뽀">갱뽀</mat-option>
-			  	<mat-option value="아마평생뉴비">아마평생뉴비</mat-option>
-			  	<mat-option value="미노르바">미노르바</mat-option>
-			  	<mat-option value="지존해완">지존해완</mat-option>
-			  	<mat-option value="북국너구리">북국너구리</mat-option>
-		  	  </mat-optgroup>
-
-		  	  <!--휴면 계정-->
-		  	  <mat-optgroup label="휴면계정">
-			    <span matBadge="1명" class="Sever_MemberCount"></span>
-			  	<mat-option value="테스트_계정">테스트_계정</mat-option>
-			  	
-		  	  </mat-optgroup>
-
-
-
-			</mat-select>
+			  <mat-optgroup *ngFor="let group of Aman_GroupOptions | async" [label]="group.letter">
+			  	  <span matBadge="{{group.names.length}} 명" class="Sever_MemberCount"></span>
+				  <mat-option *ngFor="let name of group.names" [value]="name">
+					{{name}}
+				  </mat-option>
+			  </mat-optgroup>
+			  <mat-option value="테스트_계정" style="display: none;">
+					<span style="opacity: 0.5;">테스트_계정</span>
+				</mat-option>  			  
+			</mat-autocomplete>
 			<mat-error>아이디를 확인해주세요.</mat-error>
-		</mat-form-field>
+		  </mat-form-field>
+		</form>
+
 
 
 		<mat-form-field appearance="legacy">
