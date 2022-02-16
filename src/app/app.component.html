@@ -78,7 +78,7 @@
 
 		<mat-selection-list [multiple]="false">
 		  <div mat-subheader><mat-icon mat-list-icon>account_circle</mat-icon> 길드원 메뉴</div>
-		  <mat-list-option (click)="UserMenu('EventNotice')"><mat-icon mat-list-icon>celebration</mat-icon><div mat-line>이벤트</div></mat-list-option>
+		  <mat-list-option (click)="UserMenu('EventNotice')" disabled><mat-icon mat-list-icon>celebration</mat-icon><div mat-line>이벤트</div></mat-list-option>
 		  <mat-list-option  (click)="UserMenu('WeekCalendar')" id="Defult_Menu"><mat-icon mat-list-icon>campaign</mat-icon><div mat-line>주간 캘린더</div></mat-list-option>
 		  <mat-list-option (click)="UserMenu('UserGuide')"><mat-icon mat-list-icon>help_outline</mat-icon><div mat-line>유저 가이드</div></mat-list-option>
 		  <mat-list-option (click)="UserMenu('UserQnA')"><mat-icon mat-list-icon>receipt</mat-icon><div mat-line>자주 찾는 질문</div></mat-list-option>
