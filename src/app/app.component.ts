@@ -1086,17 +1086,17 @@ export class AppComponent {
 		}
 		
 		/*울프람오메가 소서리스(아만)*/
-		else if(this.IdText == "울프람오메가" && this.PasswordText == "909"){
+		else if(this.IdText == "울프람오메가" && this.PasswordText == "0225"){
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n비밀변호 변경시 문의주세요.", "확인", {
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n소서리스는 깡...패...", "확인", {
                 horizontalPosition: "center",
                 verticalPosition: "top",
                 duration: 3000,
               });
 		}
-		else if(this.IdText == "울프람오메가" && this.PasswordText != "909"){
+		else if(this.IdText == "울프람오메가" && this.PasswordText != "0225"){
 			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
                 horizontalPosition: "center",
                 verticalPosition: "top",

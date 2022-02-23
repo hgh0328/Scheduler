@@ -74,15 +74,7 @@ export class CalendarAddButtonComponent implements OnInit {
 
 
   }
-	ETC_Custom(){
-		if(this.Memo_required == true){
-			this.Memo_required = false;
-		}
-		else{
-			this.Memo_required = true;
-		}		
-		
-	}
+
     Raid_Select(){
 		if(this.Raid.length > 1){
 		  $(".Raid_Select .mat-select-value-text").text(this.Raid[0] + " 외 " + (this.Raid.length - 1) + " 개");
