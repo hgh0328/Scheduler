@@ -894,17 +894,17 @@ export class AppComponent {
 		}
 		
 		/*흑로남불 스트라이커*/
-		else if(this.IdText == "흑로남불" && this.PasswordText == "909"){
+		else if(this.IdText == "흑로남불" && this.PasswordText == "0716"){
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n비밀번호 변경시 관리자 문의", "확인", {
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n스커..존잘남", "확인", {
                 horizontalPosition: "center",
                 verticalPosition: "top",
                 duration: 3000,
               });
 		}
-		else if(this.IdText == "흑로남불" && this.PasswordText != "909"){
+		else if(this.IdText == "흑로남불" && this.PasswordText != "0716"){
 			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
                 horizontalPosition: "center",
                 verticalPosition: "top",
