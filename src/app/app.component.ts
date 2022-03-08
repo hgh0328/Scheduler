@@ -58,63 +58,62 @@ export class AppComponent {
     {
       letter: '카단',
       names: [
-		  		'1월의상태',
-		  		'HK278',
-		  		'K여포',
-		  		'개란두계',
-		  		'공초',
-		  		'긴바나나',
-		  		'노마블러드워',
-		  		'데둠미',
-		  		'동쓰알카',
-		  		'드부조아',
-		  		'똘렝',
-		  		'라즈베리단풍',
-		  		'명장도화백',
-		  		'모쿄건',
-		  		'비온계',
-		  		'빛수련',
-		  		'빠흐흐',
-		  		'뽀야마요',
-		  		'상콤한가지',
-		  		'소서뇽스',
-		  		'신성범위',
-		  		'아따비',
-		  		'아리아나기갈데',
-		  		'야이빙충아',
-		  		'오빠는어디가커',
-		  		'옥댄버',
-		  		'욕망군단장형아키스',
-		  		'윤시은',
-		  		'이밴절리스타',
-		  		'인조인간91호',
-		  		'점화걸면정화',
-		  		'축복영업사원',
-		  		'티거라하오',
-		  		'펭난나',
-		  		'피카소테루',
-		  		'핑후',
-		  		'해질녘시티',
-		  		'형제뒤에서뭐해요',
-			 ],
+'1월의상태',
+'HK278',
+'K여포',
+'공초',
+'긴바나나',
+'남자만좋아해',
+'노마블러드워',
+'데둠미',
+'동쓰알카',
+'드부조아',
+'들기름모코코무침',
+'똘렝',
+'라즈베리단풍',
+'명장도화백',
+'모쿄건',
+'비온계',
+'빛수련',
+'빠흐흐',
+'뽀야마요',
+'상콤한가지',
+'소서뇽스',
+'신성범위',
+'아따비',
+'아리아나기갈데',
+'야이빙충아',
+'오빠는어디가커',
+'옥댄버',
+'윤시은',
+'이밴절리스타',
+'인조인간91호',
+'점화걸면정화',
+'축복영업사원',
+'티거라하오',
+'펭난나',
+'피카소테루',
+'핑후',
+'해질녘시티',
+'형제뒤에서뭐해요',
+'흑로남불',
+		],
     },
 		]
 	Aman_Groups: Aman_Group[] = [
     {
       letter: '아만',
       names: [
-		  		'갱뽀',
-		  		'골든리트리버키운다',
-		  		'귀찮네이거',
-		  		'급양반장',
-		  		'미노르바',
-		  		'보라퐁',
-		  		'북국너구리',
-		  		'산길',
-		  		'에몽이무니다',
-		  		'울프람오메가',
-		  		'지존해완',
-		  		'호시하츠',	  
+'갱뽀',
+'골든리트리버키운다',
+'귀찮네이거',
+'급양반장',
+'미노르바',
+'북국너구리',
+'산길',
+'울프람오메가',
+'지존해완',
+'호시하츠',	  
 	  ],
     },
 		]
@@ -244,24 +243,6 @@ export class AppComponent {
               });
 		}
 
-		/*욕망군단장형아키스 소서리스*/
-		else if(this.IdText == "욕망군단장형아키스" && this.PasswordText == "1234"){
-			$(".Login_Box").fadeOut(500);
-			$(".Main_PanelBox").fadeIn(300);
-			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n언니 나 죽어", "확인", {
-                horizontalPosition: "center",
-                verticalPosition: "top",
-                duration: 3000,
-              });
-		}
-		else if(this.IdText == "욕망군단장형아키스" && this.PasswordText != "1234"){
-			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
-                horizontalPosition: "center",
-                verticalPosition: "top",
-                duration: 3000,
-              });
-		}
 
 		/*인조인간91호*/
 		else if(this.IdText == "인조인간91호" && this.PasswordText == "28452600"){
@@ -684,37 +665,18 @@ export class AppComponent {
               });
 		}
 
-		/*개란두계 홀나*/
-		else if(this.IdText == "개란두계" && this.PasswordText == "8787"){
+		/*들기름모코코무침 홀나*/
+		else if(this.IdText == "들기름모코코무침" && this.PasswordText == "8787"){
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n홀닥불!~ 타다닥", "확인", {
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n홀닥불 -> 소서로 변경!~", "확인", {
                 horizontalPosition: "center",
                 verticalPosition: "top",
                 duration: 3000,
               });
 		}
-		else if(this.IdText == "개란두계" && this.PasswordText != "8787"){
-			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
-                horizontalPosition: "center",
-                verticalPosition: "top",
-                duration: 3000,
-              });
-		}
-
-		/*드부조아 건슬*/
-		else if(this.IdText == "드부조아" && this.PasswordText == "0614"){
-			$(".Login_Box").fadeOut(500);
-			$(".Main_PanelBox").fadeIn(300);
-			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n사시 건슬 화이팅!", "확인", {
-                horizontalPosition: "center",
-                verticalPosition: "top",
-                duration: 3000,
-              });
-		}
-		else if(this.IdText == "드부조아" && this.PasswordText != "0614"){
+		else if(this.IdText == "들기름모코코무침" && this.PasswordText != "8787"){
 			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
                 horizontalPosition: "center",
                 verticalPosition: "top",
@@ -911,6 +873,64 @@ export class AppComponent {
                 duration: 3000,
               });
 		}
+		
+		/*남자만좋아해 블래스터*/
+		else if(this.IdText == "남자만좋아해" && this.PasswordText == "015401"){
+			$(".Login_Box").fadeOut(500);
+			$(".Main_PanelBox").fadeIn(300);
+			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n블래스터 휠체어..멋져...", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
+		}
+		else if(this.IdText == "남자만좋아해" && this.PasswordText != "015401"){
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
+		}
+		
+		/*흑로남불 스트라이커*/
+		else if(this.IdText == "흑로남불" && this.PasswordText == "909"){
+			$(".Login_Box").fadeOut(500);
+			$(".Main_PanelBox").fadeIn(300);
+			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n비밀번호 변경시 관리자 문의", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
+		}
+		else if(this.IdText == "흑로남불" && this.PasswordText != "909"){
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
+		}
+		
+		/*장기 미접속*/
+		/*드부조아 건슬*/
+		else if(this.IdText == "드부조아" && this.PasswordText == "0614"){
+			$(".Login_Box").fadeOut(500);
+			$(".Main_PanelBox").fadeIn(300);
+			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n사시 건슬 화이팅!", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
+		}
+		else if(this.IdText == "드부조아" && this.PasswordText != "0614"){
+			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                duration: 3000,
+              });
+		}
 
 
         /*아만섭*/
@@ -1067,25 +1087,6 @@ export class AppComponent {
               });
 		}
 		
-		/*보라퐁 블레이드(아만)*/
-		else if(this.IdText == "보라퐁" && this.PasswordText == "909"){
-			$(".Login_Box").fadeOut(500);
-			$(".Main_PanelBox").fadeIn(300);
-			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n비밀변호 변경시 문의주세요.", "확인", {
-                horizontalPosition: "center",
-                verticalPosition: "top",
-                duration: 3000,
-              });
-		}
-		else if(this.IdText == "보라퐁" && this.PasswordText != "909"){
-			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
-                horizontalPosition: "center",
-                verticalPosition: "top",
-                duration: 3000,
-              });
-		}
-		
 		/*울프람오메가 소서리스(아만)*/
 		else if(this.IdText == "울프람오메가" && this.PasswordText == "0225"){
 			$(".Login_Box").fadeOut(500);
@@ -1098,26 +1099,6 @@ export class AppComponent {
               });
 		}
 		else if(this.IdText == "울프람오메가" && this.PasswordText != "0225"){
-			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
-                horizontalPosition: "center",
-                verticalPosition: "top",
-                duration: 3000,
-              });
-		}
-		
-		
-		/*에몽이무니다 건슬링어(아만)*/
-		else if(this.IdText == "에몽이무니다" && this.PasswordText == "909"){
-			$(".Login_Box").fadeOut(500);
-			$(".Main_PanelBox").fadeIn(300);
-			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n건슬 저도 본캐입니다.~", "확인", {
-                horizontalPosition: "center",
-                verticalPosition: "top",
-                duration: 3000,
-              });
-		}
-		else if(this.IdText == "에몽이무니다" && this.PasswordText != "909"){
 			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
                 horizontalPosition: "center",
                 verticalPosition: "top",
