@@ -67,7 +67,6 @@ export class AppComponent {
 '노마블러드워',
 '데둠미',
 '동쓰알카',
-'드부조아',
 '들기름모코코무침',
 '똘렝',
 '라즈베리단풍',
@@ -79,6 +78,7 @@ export class AppComponent {
 '뽀야마요',
 '상콤한가지',
 '소서뇽스',
+'수어통역사서기',
 '신성범위',
 '아따비',
 '아리아나기갈데',
@@ -912,25 +912,27 @@ export class AppComponent {
               });
 		}
 		
-		/*장기 미접속*/
-		/*드부조아 건슬*/
-		else if(this.IdText == "드부조아" && this.PasswordText == "0614"){
+		/*수어통역사서기 건슬*/
+		else if(this.IdText == "수어통역사서기" && this.PasswordText == "909"){
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
-            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n사시 건슬 화이팅!", "확인", {
+            this.MatSnackBar.open(this.IdText + "님 환영합니다.\n건슬 화이팅!", "확인", {
                 horizontalPosition: "center",
                 verticalPosition: "top",
                 duration: 3000,
               });
 		}
-		else if(this.IdText == "드부조아" && this.PasswordText != "0614"){
+		else if(this.IdText == "수어통역사서기" && this.PasswordText != "909"){
 			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
                 horizontalPosition: "center",
                 verticalPosition: "top",
                 duration: 3000,
               });
 		}
+		
+		/*장기 미접속*/
+		
 
 
         /*아만섭*/
