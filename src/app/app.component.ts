@@ -913,7 +913,7 @@ export class AppComponent {
 		}
 		
 		/*수어통역사서기 건슬*/
-		else if(this.IdText == "수어통역사서기" && this.PasswordText == "909"){
+		else if(this.IdText == "수어통역사서기" && this.PasswordText == "1525"){
 			$(".Login_Box").fadeOut(500);
 			$(".Main_PanelBox").fadeIn(300);
 			this.router.navigate(['/WeekCalendar'],{queryParams:{id:this.IdText}});
@@ -923,7 +923,7 @@ export class AppComponent {
                 duration: 3000,
               });
 		}
-		else if(this.IdText == "수어통역사서기" && this.PasswordText != "909"){
+		else if(this.IdText == "수어통역사서기" && this.PasswordText != "1525"){
 			this.MatSnackBar.open(this.IdText + "님 비밀번호를 확인해주세요.", "확인", {
                 horizontalPosition: "center",
                 verticalPosition: "top",
